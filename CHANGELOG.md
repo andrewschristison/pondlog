@@ -3,6 +3,53 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.6.0] - 2026-05-07
+
+### Added — Sticky 7: eBird MCP server (21 tools, 100% API coverage)
+- `@pondlog/mcp-ebird` ships **21 MCP tools** — direct snake_case
+  mappings of all 21 `@pondlog/source-ebird` functions. Stdio
+  transport, `@modelcontextprotocol/sdk` v1.x, NPX-ready
+  (`pondlog-mcp-ebird` bin with shebang).
+- Tools split by category to keep files focused (mirrors source-ebird):
+  `tools/observations.ts` (7), `tools/product.ts` (3),
+  `tools/hotspots.ts` (3), `tools/taxonomy.ts` (5),
+  `tools/regions.ts` (3). `tools.ts` is a thin barrel.
+- Tool descriptions inline the eBird domain glossary: region-code
+  hierarchy (US / US-WA / US-WA-009), species-code format, subId/locId
+  formats. Cross-references between siblings (region-scoped vs
+  coords-scoped, recent vs notable, etc.) so the LLM picks the right
+  tool.
+- Per-field Zod `.describe()` strings on every input. Shared field
+  fragments live in `schemas.ts` (`latField`, `lngField`, `distField`,
+  `backField`, `regionCodeField`, `speciesCodeField`, etc.) — same
+  pattern as `mcp-inaturalist`.
+- All tools annotated `readOnlyHint: true, openWorldHint: true`.
+  Successful responses emit both `structuredContent` and a `text`
+  block; failures set `isError: true` with `source/message/statusCode`.
+- `EBIRD_API_KEY` enforcement at server startup: `assertEbirdApiKey()`
+  runs at the top of `index.ts main()` before `buildServer()`. Missing
+  key prints a clear error to stderr (link to keygen + export
+  instructions) and exits 1 before binding stdio. `buildServer()` stays
+  pure for testability.
+- `server.json` for MCP Registry submission, with
+  `environment_variables` declaring `EBIRD_API_KEY` as required +
+  secret. README with Claude Desktop + Cursor config blocks (both with
+  `env` block for the key), full 21-tool table grouped by category,
+  region-code glossary, example prompts.
+
+### Verified
+- `pnpm --filter @pondlog/mcp-ebird typecheck` + `build` clean
+  (~31 KB ESM bundle).
+- Missing-key error path: `node dist/index.js` (without
+  `EBIRD_API_KEY`) prints the actionable error and exits 1 before
+  any other work.
+- JSON-RPC handshake: `initialize` returns expected `serverInfo`
+  (`pondlog-mcp-ebird` v0.1.0); `tools/list` returns all 21 tools;
+  bad-input `tools/call` (`get_nearby_recent` with `lat=999`) is
+  rejected by SDK Zod with `isError: true` before the handler runs.
+- Live `tools/call` against `get_nearby_recent` (Port Angeles,
+  dist=25, back=3) returned `ok: true` with 138 species.
+
 ## [0.5.0] - 2026-05-07
 
 ### Added — Sticky 6: eBird CLI subcommands
