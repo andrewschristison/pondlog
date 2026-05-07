@@ -2,7 +2,7 @@
 
 ## Active
 
-### Sticky 1 — Monorepo scaffold + iNaturalist core
+### Sticky 1 — Monorepo scaffold + iNaturalist core ✅ COMPLETE (2026-05-07)
 
 ```
 This is pondlog — a place-aware nature data aggregation tool
@@ -138,4 +138,6 @@ Prereq: Stickies 2-3 complete.
 
 ## Completed
 
-(none yet)
+- **Sticky 1** (2026-05-07) — Monorepo scaffold + iNaturalist core. 4
+  packages built, 16 unit tests + 9 live smoke tests all passing against
+  real iNat API.

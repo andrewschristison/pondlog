@@ -1,0 +1,39 @@
+{
+  "name": "@pondlog/source-inaturalist",
+  "version": "0.1.0",
+  "description": "iNaturalist API client library for pondlog",
+  "author": "Andrew Christison",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --exclude '**/smoke.test.ts'",
+    "smoke": "vitest run test/smoke.test.ts"
+  },
+  "dependencies": {
+    "@pondlog/core": "workspace:*",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
