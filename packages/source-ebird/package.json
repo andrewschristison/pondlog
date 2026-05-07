@@ -1,0 +1,62 @@
+{
+  "name": "@pondlog/source-ebird",
+  "version": "0.1.0",
+  "description": "eBird API v2 client library: typed, Zod-validated, rate-limited. Returns Result<T> instead of throwing. 100% endpoint coverage (21 endpoints).",
+  "keywords": [
+    "pondlog",
+    "ebird",
+    "birds",
+    "birding",
+    "ornithology",
+    "wildlife",
+    "nature",
+    "api-client",
+    "zod"
+  ],
+  "author": "Andrew Christison",
+  "license": "MIT",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-ebird#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "directory": "packages/source-ebird"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewschristison/pondlog/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --exclude '**/smoke.test.ts'",
+    "smoke": "vitest run test/smoke.test.ts"
+  },
+  "dependencies": {
+    "@pondlog/core": "workspace:*",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

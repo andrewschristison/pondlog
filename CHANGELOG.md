@@ -3,6 +3,55 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.4.0] - 2026-05-07
+
+### Added — Sticky 5: eBird source client (100% API coverage)
+- `@pondlog/source-ebird` ships all 21 documented eBird API v2 endpoints
+  across five categories: Observations (7), Product (3), Hotspots (3),
+  Taxonomy (5), Regions (3).
+- Every function returns `Result<T>`, validates responses with Zod, and
+  shares a single 100 req/min `RateLimiter` instance. 429 → exponential
+  backoff via `withRetry` (1s, 2s, 4s, max 3 attempts), same pattern as
+  `@pondlog/source-inaturalist`.
+- API key handling: `EBIRD_API_KEY` is read on every fetch and surfaced
+  as a `Result` error if missing. `assertEbirdApiKey()` is exported for
+  callers who want fail-loud-at-startup semantics.
+- Normalized convenience variants for endpoints with shared `@pondlog/core`
+  analogues: `getNearbyRecentNormalized`, `getNearbyNotableNormalized`,
+  `getHotspotsInRegionNormalized`, `getNearbyHotspotsNormalized`,
+  `getHotspotInfoNormalized`, `getTaxonomyNormalized`. All eBird
+  observations normalize to `iconicTaxon: "Aves"` (eBird is birds-only).
+- Param validation at the boundary: `back` clamped 1–30, `dist` clamped
+  0–50 km, year/month/day integer-checked, `maxResults` range-checked
+  per endpoint. Invalid params return `Result` error without a network
+  call.
+- Source layout split by category (`observations.ts`, `product.ts`,
+  `hotspots.ts`, `taxonomy.ts`, `regions.ts`) plus shared `client.ts`,
+  `schemas.ts`, `normalize.ts`. `index.ts` is a barrel.
+
+### Verified
+- `pnpm --filter @pondlog/source-ebird typecheck` clean.
+- `pnpm --filter @pondlog/source-ebird build` clean (tsup esm + dts;
+  ~23 KB JS, ~43 KB d.ts).
+- 15/15 Zod schema + normalization unit tests pass.
+- 5/5 live smoke tests against the real eBird API (Port Angeles area,
+  ran in 3.58s):
+  - `getNearbyRecent` (lat=48.118, lng=-123.4307): 166 observations
+  - `getNearbyNotable` (lat=48.118, lng=-123.4307): 212 notable
+  - `getHotspotsInRegion("US-WA-009")`: 216 hotspots
+  - `getHistoricOnDate("US-WA-009", 2025, 5, 1)`: 50 observations
+  - `getRegionInfo("US-WA-009")`: "Clallam, Washington, United States"
+
+### Notes
+- The `.claude/API_AUDIT.md` listed the species-grouping endpoint as
+  `/ref/taxonomy/groups/{speciesGrouping}`, but the actual eBird path
+  is `/ref/sppgroup/{speciesGrouping}` — implementation uses the
+  correct path.
+- Smoke test for `getHistoricOnDate` was originally specified at the
+  state level (`US-WA`) but consistently exceeded a 30s timeout in
+  practice. Narrowed to county scope (`US-WA-009`) with a 60s timeout
+  — the historic endpoint is response-heavy at state granularity.
+
 ## [0.3.0] - 2026-05-07
 
 ### Added — Sticky 3: iNaturalist MCP server
