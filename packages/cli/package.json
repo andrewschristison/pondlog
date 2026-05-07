@@ -39,6 +39,7 @@
     "@pondlog/core": "workspace:*",
     "@pondlog/source-ebird": "workspace:*",
     "@pondlog/source-inaturalist": "workspace:*",
+    "@pondlog/source-nightsky": "workspace:*",
     "@pondlog/source-npn": "workspace:*",
     "@pondlog/source-usgs": "workspace:*",
     "commander": "^12.1.0",

@@ -3,6 +3,109 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.9.0] - 2026-05-07
+
+### Added — Sticky 13: Night Sky source client + CLI
+
+A fifth source ships, but with a different shape: pure local
+computation. No API, no rate limit, no key. Replaces the original
+"SunCalc + NOAA in core" plan with a full standalone source built on
+`astronomy-engine` (a strict superset of SunCalc that adds planets,
+constellations, magnitudes, and ±1 arcminute accuracy).
+
+**Deliberate scope decision:** no `@pondlog/mcp-nightsky` standalone
+package. The astronomy MCP space already has 5+ servers
+(CelestialMCP, Astro MCP, ephemeris.fyi, NASA APIs MCP, Astronomy
+Event Tracker) — shipping a sixth doesn't differentiate. The
+night-sky data will surface through `mcp-pondlog` (Sticky 15) as
+part of the aggregate "what's happening at these coordinates"
+briefing. The source client + CLI ship because both are useful in
+their own right.
+
+#### `@pondlog/source-nightsky` (new package)
+
+- 7 functions, all returning `Result<T>`, all pure synchronous
+  computation. No network, no rate limiter.
+- `getTonightsBriefing({ coords, date? })` — top-level composer.
+  Returns sun times, moon phase, dark-sky window, visible planets,
+  active + upcoming meteor showers, top constellations, and a
+  one-line human-readable `highlight`.
+- `getSunTimes` — sunrise/sunset/solar noon plus civil/nautical/
+  astronomical dawn & dusk plus golden hour. Uses
+  `astronomy-engine`'s `SearchAltitude` for arbitrary-altitude
+  twilight thresholds; null at high latitudes when never crossed.
+- `getMoonPhase` — phase name, emoji, illumination %, age in days,
+  rise/set. Location optional (phase is location-independent).
+- `getPlanetPositions` — Mercury through Neptune with magnitude,
+  altitude/azimuth, compass direction, rise/set, and `isVisible`
+  flag. Visibility filter: sun ≤ -6° AND altitude > 5° AND mag ≤ 6.
+- `getActiveMeteorShowers` — handles year-wrapping windows
+  (Quadrantids 12-28 → 01-12), surfaces both currently-active
+  showers and upcoming peaks within 14 days, includes moon
+  interference rating for each.
+- `getDarkSkyWindow` — astronomical dark window plus 1–5 quality
+  score weighted by `moonAltitude × moonIlluminationFraction`.
+  5 = astronomical dark + moon below horizon or new; 1 = full moon
+  overhead. Caps at 3 when astronomical dark never happens.
+- `getVisibleConstellations` — 25 curated constellations, filtered
+  to those currently above 15°, ranked in-season first then by
+  altitude.
+- Curated fixtures bundled into the JS:
+  - `src/data/meteor-showers.json` — 12 IMO-recognized annual
+    showers (Quadrantids, Lyrids, Eta Aquariids, Perseids, Draconids,
+    Orionids, Taurids north & south, Leonids, Geminids, Ursids,
+    Southern Delta Aquariids).
+  - `src/data/constellations.json` — 25 high-recognition
+    constellations with hemisphere, best months, notable named stars,
+    one-line descriptions.
+- 28 unit tests cover compass mapping, phase naming, dark-sky scoring
+  rules (5 boundary cases), moon-interference thresholds, meteor
+  shower window detection (mid-window + year-wrap + outside-window +
+  upcoming), planet visibility filtering (daytime), arctic dark-sky
+  edge case (polar day → no dark, score ≤ 3), constellation
+  filtering + in-season ranking, plus boundary checks (out-of-range
+  lat, NaN coords, unparseable dates).
+- 2 deterministic smoke tests verify `getTonightsBriefing` at Port
+  Angeles on Aug 12 2026 (Perseids peak — should and does surface)
+  and at 70°N on June 21 (no astronomical dark; quality ≤ 3;
+  circumpolar constellations correctly above 15°).
+
+#### `pondlog nightsky …` CLI subcommand group
+
+- `pondlog nightsky [briefing] [--lat] [--lng] [--date] [--json]` —
+  default subcommand, full curated briefing.
+- `pondlog nightsky planets [--lat] [--lng] [--date] [--json]` —
+  planet positions with `isVisible` partition.
+- `pondlog nightsky moon [--lat] [--lng] [--date] [--json]` — phase
+  + emoji + illumination + age + rise/set; coords optional.
+- `pondlog nightsky sun [--lat] [--lng] [--date] [--json]` — sun
+  times grid with civil/nautical/astronomical twilight.
+- `pondlog nightsky meteors [--date] [--json]` — active and upcoming
+  showers.
+- `sky` alias on the top-level group (`pondlog sky` works).
+- Picocolors output: emoji moon (🌒), 16-point compass on every
+  body, `★★★★☆` quality bars on dark-sky line, peak-proximity
+  language ("peaks tonight", "peaked 13d ago"). `--json` on every
+  command. Saved-location fallback works on every nightsky
+  subcommand.
+
+### Why astronomy-engine over SunCalc
+
+`astronomy-engine` (^2.1.19) is a strict superset of `suncalc`. It
+adds planet ephemerides + magnitudes, constellation lookup,
+configurable refraction, and ±1 arcminute accuracy across all bodies
+in ~30 KB bundled, pure JS, zero native deps. No remaining reason to
+add SunCalc separately.
+
+### NOAA cloud cover — deferred
+
+Original Sticky 13 mentioned "SunCalc + NOAA in core." NOAA cloud
+cover is a *network* call with rate limits — fundamentally different
+from astronomy-engine's pure computation. It belongs in the
+aggregate `pondlog today` (Sticky 14) where it can be parallel-
+fetched alongside the iNat / eBird / NPN / USGS clients, not bolted
+onto a pure-math source.
+
 ## [0.8.0] - 2026-05-07
 
 ### Added — Stickies 11 & 12: USGS source client + CLI + MCP (one ship)

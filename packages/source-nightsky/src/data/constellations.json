@@ -1,0 +1,252 @@
+[
+  {
+    "iauCode": "Ori",
+    "name": "Orion",
+    "raHours": 5.6,
+    "decDeg": 0.0,
+    "hemisphere": "equatorial",
+    "bestMonths": [11, 12, 1, 2, 3],
+    "notableStars": ["Betelgeuse", "Rigel", "Bellatrix", "Saiph", "Mintaka", "Alnilam", "Alnitak"],
+    "description": "The Hunter — three-star Belt is the most recognizable asterism in the night sky."
+  },
+  {
+    "iauCode": "UMa",
+    "name": "Ursa Major",
+    "raHours": 11.0,
+    "decDeg": 55.0,
+    "hemisphere": "northern",
+    "bestMonths": [3, 4, 5, 6],
+    "notableStars": ["Dubhe", "Merak", "Phecda", "Megrez", "Alioth", "Mizar", "Alkaid"],
+    "description": "Great Bear, containing the Big Dipper asterism. Pointer stars find Polaris."
+  },
+  {
+    "iauCode": "UMi",
+    "name": "Ursa Minor",
+    "raHours": 15.0,
+    "decDeg": 78.0,
+    "hemisphere": "northern",
+    "bestMonths": [4, 5, 6, 7, 8, 9],
+    "notableStars": ["Polaris", "Kochab", "Pherkad"],
+    "description": "Little Bear, Little Dipper. Polaris (the North Star) marks the bowl tip."
+  },
+  {
+    "iauCode": "Cas",
+    "name": "Cassiopeia",
+    "raHours": 1.0,
+    "decDeg": 60.0,
+    "hemisphere": "northern",
+    "bestMonths": [9, 10, 11, 12, 1],
+    "notableStars": ["Schedar", "Caph", "Gamma Cas", "Ruchbah", "Segin"],
+    "description": "Distinctive W or M shape, circumpolar from mid-northern latitudes."
+  },
+  {
+    "iauCode": "Cep",
+    "name": "Cepheus",
+    "raHours": 22.0,
+    "decDeg": 70.0,
+    "hemisphere": "northern",
+    "bestMonths": [9, 10, 11],
+    "notableStars": ["Alderamin", "Alfirk", "Errai"],
+    "description": "House-shaped circumpolar constellation next to Cassiopeia."
+  },
+  {
+    "iauCode": "Dra",
+    "name": "Draco",
+    "raHours": 17.0,
+    "decDeg": 65.0,
+    "hemisphere": "northern",
+    "bestMonths": [5, 6, 7, 8],
+    "notableStars": ["Eltanin", "Rastaban", "Thuban"],
+    "description": "Long winding Dragon between the two Bears. Thuban was the pole star ~3000 BC."
+  },
+  {
+    "iauCode": "Lyr",
+    "name": "Lyra",
+    "raHours": 18.8,
+    "decDeg": 38.8,
+    "hemisphere": "northern",
+    "bestMonths": [6, 7, 8, 9],
+    "notableStars": ["Vega"],
+    "description": "Small parallelogram anchored by Vega, brightest star of the Summer Triangle."
+  },
+  {
+    "iauCode": "Cyg",
+    "name": "Cygnus",
+    "raHours": 20.4,
+    "decDeg": 40.0,
+    "hemisphere": "northern",
+    "bestMonths": [7, 8, 9, 10],
+    "notableStars": ["Deneb", "Albireo", "Sadr"],
+    "description": "Northern Cross / Swan flying down the Milky Way. Deneb is the third Summer Triangle vertex."
+  },
+  {
+    "iauCode": "Aql",
+    "name": "Aquila",
+    "raHours": 19.7,
+    "decDeg": 8.5,
+    "hemisphere": "equatorial",
+    "bestMonths": [7, 8, 9],
+    "notableStars": ["Altair", "Tarazed", "Alshain"],
+    "description": "The Eagle. Altair completes the Summer Triangle with Vega and Deneb."
+  },
+  {
+    "iauCode": "Boo",
+    "name": "Boötes",
+    "raHours": 14.5,
+    "decDeg": 30.0,
+    "hemisphere": "northern",
+    "bestMonths": [4, 5, 6, 7],
+    "notableStars": ["Arcturus", "Izar", "Muphrid"],
+    "description": "Kite-shaped Herdsman. Arcturus is the brightest star in the northern celestial hemisphere."
+  },
+  {
+    "iauCode": "Vir",
+    "name": "Virgo",
+    "raHours": 13.0,
+    "decDeg": -2.0,
+    "hemisphere": "equatorial",
+    "bestMonths": [4, 5, 6],
+    "notableStars": ["Spica", "Porrima", "Vindemiatrix"],
+    "description": "Largest zodiacal constellation. Follow Arcturus's curve from the Big Dipper to find Spica."
+  },
+  {
+    "iauCode": "Leo",
+    "name": "Leo",
+    "raHours": 10.5,
+    "decDeg": 16.0,
+    "hemisphere": "equatorial",
+    "bestMonths": [3, 4, 5],
+    "notableStars": ["Regulus", "Denebola", "Algieba"],
+    "description": "The Lion — Sickle asterism (a backwards question mark) is the head and mane."
+  },
+  {
+    "iauCode": "Sco",
+    "name": "Scorpius",
+    "raHours": 16.5,
+    "decDeg": -30.0,
+    "hemisphere": "southern",
+    "bestMonths": [6, 7, 8],
+    "notableStars": ["Antares", "Shaula", "Sargas"],
+    "description": "True scorpion shape with hooked tail. Antares, the red 'rival of Mars,' marks the heart."
+  },
+  {
+    "iauCode": "Sgr",
+    "name": "Sagittarius",
+    "raHours": 19.0,
+    "decDeg": -25.0,
+    "hemisphere": "southern",
+    "bestMonths": [7, 8, 9],
+    "notableStars": ["Kaus Australis", "Nunki", "Ascella"],
+    "description": "Teapot asterism aimed at the galactic center. Densest part of the Milky Way."
+  },
+  {
+    "iauCode": "Tau",
+    "name": "Taurus",
+    "raHours": 4.5,
+    "decDeg": 18.0,
+    "hemisphere": "northern",
+    "bestMonths": [11, 12, 1, 2],
+    "notableStars": ["Aldebaran", "Elnath"],
+    "description": "The Bull — Hyades V-shape forms the face, Pleiades cluster sits on the shoulder."
+  },
+  {
+    "iauCode": "Gem",
+    "name": "Gemini",
+    "raHours": 7.0,
+    "decDeg": 22.0,
+    "hemisphere": "northern",
+    "bestMonths": [12, 1, 2, 3],
+    "notableStars": ["Castor", "Pollux"],
+    "description": "The Twins — bright pair Castor and Pollux mark the heads."
+  },
+  {
+    "iauCode": "Cnc",
+    "name": "Cancer",
+    "raHours": 8.5,
+    "decDeg": 20.0,
+    "hemisphere": "northern",
+    "bestMonths": [2, 3, 4],
+    "notableStars": ["Acubens", "Asellus Australis"],
+    "description": "Faint zodiac constellation. Hosts the Beehive Cluster (M44), naked-eye from dark sites."
+  },
+  {
+    "iauCode": "Per",
+    "name": "Perseus",
+    "raHours": 3.5,
+    "decDeg": 45.0,
+    "hemisphere": "northern",
+    "bestMonths": [10, 11, 12, 1],
+    "notableStars": ["Mirfak", "Algol"],
+    "description": "Hero standing between Cassiopeia and Taurus. Algol is a famous eclipsing binary."
+  },
+  {
+    "iauCode": "And",
+    "name": "Andromeda",
+    "raHours": 0.8,
+    "decDeg": 38.0,
+    "hemisphere": "northern",
+    "bestMonths": [9, 10, 11, 12],
+    "notableStars": ["Alpheratz", "Mirach", "Almach"],
+    "description": "Hosts M31, the Andromeda Galaxy — the most distant naked-eye object (2.5 Mly)."
+  },
+  {
+    "iauCode": "Peg",
+    "name": "Pegasus",
+    "raHours": 22.5,
+    "decDeg": 20.0,
+    "hemisphere": "northern",
+    "bestMonths": [9, 10, 11, 12],
+    "notableStars": ["Markab", "Scheat", "Algenib", "Enif"],
+    "description": "Great Square of Pegasus is the autumn signpost. Shares Alpheratz with Andromeda."
+  },
+  {
+    "iauCode": "Aur",
+    "name": "Auriga",
+    "raHours": 6.0,
+    "decDeg": 42.0,
+    "hemisphere": "northern",
+    "bestMonths": [12, 1, 2, 3],
+    "notableStars": ["Capella", "Menkalinan"],
+    "description": "The Charioteer — pentagonal shape near Taurus and Gemini. Capella is the sixth-brightest star."
+  },
+  {
+    "iauCode": "CMa",
+    "name": "Canis Major",
+    "raHours": 6.8,
+    "decDeg": -22.0,
+    "hemisphere": "southern",
+    "bestMonths": [1, 2, 3],
+    "notableStars": ["Sirius", "Adhara", "Wezen"],
+    "description": "Greater Dog — Sirius is the brightest star in the night sky, follows Orion across the south."
+  },
+  {
+    "iauCode": "CMi",
+    "name": "Canis Minor",
+    "raHours": 7.5,
+    "decDeg": 7.0,
+    "hemisphere": "equatorial",
+    "bestMonths": [1, 2, 3, 4],
+    "notableStars": ["Procyon"],
+    "description": "Lesser Dog — Procyon completes the Winter Triangle with Sirius and Betelgeuse."
+  },
+  {
+    "iauCode": "Cru",
+    "name": "Crux",
+    "raHours": 12.5,
+    "decDeg": -60.0,
+    "hemisphere": "southern",
+    "bestMonths": [3, 4, 5, 6],
+    "notableStars": ["Acrux", "Mimosa", "Gacrux"],
+    "description": "Southern Cross — smallest constellation, signpost for the south celestial pole."
+  },
+  {
+    "iauCode": "Car",
+    "name": "Carina",
+    "raHours": 9.0,
+    "decDeg": -60.0,
+    "hemisphere": "southern",
+    "bestMonths": [1, 2, 3, 4],
+    "notableStars": ["Canopus", "Miaplacidus"],
+    "description": "The Keel — Canopus is the second-brightest star in the night sky. Hosts the Carina Nebula."
+  }
+]

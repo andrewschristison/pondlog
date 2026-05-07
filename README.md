@@ -2,8 +2,9 @@
 
 Place-aware nature data aggregation. **What's happening in nature at
 these coordinates right now?** Pondlog stitches together free public
-APIs — iNaturalist, eBird, NOAA, USA-NPN, USGS, SunCalc — into a unified
-data layer with two interfaces:
+APIs — iNaturalist, eBird, USA-NPN, USGS — plus local astronomy
+computation (`astronomy-engine`) and NOAA tides/cloud cover into a
+unified data layer with two interfaces:
 
 - A **CLI** for humans (`pondlog inat nearby --lat 48.118 --lng -123.43`)
 - An **MCP server** per source for AI agents (Claude Desktop, Cursor)
@@ -17,16 +18,24 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | [`pondlog`](./packages/cli) | [![npm](https://img.shields.io/npm/v/pondlog.svg)](https://www.npmjs.com/package/pondlog) | Unified CLI |
 | [`@pondlog/core`](./packages/core) | [![npm](https://img.shields.io/npm/v/@pondlog/core.svg)](https://www.npmjs.com/package/@pondlog/core) | Shared types, `Result<T>`, rate limiter, utils |
 | [`@pondlog/source-inaturalist`](./packages/source-inaturalist) | [![npm](https://img.shields.io/npm/v/@pondlog/source-inaturalist.svg)](https://www.npmjs.com/package/@pondlog/source-inaturalist) | iNaturalist API client |
+| [`@pondlog/source-ebird`](./packages/source-ebird) | [![npm](https://img.shields.io/npm/v/@pondlog/source-ebird.svg)](https://www.npmjs.com/package/@pondlog/source-ebird) | eBird API client (21 endpoints) |
+| [`@pondlog/source-npn`](./packages/source-npn) | [![npm](https://img.shields.io/npm/v/@pondlog/source-npn.svg)](https://www.npmjs.com/package/@pondlog/source-npn) | USA-NPN phenology client |
+| [`@pondlog/source-usgs`](./packages/source-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/source-usgs.svg)](https://www.npmjs.com/package/@pondlog/source-usgs) | USGS Water Services client |
+| [`@pondlog/source-nightsky`](./packages/source-nightsky) | [![npm](https://img.shields.io/npm/v/@pondlog/source-nightsky.svg)](https://www.npmjs.com/package/@pondlog/source-nightsky) | Local night-sky briefing (astronomy-engine) |
 | [`@pondlog/mcp-inaturalist`](./packages/mcp-inaturalist) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-inaturalist.svg)](https://www.npmjs.com/package/@pondlog/mcp-inaturalist) | iNaturalist MCP server (9 tools) |
+| [`@pondlog/mcp-ebird`](./packages/mcp-ebird) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-ebird.svg)](https://www.npmjs.com/package/@pondlog/mcp-ebird) | eBird MCP server (21 tools) |
+| [`@pondlog/mcp-npn`](./packages/mcp-npn) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-npn.svg)](https://www.npmjs.com/package/@pondlog/mcp-npn) | NPN MCP server (8 tools) |
+| [`@pondlog/mcp-usgs`](./packages/mcp-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-usgs.svg)](https://www.npmjs.com/package/@pondlog/mcp-usgs) | USGS MCP server (4 tools) |
 
 ## Status
 
 | Source | Library | CLI | MCP |
 |---|---|---|---|
 | iNaturalist | ✅ | ✅ | ✅ |
-| eBird | 🔜 | 🔜 | 🔜 |
-| NPN (phenology) | 🔜 | 🔜 | 🔜 |
-| USGS (water) | 🔜 | 🔜 | 🔜 |
+| eBird | ✅ | ✅ | ✅ |
+| NPN (phenology) | ✅ | ✅ | ✅ |
+| USGS (water) | ✅ | ✅ | ✅ |
+| Night sky (`astronomy-engine`) | ✅ | ✅ | — (in `mcp-pondlog`) |
 | Aggregate (`pondlog today`) | — | 🔜 | 🔜 |
 
 ## Quick start
@@ -60,9 +69,10 @@ The same JSON works in `~/.cursor/mcp.json` for Cursor.
 npm install -g pondlog
 pondlog config set-location --lat 48.118 --lng -123.4307 --name "Port Angeles"
 pondlog inat nearby
-pondlog inat species --radius 25 --days 14
-pondlog inat search "pacific chorus frog"
-pondlog inat taxon "bald eagle"
+pondlog ebird notable
+pondlog npn active
+pondlog usgs flow --site 12045500
+pondlog nightsky                       # tonight's curated briefing
 ```
 
 `--json` works on every command for machine output.
@@ -76,8 +86,12 @@ pondlog inat taxon "bald eagle"
   returns whatever else worked, with errors reported in-band.
 - **Rate limits respected.** Each client throttles itself; never trust
   the caller.
-- **No keys for what doesn't need them.** iNaturalist reads are open;
-  only eBird requires a key (`EBIRD_API_KEY`).
+- **No keys for what doesn't need them.** iNaturalist, NPN, USGS, and
+  the night-sky source all run keyless. Only eBird requires a key
+  (`EBIRD_API_KEY`).
+- **Local computation when the data isn't external.** Astronomy is
+  pure math — `@pondlog/source-nightsky` ships zero network calls,
+  zero rate limits, zero failure modes.
 
 ## Repository
 
