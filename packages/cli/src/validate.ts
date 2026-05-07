@@ -56,3 +56,48 @@ export function parseDays(raw: string): Result<number> {
   }
   return ok(days);
 }
+
+export function parseHistoricDate(raw: string): Result<{ year: number; month: number; day: number }> {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw.trim());
+  if (!m) {
+    return err({
+      source: "cli",
+      message: `invalid date "${raw}": expected YYYY-MM-DD`,
+    });
+  }
+  const year = Number(m[1]);
+  const month = Number(m[2]);
+  const day = Number(m[3]);
+  if (year < 1800 || year > 9999) {
+    return err({ source: "cli", message: `year out of range (1800..9999): ${year}` });
+  }
+  if (month < 1 || month > 12) {
+    return err({ source: "cli", message: `month out of range (1..12): ${month}` });
+  }
+  if (day < 1 || day > 31) {
+    return err({ source: "cli", message: `day out of range (1..31): ${day}` });
+  }
+  return ok({ year, month, day });
+}
+
+export function parseSpeciesCode(raw: string): Result<string> {
+  const trimmed = raw.trim().toLowerCase();
+  if (!/^[a-z0-9]{4,10}$/.test(trimmed)) {
+    return err({
+      source: "cli",
+      message: `invalid species code "${raw}": expected 4–10 lowercase letters/digits (e.g. "amecro", "barowl")`,
+    });
+  }
+  return ok(trimmed);
+}
+
+export function parseRegionCode(raw: string): Result<string> {
+  const trimmed = raw.trim();
+  if (!/^[A-Za-z0-9-]{2,12}$/.test(trimmed)) {
+    return err({
+      source: "cli",
+      message: `invalid region code "${raw}": expected eBird region code (e.g. "US", "US-WA", "US-WA-009")`,
+    });
+  }
+  return ok(trimmed);
+}

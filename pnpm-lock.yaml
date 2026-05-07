@@ -26,6 +26,9 @@ importers:
       '@pondlog/core':
         specifier: workspace:*
         version: link:../core
+      '@pondlog/source-ebird':
+        specifier: workspace:*
+        version: link:../source-ebird
       '@pondlog/source-inaturalist':
         specifier: workspace:*
         version: link:../source-inaturalist

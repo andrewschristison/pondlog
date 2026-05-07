@@ -3,6 +3,58 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.5.0] - 2026-05-07
+
+### Added — Sticky 6: eBird CLI subcommands
+- `pondlog ebird recent [--lat] [--lng] [--radius] [--days] [--json]` —
+  recent bird sightings near a location, sorted newest first. eBird's
+  `obs/recent` already returns one row per species (the most recent
+  sighting), so output is naturally one row per species with `howMany`,
+  bold common name, dim scientific name, dim location, relative date.
+- `pondlog ebird notable [--lat] [--lng] [--radius] [--days] [--json]` —
+  notable / unusual sightings with a yellow ★ marker per row.
+- `pondlog ebird species <speciesCode> [--lat] [--lng] [--radius] [--json]`
+  — recent sightings of one species (eBird 4–10 char code, e.g.
+  `barowl`). Validated lower-case alphanumeric.
+- `pondlog ebird historic <date> --region <code> [--json]` — observations
+  on a specific date in a region (date as YYYY-MM-DD; region required,
+  e.g. `US-WA-009`). Output is grouped by location, with each group
+  sorted by sighting count desc.
+- `pondlog ebird hotspots [--lat] [--lng] [--radius] [--json]` —
+  birding hotspots near a location, sorted by all-time species count
+  desc, showing species count and last activity (relative).
+- `pondlog ebird checklist <subId> [--json]` — view a single eBird
+  checklist (e.g. `S987654321`) with metadata header (observer, date,
+  duration, distance, species count) and species list.
+- All location-aware commands resolve from `--lat/--lng` flags →
+  `~/.pondlog/config.json` saved default → friendly error.
+- Every eBird subcommand requires `EBIRD_API_KEY`. Missing key prints
+  a clear actionable error to stderr (link to keygen + the export
+  command) and exits 1, before any network call.
+- eBird radius is clamped to 50 km (eBird's API max), days to 30
+  (eBird's API max). Both validated at the CLI boundary with descriptive
+  error messages.
+- New validators in `validate.ts`: `parseHistoricDate`,
+  `parseSpeciesCode`, `parseRegionCode`.
+- New `format-ebird.ts` with `formatEbirdObs` (with optional notable
+  marker), `formatHotspot`, `formatChecklistHeader`,
+  `groupObsByLocation`. Truncation with `…` for long location names.
+
+### Verified
+- `pnpm --filter pondlog typecheck` + `build` clean (~35 KB ESM bundle).
+- `pondlog ebird --help` lists all 6 subcommands; per-command `--help`
+  prints usage examples.
+- Manual smoke against the real eBird API (Port Angeles area):
+  - `recent`: 166 species rendered cleanly, sorted newest first
+  - `notable`: 1 sighting (Mountain Bluebird) with ★ marker
+  - `hotspots`: 100 hotspots ranked by all-time species (Rocky Point
+    Bird Observatory at 299 spp leading)
+  - `historic 2025-05-01 --region US-WA-009`: 125 observations across
+    27 locations, grouped neatly
+  - `recent --json | jq '.[0]'`: valid JSON observation object
+- Missing-key error: `node … ebird recent` (without `EBIRD_API_KEY`)
+  prints the actionable error and exits 1 before any fetch.
+
 ## [0.4.0] - 2026-05-07
 
 ### Added — Sticky 5: eBird source client (100% API coverage)
