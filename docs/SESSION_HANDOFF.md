@@ -2,12 +2,52 @@
 
 ## Current state
 
-**Phase:** Build — Sticky 1 complete
-**Last session:** Session 1 (2026-05-07) — monorepo scaffold + iNat core
+**Phase:** Build — Sticky 2 complete
+**Last session:** Session 2 (2026-05-07) — iNaturalist CLI commands
 **Branch:** main
-**Next sticky:** Sticky 2 — iNaturalist CLI commands
+**Next sticky:** Sticky 3 — iNaturalist MCP server (9 tools)
 
 ## Session log
+
+### Session 2 — 2026-05-07 — Sticky 2 complete
+
+**Shipped:**
+- `pondlog config set-location` (flag-based, saves to
+  `~/.pondlog/config.json` with version + Zod validation, atomic write,
+  0600 file in 0700 dir; overridable via `PONDLOG_CONFIG_DIR` env).
+- `pondlog config show [--json]`.
+- `pondlog inat nearby/species/search/taxon` with iconic-taxa grouping,
+  picocolors output, relative-date formatting, and `--json` on every
+  command.
+- Validation layer (`packages/cli/src/validate.ts`): lat -90..90, lng
+  -180..180, radius 0<r≤500, days 1..365, all returning `Result<number>`.
+- Location resolver (flags > config > friendly error).
+
+**Verified:** `pnpm typecheck` + `pnpm build` clean; 16 unit tests + 9
+live smoke tests still green; all sticky-listed manual invocations
+exercised live, including negatives (bad lat, bad radius, --lat without
+--lng, no config + no flags).
+
+**Notes / decisions:**
+- Switched `set-location` from positional `<lat> <lng>` to `--lat`/`--lng`
+  flags. Reason: commander v12 treats negative numbers (e.g. `-123.4307`)
+  as unknown options when used positionally; flag-based syntax is the
+  standard idiom and avoids the issue. Documented in CLI help text.
+- `pickObserverName` in source-inaturalist now treats empty strings as
+  missing (falls through to "unknown") — observed during live runs that
+  some iNat users have `name: ""`.
+- `harden` skill symlink in `.agents/skills/` is broken (points at
+  `pond-log/.agents/skills/harden` which doesn't exist on disk). Applied
+  hardening principles inline: validate at the CLI boundary, fail loud
+  with descriptive messages, atomic config write, no inputs trusted past
+  the parser.
+
+**Notes for Sticky 3:**
+- The 9 source functions are stable and battle-tested by the CLI.
+  `mcp-inaturalist` should be a thin adapter mapping each MCP tool to one
+  source function. Tool input schemas live in the MCP package; LLM-facing
+  descriptions matter (per METHODOLOGY).
+- Default coords for any test prompts: `{ lat: 48.118, lng: -123.4307 }`.
 
 ### Session 1 — 2026-05-07 — Sticky 1 complete
 

@@ -21,7 +21,9 @@
   "dependencies": {
     "@pondlog/core": "workspace:*",
     "@pondlog/source-inaturalist": "workspace:*",
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

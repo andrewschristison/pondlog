@@ -52,7 +52,7 @@ Step 3 — Smoke test
 Skills to apply: system-design, harden
 ```
 
-### Sticky 2 — iNaturalist CLI commands
+### Sticky 2 — iNaturalist CLI commands ✅ COMPLETE (2026-05-07)
 
 ```
 Prereq: Sticky 1 complete and tested.
@@ -141,3 +141,7 @@ Prereq: Stickies 2-3 complete.
 - **Sticky 1** (2026-05-07) — Monorepo scaffold + iNaturalist core. 4
   packages built, 16 unit tests + 9 live smoke tests all passing against
   real iNat API.
+- **Sticky 2** (2026-05-07) — iNaturalist CLI: config (set-location +
+  show), inat nearby/species/search/taxon. Validation, picocolors output,
+  --json on every command. Live-tested against real iNat API at Port
+  Angeles.

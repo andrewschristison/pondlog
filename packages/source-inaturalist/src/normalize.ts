@@ -56,7 +56,14 @@ function pickObservedAt(raw: InatObservation): string {
 function pickObserverName(raw: InatObservation): string {
   const user = raw.user;
   if (!user) return "unknown";
-  return user.name ?? user.login ?? "unknown";
+  return firstNonEmpty(user.name, user.login) ?? "unknown";
+}
+
+function firstNonEmpty(...values: Array<string | null | undefined>): string | null {
+  for (const v of values) {
+    if (typeof v === "string" && v.trim() !== "") return v;
+  }
+  return null;
 }
 
 function pickTaxonName(raw: InatObservation): string {
