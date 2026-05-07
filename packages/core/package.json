@@ -1,9 +1,26 @@
 {
   "name": "@pondlog/core",
   "version": "0.1.0",
-  "description": "Shared types, schemas, and utilities for the pondlog monorepo",
+  "description": "Shared types, schemas, Result<T>, rate limiter, and utilities used across pondlog source clients, CLI, and MCP servers.",
+  "keywords": [
+    "pondlog",
+    "nature",
+    "wildlife",
+    "types",
+    "rate-limiter",
+    "result"
+  ],
   "author": "Andrew Christison",
   "license": "MIT",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewschristison/pondlog/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,6 +34,9 @@
     "dist",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",

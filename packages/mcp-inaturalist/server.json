@@ -1,9 +1,9 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
-  "name": "io.github.andrewchristison/pondlog-inaturalist",
+  "name": "io.github.andrewschristison/pondlog-inaturalist",
   "description": "Place-aware iNaturalist MCP server. Nine tools for searching observations, species counts, taxa, places, and observers anywhere in the world.",
   "repository": {
-    "url": "https://github.com/andrewchristison/pondlog",
+    "url": "https://github.com/andrewschristison/pondlog",
     "source": "github",
     "subfolder": "packages/mcp-inaturalist"
   },

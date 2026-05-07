@@ -6,7 +6,7 @@ tools for searching observations, species counts, taxa, places, and top
 observers anywhere in the world. No API key required — iNaturalist reads
 are open. Rate-limited internally to stay within iNat's 100 req/min budget.
 
-Part of [pondlog](https://github.com/andrewchristison/pondlog) — a
+Part of [pondlog](https://github.com/andrewschristison/pondlog) — a
 toolkit for stitching together public nature APIs (iNaturalist, eBird,
 USGS, NPN, NOAA, SunCalc).
 
@@ -97,4 +97,4 @@ After configuring, try:
 
 ## License
 
-MIT — see the root [LICENSE](https://github.com/andrewchristison/pondlog).
+MIT — see the root [LICENSE](https://github.com/andrewschristison/pondlog).

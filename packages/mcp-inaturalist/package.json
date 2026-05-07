@@ -1,9 +1,29 @@
 {
   "name": "@pondlog/mcp-inaturalist",
   "version": "0.1.0",
-  "description": "iNaturalist MCP server (tools coming in Sticky 3)",
+  "description": "MCP server for iNaturalist: nine tools for searching observations, species counts, taxa, places, and top observers. Stdio transport, no API key required.",
+  "keywords": [
+    "pondlog",
+    "mcp",
+    "model-context-protocol",
+    "claude-desktop",
+    "cursor",
+    "inaturalist",
+    "biodiversity",
+    "wildlife",
+    "nature"
+  ],
   "author": "Andrew Christison",
   "license": "MIT",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-inaturalist#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "directory": "packages/mcp-inaturalist"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewschristison/pondlog/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
@@ -14,6 +34,9 @@
     "README.md",
     "server.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",

@@ -337,10 +337,10 @@ For MCP Registry submission. Lives next to `package.json`.
 ```json
 {
   "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
-  "name": "io.github.andrewchristison/pondlog-<source>",
+  "name": "io.github.andrewschristison/pondlog-<source>",
   "description": "<one paragraph: what this exposes, no key needed if applicable>.",
   "repository": {
-    "url": "https://github.com/andrewchristison/pondlog",
+    "url": "https://github.com/andrewschristison/pondlog",
     "source": "github",
     "subfolder": "packages/mcp-<source>"
   },
@@ -380,7 +380,7 @@ section structure from `packages/mcp-inaturalist/README.md`.
 One-paragraph description: what data this exposes, who it's for, what
 key (if any) the user needs.
 
-Part of [pondlog](https://github.com/andrewchristison/pondlog).
+Part of [pondlog](https://github.com/andrewschristison/pondlog).
 
 ## Install / run
 \`\`\`sh

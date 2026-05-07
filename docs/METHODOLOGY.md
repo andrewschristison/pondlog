@@ -53,7 +53,7 @@ All coordinates are `{ lat: number; lng: number }` — never strings, never "loc
 Every HTTP request includes a descriptive User-Agent header:
 
 ```
-pondlog/1.0.0 (https://github.com/andrewchristison/pondlog)
+pondlog/1.0.0 (https://github.com/andrewschristison/pondlog)
 ```
 
 This is required by iNaturalist and good practice for all public APIs.
