@@ -75,7 +75,7 @@ Also: implement `pondlog config set-location <lat> <lng>`
 to save default coordinates to ~/.pondlog/config.json
 ```
 
-### Sticky 3 — iNaturalist MCP server
+### Sticky 3 — iNaturalist MCP server ✅ COMPLETE (2026-05-07)
 
 ```
 Prereq: Sticky 1 complete and tested.
@@ -145,3 +145,8 @@ Prereq: Stickies 2-3 complete.
   show), inat nearby/species/search/taxon. Validation, picocolors output,
   --json on every command. Live-tested against real iNat API at Port
   Angeles.
+- **Sticky 3** (2026-05-07) — iNaturalist MCP server: 9 tools over
+  @modelcontextprotocol/sdk v1.29 (stdio). LLM-targeted Zod schemas,
+  server.json, README with Claude Desktop + Cursor configs. JSON-RPC
+  handshake live-verified: 9 tools listed, real iNat call returns 50
+  observations near Port Angeles.

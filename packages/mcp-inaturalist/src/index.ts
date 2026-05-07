@@ -1,24 +1,15 @@
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { buildServer } from "./server.js";
 
 async function main(): Promise<void> {
-  const server = new Server(
-    {
-      name: "pondlog-mcp-inaturalist",
-      version: "0.1.0",
-    },
-    {
-      capabilities: {
-        tools: {},
-      },
-    },
-  );
-
+  const server = buildServer();
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
 
-main().catch((err) => {
-  console.error(err instanceof Error ? err.message : String(err));
+main().catch((err: unknown) => {
+  process.stderr.write(
+    `pondlog-mcp-inaturalist: ${err instanceof Error ? err.message : String(err)}\n`,
+  );
   process.exit(1);
 });

@@ -3,6 +3,33 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.3.0] - 2026-05-07
+
+### Added — Sticky 3: iNaturalist MCP server
+- `@pondlog/mcp-inaturalist` ships nine tools over `@modelcontextprotocol/sdk`
+  v1.29 (stdio transport), each a thin wrapper around a source-inaturalist
+  function: `search_observations`, `get_observation`, `get_species_counts`,
+  `search_taxa`, `get_taxon`, `get_nearby_observations`,
+  `get_iconic_taxa_summary`, `search_places`, `get_observers`.
+- Tool input schemas authored as Zod raw shapes with LLM-targeted
+  `.describe()` strings (iconic-taxa glossary, example coordinates,
+  guidance on when to pick a sibling tool).
+- Each tool annotated `readOnlyHint: true, openWorldHint: true`.
+- Successful responses emit both `structuredContent` (typed JSON) and a
+  pretty `text` block for backwards compatibility. Failures set
+  `isError: true` and serialize the source/message/statusCode.
+- `server.json` for MCP Registry submission; `bin: pondlog-mcp-inaturalist`
+  with shebang for npx; README with Claude Desktop + Cursor config blocks
+  and example prompts.
+
+### Verified
+- `pnpm typecheck` + `pnpm build` clean across all 4 packages.
+- JSON-RPC handshake test: `initialize` (protocol 2025-06-18) succeeds,
+  `tools/list` returns all 9 tools with the expected schemas, live
+  `tools/call get_nearby_observations` against Port Angeles returns 50
+  real observations with the expected normalized shape, and invalid input
+  (lat=999) is rejected with `isError: true` before reaching the handler.
+
 ## [0.2.0] - 2026-05-07
 
 ### Added — Sticky 2: iNaturalist CLI commands

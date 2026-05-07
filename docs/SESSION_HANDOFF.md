@@ -2,12 +2,57 @@
 
 ## Current state
 
-**Phase:** Build — Sticky 2 complete
-**Last session:** Session 2 (2026-05-07) — iNaturalist CLI commands
+**Phase:** Build — Sticky 3 complete
+**Last session:** Session 3 (2026-05-07) — iNaturalist MCP server
 **Branch:** main
-**Next sticky:** Sticky 3 — iNaturalist MCP server (9 tools)
+**Next sticky:** Sticky 4 — iNaturalist publish + list
 
 ## Session log
+
+### Session 3 — 2026-05-07 — Sticky 3 complete
+
+**Shipped:**
+- `@pondlog/mcp-inaturalist` 9-tool MCP server using
+  `@modelcontextprotocol/sdk` v1.29.0 (stdio transport).
+- LLM-targeted Zod input schemas with rich descriptions (iconic-taxa
+  glossary, example coords, when-to-pick-this-tool hints).
+- Structured + text responses for forward/backwards compat.
+- `server.json` for MCP Registry, README with Claude Desktop + Cursor
+  config blocks, example prompts.
+
+**Verified:** typecheck + build clean; JSON-RPC handshake test
+(initialize, tools/list, tools/call) all green; live call to
+`get_nearby_observations` with Port Angeles coords returned 50 real
+observations matching the source-inaturalist normalized shape.
+
+**SDK API confirmed at session start (training data was outdated):**
+- `McpServer` from `@modelcontextprotocol/sdk/server/mcp.js`
+- `server.registerTool(name, { title, description, inputSchema, outputSchema, annotations }, handler)`
+- `inputSchema` is a **Zod raw shape** (object literal of `{ key: zodSchema }`),
+  NOT a `z.object(...)`. The SDK builds the JSON Schema for the client.
+- Handler returns `CallToolResult` from `@modelcontextprotocol/sdk/types.js`;
+  using `CallToolResult` as the return type avoids index-signature errors.
+
+**Patterns to lift into a future `mcp-server` skill (NOT written this
+session — documented for Stickies 7, 10, 12, 15):**
+- `respond.ts` helper (`success(data)` / `failure(err)`) returning
+  `CallToolResult` with both `structuredContent` and `text` content.
+- `schemas.ts` for sharing Zod fragments + glossary descriptions across
+  tools (lat/lng/radius/days/iconic_taxa show up in every source server).
+- `buildServer()` factory separated from stdio entry — testable.
+- `readOnlyHint + openWorldHint` for every read tool; the source clients
+  already enforce rate limits, so MCP just exposes them.
+- JSON-RPC handshake script as the verification method (cheap, no extra
+  deps; spawns the binary, sends initialize + tools/list + one
+  tools/call). See Session 3's verification block for a template.
+
+**Notes for Sticky 4 (publish + list):**
+- npm scope `@pondlog/` needs to be created/owned before publishing.
+- Order: `@pondlog/core` → `@pondlog/source-inaturalist` →
+  `@pondlog/mcp-inaturalist` → `pondlog`.
+- Submit `server.json` to the MCP Registry; list on PulseMCP, Glama,
+  Smithery (per Sticky 4 acceptance criteria).
+- Tag `v0.1.0` on the monorepo at the same time.
 
 ### Session 2 — 2026-05-07 — Sticky 2 complete
 
