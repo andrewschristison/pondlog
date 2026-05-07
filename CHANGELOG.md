@@ -3,6 +3,146 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.7.0] - 2026-05-07
+
+### Added — Stickies 9 & 10: NPN source client + CLI + MCP (one ship)
+
+NPN is a small, sparsely documented API; the audit doc had two
+pre-existing errors (wrong host + missing WKT spatial model). All three
+deliverables shipped together since the surface is small and
+co-evolved. NPN's data model required real research to get right —
+notes captured below for future reference.
+
+#### `@pondlog/source-npn` (new package)
+
+- 7 source functions + 1 composed helper, all returning `Result<T>`,
+  Zod-validated, polite-rate-limited (1 req/sec sustained, bursts to
+  5). Real base URL is `https://services.usanpn.org/npn_portal/`
+  (audit doc said `data.usanpn.org` — it's wrong).
+- Functions: `getSpecies`, `getStations({stateCode?})`,
+  `getStationCountByState`, `getStationsWithSpecies`,
+  `getStationsByLocation` (WKT polygon), `getObservations`,
+  `getSiteLevelData`. Plus the composed `getActivePhenologyNearby` —
+  builds a WKT bbox from coords+radius, pulls stations, haversine-
+  filters, and returns site-level phenometric rows sorted by
+  most-recent activity.
+- WKT helpers: `bboxWkt(coords, radiusKm)` builds a closed flat-earth
+  polygon (good to a few percent under ~100 km outside the poles);
+  `haversineKm(a, b)` for true-radius post-filter.
+- `-9999` is NPN's null sentinel — `denull()` translates to
+  `undefined` so consumers never see it.
+- Hard guards at the source boundary on `getObservations` and
+  `getSiteLevelData`: must pass `years[]` AND ≥1 narrowing filter
+  (species/station/state/etc). Unfiltered queries can be 95+ MB.
+- Generous default fetch timeout (60s) with a `timeoutMs` override on
+  the heavy endpoints (state-year `getSiteLevelData` runs ~50s).
+- `.passthrough()` on every Zod object — schemas accept what NPN sends
+  even when shapes drift; normalizers handle the translation.
+- Defensive parsing for known wire quirks:
+    - `station_name` can be a number (some integer-named stations).
+    - `state` field can be `null` in some `stationCountByState` rows.
+    - `state` field can be a number in some `getSiteLevelData` rows.
+    - `network_id` can be string, number, null, or empty.
+- Empty-body bug handling: NPN returns HTTP 200 with 0-byte body for
+  some queries (notably `getStationsWithSpecies({speciesIds:[3]})`,
+  rnpn issue #38). The client treats empty body as `[]` so callers
+  don't crash on `JSON.parse`.
+- Inconsistency NPN didn't document: `station_id` (singular) is the
+  filter parameter on `getSiteLevelData`, while `station_ids` (plural)
+  is the parameter on `getObservations`. Took live probing to find.
+
+#### `pondlog npn …` CLI subcommands
+
+- `pondlog npn active [--lat] [--lng] [--radius] [--years]
+  [--max-stations] [--json]` — recently observed phenology near a
+  location. Picocolors output with distance + sample size columns;
+  `--json` returns full structured result.
+- `pondlog npn species [--query] [--genus] [--kingdom] [--json]` —
+  search the ~1,900-species NPN catalog. Cap of 30 alphabetical rows
+  with no filter; up to 200 with filters.
+- Validation at the CLI boundary (`--radius`, `--years`,
+  `--max-stations` all clamped with descriptive errors).
+- Help text on every command with worked examples and a coverage
+  caveat ("Eastern US and AZ are dense; PNW is sparser").
+
+#### `@pondlog/mcp-npn` (new package, 8 MCP tools)
+
+- Tools: `search_species`, `get_stations_in_state`,
+  `get_station_count_by_state`, `get_stations_with_species`,
+  `get_stations_by_location`, `get_observations`,
+  `get_site_level_data`, `get_active_phenology_nearby`. Stdio
+  transport, NPX-ready (`pondlog-mcp-npn` bin with shebang).
+- All tools `readOnlyHint: true, openWorldHint: true`. No env vars
+  required (NPN is keyless — `server.json` reflects that).
+- LLM-targeted tool descriptions inline the NPN glossary: phenophase
+  definition, what "first yes" / "last yes" mean, why `-9999` doesn't
+  appear in responses, when to pick `get_active_phenology_nearby` vs
+  the lower-level tools.
+- Per-field `.describe()` calls on every input (`speciesIdField`,
+  `stateCodeField`, `phenophaseIdField`, etc., shared via
+  `schemas.ts`). Tool descriptions cross-reference siblings so the LLM
+  doesn't pick `get_observations` when `get_site_level_data` is
+  cheaper.
+- README with Claude Desktop + Cursor config blocks (no env block —
+  no key needed), 8-tool table, key gotchas (coverage patchiness, data
+  lag, sentinel value, species_id=3 bug), example prompts.
+- `server.json` for MCP Registry submission.
+
+### Verified
+
+- `pnpm typecheck` + `pnpm build` clean across all 8 workspace
+  packages.
+- `@pondlog/source-npn` unit tests: 12 passing
+  (Zod schemas, denull/normalize, WKT bbox + haversine).
+- `@pondlog/source-npn` live smoke: 9/9 passing against the real NPN
+  API at Port Angeles + WA. `getSpecies` (1,940 species),
+  `getStationCountByState` (202 state buckets, includes territories +
+  null bucket), `getStations({stateCode:'WA'})` (1,374 stations),
+  `getStationsByLocation` (16 stations in PA bbox 25 km),
+  `getStationsWithSpecies({speciesIds:[210]})` (188 stations) and the
+  graceful-empty case for the buggy species_id=3,
+  `getObservations({states:['WA'], speciesIds:[3], years:[2024]})`
+  (803 obs), `getActivePhenologyNearby({Port Angeles, 50 km, 2y})`
+  (75 phenometric rows across 40 stations).
+- CLI manual smoke: `npn species --query mayapple` (1 result with
+  binomial + species_id), `npn species --genus Acer` (14 maples
+  alphabetically), `npn active --lat 47.6062 --lng -122.3321
+  --radius 50 --years 5` (21 rows incl. dwarf witchalder, herring
+  gull, kinnikinnick), `--json` returns the full result envelope, bad
+  `--radius 9999` rejected at the CLI boundary.
+- MCP JSON-RPC handshake (per `mcp-server` SKILL.md §6) — all 4
+  required checks: `initialize` returns `pondlog-mcp-npn` v0.1.0;
+  `tools/list` returns all 8 tools; live `search_species(query=saguaro)`
+  returns id=210; live `get_active_phenology_nearby(Seattle, 50km, 5y,
+  30 stations)` returns the entries; live
+  `get_station_count_by_state` returns 202 states; bad-input
+  `get_active_phenology_nearby({lat:999})` rejected by SDK Zod
+  before the handler runs (`isError: true`). Verification script
+  deleted before commit per SKILL.md.
+
+### Notes for future stickies (USGS, mcp-pondlog aggregate)
+
+- NPN's session — three pre-existing errors had to be discovered live
+  by probing the real API: wrong host in audit doc, undocumented
+  `station_id` vs `station_ids` parameter inconsistency between
+  related endpoints, and the `-9999` sentinel + `null`/`number`
+  type-drift in fields the docs claimed were strings. Lesson: always
+  hit the live API before writing schemas. Don't trust audit notes.
+- `getObservations` is bandwidth-bound (80+ MB per station-year). For
+  any "is this happening now?" query, prefer site-level summaries.
+  Carrying that lens into mcp-pondlog: aggregate "what's recent" is
+  best built on site-level data + recent eBird/inat observations,
+  not raw NPN status records.
+- `bboxWkt` + `haversineKm` are reusable — promote to `@pondlog/core`
+  if mcp-pondlog or USGS integration needs them. Right now they live
+  in `@pondlog/source-npn` and are re-exported.
+- 7 endpoints + 8 MCP tools (the eighth being the composed helper) is
+  the right ratio for a bandwidth-constrained API. Don't expose 1:1
+  bare wrappers when one composed tool answers the actual question
+  better.
+
+---
+
 ## [0.6.0] - 2026-05-07
 
 ### Added — Sticky 7: eBird MCP server (21 tools, 100% API coverage)

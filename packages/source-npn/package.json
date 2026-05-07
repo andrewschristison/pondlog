@@ -1,47 +1,51 @@
 {
-  "name": "pondlog",
+  "name": "@pondlog/source-npn",
   "version": "0.1.0",
-  "description": "Place-aware nature data aggregation CLI. \"What's happening in nature at these coordinates right now?\"",
+  "description": "USA National Phenology Network (NPN) Portal API client: typed, Zod-validated, polite-rate-limited. Returns Result<T> instead of throwing.",
   "keywords": [
     "pondlog",
-    "cli",
+    "npn",
+    "phenology",
+    "usa-npn",
     "nature",
-    "wildlife",
-    "inaturalist",
-    "biodiversity"
+    "api-client",
+    "zod"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-npn#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrewschristison/pondlog.git",
-    "directory": "packages/cli"
+    "directory": "packages/source-npn"
   },
   "bugs": {
     "url": "https://github.com/andrewschristison/pondlog/issues"
   },
   "type": "module",
   "main": "./dist/index.js",
-  "bin": {
-    "pondlog": "./dist/index.js"
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
   "files": [
     "dist",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --exclude '**/smoke.test.ts'",
+    "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
     "@pondlog/core": "workspace:*",
-    "@pondlog/source-ebird": "workspace:*",
-    "@pondlog/source-inaturalist": "workspace:*",
-    "@pondlog/source-npn": "workspace:*",
-    "commander": "^12.1.0",
-    "picocolors": "^1.1.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {

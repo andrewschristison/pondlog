@@ -16,3 +16,4 @@ coverage/
 !.agents/skills/mcp-server/
 .claude/
 CLAUDE.md
+.agents/

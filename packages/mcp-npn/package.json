@@ -1,22 +1,26 @@
 {
-  "name": "pondlog",
+  "name": "@pondlog/mcp-npn",
   "version": "0.1.0",
-  "description": "Place-aware nature data aggregation CLI. \"What's happening in nature at these coordinates right now?\"",
+  "description": "MCP server for the USA National Phenology Network (NPN). Eight tools for phenology data: species, stations, observations, site-level phenometrics, and a place-aware 'active phenology' helper. No API key required.",
   "keywords": [
     "pondlog",
-    "cli",
+    "mcp",
+    "model-context-protocol",
+    "claude-desktop",
+    "cursor",
+    "npn",
+    "usa-npn",
+    "phenology",
     "nature",
-    "wildlife",
-    "inaturalist",
-    "biodiversity"
+    "wildlife"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-npn#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrewschristison/pondlog.git",
-    "directory": "packages/cli"
+    "directory": "packages/mcp-npn"
   },
   "bugs": {
     "url": "https://github.com/andrewschristison/pondlog/issues"
@@ -24,24 +28,25 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog": "./dist/index.js"
+    "pondlog-mcp-npn": "./dist/index.js"
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "server.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
     "@pondlog/core": "workspace:*",
-    "@pondlog/source-ebird": "workspace:*",
-    "@pondlog/source-inaturalist": "workspace:*",
     "@pondlog/source-npn": "workspace:*",
-    "commander": "^12.1.0",
-    "picocolors": "^1.1.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
