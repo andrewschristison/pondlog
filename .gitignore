@@ -8,4 +8,9 @@ dist/
 !.env.example
 coverage/
 .pondlog/
-.agents/
+
+# Per-developer skill setup. The two symlinks pointing at a sibling repo
+# (system-design, harden) are local-only; in-repo skills under
+# .agents/skills/ are committed via the !.agents/skills/<name>/ exception.
+.agents/skills/*
+!.agents/skills/mcp-server/
