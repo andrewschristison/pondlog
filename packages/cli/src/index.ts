@@ -3,6 +3,7 @@ import { buildConfigCommand } from "./commands/config.js";
 import { buildEbirdCommand } from "./commands/ebird.js";
 import { buildInatCommand } from "./commands/inat.js";
 import { buildNpnCommand } from "./commands/npn.js";
+import { buildUsgsCommand } from "./commands/usgs.js";
 
 const program = new Command();
 
@@ -15,6 +16,7 @@ program.addCommand(buildConfigCommand());
 program.addCommand(buildInatCommand());
 program.addCommand(buildEbirdCommand());
 program.addCommand(buildNpnCommand());
+program.addCommand(buildUsgsCommand());
 
 program.parseAsync(process.argv).catch((err: unknown) => {
   const message = err instanceof Error ? err.message : String(err);

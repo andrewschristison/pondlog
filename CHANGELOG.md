@@ -3,6 +3,164 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.8.0] - 2026-05-07
+
+### Added — Stickies 11 & 12: USGS source client + CLI + MCP (one ship)
+
+USGS Water Services is the smallest API in the stack — keyless, two
+data endpoints (`/iv`, `/dv`) plus a site service. All three
+deliverables ship together. Live-probed before writing schemas; the
+audit doc was correct on shape but missed two practical gotchas
+captured below.
+
+#### `@pondlog/source-usgs` (new package)
+
+- 4 source functions, all returning `Result<T>`, Zod-validated,
+  polite-rate-limited (1 req/sec sustained, bursts to 5).
+- `getInstantaneousValues({ sites, parameterCodes?, period? })` —
+  real-time gauge readings (typically 15-min cadence). Defaults to
+  discharge (00060) + gage height (00065) over the last 2 hours.
+- `getDailyValues({ sites, parameterCodes?, period?, startDt?, endDt?,
+  statisticCodes? })` — daily statistics. Use `period` for
+  relative-to-now or `startDt`/`endDt` for historic windows. The two
+  modes are mutually exclusive at the source boundary.
+- `getSiteInfo({ siteNumber })` — single-site metadata via the RDB-only
+  `/site/` endpoint. Client parses the tab-delimited RDB format
+  internally and returns a normalized record (name, coords, HUC, state,
+  county, altitude).
+- `searchSites({ bbox?, stateCode?, hucCode?, siteType?,
+  hasDataTypeCode? })` — find active stream gauges. Defaults
+  `siteType=ST` (streams) and `hasDataTypeCd=iv` (real-time enabled).
+- `bboxAround(coords, radiusKm)` helper builds a square bbox tuple
+  ready for `searchSites({ bbox })`. Coordinates are rounded to 7
+  decimals because USGS rejects `bBox` arguments with more precision
+  than that (HTTP 400 with a "requires a decimal number with at most
+  7 digits to the right of the decimal point" message).
+- `PARAMETER_CODES` constant exports the three most-asked codes
+  (`DISCHARGE`, `GAGE_HEIGHT`, `WATER_TEMP_C`).
+- WaterML JSON envelope handled: each request returns one timeSeries
+  per (site × parameter × statistic). Normalizer collapses them by
+  site so consumers get one reading-per-site with multiple series.
+- HTML-entity decode in variable names (`&#179;` → `³`) so terminal
+  output is readable.
+- `-999999.0` is the noDataValue sentinel — `denull()` translates to
+  `undefined` so consumers never see the magic number. Per-value
+  parser also catches stray `-999999` payloads in the wire string.
+- `.passthrough()` on every Zod object — schemas accept what USGS
+  sends even when shapes drift.
+
+#### `pondlog usgs …` CLI subcommands
+
+- `pondlog usgs flow --site <number> [--period] [--json]` — current
+  real-time discharge + gage height. Picocolors output with parameter
+  code, description, value, unit, and timestamp.
+- `pondlog usgs daily --site <number> [--period | --start-date
+  --end-date] [--json]` — daily statistics, current or historic. CLI
+  enforces the period/range mutual exclusion before any network call.
+- `pondlog usgs sites [--lat] [--lng] [--radius] [--state] [--json]` —
+  find gauges. `--state` and `--lat/--lng` are mutually exclusive.
+  Falls back to saved location when `--lat/--lng` are absent.
+- Validation at the CLI boundary: site number regex, ISO-8601 period
+  regex, radius clamp, state-code regex — all fail loud with
+  descriptive errors before touching the network.
+- Help text on every command with worked examples and a note that
+  `/iv/` rejects historic dates so you must use `daily` for past data.
+
+#### `@pondlog/mcp-usgs` (new package, 4 MCP tools)
+
+- Tools: `get_instantaneous_values`, `get_daily_values`,
+  `get_site_info`, `search_sites`. Stdio transport, NPX-ready
+  (`pondlog-mcp-usgs` bin with shebang).
+- All tools `readOnlyHint: true, openWorldHint: true`. No env vars
+  required (USGS is keyless).
+- LLM-targeted descriptions inline the USGS parameter-code glossary
+  (`00060` = discharge, `00065` = gage height, `00010` = water temp,
+  `00400` = pH, `00095` = specific conductance) and statistic codes
+  (`00003` = mean, `00001` = max, `00002` = min, `00008` = median).
+- Cross-references between siblings: `get_instantaneous_values`'s
+  description tells the LLM to use `get_daily_values` for historic
+  ranges; `search_sites` tells it to feed results into the value
+  endpoints; `get_site_info` is positioned as a follow-up step after
+  search.
+- Per-field Zod `.describe()` strings on every input
+  (`siteNumberField`, `periodField`, `parameterCodeField`, etc.,
+  shared via `schemas.ts`).
+- README with Claude Desktop + Cursor config blocks (no env block —
+  no key needed), 4-tool table, parameter-code reference, example
+  prompts.
+- `server.json` for MCP Registry submission.
+
+### Verified
+
+- `pnpm typecheck` + `pnpm build` clean across all 10 workspace
+  packages.
+- `@pondlog/source-usgs` unit tests: 16 passing (Zod schemas + boundary
+  validation + RDB parsing + denull + groupBySite + bboxAround).
+- `@pondlog/source-usgs` live smoke: 8/8 passing against the real USGS
+  API. `getInstantaneousValues({Elwha 12045500, PT2H})` returned 2
+  series (00060=1310 ft³/s, 00065=10.6 ft); `Dungeness 12048000` IV
+  returned 418 ft³/s; unknown site `99999999` correctly returned
+  `ok: true` with `data: []`; `getDailyValues({Elwha, P7D})` returned
+  7 daily means with statistic="Mean"; `getDailyValues({Elwha,
+  startDt: 2024-01-01, endDt: 2024-01-05})` returned 5 historic means
+  with quality `[A]`; `getSiteInfo({Elwha})` returned correct lat/lng
+  and full station name; `searchSites({bbox: PA 25 km})` returned
+  8 stream gauges including both Elwha and Dungeness; `searchSites
+  ({stateCode: 'WA'})` returned 557 stream gauges.
+- CLI manual smoke: `usgs flow --site 12045500` shows live readings
+  with timestamps; `usgs daily --site 12045500 --period P10D` renders
+  a 10-row table; `usgs daily --site 12045500 --start-date 2024-01-01
+  --end-date 2024-01-05` shows historic data with `[A]` qualifiers;
+  `usgs sites --lat 48.118 --lng -123.4307 --radius 25` returns
+  8 sites; `--json` on every command returns the full structured
+  result; bad inputs (`--site abc`, period+date combo,
+  `--state WA --lat 48`) all rejected at the CLI boundary with
+  descriptive errors.
+- MCP JSON-RPC handshake (per `mcp-server` SKILL.md §6) — all 4
+  required checks: `initialize` returns `pondlog-mcp-usgs` v0.1.0;
+  `tools/list` returns all 4 tools; live `get_instantaneous_values
+  ({sites: ['12045500'], period: 'PT1H'})` returns last reading
+  1310 ft³/s; live `get_daily_values({sites: ['12045500'], period:
+  'P5D'})` returns 5 values; live `search_sites({lat: 48.118, lng:
+  -123.4307, radius_km: 25})` returns 8 sites; bad-input
+  `get_instantaneous_values({sites: ['abc']})` rejected by SDK Zod
+  (`isError: true`). Verification script deleted before commit per
+  SKILL.md.
+
+### Gotchas discovered live (worth carrying into mcp-pondlog)
+
+- **`/iv/` rejects historic `startDT`/`endDT`** with HTTP 301 — only
+  `period` (relative-to-now) is accepted. For past data the caller
+  must use `/dv/` (daily values), which DOES accept date ranges. The
+  source client guards both modes correctly; the CLI wires
+  mutually-exclusive flags so the user can't trip it.
+- **`/site/` returns RDB only.** `format=json` returns an HTML 400
+  error page. The client uses an internal RDB parser and returns
+  normalized objects regardless of which endpoint was hit.
+- **`bBox` argument validation rejects > 7 decimal places.** Naive
+  floating-point math (e.g. `48.05 - 25/111.32`) produces 14+ decimals
+  and HTTP 400. `bboxAround` rounds to 7 places before constructing
+  the tuple.
+- **Unknown site numbers don't error.** USGS returns HTTP 200 with
+  `timeSeries: []`. Source client surfaces this as `ok: true` with an
+  empty array — handled gracefully in the CLI ("No data for site X").
+- **Each parameter is a separate timeSeries.** Asking for both 00060
+  and 00065 at one site yields 2 timeSeries with the same sourceInfo
+  and 1 group of values each. Normalizer collapses these into one
+  reading-per-site with N series.
+
+### Notes for future stickies (mcp-pondlog aggregate)
+
+- USGS is the cheapest source in the stack. Real-time discharge belongs
+  in any "what's happening at this place right now?" briefing — it's
+  context-rich (one number tells you flood / drought / spring melt),
+  cheap to fetch, and updates every 15 minutes.
+- The RDB parser is generic enough to be promoted to `@pondlog/core`
+  if any other USGS subendpoint needs it later. Right now it lives in
+  `source-usgs/normalize.ts`.
+
+---
+
 ## [0.7.0] - 2026-05-07
 
 ### Added — Stickies 9 & 10: NPN source client + CLI + MCP (one ship)

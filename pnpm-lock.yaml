@@ -35,6 +35,9 @@ importers:
       '@pondlog/source-npn':
         specifier: workspace:*
         version: link:../source-npn
+      '@pondlog/source-usgs':
+        specifier: workspace:*
+        version: link:../source-usgs
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -161,6 +164,34 @@ importers:
         specifier: ^2.1.8
         version: 2.1.9(@types/node@22.19.17)
 
+  packages/mcp-usgs:
+    dependencies:
+      '@modelcontextprotocol/sdk':
+        specifier: ^1.0.4
+        version: 1.29.0(zod@3.25.76)
+      '@pondlog/core':
+        specifier: workspace:*
+        version: link:../core
+      '@pondlog/source-usgs':
+        specifier: workspace:*
+        version: link:../source-usgs
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.19.17
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.1(postcss@8.5.14)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.19.17)
+
   packages/source-ebird:
     dependencies:
       '@pondlog/core':
@@ -206,6 +237,28 @@ importers:
         version: 2.1.9(@types/node@22.19.17)
 
   packages/source-npn:
+    dependencies:
+      '@pondlog/core':
+        specifier: workspace:*
+        version: link:../core
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.19.17
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.1(postcss@8.5.14)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.19.17)
+
+  packages/source-usgs:
     dependencies:
       '@pondlog/core':
         specifier: workspace:*
