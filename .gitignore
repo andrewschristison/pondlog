@@ -14,3 +14,5 @@ coverage/
 # .agents/skills/ are committed via the !.agents/skills/<name>/ exception.
 .agents/skills/*
 !.agents/skills/mcp-server/
+.claude/
+CLAUDE.md
