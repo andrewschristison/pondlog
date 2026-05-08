@@ -1,0 +1,44 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
+  "name": "io.github.andrewschristison/pondlog-pondlog",
+  "description": "Aggregate nature MCP server. One tool call returns a unified briefing — birds, wildlife, plants, tides, streamflow, night sky, and phenology — stitched from six public APIs (iNaturalist, eBird, NOAA, USGS, NPN, astronomy-engine). Partial failures are reported in errors[] without crashing the briefing.",
+  "repository": {
+    "url": "https://github.com/andrewschristison/pondlog",
+    "source": "github",
+    "subfolder": "packages/mcp-pondlog"
+  },
+  "version_detail": {
+    "version": "0.1.0",
+    "release_date": "2026-05-07",
+    "is_latest": true
+  },
+  "packages": [
+    {
+      "registry_name": "npm",
+      "name": "@pondlog/mcp-pondlog",
+      "version": "0.1.0",
+      "runtime_hint": "node",
+      "transport": { "type": "stdio" },
+      "environment_variables": [
+        {
+          "name": "EBIRD_API_KEY",
+          "description": "Free eBird API key (https://ebird.org/api/keygen). Optional. Without it the eBird section is omitted from the briefing; other sources still work.",
+          "is_required": false,
+          "is_secret": true
+        },
+        {
+          "name": "NOAA_STATION",
+          "description": "NOAA CO-OPS tide station id (6–8 digits). Optional. Without it tides are omitted.",
+          "is_required": false,
+          "is_secret": false
+        },
+        {
+          "name": "USGS_SITE",
+          "description": "USGS streamgauge site number (8–15 digits). Optional. Without it streamflow is omitted.",
+          "is_required": false,
+          "is_secret": false
+        }
+      ]
+    }
+  ]
+}

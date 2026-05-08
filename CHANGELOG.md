@@ -3,6 +3,80 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.11.0] - 2026-05-07
+
+### Added — Sticky 15: `@pondlog/mcp-pondlog` aggregate MCP server
+
+The aggregate MCP server ships. **One MCP tool call replaces six API
+integrations.** This is the product — the unified "what's happening at
+these coordinates" briefing exposed as a stdio MCP server, NPX-runnable,
+no install step.
+
+#### `@pondlog/mcp-pondlog` (new package, 5 tools)
+
+- `get_nature_briefing` — the headline tool. Inputs: `lat`, `lng`, plus
+  optional `date`, `noaa_station`, `usgs_site`, `ebird_api_key`.
+  Returns a full `NatureBriefing` (defined in `@pondlog/core`) — recent
+  iNaturalist + eBird observations sorted by date, NOAA tides
+  high/low for the day, USGS instantaneous discharge + gage height,
+  USA-NPN site-level phenology, and a complete night-sky briefing
+  (sun, moon, dark-sky window, planets, meteor showers, constellations).
+  All six sources fanned out via `Promise.allSettled`; partial failures
+  populate `errors[]` without crashing the briefing.
+- `get_nearby_wildlife` — focused tool. iNaturalist + eBird merged,
+  chronologically sorted. For when the caller wants wildlife only.
+- `get_water_conditions` — focused tool. USGS streamflow + NOAA tides,
+  both keys always present (`null` when not configured) so consumers
+  don't branch on shape.
+- `get_tonight_sky` — focused tool. Pure local computation via
+  `astronomy-engine`. No API key, no network, never rate-limited.
+  `openWorldHint: false` (the only one) since the answer is
+  deterministic for given coords + date.
+- `get_phenology` — focused tool. USA-NPN site-level phenometric data
+  for plants near the location. No API key.
+- All tools `readOnlyHint: true`. All input fields use shared Zod
+  fragments with full `.describe()` glossaries (lat/lng/date/radius/
+  days/years_back/noaa_station/usgs_site/ebird_api_key).
+- `briefing.ts` adapts the `buildTodayBriefing` logic from
+  `packages/cli/src/aggregate.ts` without the disk-cache or
+  `PondlogConfig` layer — the MCP server runs cacheless and accepts
+  station/site/key directly. (Reusing the CLI's exported builder would
+  pull `commander` and disk-cache into every MCP install.)
+- `withEbirdApiKey()` helper temporarily sets `process.env.EBIRD_API_KEY`
+  around a call so the `ebird_api_key` tool input can override the env
+  var. Restored in `finally`. Documented caveat: stdio MCP servers
+  process JSON-RPC sequentially so this is safe in practice, but
+  shared deployments should prefer the env-var path.
+
+#### Configuration
+
+- All env vars optional. `EBIRD_API_KEY` enables eBird, `NOAA_STATION`
+  enables tides, `USGS_SITE` enables streamflow. Without them, the
+  briefing still returns — affected sections are omitted (or report
+  the missing-key error in `errors[]` for eBird specifically). iNat,
+  night-sky, and NPN phenology always work without any keys.
+- `server.json` declares all three env vars per MCP Registry schema
+  with `is_required: false` since none are mandatory.
+- README documents Claude Desktop, Cursor, and MCP Inspector configs
+  with realistic Port Angeles values (`9444090` / `12045500`) baked in.
+
+#### Verified
+
+- MCP JSON-RPC handshake clean: `initialize` returns expected
+  `serverInfo`, `tools/list` returns 5 tools, golden-path
+  `get_tonight_sky` at Port Angeles returns Waning Gibbous +
+  highlight string + visible constellations, golden-path
+  `get_nature_briefing` returns 217 observations + nightSky +
+  phenology in one call.
+- Bad input rejection: `lat: 999` → SDK Zod returns `isError: true`
+  before the handler runs.
+- Graceful degrade verified: with `EBIRD_API_KEY` unset, briefing
+  still returns ok, iNat populates 50 observations, eBird's
+  missing-key error surfaces in `errors[]`, no crash.
+- `pnpm typecheck` clean across all 12 typechecked packages;
+  `pnpm build` clean across all packages (mcp-pondlog ships at
+  20.2 KB ESM).
+
 ## [0.10.0] - 2026-05-07
 
 ### Added — Sticky 14: `pondlog today` aggregate command

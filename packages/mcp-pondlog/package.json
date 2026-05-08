@@ -1,0 +1,72 @@
+{
+  "name": "@pondlog/mcp-pondlog",
+  "version": "0.1.0",
+  "description": "Aggregate MCP server: one tool call returns a unified nature briefing — birds, wildlife, plants, tides, streamflow, night sky, and phenology stitched from six public APIs into a single response.",
+  "keywords": [
+    "pondlog",
+    "mcp",
+    "model-context-protocol",
+    "claude-desktop",
+    "cursor",
+    "nature",
+    "wildlife",
+    "birds",
+    "tides",
+    "streamflow",
+    "astronomy",
+    "phenology",
+    "inaturalist",
+    "ebird",
+    "noaa",
+    "usgs",
+    "npn"
+  ],
+  "author": "Andrew Christison",
+  "license": "MIT",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-pondlog#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "directory": "packages/mcp-pondlog"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewschristison/pondlog/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "pondlog-mcp-pondlog": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "server.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@pondlog/core": "workspace:*",
+    "@pondlog/source-ebird": "workspace:*",
+    "@pondlog/source-inaturalist": "workspace:*",
+    "@pondlog/source-nightsky": "workspace:*",
+    "@pondlog/source-npn": "workspace:*",
+    "@pondlog/source-usgs": "workspace:*",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
