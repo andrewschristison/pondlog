@@ -1,6 +1,6 @@
 {
   "name": "pondlog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Place-aware nature data aggregation CLI. \"What's happening in nature at these coordinates right now?\"",
   "keywords": [
     "pondlog",
