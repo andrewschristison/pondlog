@@ -4,6 +4,7 @@ import { buildEbirdCommand } from "./commands/ebird.js";
 import { buildInatCommand } from "./commands/inat.js";
 import { buildNightskyCommand } from "./commands/nightsky.js";
 import { buildNpnCommand } from "./commands/npn.js";
+import { buildTodayCommand } from "./commands/today.js";
 import { buildUsgsCommand } from "./commands/usgs.js";
 
 const program = new Command();
@@ -14,6 +15,7 @@ program
   .version("0.1.0");
 
 program.addCommand(buildConfigCommand());
+program.addCommand(buildTodayCommand());
 program.addCommand(buildInatCommand());
 program.addCommand(buildEbirdCommand());
 program.addCommand(buildNpnCommand());

@@ -9,6 +9,10 @@ const CoordinatesSchema = z.object({
   lng: z.number().min(-180).max(180),
 });
 
+const NOAA_STATION_RE = /^[0-9]{6,8}$/;
+const USGS_SITE_RE = /^[0-9]{8,15}$/;
+const EBIRD_REGION_RE = /^[A-Z0-9-]{2,12}$/;
+
 const PondlogConfigSchema = z.object({
   version: z.literal(1),
   defaultLocation: z
@@ -18,10 +22,56 @@ const PondlogConfigSchema = z.object({
       name: z.string().min(1).max(120).optional(),
     })
     .optional(),
+  /** NOAA CO-OPS station id used for tide predictions (e.g. "9444090"). */
+  noaaStation: z.string().regex(NOAA_STATION_RE).optional(),
+  /** USGS NWIS site number used for streamflow (e.g. "12045500"). */
+  usgsSite: z.string().regex(USGS_SITE_RE).optional(),
+  /** eBird region code used for region-scoped queries (e.g. "US-WA-009"). */
+  ebirdRegion: z.string().regex(EBIRD_REGION_RE).optional(),
 });
 
 export type PondlogConfig = z.infer<typeof PondlogConfigSchema>;
 export type SavedLocation = NonNullable<PondlogConfig["defaultLocation"]>;
+
+export function setNoaaStation(
+  cfg: PondlogConfig | null,
+  stationId: string,
+): Result<PondlogConfig> {
+  if (!NOAA_STATION_RE.test(stationId)) {
+    return err({
+      source: "cli/config",
+      message: `invalid NOAA station "${stationId}" — expected 6–8 digits (e.g. "9444090")`,
+    });
+  }
+  return ok({ ...(cfg ?? { version: 1 as const }), noaaStation: stationId });
+}
+
+export function setUsgsSite(
+  cfg: PondlogConfig | null,
+  siteNumber: string,
+): Result<PondlogConfig> {
+  if (!USGS_SITE_RE.test(siteNumber)) {
+    return err({
+      source: "cli/config",
+      message: `invalid USGS site "${siteNumber}" — expected 8–15 digits (e.g. "12045500")`,
+    });
+  }
+  return ok({ ...(cfg ?? { version: 1 as const }), usgsSite: siteNumber });
+}
+
+export function setEbirdRegion(
+  cfg: PondlogConfig | null,
+  regionCode: string,
+): Result<PondlogConfig> {
+  const upper = regionCode.toUpperCase();
+  if (!EBIRD_REGION_RE.test(upper)) {
+    return err({
+      source: "cli/config",
+      message: `invalid eBird region "${regionCode}" — expected pattern like "US", "US-WA", or "US-WA-009"`,
+    });
+  }
+  return ok({ ...(cfg ?? { version: 1 as const }), ebirdRegion: upper });
+}
 
 export const CONFIG_DIR_ENV = "PONDLOG_CONFIG_DIR";
 

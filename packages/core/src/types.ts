@@ -100,22 +100,190 @@ export interface ObservationDetail extends Observation {
 export interface TideEvent {
   time: string;
   heightFt: number;
+  type: "high" | "low";
+}
+
+// ---------------------------------------------------------------------------
+// Night-sky types (relocated from @pondlog/source-nightsky so the aggregate
+// NatureBriefing in core can typed-reference them without a circular dep).
+// source-nightsky still re-exports these from its public surface.
+// ---------------------------------------------------------------------------
+
+export type CompassDirection =
+  | "N"
+  | "NNE"
+  | "NE"
+  | "ENE"
+  | "E"
+  | "ESE"
+  | "SE"
+  | "SSE"
+  | "S"
+  | "SSW"
+  | "SW"
+  | "WSW"
+  | "W"
+  | "WNW"
+  | "NW"
+  | "NNW";
+
+export type MoonPhaseName =
+  | "New Moon"
+  | "Waxing Crescent"
+  | "First Quarter"
+  | "Waxing Gibbous"
+  | "Full Moon"
+  | "Waning Gibbous"
+  | "Last Quarter"
+  | "Waning Crescent";
+
+export interface SunTimes {
+  date: string;
+  coordinates: Coordinates;
+  sunrise: string | null;
+  sunset: string | null;
+  solarNoon: string | null;
+  civilDawn: string | null;
+  civilDusk: string | null;
+  nauticalDawn: string | null;
+  nauticalDusk: string | null;
+  astronomicalDawn: string | null;
+  astronomicalDusk: string | null;
+  goldenHourMorningEnd: string | null;
+  goldenHourEveningStart: string | null;
+}
+
+export interface MoonPhase {
+  date: string;
+  phase: MoonPhaseName;
+  emoji: string;
+  phaseAngleDeg: number;
+  illuminationFraction: number;
+  ageDays: number;
+  rise: string | null;
+  set: string | null;
+}
+
+export interface PlanetPosition {
+  name: string;
+  magnitude: number;
+  altitudeDeg: number;
+  azimuthDeg: number;
+  direction: CompassDirection;
+  rise: string | null;
+  set: string | null;
+  isVisible: boolean;
+  highlight: string | null;
+}
+
+export interface PlanetPositions {
+  referenceTime: string;
+  coordinates: Coordinates;
+  isDark: boolean;
+  planets: PlanetPosition[];
+}
+
+export interface MeteorShower {
+  id: string;
+  name: string;
+  activeStart: string;
+  activeEnd: string;
+  peakDate: string;
+  daysToPeak: number;
+  zhr: number;
+  radiantRaHours: number;
+  radiantDecDeg: number;
+  parentObject: string;
+  hemisphere: "northern" | "southern" | "both" | "equatorial";
+  notes: string;
+  moonInterference: "none" | "low" | "moderate" | "high";
+}
+
+export interface MeteorShowerListing {
+  date: string;
+  active: MeteorShower[];
+  upcoming: MeteorShower[];
+}
+
+export interface DarkSkyWindow {
+  date: string;
+  coordinates: Coordinates;
+  start: string | null;
+  end: string | null;
+  hours: number;
+  quality: 1 | 2 | 3 | 4 | 5;
+  qualityLabel: string;
+  moonIlluminationAtMid: number;
+  moonAltAtMid: number;
+}
+
+export interface ConstellationVisibility {
+  iauCode: string;
+  name: string;
+  altitudeDeg: number;
+  azimuthDeg: number;
+  direction: CompassDirection;
+  culminationAltDeg: number;
+  hemisphere: "northern" | "southern" | "equatorial";
+  bestMonths: number[];
+  notableStars: string[];
+  description: string;
+  isInSeason: boolean;
+}
+
+export interface ConstellationListing {
+  referenceTime: string;
+  coordinates: Coordinates;
+  visible: ConstellationVisibility[];
+}
+
+export interface NightSkyBriefing {
+  date: string;
+  referenceTime: string;
+  coordinates: Coordinates;
+  sun: SunTimes;
+  moon: MoonPhase;
+  darkSky: DarkSkyWindow;
+  visiblePlanets: PlanetPosition[];
+  activeMeteorShowers: MeteorShower[];
+  upcomingMeteorShowers: MeteorShower[];
+  visibleConstellations: ConstellationVisibility[];
+  highlight: string;
+}
+
+export interface PhenologyEntry {
+  species: string;
+  phenophase: string;
+  /** Days since meanLastYesDate (or 0 if currently in the active window). */
+  daysSinceLastYes?: number;
+  distanceKm?: number;
+}
+
+export interface StreamflowReading {
+  siteId: string;
+  siteName: string;
+  flowCfs?: number;
+  gageHeightFt?: number;
+  observedAt?: string;
 }
 
 export interface NatureBriefing {
   coordinates: Coordinates;
   generatedAt: string;
+  /** Legacy convenience block. Derived from `nightSky` when present. */
   celestial: {
-    sunrise: string;
-    sunset: string;
+    sunrise: string | null;
+    sunset: string | null;
     daylightHours: number;
     moonPhase: string;
     moonIllumination: number;
   };
+  /** Full night-sky briefing — preferred consumer surface. */
+  nightSky?: NightSkyBriefing;
   tides?: { high: TideEvent[]; low: TideEvent[] };
   recentObservations: Observation[];
   speciesCounts: SpeciesCount[];
-  streamflow?: { siteName: string; flowCfs: number; gageHeightFt: number };
-  phenology?: { species: string; phenophase: string }[];
+  streamflow?: StreamflowReading;
+  phenology?: PhenologyEntry[];
   errors: { source: string; message: string }[];
 }

@@ -3,6 +3,59 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.10.0] - 2026-05-07
+
+### Added — Sticky 14: `pondlog today` aggregate command
+
+The unified "what's happening at these coordinates" briefing ships. One
+command, six sources fanned out in parallel, partial-failure tolerant,
+file-cached. This closes the loop on the original pondlog charter.
+
+#### `@pondlog/core`
+
+- `getTidePredictions({stationId, date?})` — thin NOAA CO-OPS client.
+  No API key. Token-bucket rate limiter at 5 req/sec (NOAA's documented
+  limit). Zod-validated response. Surfaces NOAA's HTTP-200-with-error
+  envelope as `Result.err` rather than letting it propagate as a
+  malformed success. `splitHighLow()` companion for partitioning by
+  type.
+- `TideEvent` now carries a `type: "high" | "low"` discriminator.
+- Night-sky public types relocated from `@pondlog/source-nightsky` to
+  `@pondlog/core` so the aggregate `NatureBriefing` can typed-reference
+  `NightSkyBriefing` without a circular dep. `source-nightsky` re-exports
+  these for direct consumers — no breaking change to existing imports.
+- `NatureBriefing` extended: optional `nightSky?: NightSkyBriefing` field
+  alongside the legacy `celestial` block (which is now derived from
+  night-sky data when present). New `PhenologyEntry` and
+  `StreamflowReading` shared types.
+
+#### `pondlog` CLI
+
+- `pondlog today [--lat] [--lng] [--date] [--json] [--no-cache]` —
+  composes iNat + eBird + NPN + USGS + Night Sky + NOAA in parallel via
+  `Promise.allSettled`. Failed sources collect into `errors[]` with an
+  inline ⚠ warning block; the rest of the briefing renders normally.
+  Picocolors output, emoji bullets, `--json` returns the full
+  `NatureBriefing` plus a `cacheHits` map.
+- File cache at `~/.pondlog/cache/<source>/<sha256>.json` with per-source
+  TTLs from METHODOLOGY.md (tides 1h, observations 15m, USGS 15m, NPN 1h).
+  Honors `PONDLOG_CONFIG_DIR` for sandboxing in tests. `--no-cache`
+  bypasses both read and write. Atomic writes via temp-then-rename.
+- Config schema extended with `noaaStation`, `usgsSite`, `ebirdRegion`
+  fields. Three new subcommands: `pondlog config set-station <id>`,
+  `set-usgs-site <id>`, `set-ebird-region <code>`. `pondlog config show`
+  surfaces all three. Each setter validates format at the boundary
+  (NOAA: 6–8 digits; USGS: 8–15 digits; eBird: `[A-Z0-9-]{2,12}`).
+- 12 new unit tests (cache: stable hashing, TTL expiry, bypass, no-cache
+  on failure; aggregate: partial-failure routing, legacy `celestial`
+  derivation, NOAA + USGS round-trip with mocked clients). Plus 6 unit
+  tests in core/noaa for input validation and response handling.
+- Live-verified at Port Angeles: cold run ~2.5s, warm run ~0.13s
+  (~20× cache speedup); partial-failure path tested by unsetting
+  `EBIRD_API_KEY` (briefing renders, eBird absence reported as warning,
+  exit 0); JSON shape inspected with `jq`/`python3` and matches the
+  documented `NatureBriefing` type.
+
 ## [0.9.0] - 2026-05-07
 
 ### Added — Sticky 13: Night Sky source client + CLI

@@ -3,7 +3,10 @@ import {
   getConfigPath,
   loadConfig,
   saveConfig,
+  setEbirdRegion,
+  setNoaaStation,
   setSavedLocation,
+  setUsgsSite,
 } from "../config.js";
 import { parseLat, parseLng } from "../validate.js";
 import { printJson } from "../format.js";
@@ -49,6 +52,48 @@ export function buildConfigCommand(): Command {
     });
 
   cmd
+    .command("set-station")
+    .description("Save default NOAA tide station to config (e.g. 9444090 for Port Angeles)")
+    .argument("<stationId>", "NOAA CO-OPS station id (6–8 digits)")
+    .action(async (stationId: string) => {
+      const existing = await loadConfig();
+      if (!existing.ok) return fail(existing.error.message);
+      const next = setNoaaStation(existing.data, stationId);
+      if (!next.ok) return fail(next.error.message);
+      const written = await saveConfig(next.data);
+      if (!written.ok) return fail(written.error.message);
+      console.log(`Saved NOAA station ${stationId} -> ${getConfigPath()}`);
+    });
+
+  cmd
+    .command("set-usgs-site")
+    .description("Save default USGS NWIS site for streamflow (e.g. 12045500 = Elwha River)")
+    .argument("<siteNumber>", "USGS site number (8–15 digits)")
+    .action(async (siteNumber: string) => {
+      const existing = await loadConfig();
+      if (!existing.ok) return fail(existing.error.message);
+      const next = setUsgsSite(existing.data, siteNumber);
+      if (!next.ok) return fail(next.error.message);
+      const written = await saveConfig(next.data);
+      if (!written.ok) return fail(written.error.message);
+      console.log(`Saved USGS site ${siteNumber} -> ${getConfigPath()}`);
+    });
+
+  cmd
+    .command("set-ebird-region")
+    .description("Save default eBird region code (e.g. US-WA-009 for Clallam County)")
+    .argument("<regionCode>", "eBird region code")
+    .action(async (regionCode: string) => {
+      const existing = await loadConfig();
+      if (!existing.ok) return fail(existing.error.message);
+      const next = setEbirdRegion(existing.data, regionCode);
+      if (!next.ok) return fail(next.error.message);
+      const written = await saveConfig(next.data);
+      if (!written.ok) return fail(written.error.message);
+      console.log(`Saved eBird region ${next.data.ebirdRegion} -> ${getConfigPath()}`);
+    });
+
+  cmd
     .command("show")
     .description("Print the current config")
     .option("--json", "Print raw JSON")
@@ -70,6 +115,9 @@ export function buildConfigCommand(): Command {
       } else {
         console.log("Default location: (none)");
       }
+      console.log(`NOAA station: ${cfg.data.noaaStation ?? "(none)"}`);
+      console.log(`USGS site: ${cfg.data.usgsSite ?? "(none)"}`);
+      console.log(`eBird region: ${cfg.data.ebirdRegion ?? "(none)"}`);
     });
 
   return cmd;
