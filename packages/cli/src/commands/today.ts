@@ -1,5 +1,6 @@
 import type {
   FungiObservation,
+  GardenBriefing,
   NatureBriefing,
   Observation,
   PhenologyEntry,
@@ -165,6 +166,11 @@ function renderBriefing(
     console.log("");
   }
 
+  if (b.garden) {
+    renderGarden(b.garden);
+    console.log("");
+  }
+
   if (b.errors.length > 0) {
     console.log(pc.yellow(pc.bold("⚠  Partial failures")));
     for (const e of b.errors) {
@@ -238,6 +244,46 @@ function renderFungi(entries: FungiObservation[]): void {
   }
   if (entries.length > top.length) {
     console.log(pc.dim(`  …and ${entries.length - top.length} more`));
+  }
+}
+
+function renderGarden(g: GardenBriefing): void {
+  console.log(
+    pc.bold(`🌱 Garden — zone ${g.zone.zone}`) +
+      pc.dim(
+        `  ·  ${g.zone.minTempF}-${g.zone.maxTempF}°F  ·  frost ~${g.frostDates.lastSpring}…~${g.frostDates.firstFall}  (${g.frostDates.seasonDays}d season)`,
+      ),
+  );
+  if (g.plantNow.length === 0) {
+    console.log(
+      pc.dim(`  Nothing in window today. \`pondlog garden zone\` for full details.`),
+    );
+    return;
+  }
+  const top = g.plantNow.slice(0, 5);
+  const actionIcon: Record<string, string> = {
+    start_indoors: "🪴",
+    direct_sow: "🌱",
+    transplant: "🌿",
+    plant_now: "🌳",
+  };
+  const actionLabel: Record<string, string> = {
+    start_indoors: "start indoors",
+    direct_sow: "direct sow",
+    transplant: "transplant",
+    plant_now: "plant now",
+  };
+  for (const s of top) {
+    const action = pc.cyan(actionLabel[s.action] ?? s.action);
+    const window = pc.dim(`window ${s.windowStart}…${s.windowEnd}`);
+    console.log(
+      `  ${actionIcon[s.action] ?? "·"}  ${pc.bold(s.commonName)} — ${action}  ${window}`,
+    );
+  }
+  if (g.plantNow.length > top.length) {
+    console.log(
+      pc.dim(`  …and ${g.plantNow.length - top.length} more — \`pondlog garden now\` for full list`),
+    );
   }
 }
 

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/crop-calendar.schema.json",
+  "title": "Pondlog Crop Calendar",
+  "description": "A list of food crops, herbs, companion flowers, and cover crops with frost-anchored planting windows. Used by @pondlog/core's planting-plan helper. Designed for community contributions: every entry is a self-contained object, frost dates are looked up from a separate zone table at runtime, and date math is relative to last_spring / first_fall so a single entry works across all USDA zones.",
+  "type": "object",
+  "required": ["version", "source", "license", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Calendar schema version. Bump on breaking schema changes."
+    },
+    "source": {
+      "type": "string",
+      "description": "Provenance / citation for the curated data. Required so consumers know what authority backs the recommendations."
+    },
+    "license": {
+      "type": "string",
+      "description": "License under which the data is redistributed (e.g. CC-BY-4.0)."
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date of the last hand-curation pass. Helps future contributors prioritize re-checks."
+    },
+    "entries": {
+      "type": "array",
+      "description": "List of crop entries. Order is not significant; consumers sort by category/name.",
+      "items": { "$ref": "#/$defs/Entry" }
+    }
+  },
+  "$defs": {
+    "Entry": {
+      "type": "object",
+      "required": [
+        "slug",
+        "commonName",
+        "scientificName",
+        "category",
+        "season",
+        "daysToHarvest",
+        "zoneRange",
+        "windows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{1,40}$",
+          "description": "kebab-case stable identifier. Must be unique within the file."
+        },
+        "commonName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "Primary common name in title case (e.g. 'Tomato')."
+        },
+        "scientificName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Binomial nomenclature (e.g. 'Solanum lycopersicum'). For cultivar groups use the species; let `notes` add detail."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "vegetable",
+            "herb",
+            "fruit",
+            "flower",
+            "cover-crop",
+            "root",
+            "legume"
+          ],
+          "description": "Top-level grouping. 'root' and 'legume' are subgroups of 'vegetable' but pulled out for filtering convenience."
+        },
+        "season": {
+          "type": "string",
+          "enum": ["cool", "warm", "perennial", "biennial"],
+          "description": "'cool' = tolerates light frost, prefers <70°F. 'warm' = needs warm soil + frost-free season. 'perennial' = lives multiple years. 'biennial' = two-year cycle (e.g. parsley, carrot if seed-saved)."
+        },
+        "daysToHarvest": {
+          "type": "object",
+          "required": ["min", "max"],
+          "additionalProperties": false,
+          "properties": {
+            "min": { "type": "integer", "minimum": 1, "maximum": 3650 },
+            "max": { "type": "integer", "minimum": 1, "maximum": 3650 }
+          },
+          "description": "Days from sowing/transplant to first harvest. Range covers cultivar variation. Trees/perennials use years × 365 for orchard establishment to first fruit."
+        },
+        "minSoilTempF": {
+          "type": ["integer", "null"],
+          "minimum": 20,
+          "maximum": 100,
+          "description": "Minimum soil temperature for germination, in °F. Null when not applicable (transplants, perennials)."
+        },
+        "zoneRange": {
+          "type": "object",
+          "required": ["min", "max"],
+          "additionalProperties": false,
+          "properties": {
+            "min": { "type": "integer", "minimum": 1, "maximum": 13 },
+            "max": { "type": "integer", "minimum": 1, "maximum": 13 }
+          },
+          "description": "Inclusive USDA hardiness zone range where this crop is reasonable to grow. For annuals, this is wide (most are 3-11). For perennials, narrower."
+        },
+        "windows": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Planting windows. Each is an action+date-range anchored to a frost date. A single crop can have multiple (spring start-indoors, spring transplant, fall direct-sow, etc.).",
+          "items": { "$ref": "#/$defs/Window" }
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "Short gardener-facing tip: trellising, succession sowing, common pest, etc."
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "description": "Alternate common names or scientific synonyms used for fuzzy matching by `findCrop`."
+        },
+        "source": {
+          "type": "string",
+          "description": "Per-entry citation. Overrides the file-level `source` when present."
+        }
+      }
+    },
+    "Window": {
+      "type": "object",
+      "required": ["action", "anchor", "fromFrostDays", "toFrostDays"],
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["start_indoors", "direct_sow", "transplant", "plant_now"],
+          "description": "What the gardener should do during this window. 'plant_now' is the perennial/tree action (planting a dormant root or potted plant)."
+        },
+        "anchor": {
+          "type": "string",
+          "enum": ["last_spring", "first_fall"],
+          "description": "Frost date the window is measured against. 'last_spring' is the typical last spring frost; 'first_fall' is the typical first fall frost. Both come from the zone's frost-date table at evaluation time."
+        },
+        "fromFrostDays": {
+          "type": "integer",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Window start, in days from the anchor. Negative = before the frost; positive = after. Example: -56 anchored to last_spring = 8 weeks before last spring frost."
+        },
+        "toFrostDays": {
+          "type": "integer",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Window end, in days from the anchor. Must be >= fromFrostDays."
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Short tip specific to this window (e.g. 'Cover with row cover until soil reaches 60°F')."
+        }
+      }
+    }
+  }
+}

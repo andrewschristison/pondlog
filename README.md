@@ -23,12 +23,14 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | [`@pondlog/source-usgs`](./packages/source-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/source-usgs.svg)](https://www.npmjs.com/package/@pondlog/source-usgs) | USGS Water Services client |
 | [`@pondlog/source-nightsky`](./packages/source-nightsky) | [![npm](https://img.shields.io/npm/v/@pondlog/source-nightsky.svg)](https://www.npmjs.com/package/@pondlog/source-nightsky) | Local night-sky briefing (astronomy-engine) |
 | [`@pondlog/source-mushroomobserver`](./packages/source-mushroomobserver) | [![npm](https://img.shields.io/npm/v/@pondlog/source-mushroomobserver.svg)](https://www.npmjs.com/package/@pondlog/source-mushroomobserver) | Mushroom Observer (mycology) client |
+| [`@pondlog/source-trefle`](./packages/source-trefle) | [![npm](https://img.shields.io/npm/v/@pondlog/source-trefle.svg)](https://www.npmjs.com/package/@pondlog/source-trefle) | Trefle.io plant taxonomy client |
 | [`@pondlog/mcp-inaturalist`](./packages/mcp-inaturalist) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-inaturalist.svg)](https://www.npmjs.com/package/@pondlog/mcp-inaturalist) | iNaturalist MCP server (9 tools) |
 | [`@pondlog/mcp-ebird`](./packages/mcp-ebird) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-ebird.svg)](https://www.npmjs.com/package/@pondlog/mcp-ebird) | eBird MCP server (21 tools) |
 | [`@pondlog/mcp-npn`](./packages/mcp-npn) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-npn.svg)](https://www.npmjs.com/package/@pondlog/mcp-npn) | NPN MCP server (8 tools) |
 | [`@pondlog/mcp-usgs`](./packages/mcp-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-usgs.svg)](https://www.npmjs.com/package/@pondlog/mcp-usgs) | USGS MCP server (4 tools) |
 | [`@pondlog/mcp-mushroomobserver`](./packages/mcp-mushroomobserver) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-mushroomobserver.svg)](https://www.npmjs.com/package/@pondlog/mcp-mushroomobserver) | Mushroom Observer MCP server (5 tools, mycology-first) |
-| [`@pondlog/mcp-pondlog`](./packages/mcp-pondlog) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-pondlog.svg)](https://www.npmjs.com/package/@pondlog/mcp-pondlog) | Aggregate MCP server (5 tools, all seven sources) |
+| [`@pondlog/mcp-garden`](./packages/mcp-garden) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-garden.svg)](https://www.npmjs.com/package/@pondlog/mcp-garden) | Garden-planning MCP server (5 tools — first plant/garden MCP on any registry) |
+| [`@pondlog/mcp-pondlog`](./packages/mcp-pondlog) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-pondlog.svg)](https://www.npmjs.com/package/@pondlog/mcp-pondlog) | Aggregate MCP server (5 tools, all eight sources) |
 
 ## Status
 
@@ -39,6 +41,7 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | NPN (phenology) | ✅ | ✅ | ✅ |
 | USGS (water) | ✅ | ✅ | ✅ |
 | Mushroom Observer (mycology) | ✅ | ✅ | ✅ |
+| Garden (USDA zones + 150-crop calendar + Trefle) | ✅ | ✅ | ✅ |
 | Night sky (`astronomy-engine`) | ✅ | ✅ | ✅ (via `mcp-pondlog`) |
 | Aggregate (`pondlog today` / `mcp-pondlog`) | — | ✅ | ✅ |
 

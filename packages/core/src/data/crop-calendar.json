@@ -1,0 +1,4355 @@
+{
+  "version": "1",
+  "source": "USDA Cooperative Extension publications + Washington State University Extension + Cornell Cooperative Extension + The Old Farmer's Almanac. Conservative ranges suitable for general North American gardening; coastal, mountain, and desert microclimates may shift dates 2-3 weeks.",
+  "license": "CC-BY-4.0",
+  "lastUpdated": "2026-05-08",
+  "entries": [
+    {
+      "slug": "tomato",
+      "commonName": "Tomato",
+      "scientificName": "Solanum lycopersicum",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 90
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28,
+          "notes": "6-8 weeks before last frost; 70-75\u00b0F germination"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Harden off 7-10 days; soil should reach 60\u00b0F"
+        }
+      ],
+      "notes": "Pinch suckers on indeterminate varieties. Stake or cage. Mulch heavily to maintain even moisture and reduce blossom-end rot.",
+      "aliases": [
+        "tomate",
+        "love apple"
+      ]
+    },
+    {
+      "slug": "pepper-sweet",
+      "commonName": "Sweet Pepper",
+      "scientificName": "Capsicum annuum",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 95
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -70,
+          "toFrostDays": -42,
+          "notes": "8-10 weeks before last frost; bottom heat helps"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84,
+          "notes": "Wait until nights are reliably above 55\u00b0F"
+        }
+      ],
+      "notes": "Slow to germinate (10-14 days at 75-85\u00b0F). Black plastic mulch increases soil temp.",
+      "aliases": [
+        "bell pepper",
+        "capsicum"
+      ]
+    },
+    {
+      "slug": "pepper-hot",
+      "commonName": "Hot Pepper",
+      "scientificName": "Capsicum annuum",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 110
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -70,
+          "toFrostDays": -42,
+          "notes": "8-10 weeks before last frost"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Habaneros and superhots benefit from 12+ weeks indoors. Lower water as fruit ripens for hotter flavor.",
+      "aliases": [
+        "chili",
+        "chile",
+        "jalapeno",
+        "habanero"
+      ]
+    },
+    {
+      "slug": "eggplant",
+      "commonName": "Eggplant",
+      "scientificName": "Solanum melongena",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 70,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -70,
+          "toFrostDays": -42
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 21,
+          "toFrostDays": 84,
+          "notes": "Needs warm soil \u2014 wait 3 weeks past last frost in cool zones"
+        }
+      ],
+      "notes": "Sensitive to cold; black plastic mulch and row cover early help.",
+      "aliases": [
+        "aubergine",
+        "brinjal"
+      ]
+    },
+    {
+      "slug": "potato",
+      "commonName": "Potato",
+      "scientificName": "Solanum tuberosum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 120
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14,
+          "notes": "Plant seed potatoes when soil is workable; cut pieces with 2 eyes each"
+        }
+      ],
+      "notes": "Hill soil up around stems as they grow. Use certified seed potatoes to avoid disease.",
+      "aliases": [
+        "spud",
+        "irish potato"
+      ]
+    },
+    {
+      "slug": "tomatillo",
+      "commonName": "Tomatillo",
+      "scientificName": "Physalis philadelphica",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 100
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Self-incompatible \u2014 plant at least 2 for pollination.",
+      "aliases": [
+        "mexican husk tomato"
+      ]
+    },
+    {
+      "slug": "ground-cherry",
+      "commonName": "Ground Cherry",
+      "scientificName": "Physalis pruinosa",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 65,
+        "max": 90
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Harvest fallen fruit; husks turn papery. Self-sows freely."
+    },
+    {
+      "slug": "okra",
+      "commonName": "Okra",
+      "scientificName": "Abelmoschus esculentus",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 65
+      },
+      "minSoilTempF": 70,
+      "zoneRange": {
+        "min": 5,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84,
+          "notes": "Soak seeds 12 hours before planting"
+        },
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": -14,
+          "notes": "Optional in short-season zones; transplant carefully \u2014 sensitive roots"
+        }
+      ],
+      "notes": "Pick pods at 2-4 inches; older pods get tough. Wear gloves \u2014 spines irritate skin."
+    },
+    {
+      "slug": "broccoli",
+      "commonName": "Broccoli",
+      "scientificName": "Brassica oleracea var. italica",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 85
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -35,
+          "notes": "6-8 weeks before last frost for spring crop"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": -7,
+          "notes": "Tolerates light frost"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56,
+          "notes": "Fall crop: sow 12-8 weeks before first fall frost"
+        }
+      ],
+      "notes": "Bolts in heat \u2014 use heat-tolerant varieties for late spring. After main head, lateral shoots produce for weeks."
+    },
+    {
+      "slug": "cauliflower",
+      "commonName": "Cauliflower",
+      "scientificName": "Brassica oleracea var. botrytis",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 100
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -35
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": 0
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Blanch white varieties by tying outer leaves over the head. Self-blanching and colored cultivars skip this step."
+    },
+    {
+      "slug": "cabbage",
+      "commonName": "Cabbage",
+      "scientificName": "Brassica oleracea var. capitata",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 110
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -35
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 0
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -98,
+          "toFrostDays": -70
+        }
+      ],
+      "notes": "Heads split when over-watered after maturity. Cut and lift on a cool morning."
+    },
+    {
+      "slug": "brussels-sprouts",
+      "commonName": "Brussels Sprouts",
+      "scientificName": "Brassica oleracea var. gemmifera",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "first_fall",
+          "fromFrostDays": -140,
+          "toFrostDays": -112,
+          "notes": "Long season \u2014 start in late spring for fall harvest"
+        },
+        {
+          "action": "transplant",
+          "anchor": "first_fall",
+          "fromFrostDays": -112,
+          "toFrostDays": -84
+        }
+      ],
+      "notes": "Flavor improves after light frost. Top plants 4 weeks before harvest to encourage uniform sprout sizing."
+    },
+    {
+      "slug": "kale",
+      "commonName": "Kale",
+      "scientificName": "Brassica oleracea var. sabellica",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 75
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 21,
+          "notes": "Cold-hardy; tolerates 20\u00b0F"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -42,
+          "notes": "Sweetens after frost"
+        }
+      ],
+      "notes": "Pick outer leaves first; plant keeps producing. Overwinters in zones 7+ under row cover."
+    },
+    {
+      "slug": "collards",
+      "commonName": "Collard Greens",
+      "scientificName": "Brassica oleracea var. viridis",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 85
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Most cold-hardy of the cabbage family. Sweetens after frost."
+    },
+    {
+      "slug": "kohlrabi",
+      "commonName": "Kohlrabi",
+      "scientificName": "Brassica oleracea var. gongylodes",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 45,
+        "max": 65
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -49
+        }
+      ],
+      "notes": "Harvest at 2-3 inches; larger bulbs get woody. Eat raw or cooked."
+    },
+    {
+      "slug": "bok-choy",
+      "commonName": "Bok Choy",
+      "scientificName": "Brassica rapa subsp. chinensis",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 30,
+        "max": 55
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -42
+        }
+      ],
+      "notes": "Bolts in heat; spring crop must finish before warm weather. Ideal for fall.",
+      "aliases": [
+        "pak choi",
+        "chinese cabbage"
+      ]
+    },
+    {
+      "slug": "napa-cabbage",
+      "commonName": "Napa Cabbage",
+      "scientificName": "Brassica rapa subsp. pekinensis",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 80
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56,
+          "notes": "Best as a fall crop \u2014 bolts if started too early in spring"
+        }
+      ],
+      "notes": "Use for kimchi. Harvest before hard freeze."
+    },
+    {
+      "slug": "mustard-greens",
+      "commonName": "Mustard Greens",
+      "scientificName": "Brassica juncea",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 30,
+        "max": 50
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Harvest young leaves for salads, mature for cooking. Bolts in heat."
+    },
+    {
+      "slug": "turnip",
+      "commonName": "Turnip",
+      "scientificName": "Brassica rapa subsp. rapa",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 40,
+        "max": 60
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -42,
+          "notes": "Fall crop sweeter after frost"
+        }
+      ],
+      "notes": "Greens are edible too. Harvest roots at 2-3 inches for tender flavor."
+    },
+    {
+      "slug": "rutabaga",
+      "commonName": "Rutabaga",
+      "scientificName": "Brassica napus var. napobrassica",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 110
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -120,
+          "toFrostDays": -90
+        }
+      ],
+      "notes": "Long season; flavor improves after frost. Store cool for winter use.",
+      "aliases": [
+        "swede"
+      ]
+    },
+    {
+      "slug": "cucumber",
+      "commonName": "Cucumber",
+      "scientificName": "Cucumis sativus",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        },
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": -7,
+          "notes": "Optional; transplant before roots circle the pot"
+        }
+      ],
+      "notes": "Trellising saves space and reduces disease. Pick frequently to keep plants producing."
+    },
+    {
+      "slug": "zucchini",
+      "commonName": "Zucchini",
+      "scientificName": "Cucurbita pepo",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 45,
+        "max": 60
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "One or two plants per household is plenty. Pick at 6-8 inches; oversized fruit pulls energy from new ones.",
+      "aliases": [
+        "courgette",
+        "summer squash"
+      ]
+    },
+    {
+      "slug": "summer-squash",
+      "commonName": "Summer Squash",
+      "scientificName": "Cucurbita pepo",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 65
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Yellow crookneck, pattypan, and straightneck. Same care as zucchini."
+    },
+    {
+      "slug": "winter-squash",
+      "commonName": "Winter Squash",
+      "scientificName": "Cucurbita maxima",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 85,
+        "max": 120
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Long season \u2014 sow promptly after last frost"
+        }
+      ],
+      "notes": "Cure 1-2 weeks at 80\u00b0F after harvest for storage. Includes Hubbard, kabocha, banana, buttercup."
+    },
+    {
+      "slug": "butternut-squash",
+      "commonName": "Butternut Squash",
+      "scientificName": "Cucurbita moschata",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 110
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Resistant to squash vine borer. Cures and stores 3-6 months."
+    },
+    {
+      "slug": "acorn-squash",
+      "commonName": "Acorn Squash",
+      "scientificName": "Cucurbita pepo",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 80,
+        "max": 100
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Eat within 2 months of harvest; flavor declines in long storage."
+    },
+    {
+      "slug": "pumpkin",
+      "commonName": "Pumpkin",
+      "scientificName": "Cucurbita pepo",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Time so harvest lands in October"
+        }
+      ],
+      "notes": "Needs space \u2014 50 sq ft per vine for full-size varieties."
+    },
+    {
+      "slug": "watermelon",
+      "commonName": "Watermelon",
+      "scientificName": "Citrullus lanatus",
+      "category": "fruit",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 100
+      },
+      "minSoilTempF": 70,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": -14,
+          "notes": "Use peat pots to avoid root disturbance"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Test ripeness by tapping (hollow sound) and checking the curly tendril nearest the fruit (browns when ripe)."
+    },
+    {
+      "slug": "cantaloupe",
+      "commonName": "Cantaloupe",
+      "scientificName": "Cucumis melo var. cantalupensis",
+      "category": "fruit",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        },
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Slip \u2014 fruit detaches easily \u2014 signals ripeness.",
+      "aliases": [
+        "muskmelon"
+      ]
+    },
+    {
+      "slug": "honeydew",
+      "commonName": "Honeydew Melon",
+      "scientificName": "Cucumis melo var. inodorus",
+      "category": "fruit",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 80,
+        "max": 110
+      },
+      "minSoilTempF": 70,
+      "zoneRange": {
+        "min": 5,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        },
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Doesn't slip \u2014 pick when blossom end softens slightly and skin develops a creamy color."
+    },
+    {
+      "slug": "onion",
+      "commonName": "Onion",
+      "scientificName": "Allium cepa",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 140
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -84,
+          "toFrostDays": -56,
+          "notes": "From seed: 10-12 weeks before last frost"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 7,
+          "notes": "Sets and transplants tolerate light frost"
+        }
+      ],
+      "notes": "Day-length sensitive: long-day varieties for North (>40\u00b0N), short-day for South (<35\u00b0N), intermediate for the middle."
+    },
+    {
+      "slug": "leek",
+      "commonName": "Leek",
+      "scientificName": "Allium ampeloprasum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 150
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14,
+          "notes": "Plant deeply in trenches; hill soil to blanch the shaft"
+        }
+      ],
+      "notes": "Overwinters in zones 7+ for very early spring harvest."
+    },
+    {
+      "slug": "garlic",
+      "commonName": "Garlic",
+      "scientificName": "Allium sativum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 240,
+        "max": 300
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -28,
+          "toFrostDays": 14,
+          "notes": "Plant cloves 4-6 weeks before ground freezes; harvest the following midsummer"
+        }
+      ],
+      "notes": "Hardneck varieties scape in spring (cut and use) and store 6 months. Softneck stores 9-12 months but no scapes."
+    },
+    {
+      "slug": "shallot",
+      "commonName": "Shallot",
+      "scientificName": "Allium cepa var. aggregatum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 130
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -42,
+          "toFrostDays": -14,
+          "notes": "Fall-plant for spring harvest in zones 5+"
+        },
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56,
+          "notes": "Spring-plant in colder zones"
+        }
+      ],
+      "notes": "Each clove produces 4-12 shallots. Cure dry for storage."
+    },
+    {
+      "slug": "scallion",
+      "commonName": "Scallion",
+      "scientificName": "Allium fistulosum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 75
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 28,
+          "notes": "Succession sow every 3 weeks"
+        }
+      ],
+      "notes": "Harvest at pencil thickness for milder flavor.",
+      "aliases": [
+        "green onion",
+        "spring onion"
+      ]
+    },
+    {
+      "slug": "chive",
+      "commonName": "Chives",
+      "scientificName": "Allium schoenoprasum",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 56,
+          "notes": "Divide established clumps every 3 years"
+        }
+      ],
+      "notes": "Edible flowers in spring. Cut to 2 inches to encourage tender regrowth."
+    },
+    {
+      "slug": "elephant-garlic",
+      "commonName": "Elephant Garlic",
+      "scientificName": "Allium ampeloprasum var. ampeloprasum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 240,
+        "max": 290
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        }
+      ],
+      "notes": "Closer to leek than true garlic. Mild flavor, large cloves."
+    },
+    {
+      "slug": "bush-bean",
+      "commonName": "Bush Bean",
+      "scientificName": "Phaseolus vulgaris",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 65
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Succession sow every 2-3 weeks until 60 days before first fall frost"
+        }
+      ],
+      "notes": "No transplant \u2014 beans dislike root disturbance. Inoculate with Rhizobium for best yields."
+    },
+    {
+      "slug": "pole-bean",
+      "commonName": "Pole Bean",
+      "scientificName": "Phaseolus vulgaris",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Single sowing produces all season. Needs 6-8 ft trellis."
+    },
+    {
+      "slug": "lima-bean",
+      "commonName": "Lima Bean",
+      "scientificName": "Phaseolus lunatus",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 65,
+        "max": 90
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 5,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Needs warmer soil than common beans; rots if planted too early.",
+      "aliases": [
+        "butter bean"
+      ]
+    },
+    {
+      "slug": "runner-bean",
+      "commonName": "Runner Bean",
+      "scientificName": "Phaseolus coccineus",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 65,
+        "max": 85
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Edible flowers and pods. Tolerates cooler summers than lima."
+    },
+    {
+      "slug": "edamame",
+      "commonName": "Edamame",
+      "scientificName": "Glycine max",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Harvest pods when full and bright green; window is brief.",
+      "aliases": [
+        "soybean",
+        "vegetable soybean"
+      ]
+    },
+    {
+      "slug": "snap-pea",
+      "commonName": "Snap Pea",
+      "scientificName": "Pisum sativum var. macrocarpon",
+      "category": "legume",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 75
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -7,
+          "notes": "As soon as soil is workable"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Trellis 4-6 ft. Pick frequently for continued production. Bolts in heat."
+    },
+    {
+      "slug": "snow-pea",
+      "commonName": "Snow Pea",
+      "scientificName": "Pisum sativum var. saccharatum",
+      "category": "legume",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 70
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -7
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Pick when pods are flat with peas just visible."
+    },
+    {
+      "slug": "shelling-pea",
+      "commonName": "Shelling Pea",
+      "scientificName": "Pisum sativum",
+      "category": "legume",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 75
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -7
+        }
+      ],
+      "notes": "Also called English peas or garden peas. Best eaten within hours of picking.",
+      "aliases": [
+        "english pea",
+        "garden pea"
+      ]
+    },
+    {
+      "slug": "fava-bean",
+      "commonName": "Fava Bean",
+      "scientificName": "Vicia faba",
+      "category": "legume",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 80,
+        "max": 100
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -42,
+          "notes": "Overwinters in zones 7+"
+        }
+      ],
+      "notes": "Excellent nitrogen fixer. Cook young pods whole, shell mature beans.",
+      "aliases": [
+        "broad bean"
+      ]
+    },
+    {
+      "slug": "chickpea",
+      "commonName": "Chickpea",
+      "scientificName": "Cicer arietinum",
+      "category": "legume",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 110
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 7
+        }
+      ],
+      "notes": "Drought-tolerant once established. Each pod yields 1-2 chickpeas.",
+      "aliases": [
+        "garbanzo bean"
+      ]
+    },
+    {
+      "slug": "lettuce-leaf",
+      "commonName": "Leaf Lettuce",
+      "scientificName": "Lactuca sativa",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 30,
+        "max": 50
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 28,
+          "notes": "Succession sow every 2 weeks"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Cut-and-come-again \u2014 harvest outer leaves, inner keeps growing. Bolts in heat over 75\u00b0F."
+    },
+    {
+      "slug": "lettuce-head",
+      "commonName": "Head Lettuce",
+      "scientificName": "Lactuca sativa var. capitata",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 80
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": 7
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Romaine and butterhead are easier than crisphead in home gardens."
+    },
+    {
+      "slug": "spinach",
+      "commonName": "Spinach",
+      "scientificName": "Spinacia oleracea",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 35,
+        "max": 50
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -28,
+          "notes": "Overwinters in zones 6+ under row cover for spring harvest"
+        }
+      ],
+      "notes": "Bolts fast in heat \u2014 succession sow every 2 weeks for continuous spring harvest."
+    },
+    {
+      "slug": "swiss-chard",
+      "commonName": "Swiss Chard",
+      "scientificName": "Beta vulgaris var. cicla",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 65
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Heat-tolerant unlike spinach \u2014 stays productive all summer. Cut outer leaves."
+    },
+    {
+      "slug": "arugula",
+      "commonName": "Arugula",
+      "scientificName": "Eruca vesicaria subsp. sativa",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 25,
+        "max": 40
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 28
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Bolts in heat \u2014 flavor turns sharp/peppery. Wild arugula is heat-tolerant.",
+      "aliases": [
+        "rocket"
+      ]
+    },
+    {
+      "slug": "mizuna",
+      "commonName": "Mizuna",
+      "scientificName": "Brassica rapa var. niposinica",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 35,
+        "max": 50
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Mild mustard flavor, frost-tolerant. Excellent salad green."
+    },
+    {
+      "slug": "mache",
+      "commonName": "M\u00e2che",
+      "scientificName": "Valerianella locusta",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28,
+          "notes": "Overwinters in zones 5+ for early spring harvest"
+        }
+      ],
+      "notes": "Extremely cold-hardy \u2014 pick under snow.",
+      "aliases": [
+        "corn salad",
+        "lambs lettuce"
+      ]
+    },
+    {
+      "slug": "endive",
+      "commonName": "Endive",
+      "scientificName": "Cichorium endivia",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 80,
+        "max": 100
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -100,
+          "toFrostDays": -70
+        }
+      ],
+      "notes": "Blanch outer leaves over center for 2 weeks before harvest to mellow bitterness."
+    },
+    {
+      "slug": "escarole",
+      "commonName": "Escarole",
+      "scientificName": "Cichorium endivia var. latifolia",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 80,
+        "max": 95
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -98,
+          "toFrostDays": -70
+        }
+      ],
+      "notes": "Broad-leaved relative of endive. Less bitter; great in soups."
+    },
+    {
+      "slug": "radicchio",
+      "commonName": "Radicchio",
+      "scientificName": "Cichorium intybus var. foliosum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -90,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Cool weather sweetens the bitterness. Heads tighten with cold nights."
+    },
+    {
+      "slug": "watercress",
+      "commonName": "Watercress",
+      "scientificName": "Nasturtium officinale",
+      "category": "herb",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 65
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 6,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21,
+          "notes": "Needs constant moisture \u2014 grows in shallow running water or saucer-irrigated pots"
+        }
+      ],
+      "notes": "Pick before flowering for tender peppery leaves."
+    },
+    {
+      "slug": "sorrel",
+      "commonName": "Sorrel",
+      "scientificName": "Rumex acetosa",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Lemony tang from oxalic acid. Cut outer leaves; keep flowers cut for best flavor."
+    },
+    {
+      "slug": "malabar-spinach",
+      "commonName": "Malabar Spinach",
+      "scientificName": "Basella alba",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 7,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Heat-loving spinach substitute. Climbing vine \u2014 needs trellis."
+    },
+    {
+      "slug": "new-zealand-spinach",
+      "commonName": "New Zealand Spinach",
+      "scientificName": "Tetragonia tetragonoides",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Soak seed 24 hours before planting"
+        }
+      ],
+      "notes": "Spinach-like leaves all summer; not a true spinach. Pinch tips to encourage branching."
+    },
+    {
+      "slug": "carrot",
+      "commonName": "Carrot",
+      "scientificName": "Daucus carota subsp. sativus",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": 21
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Loose, rock-free soil for straight roots. Keep moist during germination (2-3 weeks). Frost sweetens fall crop."
+    },
+    {
+      "slug": "beet",
+      "commonName": "Beet",
+      "scientificName": "Beta vulgaris",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 21
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -49
+        }
+      ],
+      "notes": "Each seed is a cluster \u2014 thin to one plant per 3 inches. Greens are equally edible."
+    },
+    {
+      "slug": "radish",
+      "commonName": "Radish",
+      "scientificName": "Raphanus sativus",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 22,
+        "max": 35
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 28,
+          "notes": "Succession sow every 2 weeks"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Spiciest in heat \u2014 best flavor from quick spring/fall growth."
+    },
+    {
+      "slug": "daikon",
+      "commonName": "Daikon Radish",
+      "scientificName": "Raphanus sativus var. longipinnatus",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 75
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Long roots need deep, loose soil. Excellent for fermentation."
+    },
+    {
+      "slug": "parsnip",
+      "commonName": "Parsnip",
+      "scientificName": "Pastinaca sativa",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 130
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": 14,
+          "notes": "Use fresh seed \u2014 viability drops fast. Slow germination (3-4 weeks)"
+        }
+      ],
+      "notes": "Frost converts starch to sugar \u2014 best harvested after first hard frost. Sap is photosensitizing; wear gloves."
+    },
+    {
+      "slug": "salsify",
+      "commonName": "Salsify",
+      "scientificName": "Tragopogon porrifolius",
+      "category": "root",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 110,
+        "max": 150
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14
+        }
+      ],
+      "notes": "Oyster-flavored root. Best after frost; can overwinter in ground in zone 6+.",
+      "aliases": [
+        "oyster plant"
+      ]
+    },
+    {
+      "slug": "jerusalem-artichoke",
+      "commonName": "Jerusalem Artichoke",
+      "scientificName": "Helianthus tuberosus",
+      "category": "root",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 110,
+        "max": 150
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Aggressive spreader \u2014 contain in a dedicated bed. Harvest after frost knocks back the tops.",
+      "aliases": [
+        "sunchoke"
+      ]
+    },
+    {
+      "slug": "sweet-potato",
+      "commonName": "Sweet Potato",
+      "scientificName": "Ipomoea batatas",
+      "category": "root",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 130
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 6,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84,
+          "notes": "Plant slips (rooted shoots) when soil is reliably 65\u00b0F"
+        }
+      ],
+      "notes": "Cure 1-2 weeks at 80\u00b0F + high humidity for best storage flavor."
+    },
+    {
+      "slug": "horseradish",
+      "commonName": "Horseradish",
+      "scientificName": "Armoracia rusticana",
+      "category": "root",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 140,
+        "max": 180
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Plant root cuttings angled in deep loose soil. Harvest after first frost. Aggressive \u2014 contain it."
+    },
+    {
+      "slug": "celery",
+      "commonName": "Celery",
+      "scientificName": "Apium graveolens",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 140
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14
+        }
+      ],
+      "notes": "Heavy water demand. Blanch by hilling soil or wrapping for milder flavor."
+    },
+    {
+      "slug": "fennel-bulb",
+      "commonName": "Bulbing Fennel",
+      "scientificName": "Foeniculum vulgare var. azoricum",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -90,
+          "toFrostDays": -60
+        }
+      ],
+      "notes": "Florence fennel \u2014 bolts fast in spring heat. Fall is more reliable."
+    },
+    {
+      "slug": "asparagus",
+      "commonName": "Asparagus",
+      "scientificName": "Asparagus officinalis",
+      "category": "vegetable",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1095
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56,
+          "notes": "Plant 1- or 2-year-old crowns 6-8 inches deep in trenches"
+        }
+      ],
+      "notes": "Don't harvest year 1; light harvest year 2; full harvest year 3+. Productive for 15-25 years."
+    },
+    {
+      "slug": "rhubarb",
+      "commonName": "Rhubarb",
+      "scientificName": "Rheum rhabarbarum",
+      "category": "vegetable",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Don't harvest year 1; light pull year 2; full harvest year 3+. Leaves are toxic \u2014 only stalks are edible."
+    },
+    {
+      "slug": "artichoke",
+      "commonName": "Globe Artichoke",
+      "scientificName": "Cynara cardunculus var. scolymus",
+      "category": "vegetable",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 180
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 6,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -84,
+          "toFrostDays": -56,
+          "notes": "Vernalize seedlings at 50\u00b0F for 10 days to trigger annual flowering in zones 4-6"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Perennial in zones 7+, grown as annual elsewhere. Mulch heavily for winter."
+    },
+    {
+      "slug": "cardoon",
+      "commonName": "Cardoon",
+      "scientificName": "Cynara cardunculus",
+      "category": "vegetable",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 100,
+        "max": 130
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 7,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Eat the blanched stalks like celery. Wrap stalks 4 weeks before harvest."
+    },
+    {
+      "slug": "sweet-corn",
+      "commonName": "Sweet Corn",
+      "scientificName": "Zea mays var. saccharata",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 95
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84,
+          "notes": "Plant in blocks of 4\u00d74+ for wind pollination, not single rows"
+        }
+      ],
+      "notes": "Pick when silks are brown and milk shoots from punctured kernel. Eat or freeze same day."
+    },
+    {
+      "slug": "basil",
+      "commonName": "Basil",
+      "scientificName": "Ocimum basilicum",
+      "category": "herb",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -21
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Pinch tops to encourage bushiness. Pinch flower buds for continued leaf production."
+    },
+    {
+      "slug": "parsley-flat",
+      "commonName": "Italian Parsley",
+      "scientificName": "Petroselinum crispum var. neapolitanum",
+      "category": "herb",
+      "season": "biennial",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28,
+          "notes": "Slow to germinate (3-4 weeks) \u2014 soak seed overnight"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Bolts second year \u2014 that's normal. Save seed or replant.",
+      "aliases": [
+        "flat-leaf parsley"
+      ]
+    },
+    {
+      "slug": "parsley-curly",
+      "commonName": "Curly Parsley",
+      "scientificName": "Petroselinum crispum var. crispum",
+      "category": "herb",
+      "season": "biennial",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Decorative; flat-leaf is more flavorful. Same care."
+    },
+    {
+      "slug": "cilantro",
+      "commonName": "Cilantro",
+      "scientificName": "Coriandrum sativum",
+      "category": "herb",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 40,
+        "max": 55
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14,
+          "notes": "Succession sow every 2-3 weeks"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Bolts in heat \u2014 let it go and harvest coriander seed. Slow-bolt cultivars exist for summer.",
+      "aliases": [
+        "coriander",
+        "chinese parsley"
+      ]
+    },
+    {
+      "slug": "dill",
+      "commonName": "Dill",
+      "scientificName": "Anethum graveolens",
+      "category": "herb",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 40,
+        "max": 60
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 35,
+          "notes": "Doesn't transplant well; direct sow only"
+        }
+      ],
+      "notes": "Self-sows readily. Companion to cabbage family \u2014 attracts beneficial insects."
+    },
+    {
+      "slug": "oregano",
+      "commonName": "Oregano",
+      "scientificName": "Origanum vulgare",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Greek oregano (subsp. hirtum) is the strongest-flavored. Hard prune annually to prevent woodiness."
+    },
+    {
+      "slug": "thyme",
+      "commonName": "Thyme",
+      "scientificName": "Thymus vulgaris",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Drought-tolerant once established. Replace plants every 4-5 years as they get woody."
+    },
+    {
+      "slug": "rosemary",
+      "commonName": "Rosemary",
+      "scientificName": "Salvia rosmarinus",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 180
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 7,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Hardy to about 15\u00b0F \u2014 bring indoors or grow as annual in zones 6 and below. Slow from seed; start with cuttings or transplants."
+    },
+    {
+      "slug": "sage",
+      "commonName": "Sage",
+      "scientificName": "Salvia officinalis",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Replace every 4-5 years. Prefers dry feet \u2014 don't overwater."
+    },
+    {
+      "slug": "marjoram",
+      "commonName": "Sweet Marjoram",
+      "scientificName": "Origanum majorana",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 7,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -21
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Tender perennial; grown as annual in cold zones."
+    },
+    {
+      "slug": "tarragon",
+      "commonName": "French Tarragon",
+      "scientificName": "Artemisia dracunculus var. sativa",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "True French tarragon doesn't set viable seed \u2014 buy plants or take cuttings. Russian tarragon is seed-grown but bland."
+    },
+    {
+      "slug": "lemon-balm",
+      "commonName": "Lemon Balm",
+      "scientificName": "Melissa officinalis",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Self-sows aggressively \u2014 deadhead to control. Calming tea."
+    },
+    {
+      "slug": "fennel-herb",
+      "commonName": "Herb Fennel",
+      "scientificName": "Foeniculum vulgare",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Bronze fennel is decorative + edible. Don't plant near dill (cross-pollinates) or beans (allelopathic)."
+    },
+    {
+      "slug": "savory-summer",
+      "commonName": "Summer Savory",
+      "scientificName": "Satureja hortensis",
+      "category": "herb",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 75
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Classic bean herb \u2014 plant near beans for flavor and pest deterrence."
+    },
+    {
+      "slug": "savory-winter",
+      "commonName": "Winter Savory",
+      "scientificName": "Satureja montana",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 5,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Perennial cousin of summer savory. Stronger, more pine-like flavor."
+    },
+    {
+      "slug": "lavender",
+      "commonName": "Lavender",
+      "scientificName": "Lavandula angustifolia",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 365
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 5,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "English lavender is hardiest. Prefers alkaline, lean, dry soil. Prune by 1/3 after bloom \u2014 never into old wood."
+    },
+    {
+      "slug": "lovage",
+      "commonName": "Lovage",
+      "scientificName": "Levisticum officinale",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Celery-like flavor, perennial. One plant is enough \u2014 gets 6 ft tall."
+    },
+    {
+      "slug": "chervil",
+      "commonName": "Chervil",
+      "scientificName": "Anthriscus cerefolium",
+      "category": "herb",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 35,
+        "max": 50
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Bolts fast. Likes light shade in summer. Subtle anise flavor."
+    },
+    {
+      "slug": "stevia",
+      "commonName": "Stevia",
+      "scientificName": "Stevia rebaudiana",
+      "category": "herb",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 8,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Tender perennial \u2014 annual in cold climates. Pinch flowers for sweeter leaves."
+    },
+    {
+      "slug": "lemon-verbena",
+      "commonName": "Lemon Verbena",
+      "scientificName": "Aloysia citrodora",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 180
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 8,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Frost-tender. Bring potted plants indoors below zone 8."
+    },
+    {
+      "slug": "bay-laurel",
+      "commonName": "Bay Laurel",
+      "scientificName": "Laurus nobilis",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 8,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 35
+        }
+      ],
+      "notes": "Slow-growing tree to 30 ft, can stay potted. Hardy to about 15\u00b0F."
+    },
+    {
+      "slug": "mint-spear",
+      "commonName": "Spearmint",
+      "scientificName": "Mentha spicata",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Aggressive runner \u2014 plant in containers or sunken pots. Cut back hard 2-3\u00d7 per season."
+    },
+    {
+      "slug": "mint-pepper",
+      "commonName": "Peppermint",
+      "scientificName": "Mentha \u00d7 piperita",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 80
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Sterile hybrid \u2014 propagate by division. Same containment caveat as spearmint."
+    },
+    {
+      "slug": "strawberry",
+      "commonName": "Strawberry",
+      "scientificName": "Fragaria \u00d7 ananassa",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 365
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14,
+          "notes": "Fall planting for next-summer harvest in zones 6+"
+        }
+      ],
+      "notes": "June-bearing for one big crop; everbearing/day-neutral for spread harvest. Renovate beds annually."
+    },
+    {
+      "slug": "blueberry",
+      "commonName": "Blueberry",
+      "scientificName": "Vaccinium corymbosum",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 1095
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Needs acidic soil (pH 4.5-5.5). Plant 2+ varieties for cross-pollination. First real harvest year 3."
+    },
+    {
+      "slug": "raspberry",
+      "commonName": "Raspberry",
+      "scientificName": "Rubus idaeus",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Summer-bearing or everbearing. Trellis and prune annually. Spreads aggressively \u2014 install root barriers."
+    },
+    {
+      "slug": "blackberry",
+      "commonName": "Blackberry",
+      "scientificName": "Rubus fruticosus",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 5,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Thornless cultivars are easier to manage. Tip-pruning encourages branching."
+    },
+    {
+      "slug": "gooseberry",
+      "commonName": "Gooseberry",
+      "scientificName": "Ribes uva-crispa",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Banned in some states (white pine blister rust host). Check local rules."
+    },
+    {
+      "slug": "currant-red",
+      "commonName": "Red Currant",
+      "scientificName": "Ribes rubrum",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Same blister-rust caveat as gooseberry. Trains well as cordon."
+    },
+    {
+      "slug": "currant-black",
+      "commonName": "Black Currant",
+      "scientificName": "Ribes nigrum",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 730
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Most rust-susceptible Ribes \u2014 heavily restricted in white-pine states. Self-fertile."
+    },
+    {
+      "slug": "elderberry",
+      "commonName": "Elderberry",
+      "scientificName": "Sambucus canadensis",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 1095
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Plant 2+ cultivars for pollination. Berries must be cooked \u2014 raw fruit is mildly toxic."
+    },
+    {
+      "slug": "grape",
+      "commonName": "Grape",
+      "scientificName": "Vitis vinifera",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1460
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Trellis essential. Annual pruning is the most important task \u2014 leave 30-50 buds per vine."
+    },
+    {
+      "slug": "fig",
+      "commonName": "Fig",
+      "scientificName": "Ficus carica",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 365,
+        "max": 1095
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 7,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Cold-hardy varieties (Chicago Hardy, Brown Turkey) survive zone 6 with mulch. Often dies back in winter, regrows from roots."
+    },
+    {
+      "slug": "kiwi-hardy",
+      "commonName": "Hardy Kiwi",
+      "scientificName": "Actinidia arguta",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1095,
+        "max": 1825
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -21,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Need male and female plants (1 male per 6 females). Heavy trellis required \u2014 vines reach 30 ft."
+    },
+    {
+      "slug": "pawpaw",
+      "commonName": "Pawpaw",
+      "scientificName": "Asimina triloba",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1825,
+        "max": 2920
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 5,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "North America's largest native fruit. Plant 2+ for cross-pollination. Tropical custard flavor."
+    },
+    {
+      "slug": "persimmon",
+      "commonName": "American Persimmon",
+      "scientificName": "Diospyros virginiana",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1825,
+        "max": 2555
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Astringent until soft and fully ripe \u2014 usually after first frost. Native and very pest-resistant."
+    },
+    {
+      "slug": "mulberry",
+      "commonName": "Mulberry",
+      "scientificName": "Morus alba",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1095,
+        "max": 1825
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Heavy fruit drop stains everything \u2014 site away from walkways. Self-fertile."
+    },
+    {
+      "slug": "pomegranate-hardy",
+      "commonName": "Hardy Pomegranate",
+      "scientificName": "Punica granatum",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1460
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 7,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Hardy cultivars (Salavatski, Surh-Anor) survive zone 6 with protection. Drought-tolerant."
+    },
+    {
+      "slug": "quince",
+      "commonName": "Quince",
+      "scientificName": "Cydonia oblonga",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1460,
+        "max": 1825
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 5,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Must be cooked. Membrillo paste, jelly, or roasted. Self-fertile."
+    },
+    {
+      "slug": "sea-buckthorn",
+      "commonName": "Sea Buckthorn",
+      "scientificName": "Hippophae rhamnoides",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 1095,
+        "max": 1460
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Nitrogen-fixing. Dioecious \u2014 need male and female. Berries are tart, vitamin-C rich."
+    },
+    {
+      "slug": "honeyberry",
+      "commonName": "Honeyberry",
+      "scientificName": "Lonicera caerulea",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1095
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 2,
+        "max": 8
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": 56
+        },
+        {
+          "action": "plant_now",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -14
+        }
+      ],
+      "notes": "Earliest fruit of the year. Plant 2+ compatible cultivars for pollination.",
+      "aliases": [
+        "haskap"
+      ]
+    },
+    {
+      "slug": "goumi",
+      "commonName": "Goumi",
+      "scientificName": "Elaeagnus multiflora",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1095
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Nitrogen-fixing shrub. Tart-sweet red berries. Self-fertile but better with 2+."
+    },
+    {
+      "slug": "autumn-olive",
+      "commonName": "Autumn Olive",
+      "scientificName": "Elaeagnus umbellata",
+      "category": "fruit",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 730,
+        "max": 1095
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Considered invasive in many states \u2014 check local restrictions before planting. Otherwise vigorous, drought-tolerant, lycopene-rich."
+    },
+    {
+      "slug": "marigold",
+      "commonName": "Marigold",
+      "scientificName": "Tagetes patula",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        },
+        {
+          "action": "start_indoors",
+          "anchor": "last_spring",
+          "fromFrostDays": -42,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Repels nematodes \u2014 plant near tomatoes and beans. French marigolds are most effective for nematode control."
+    },
+    {
+      "slug": "nasturtium",
+      "commonName": "Nasturtium",
+      "scientificName": "Tropaeolum majus",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Edible flowers and leaves (peppery). Trap crop for aphids. Don't fertilize \u2014 too much nitrogen = all leaves no flowers."
+    },
+    {
+      "slug": "calendula",
+      "commonName": "Calendula",
+      "scientificName": "Calendula officinalis",
+      "category": "flower",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 70
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -42
+        }
+      ],
+      "notes": "Edible petals. Self-sows readily. Cool-season \u2014 fades in summer heat.",
+      "aliases": [
+        "pot marigold"
+      ]
+    },
+    {
+      "slug": "borage",
+      "commonName": "Borage",
+      "scientificName": "Borago officinalis",
+      "category": "flower",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 55,
+        "max": 75
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Edible cucumber-flavored flowers. Bee magnet. Self-sows aggressively \u2014 let some go to seed."
+    },
+    {
+      "slug": "sunflower",
+      "commonName": "Sunflower",
+      "scientificName": "Helianthus annuus",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 100
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Mammoth varieties get 12 ft. Stake or wind-shelter big heads. Cut head when back yellows for seed harvest."
+    },
+    {
+      "slug": "zinnia",
+      "commonName": "Zinnia",
+      "scientificName": "Zinnia elegans",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 75
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Pollinator and cut-flower champion. Pinch first set of leaves for branching. Powdery mildew prone \u2014 water at soil."
+    },
+    {
+      "slug": "cosmos",
+      "commonName": "Cosmos",
+      "scientificName": "Cosmos bipinnatus",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Don't fertilize \u2014 poor soil = more flowers. Self-sows. Beneficial-insect attractor."
+    },
+    {
+      "slug": "sweet-alyssum",
+      "commonName": "Sweet Alyssum",
+      "scientificName": "Lobularia maritima",
+      "category": "flower",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 45,
+        "max": 65
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21
+        }
+      ],
+      "notes": "Honey-scented mat \u2014 excellent ground cover and beneficial-insect attractor. Tolerates light frost."
+    },
+    {
+      "slug": "bee-balm",
+      "commonName": "Bee Balm",
+      "scientificName": "Monarda didyma",
+      "category": "flower",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Hummingbird and bee favorite. Mildew-prone \u2014 choose resistant cultivars (Jacob Cline, Marshall's Delight)."
+    },
+    {
+      "slug": "yarrow",
+      "commonName": "Yarrow",
+      "scientificName": "Achillea millefolium",
+      "category": "flower",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 365
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Beneficial-insect magnet. Drought-tolerant. Cut back hard mid-season for second bloom."
+    },
+    {
+      "slug": "phacelia",
+      "commonName": "Phacelia",
+      "scientificName": "Phacelia tanacetifolia",
+      "category": "flower",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 45,
+        "max": 65
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21
+        }
+      ],
+      "notes": "One of the best bee plants known. Also a cover crop. Reseeds.",
+      "aliases": [
+        "lacy phacelia",
+        "bee's friend"
+      ]
+    },
+    {
+      "slug": "cornflower",
+      "commonName": "Cornflower",
+      "scientificName": "Centaurea cyanus",
+      "category": "flower",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 65,
+        "max": 80
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 2,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        }
+      ],
+      "notes": "Edible petals. Self-sows. Tolerates poor soil.",
+      "aliases": [
+        "bachelor button"
+      ]
+    },
+    {
+      "slug": "cleome",
+      "commonName": "Cleome",
+      "scientificName": "Cleome hassleriana",
+      "category": "flower",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 70,
+        "max": 90
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 0,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Heat-tolerant tall annual (4-5 ft). Good back-border companion. Self-sows.",
+      "aliases": [
+        "spider flower"
+      ]
+    },
+    {
+      "slug": "crimson-clover",
+      "commonName": "Crimson Clover",
+      "scientificName": "Trifolium incarnatum",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 200
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -28,
+          "notes": "Fall-sow for winter cover and spring nitrogen"
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 0,
+          "notes": "Spring-sow as a short cover before warm crops"
+        }
+      ],
+      "notes": "Nitrogen fixer. Mow or cut at flowering, before seed set, for nitrogen release."
+    },
+    {
+      "slug": "white-clover",
+      "commonName": "White Clover",
+      "scientificName": "Trifolium repens",
+      "category": "cover-crop",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 365
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 28
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -42
+        }
+      ],
+      "notes": "Long-lived nitrogen fixer. Excellent living mulch in orchards and pathways."
+    },
+    {
+      "slug": "hairy-vetch",
+      "commonName": "Hairy Vetch",
+      "scientificName": "Vicia villosa",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 180,
+        "max": 240
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -28,
+          "notes": "Often mixed with winter rye for biomass + N"
+        }
+      ],
+      "notes": "Strongest winter-hardy nitrogen fixer. Terminate before seed set or it volunteers everywhere."
+    },
+    {
+      "slug": "winter-rye",
+      "commonName": "Winter Rye",
+      "scientificName": "Secale cereale",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 180,
+        "max": 240
+      },
+      "minSoilTempF": 35,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -42,
+          "toFrostDays": 0,
+          "notes": "Most cold-tolerant cereal cover crop"
+        }
+      ],
+      "notes": "Excellent biomass and weed suppression. Terminate at boot/heading stage. Allelopathic \u2014 wait 3-4 weeks before planting tomatoes."
+    },
+    {
+      "slug": "buckwheat",
+      "commonName": "Buckwheat",
+      "scientificName": "Fagopyrum esculentum",
+      "category": "cover-crop",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 30,
+        "max": 60
+      },
+      "minSoilTempF": 60,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 90,
+          "notes": "Quick summer cover; flowers in 30 days"
+        }
+      ],
+      "notes": "Fast cover, weed suppression, pollinator forage. Frost-killed \u2014 terminate easily."
+    },
+    {
+      "slug": "oats",
+      "commonName": "Spring Oats",
+      "scientificName": "Avena sativa",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 38,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -42,
+          "notes": "Fall-sown oats winter-kill in zones 7 and below \u2014 convenient mulch the following spring"
+        }
+      ],
+      "notes": "Great winter-killed cover; no termination work."
+    },
+    {
+      "slug": "austrian-winter-pea",
+      "commonName": "Austrian Winter Pea",
+      "scientificName": "Pisum sativum subsp. arvense",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 180,
+        "max": 240
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -28
+        }
+      ],
+      "notes": "Nitrogen fixer; often mixed with rye. Edible shoots in spring."
+    },
+    {
+      "slug": "mustard-cover",
+      "commonName": "Mustard (Cover Crop)",
+      "scientificName": "Brassica juncea",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 30,
+        "max": 60
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -42
+        }
+      ],
+      "notes": "Biofumigant \u2014 chopped tissue suppresses soil pests and pathogens. Don't follow with brassica crops (shared diseases)."
+    },
+    {
+      "slug": "daikon-cover",
+      "commonName": "Tillage Radish",
+      "scientificName": "Raphanus sativus var. longipinnatus",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 90
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -84,
+          "toFrostDays": -56
+        }
+      ],
+      "notes": "Deep taproot breaks compaction. Winter-kills in zones 6 and below.",
+      "aliases": [
+        "forage radish"
+      ]
+    },
+    {
+      "slug": "ryegrass-annual",
+      "commonName": "Annual Ryegrass",
+      "scientificName": "Lolium multiflorum",
+      "category": "cover-crop",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 60,
+        "max": 120
+      },
+      "minSoilTempF": 40,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -56,
+          "toFrostDays": -21
+        }
+      ],
+      "notes": "Quick fall cover. Hard to terminate without tillage in zone 7+ \u2014 choose oats or rye if no-till."
+    },
+    {
+      "slug": "tatsoi",
+      "commonName": "Tatsoi",
+      "scientificName": "Brassica rapa subsp. narinosa",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 40,
+        "max": 55
+      },
+      "minSoilTempF": 45,
+      "zoneRange": {
+        "min": 3,
+        "max": 10
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14
+        },
+        {
+          "action": "direct_sow",
+          "anchor": "first_fall",
+          "fromFrostDays": -70,
+          "toFrostDays": -35
+        }
+      ],
+      "notes": "Hardy to 15\u00b0F under row cover. Picks like a flat rosette of spoon-shaped leaves."
+    },
+    {
+      "slug": "quinoa",
+      "commonName": "Quinoa",
+      "scientificName": "Chenopodium quinoa",
+      "category": "vegetable",
+      "season": "cool",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 120
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14
+        }
+      ],
+      "notes": "Prefers cool nights \u2014 best in mountain or northern climates. Rinse seed before cooking to remove bitter saponins."
+    },
+    {
+      "slug": "amaranth",
+      "commonName": "Amaranth",
+      "scientificName": "Amaranthus cruentus",
+      "category": "vegetable",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 50,
+        "max": 110
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 4,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 7,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Dual-purpose: young leaves are a heat-tolerant cooking green; mature seed heads are a pseudo-grain. Self-sows."
+    },
+    {
+      "slug": "peanut",
+      "commonName": "Peanut",
+      "scientificName": "Arachis hypogaea",
+      "category": "legume",
+      "season": "warm",
+      "daysToHarvest": {
+        "min": 110,
+        "max": 150
+      },
+      "minSoilTempF": 65,
+      "zoneRange": {
+        "min": 6,
+        "max": 11
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": 14,
+          "toFrostDays": 84
+        }
+      ],
+      "notes": "Plant unshelled or shelled raw seed. Pegs grow down into soil to form pods. Loose sandy soil and a 120-day frost-free season required."
+    },
+    {
+      "slug": "comfrey",
+      "commonName": "Comfrey",
+      "scientificName": "Symphytum officinale",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 365
+      },
+      "minSoilTempF": 50,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "plant_now",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 56
+        }
+      ],
+      "notes": "Permaculture standby \u2014 deep taproot mines minerals; leaves chop-and-drop for mulch or steep into liquid fertilizer. Bocking 14 cultivar is sterile (won't spread by seed)."
+    },
+    {
+      "slug": "anise-hyssop",
+      "commonName": "Anise Hyssop",
+      "scientificName": "Agastache foeniculum",
+      "category": "herb",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 75,
+        "max": 100
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 4,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 14
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -7,
+          "toFrostDays": 28
+        }
+      ],
+      "notes": "Edible licorice-flavored leaves and flowers. Top pollinator plant. Self-sows freely."
+    },
+    {
+      "slug": "echinacea",
+      "commonName": "Purple Coneflower",
+      "scientificName": "Echinacea purpurea",
+      "category": "flower",
+      "season": "perennial",
+      "daysToHarvest": {
+        "min": 90,
+        "max": 365
+      },
+      "minSoilTempF": 55,
+      "zoneRange": {
+        "min": 3,
+        "max": 9
+      },
+      "windows": [
+        {
+          "action": "direct_sow",
+          "anchor": "last_spring",
+          "fromFrostDays": -28,
+          "toFrostDays": 14,
+          "notes": "Cold stratify seed 4 weeks before sowing for best germination"
+        },
+        {
+          "action": "transplant",
+          "anchor": "last_spring",
+          "fromFrostDays": -14,
+          "toFrostDays": 21
+        }
+      ],
+      "notes": "Drought-tolerant native. Pollinator and finch magnet (leave seed heads through winter)."
+    }
+  ]
+}

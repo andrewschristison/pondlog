@@ -1,8 +1,11 @@
 import {
+  getHardinessZone,
+  getPlantingPlan,
   getTidePredictions,
   splitHighLow,
   type Coordinates,
   type FungiObservation,
+  type GardenBriefing,
   type NatureBriefing,
   type NightSkyBriefing,
   type Observation,
@@ -38,6 +41,7 @@ const DEFAULT_NPN_YEARS_BACK = 2;
 const DEFAULT_MO_RADIUS_KM = 50;
 const DEFAULT_MO_DAYS = 60;
 const DEFAULT_MO_LIMIT = 30;
+const DEFAULT_GARDEN_LIMIT = 25;
 
 export interface BuildTodayBriefingParams {
   coords: Coordinates;
@@ -205,6 +209,9 @@ export async function buildTodayBriefing(
     errors.push({ source: "nightsky", message: nightSkyResult.error.message });
   }
 
+  // Garden — pure local computation; no caching layer needed.
+  const garden = buildGardenForToday(params.coords, date, errors);
+
   const briefing: NatureBriefing = {
     coordinates: params.coords,
     generatedAt: new Date().toISOString(),
@@ -216,10 +223,38 @@ export async function buildTodayBriefing(
     ...(streamflow ? { streamflow } : {}),
     ...(phenology ? { phenology } : {}),
     ...(fungi ? { fungi } : {}),
+    ...(garden ? { garden } : {}),
     errors,
   };
 
   return { briefing, cacheHits };
+}
+
+function buildGardenForToday(
+  coords: Coordinates,
+  date: Date,
+  errors: { source: string; message: string }[],
+): GardenBriefing | undefined {
+  const zoneRes = getHardinessZone(coords);
+  if (!zoneRes.ok) {
+    errors.push({ source: "usda-zones", message: zoneRes.error.message });
+    return undefined;
+  }
+  const planRes = getPlantingPlan({
+    zone: zoneRes.data,
+    date: isoDate(date),
+    limit: DEFAULT_GARDEN_LIMIT,
+  });
+  if (!planRes.ok) {
+    errors.push({ source: "crop-calendar", message: planRes.error.message });
+    return undefined;
+  }
+  return {
+    zone: planRes.data.zone,
+    frostDates: planRes.data.frostDates,
+    plantNow: planRes.data.plantNow,
+    asOf: planRes.data.asOf,
+  };
 }
 
 function ingest<T>(

@@ -3,6 +3,164 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.13.0] - 2026-05-08
+
+### Added — Sticky 17: Garden planning (the world's first plant/garden MCP)
+
+Pondlog gardens. The first dedicated garden-planning MCP server lands as
+`@pondlog/mcp-garden`, alongside `@pondlog/source-trefle`, a `pondlog
+garden` CLI command group, and a hand-curated 150-crop planting calendar
+baked into `@pondlog/core`. The aggregate `pondlog today` and
+`mcp-pondlog get_nature_briefing` gain a 🌱 garden section.
+
+#### Why it matters
+
+Every other pondlog source observes nature. The garden surface
+*plans* it. We're shipping ahead of any competing plant/garden MCP — at
+publish time the niche is empty.
+
+#### Research-driven plan adjustments
+
+The original sticky's spec was rebuilt against the live Trefle API before
+any code:
+
+- **Trefle's `growth.minimum_temperature` is NOT USDA hardiness.**
+  It's the growing-season minimum (e.g. 15°C/59°F for tomato — the cold
+  threshold for *fruit set*, not winter survival). The proposed
+  hardiness-zone filter through Trefle was unbuildable.
+- **Trefle horticulture data is universally null for cultivated
+  vegetables.** Live-probed tomato, lettuce, pepper, squash, carrot,
+  bean, etc — all return `null` for `days_to_harvest`, `sowing`,
+  `growth_months`, `duration`. Trefle's `filter[duration]=annual`
+  returns 0 plants. Trefle is bibliographic, not horticultural.
+- **Solution:** Trefle becomes the *taxonomy* layer (search, common ↔
+  scientific name, sun, pH, image). The 150-crop calendar baked into
+  core handles all planting-window logic — frost-anchored windows
+  curated from USDA Cooperative Extension publications.
+- **Trefle's `distributions/zones` is WGSRPD, not USDA.** Different
+  classification entirely (continental biogeography). Skipped.
+
+#### `@pondlog/core` (new helpers + data)
+
+- `usda-zones.ts` — `getHardinessZone(coords)` and
+  `getHardinessZoneByZip(zip)` resolve to USDA zone via the bundled
+  PRISM 2023 dataset (40,283 ZIP centroids, ~1.8 MB JSON). Coordinate
+  lookup uses a 1° lat/lng grid index for sub-millisecond response.
+- `getFrostDates(zone)` — typical continental-US frost-date table
+  keyed by zone; returns `lastSpring` / `firstFall` (MM-DD) and
+  `seasonDays`.
+- `crop-calendar.ts` — `findCrop`, `searchCrops`, `listCrops`,
+  `getCropsForZone`, `getPlantingPlan`. The plan helper cross-
+  references the calendar with the zone's frost dates and a target
+  date, returning crops whose start/sow/transplant window is open.
+- `data/crop-calendar.json` — 150 hand-curated entries across
+  vegetables (53), herbs (28), fruits (23), flowers (14), legumes
+  (11), roots (11), cover-crops (10). Each entry has multiple frost-
+  anchored windows (`start_indoors`, `direct_sow`, `transplant`,
+  `plant_now`) so spring + fall + perennial actions all live in one
+  record. JSON Schema lives next to it for community PR validation.
+- New types: `ZoneInfo`, `FrostDates`, `PlantSuggestion`,
+  `GardenBriefing`. `SourceId` extends to include `"trefle"`,
+  `"crop-calendar"`, `"usda-zones"`. `NatureBriefing.garden` (optional)
+  is the briefing-level field.
+
+#### `@pondlog/source-trefle` (new package)
+
+- 4 functions: `searchPlants`, `getPlant`, `searchSpecies`,
+  `getGrowingGuide`. All return `Result<T>`, never throw.
+- Rate limiter: 100 req/min (Trefle posts 120/min) with burst of 5.
+- Retries on 429 *and* transient 5xx — Trefle's beta status produces
+  occasional 500s on the search endpoint per its public issue
+  tracker.
+- `TREFLE_API_TOKEN` required; `hasTrefleToken()` exported so the
+  aggregate can silently degrade when no token is set.
+- Schemas tolerate extensive `null` because Trefle's data is sparse;
+  the `GrowingGuide` flat type only surfaces fields that are
+  populated.
+
+#### `pondlog garden` CLI (new)
+
+Four subcommands:
+
+- `pondlog garden zone [--lat] [--lng] [--zip]` — show USDA zone +
+  frost dates.
+- `pondlog garden now [--lat] [--lng] [--zone] [--date] [--category]`
+  — what to plant in window today (or `--date` for any date). Output
+  groups by action (start indoors → direct sow → transplant → plant
+  now), shows window range, and computes `expectedHarvestEarliest`
+  from `daysToHarvest.min`.
+- `pondlog garden plant <name>` — calendar entry + Trefle botanical
+  detail (when token set) for a single crop.
+- `pondlog garden search <query> [--zone] [--category]` — searches
+  calendar and Trefle in parallel; calendar matches first (precise),
+  Trefle next (broad).
+
+All commands support `--json`. CLI version → 0.4.0.
+
+#### `@pondlog/mcp-garden` (new package, replaces planned mcp-trefle)
+
+The package is named `mcp-garden`, not `mcp-trefle`, because it's not
+a Trefle proxy — it's a garden-planning surface that uses Trefle as
+one data source.
+
+Five tools, each with full glossary descriptions per the
+`mcp-server` skill:
+
+- `get_hardiness_zone` — USDA zone + frost dates for lat/lng or ZIP.
+  Pure offline.
+- `get_planting_plan` — calendar-driven planting plan for a zone +
+  date. Pure offline.
+- `get_crop_details` — calendar entry + Trefle botanical detail.
+- `search_plants` — calendar + Trefle parallel search.
+- `get_crops_for_zone` — all calendar entries suited to a zone.
+
+`TREFLE_API_TOKEN` is optional; the four calendar/zone tools always
+work, the two Trefle-blended tools fall back to calendar-only.
+
+JSON-RPC handshake verified pre-commit; bad-input rejection
+confirmed for `get_hardiness_zone(lat=999)`.
+
+#### Aggregate changes
+
+- `cli/aggregate.ts` and `mcp-pondlog/briefing.ts` both compute the
+  garden section as pure local work (no rate-limited fetch). When
+  coordinates fall outside US/AK/HI/PR coverage, an entry is added
+  to `errors[]` and the briefing continues without garden.
+- `pondlog today` renders a 🌱 garden block beneath fungi, showing
+  zone, frost dates, and the top 5 in-window suggestions.
+- `mcp-pondlog` bumps to 0.3.0.
+
+#### Calendar provenance
+
+USDA Cooperative Extension publications, Washington State University
+Extension, Cornell Cooperative Extension, and The Old Farmer's
+Almanac. Conservative ranges so a coastal/mountain/desert
+microclimate user sees usable suggestions. JSON Schema published
+alongside the data file so the community can PR new entries to a
+common standard.
+
+#### Files
+
+- New: `packages/core/src/usda-zones.ts`,
+  `packages/core/src/crop-calendar.ts`,
+  `packages/core/src/data/usda-zones.json` (1.8 MB),
+  `packages/core/src/data/crop-calendar.json` (150 entries),
+  `packages/core/src/data/crop-calendar.schema.json`.
+- New: `packages/source-trefle/` (full package).
+- New: `packages/mcp-garden/` (full package incl. server.json and
+  README).
+- New: `packages/cli/src/commands/garden.ts`,
+  `packages/cli/src/format-garden.ts`.
+- Modified: `packages/core/src/types.ts` (new types + `SourceId`
+  extension), `packages/core/src/index.ts` (re-exports).
+- Modified: `packages/cli/src/aggregate.ts`,
+  `packages/cli/src/index.ts`, `packages/cli/src/commands/today.ts`.
+- Modified: `packages/cli/package.json` → 0.4.0.
+- Modified: `packages/mcp-pondlog/src/briefing.ts`,
+  `packages/mcp-pondlog/src/server.ts`,
+  `packages/mcp-pondlog/server.json`,
+  `packages/mcp-pondlog/package.json` → 0.3.0.
+
 ## [0.12.0] - 2026-05-07
 
 ### Added — Sticky 16: Mushroom Observer (the world's first mycology MCP)

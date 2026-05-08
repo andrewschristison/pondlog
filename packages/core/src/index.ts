@@ -5,3 +5,5 @@ export * from "./rate-limiter.js";
 export * from "./retry.js";
 export * from "./user-agent.js";
 export * from "./noaa.js";
+export * from "./usda-zones.js";
+export * from "./crop-calendar.js";
