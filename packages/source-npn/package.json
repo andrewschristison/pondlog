@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/source-npn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "USA National Phenology Network (NPN) Portal API client: typed, Zod-validated, polite-rate-limited. Returns Result<T> instead of throwing.",
   "keywords": [
     "pondlog",
@@ -45,7 +45,7 @@
     "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
-    "@pondlog/core": "workspace:*",
+    "@pondlog/core": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/source-nightsky",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Place-aware night-sky briefing: sun/moon/planets/twilight/meteor-showers/constellations from astronomy-engine plus curated fixtures. Pure local computation — no API, no rate limit, no key.",
   "keywords": [
     "pondlog",
@@ -49,7 +49,7 @@
     "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
-    "@pondlog/core": "workspace:*",
+    "@pondlog/core": "workspace:^",
     "astronomy-engine": "^2.1.19"
   },
   "devDependencies": {

@@ -24,28 +24,28 @@ importers:
   packages/cli:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-ebird':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-ebird
       '@pondlog/source-inaturalist':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-inaturalist
       '@pondlog/source-mushroomobserver':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-mushroomobserver
       '@pondlog/source-nightsky':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-nightsky
       '@pondlog/source-npn':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-npn
       '@pondlog/source-trefle':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-trefle
       '@pondlog/source-usgs':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-usgs
       commander:
         specifier: ^12.1.0
@@ -95,10 +95,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-ebird':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-ebird
       zod:
         specifier: ^3.23.8
@@ -123,10 +123,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-trefle':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-trefle
       zod:
         specifier: ^3.23.8
@@ -151,10 +151,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-inaturalist':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-inaturalist
       zod:
         specifier: ^3.23.8
@@ -179,10 +179,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-mushroomobserver':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-mushroomobserver
       zod:
         specifier: ^3.23.8
@@ -207,10 +207,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-npn':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-npn
       zod:
         specifier: ^3.23.8
@@ -235,28 +235,28 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-ebird':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-ebird
       '@pondlog/source-inaturalist':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-inaturalist
       '@pondlog/source-mushroomobserver':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-mushroomobserver
       '@pondlog/source-nightsky':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-nightsky
       '@pondlog/source-npn':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-npn
       '@pondlog/source-trefle':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-trefle
       '@pondlog/source-usgs':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-usgs
       zod:
         specifier: ^3.23.8
@@ -281,10 +281,10 @@ importers:
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@pondlog/source-usgs':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../source-usgs
       zod:
         specifier: ^3.23.8
@@ -306,7 +306,7 @@ importers:
   packages/source-ebird:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8
@@ -328,7 +328,7 @@ importers:
   packages/source-inaturalist:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8
@@ -350,7 +350,7 @@ importers:
   packages/source-mushroomobserver:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8
@@ -372,7 +372,7 @@ importers:
   packages/source-nightsky:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       astronomy-engine:
         specifier: ^2.1.19
@@ -394,7 +394,7 @@ importers:
   packages/source-npn:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8
@@ -416,7 +416,7 @@ importers:
   packages/source-trefle:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8
@@ -438,7 +438,7 @@ importers:
   packages/source-usgs:
     dependencies:
       '@pondlog/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       zod:
         specifier: ^3.23.8

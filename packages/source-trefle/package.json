@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/source-trefle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Trefle.io plant database API client: typed, Zod-validated, rate-limited. Returns Result<T> instead of throwing. Supplies taxonomy, scientific names, and growth metadata to pondlog's garden-planning surface (the planting calendar lives in @pondlog/core).",
   "keywords": [
     "pondlog",
@@ -41,11 +41,11 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --exclude '**/smoke.test.ts'",
+    "test": "vitest run --exclude '**/smoke.test.ts' --passWithNoTests",
     "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
-    "@pondlog/core": "workspace:*",
+    "@pondlog/core": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {

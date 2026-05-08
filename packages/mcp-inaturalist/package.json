@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-inaturalist",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for iNaturalist: nine tools for searching observations, species counts, taxa, places, and top observers. Stdio transport, no API key required.",
   "keywords": [
     "pondlog",
@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "@pondlog/core": "workspace:*",
-    "@pondlog/source-inaturalist": "workspace:*",
+    "@pondlog/core": "workspace:^",
+    "@pondlog/source-inaturalist": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {

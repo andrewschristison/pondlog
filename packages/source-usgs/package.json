@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/source-usgs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "USGS Water Services (NWIS) API client: typed, Zod-validated, polite-rate-limited. Real-time and daily streamflow, gage height, and site metadata. Returns Result<T> instead of throwing.",
   "keywords": [
     "pondlog",
@@ -46,7 +46,7 @@
     "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
-    "@pondlog/core": "workspace:*",
+    "@pondlog/core": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {
