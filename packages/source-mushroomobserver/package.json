@@ -1,22 +1,23 @@
 {
-  "name": "@pondlog/core",
-  "version": "0.3.0",
-  "description": "Shared types, schemas, Result<T>, rate limiter, and utilities used across pondlog source clients, CLI, and MCP servers.",
+  "name": "@pondlog/source-mushroomobserver",
+  "version": "0.1.0",
+  "description": "Mushroom Observer API2 client: typed, Zod-validated, polite-rate-limited. Returns Result<T> instead of throwing. The first dedicated mycology client library for pondlog.",
   "keywords": [
     "pondlog",
+    "mushroom-observer",
+    "mycology",
+    "fungi",
     "nature",
-    "wildlife",
-    "types",
-    "rate-limiter",
-    "result"
+    "api-client",
+    "zod"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/core#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-mushroomobserver#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrewschristison/pondlog.git",
-    "directory": "packages/core"
+    "directory": "packages/source-mushroomobserver"
   },
   "bugs": {
     "url": "https://github.com/andrewschristison/pondlog/issues"
@@ -40,9 +41,11 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run --exclude '**/smoke.test.ts'",
+    "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
+    "@pondlog/core": "workspace:*",
     "zod": "^3.23.8"
   },
   "devDependencies": {

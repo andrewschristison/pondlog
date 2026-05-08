@@ -2,6 +2,7 @@ import {
   getTidePredictions,
   splitHighLow,
   type Coordinates,
+  type FungiObservation,
   type NatureBriefing,
   type NightSkyBriefing,
   type Observation,
@@ -12,6 +13,11 @@ import {
 } from "@pondlog/core";
 import { getNearbyRecentNormalized } from "@pondlog/source-ebird";
 import { getNearbyObservations } from "@pondlog/source-inaturalist";
+import {
+  getRecentNearLocation as getRecentMo,
+  type NormalizedMoObservation,
+  type RecentFungiResult,
+} from "@pondlog/source-mushroomobserver";
 import {
   getActivePhenologyNearby,
   type NormalizedSiteLevelData,
@@ -34,12 +40,18 @@ const DEFAULT_EBIRD_DIST_KM = 25;
 const DEFAULT_EBIRD_BACK = 7;
 const DEFAULT_NPN_RADIUS_KM = 50;
 const DEFAULT_NPN_YEARS_BACK = 2;
+const DEFAULT_MO_RADIUS_KM = 50;
+const DEFAULT_MO_DAYS = 60;
+const DEFAULT_MO_LIMIT = 30;
 
 export interface BuildBriefingParams {
   coords: Coordinates;
   date?: Date;
   noaaStation?: string;
   usgsSite?: string;
+  /** Optional Mushroom Observer region suffix string. When provided, MO
+   *  uses region-based filtering instead of bbox. */
+  mushroomObserverRegion?: string;
 }
 
 /**
@@ -77,6 +89,19 @@ export async function buildBriefing(
     yearsBack: DEFAULT_NPN_YEARS_BACK,
   });
 
+  const moPromise: Promise<Result<RecentFungiResult>> = params.mushroomObserverRegion
+    ? getRecentMo({
+        region: params.mushroomObserverRegion,
+        days: DEFAULT_MO_DAYS,
+        limit: DEFAULT_MO_LIMIT,
+      })
+    : getRecentMo({
+        coords: params.coords,
+        radiusKm: DEFAULT_MO_RADIUS_KM,
+        days: DEFAULT_MO_DAYS,
+        limit: DEFAULT_MO_LIMIT,
+      });
+
   const usgsPromise: Promise<Result<NormalizedUsgsReading[]> | null> =
     params.usgsSite
       ? getInstantaneousValues({
@@ -95,10 +120,11 @@ export async function buildBriefing(
 
   const nightSkyResult = getTonightsBriefing({ coords: params.coords, date });
 
-  const [inatRes, ebirdRes, npnRes, usgsRes, noaaRes] = await Promise.all([
+  const [inatRes, ebirdRes, npnRes, moRes, usgsRes, noaaRes] = await Promise.all([
     inatPromise.catch(captureSettled<Observation[]>("inaturalist")),
     ebirdPromise.catch(captureSettled<Observation[]>("ebird")),
     npnPromise.catch(captureSettled<NpnPhenologyResult>("npn")),
+    moPromise.catch(captureSettled<RecentFungiResult>("mushroomobserver")),
     usgsPromise.catch(captureSettled<NormalizedUsgsReading[]>("usgs")),
     noaaPromise.catch(captureSettled<TideEvent[]>("noaa")),
   ]);
@@ -119,6 +145,11 @@ export async function buildBriefing(
     phenology = data.entries
       .map(toPhenologyEntry)
       .filter((e): e is PhenologyEntry => e !== null);
+  });
+
+  let fungi: FungiObservation[] | undefined;
+  ingest(moRes, "mushroomobserver", errors, (data) => {
+    fungi = data.observations.map((o) => toFungiObservation(o, params.coords));
   });
 
   let streamflow: StreamflowReading | undefined;
@@ -153,8 +184,40 @@ export async function buildBriefing(
     speciesCounts: [],
     ...(streamflow ? { streamflow } : {}),
     ...(phenology ? { phenology } : {}),
+    ...(fungi ? { fungi } : {}),
     errors,
   };
+}
+
+function haversineKm(a: Coordinates, b: Coordinates): number {
+  const R = 6371;
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180;
+  const dLng = ((b.lng - a.lng) * Math.PI) / 180;
+  const lat1 = (a.lat * Math.PI) / 180;
+  const lat2 = (b.lat * Math.PI) / 180;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+function toFungiObservation(
+  o: NormalizedMoObservation,
+  origin: Coordinates,
+): FungiObservation {
+  const entry: FungiObservation = {
+    id: o.id,
+    consensusName: o.consensusName ?? "(unidentified)",
+    hasImages: o.hasImages,
+    url: o.url,
+  };
+  if (typeof o.confidence === "number") entry.confidence = o.confidence;
+  if (o.date) entry.date = o.date;
+  if (o.locationName) entry.locationName = o.locationName;
+  if (o.coordinates) {
+    entry.distanceKm = Math.round(haversineKm(origin, o.coordinates) * 10) / 10;
+  }
+  return entry;
 }
 
 function ingest<T>(

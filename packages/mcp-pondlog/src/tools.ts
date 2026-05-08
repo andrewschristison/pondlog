@@ -24,6 +24,7 @@ import {
   ebirdApiKeyField,
   latField,
   lngField,
+  mushroomObserverRegionField,
   noaaStationField,
   radiusField,
   usgsSiteField,
@@ -46,10 +47,10 @@ function registerGetNatureBriefing(server: McpServer): void {
     {
       title: "Place-Aware Nature Briefing",
       description:
-        "Returns a complete nature briefing for a location — birds, wildlife, plants, tides, streamflow, night sky, and phenology stitched from six data sources (iNaturalist, eBird, NOAA, USGS, NPN, astronomy-engine) into one response. " +
-        "All six sources are fetched in parallel; partial failures are reported in the `errors` array without crashing the briefing. " +
-        "This is the primary tool: one call replaces six API integrations. For drilling into a single area, prefer the focused tools `get_nearby_wildlife`, `get_water_conditions`, `get_tonight_sky`, or `get_phenology`. " +
-        "Tides require a NOAA station id; streamflow requires a USGS site number — pass them in or set NOAA_STATION / USGS_SITE env vars. eBird requires a free API key (EBIRD_API_KEY env var or `ebird_api_key` input).",
+        "Returns a complete nature briefing for a location — birds, wildlife, fungi, plants, tides, streamflow, night sky, and phenology stitched from seven data sources (iNaturalist, eBird, Mushroom Observer, NOAA, USGS, NPN, astronomy-engine) into one response. " +
+        "All seven sources are fetched in parallel; partial failures are reported in the `errors` array without crashing the briefing. " +
+        "This is the primary tool: one call replaces seven API integrations. For drilling into a single area, prefer the focused tools `get_nearby_wildlife`, `get_water_conditions`, `get_tonight_sky`, or `get_phenology`. " +
+        "Tides require a NOAA station id; streamflow requires a USGS site number — pass them in or set NOAA_STATION / USGS_SITE env vars. eBird requires a free API key (EBIRD_API_KEY env var or `ebird_api_key` input). Mushroom Observer needs no key.",
       inputSchema: {
         lat: latField,
         lng: lngField,
@@ -57,6 +58,7 @@ function registerGetNatureBriefing(server: McpServer): void {
         noaa_station: noaaStationField.optional(),
         usgs_site: usgsSiteField.optional(),
         ebird_api_key: ebirdApiKeyField.optional(),
+        mushroom_observer_region: mushroomObserverRegionField.optional(),
       },
       annotations: READ_ONLY,
     },
@@ -64,12 +66,15 @@ function registerGetNatureBriefing(server: McpServer): void {
       const date = parseDate(args.date);
       const noaaStation = args.noaa_station ?? process.env.NOAA_STATION;
       const usgsSite = args.usgs_site ?? process.env.USGS_SITE;
+      const moRegion =
+        args.mushroom_observer_region ?? process.env.MUSHROOM_OBSERVER_REGION;
       const briefing = await withEbirdApiKey(args.ebird_api_key, () =>
         buildBriefing({
           coords: { lat: args.lat, lng: args.lng },
           ...(date ? { date } : {}),
           ...(noaaStation ? { noaaStation } : {}),
           ...(usgsSite ? { usgsSite } : {}),
+          ...(moRegion ? { mushroomObserverRegion: moRegion } : {}),
         }),
       );
       return success(briefing);

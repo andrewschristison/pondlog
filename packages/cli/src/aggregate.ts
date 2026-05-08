@@ -2,6 +2,7 @@ import {
   getTidePredictions,
   splitHighLow,
   type Coordinates,
+  type FungiObservation,
   type NatureBriefing,
   type NightSkyBriefing,
   type Observation,
@@ -11,6 +12,11 @@ import {
 } from "@pondlog/core";
 import { getNearbyRecentNormalized } from "@pondlog/source-ebird";
 import { getNearbyObservations } from "@pondlog/source-inaturalist";
+import {
+  getRecentNearLocation as getRecentMo,
+  type NormalizedMoObservation,
+  type RecentFungiResult,
+} from "@pondlog/source-mushroomobserver";
 import {
   getActivePhenologyNearby,
   type NormalizedSiteLevelData,
@@ -29,6 +35,9 @@ const DEFAULT_EBIRD_DIST_KM = 25;
 const DEFAULT_EBIRD_BACK = 7;
 const DEFAULT_NPN_RADIUS_KM = 50;
 const DEFAULT_NPN_YEARS_BACK = 2;
+const DEFAULT_MO_RADIUS_KM = 50;
+const DEFAULT_MO_DAYS = 60;
+const DEFAULT_MO_LIMIT = 30;
 
 export interface BuildTodayBriefingParams {
   coords: Coordinates;
@@ -91,6 +100,31 @@ export async function buildTodayBriefing(
       }),
   });
 
+  // Mushroom Observer — coords + radius bbox by default; falls back to the
+  // configured region suffix when no useful coords are available (we still
+  // pass the bbox call below; the region setting is reserved for future use).
+  const moRegion = params.config?.mushroomObserverRegion;
+  const moPromise: Promise<{ result: Result<RecentFungiResult>; cacheHit: boolean }> = withCache({
+    source: "mushroomobserver",
+    params: moRegion
+      ? { fn: "recent", region: moRegion, days: DEFAULT_MO_DAYS, limit: DEFAULT_MO_LIMIT }
+      : { fn: "recent", coords: params.coords, radiusKm: DEFAULT_MO_RADIUS_KM, days: DEFAULT_MO_DAYS, limit: DEFAULT_MO_LIMIT },
+    bypass: noCache,
+    fetcher: () =>
+      moRegion
+        ? getRecentMo({
+            region: moRegion,
+            days: DEFAULT_MO_DAYS,
+            limit: DEFAULT_MO_LIMIT,
+          })
+        : getRecentMo({
+            coords: params.coords,
+            radiusKm: DEFAULT_MO_RADIUS_KM,
+            days: DEFAULT_MO_DAYS,
+            limit: DEFAULT_MO_LIMIT,
+          }),
+  });
+
   const usgsSite = params.config?.usgsSite;
   const usgsPromise: Promise<{ result: Result<NormalizedUsgsReading[]>; cacheHit: boolean } | null> =
     usgsSite
@@ -119,10 +153,11 @@ export async function buildTodayBriefing(
 
   const nightSkyResult = getTonightsBriefing({ coords: params.coords, date });
 
-  const [inatRes, ebirdRes, npnRes, usgsRes, noaaRes] = await Promise.all([
+  const [inatRes, ebirdRes, npnRes, moRes, usgsRes, noaaRes] = await Promise.all([
     inatPromise.catch(captureSettled("inaturalist")),
     ebirdPromise.catch(captureSettled("ebird")),
     npnPromise.catch(captureSettled("npn")),
+    moPromise.catch(captureSettled("mushroomobserver")),
     usgsPromise.catch(captureSettled("usgs")),
     noaaPromise.catch(captureSettled("noaa")),
   ]);
@@ -139,6 +174,11 @@ export async function buildTodayBriefing(
   let phenology: PhenologyEntry[] | undefined;
   ingest(npnRes, "npn", errors, cacheHits, (data) => {
     phenology = data.entries.map(toPhenologyEntry).filter(Boolean) as PhenologyEntry[];
+  });
+
+  let fungi: FungiObservation[] | undefined;
+  ingest(moRes, "mushroomobserver", errors, cacheHits, (data) => {
+    fungi = data.observations.map((o) => toFungiObservation(o, params.coords));
   });
 
   let streamflow: StreamflowReading | undefined;
@@ -175,6 +215,7 @@ export async function buildTodayBriefing(
     speciesCounts: [],
     ...(streamflow ? { streamflow } : {}),
     ...(phenology ? { phenology } : {}),
+    ...(fungi ? { fungi } : {}),
     errors,
   };
 
@@ -274,6 +315,37 @@ function lastValue(
     }
   }
   return undefined;
+}
+
+function haversineKm(a: Coordinates, b: Coordinates): number {
+  const R = 6371;
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180;
+  const dLng = ((b.lng - a.lng) * Math.PI) / 180;
+  const lat1 = (a.lat * Math.PI) / 180;
+  const lat2 = (b.lat * Math.PI) / 180;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+function toFungiObservation(
+  o: NormalizedMoObservation,
+  origin: Coordinates,
+): FungiObservation {
+  const entry: FungiObservation = {
+    id: o.id,
+    consensusName: o.consensusName ?? "(unidentified)",
+    hasImages: o.hasImages,
+    url: o.url,
+  };
+  if (typeof o.confidence === "number") entry.confidence = o.confidence;
+  if (o.date) entry.date = o.date;
+  if (o.locationName) entry.locationName = o.locationName;
+  if (o.coordinates) {
+    entry.distanceKm = Math.round(haversineKm(origin, o.coordinates) * 10) / 10;
+  }
+  return entry;
 }
 
 function toPhenologyEntry(

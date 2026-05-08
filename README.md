@@ -2,9 +2,9 @@
 
 Place-aware nature data aggregation. **What's happening in nature at
 these coordinates right now?** Pondlog stitches together free public
-APIs — iNaturalist, eBird, USA-NPN, USGS — plus local astronomy
-computation (`astronomy-engine`) and NOAA tides/cloud cover into a
-unified data layer with two interfaces:
+APIs — iNaturalist, eBird, USA-NPN, USGS, Mushroom Observer — plus
+local astronomy computation (`astronomy-engine`) and NOAA tides/cloud
+cover into a unified data layer with two interfaces:
 
 - A **CLI** for humans (`pondlog inat nearby --lat 48.118 --lng -123.43`)
 - An **MCP server** per source for AI agents (Claude Desktop, Cursor)
@@ -22,11 +22,13 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | [`@pondlog/source-npn`](./packages/source-npn) | [![npm](https://img.shields.io/npm/v/@pondlog/source-npn.svg)](https://www.npmjs.com/package/@pondlog/source-npn) | USA-NPN phenology client |
 | [`@pondlog/source-usgs`](./packages/source-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/source-usgs.svg)](https://www.npmjs.com/package/@pondlog/source-usgs) | USGS Water Services client |
 | [`@pondlog/source-nightsky`](./packages/source-nightsky) | [![npm](https://img.shields.io/npm/v/@pondlog/source-nightsky.svg)](https://www.npmjs.com/package/@pondlog/source-nightsky) | Local night-sky briefing (astronomy-engine) |
+| [`@pondlog/source-mushroomobserver`](./packages/source-mushroomobserver) | [![npm](https://img.shields.io/npm/v/@pondlog/source-mushroomobserver.svg)](https://www.npmjs.com/package/@pondlog/source-mushroomobserver) | Mushroom Observer (mycology) client |
 | [`@pondlog/mcp-inaturalist`](./packages/mcp-inaturalist) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-inaturalist.svg)](https://www.npmjs.com/package/@pondlog/mcp-inaturalist) | iNaturalist MCP server (9 tools) |
 | [`@pondlog/mcp-ebird`](./packages/mcp-ebird) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-ebird.svg)](https://www.npmjs.com/package/@pondlog/mcp-ebird) | eBird MCP server (21 tools) |
 | [`@pondlog/mcp-npn`](./packages/mcp-npn) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-npn.svg)](https://www.npmjs.com/package/@pondlog/mcp-npn) | NPN MCP server (8 tools) |
 | [`@pondlog/mcp-usgs`](./packages/mcp-usgs) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-usgs.svg)](https://www.npmjs.com/package/@pondlog/mcp-usgs) | USGS MCP server (4 tools) |
-| [`@pondlog/mcp-pondlog`](./packages/mcp-pondlog) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-pondlog.svg)](https://www.npmjs.com/package/@pondlog/mcp-pondlog) | Aggregate MCP server (5 tools, all six sources) |
+| [`@pondlog/mcp-mushroomobserver`](./packages/mcp-mushroomobserver) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-mushroomobserver.svg)](https://www.npmjs.com/package/@pondlog/mcp-mushroomobserver) | Mushroom Observer MCP server (5 tools, mycology-first) |
+| [`@pondlog/mcp-pondlog`](./packages/mcp-pondlog) | [![npm](https://img.shields.io/npm/v/@pondlog/mcp-pondlog.svg)](https://www.npmjs.com/package/@pondlog/mcp-pondlog) | Aggregate MCP server (5 tools, all seven sources) |
 
 ## Status
 
@@ -36,6 +38,7 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | eBird | ✅ | ✅ | ✅ |
 | NPN (phenology) | ✅ | ✅ | ✅ |
 | USGS (water) | ✅ | ✅ | ✅ |
+| Mushroom Observer (mycology) | ✅ | ✅ | ✅ |
 | Night sky (`astronomy-engine`) | ✅ | ✅ | ✅ (via `mcp-pondlog`) |
 | Aggregate (`pondlog today` / `mcp-pondlog`) | — | ✅ | ✅ |
 

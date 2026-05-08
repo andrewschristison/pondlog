@@ -1,33 +1,25 @@
 {
-  "name": "@pondlog/mcp-pondlog",
-  "version": "0.2.0",
-  "description": "Aggregate MCP server: one tool call returns a unified nature briefing — birds, wildlife, plants, tides, streamflow, night sky, and phenology stitched from six public APIs into a single response.",
+  "name": "@pondlog/mcp-mushroomobserver",
+  "version": "0.1.0",
+  "description": "MCP server for Mushroom Observer — the world's largest dedicated mycology platform with 500,000+ fungal observations and expert-weighted ID confidence. Five tools: nearby/recent fungi, single observation detail, fungal name search, region discovery. No API key required.",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
     "claude-desktop",
     "cursor",
-    "nature",
-    "wildlife",
-    "birds",
-    "tides",
-    "streamflow",
-    "astronomy",
-    "phenology",
-    "inaturalist",
-    "ebird",
-    "noaa",
-    "usgs",
-    "npn"
+    "mushroom-observer",
+    "mycology",
+    "fungi",
+    "nature"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-pondlog#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-mushroomobserver#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrewschristison/pondlog.git",
-    "directory": "packages/mcp-pondlog"
+    "directory": "packages/mcp-mushroomobserver"
   },
   "bugs": {
     "url": "https://github.com/andrewschristison/pondlog/issues"
@@ -35,7 +27,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-pondlog": "./dist/index.js"
+    "pondlog-mcp-mushroomobserver": "./dist/index.js"
   },
   "files": [
     "dist",
@@ -53,12 +45,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
     "@pondlog/core": "workspace:*",
-    "@pondlog/source-ebird": "workspace:*",
-    "@pondlog/source-inaturalist": "workspace:*",
     "@pondlog/source-mushroomobserver": "workspace:*",
-    "@pondlog/source-nightsky": "workspace:*",
-    "@pondlog/source-npn": "workspace:*",
-    "@pondlog/source-usgs": "workspace:*",
     "zod": "^3.23.8"
   },
   "devDependencies": {

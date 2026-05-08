@@ -1,4 +1,5 @@
 import type {
+  FungiObservation,
   NatureBriefing,
   Observation,
   PhenologyEntry,
@@ -158,6 +159,12 @@ function renderBriefing(
     console.log("");
   }
 
+  if (b.fungi && b.fungi.length > 0) {
+    renderFungi(b.fungi);
+    cacheTag(cacheHits.mushroomobserver, "mushroomobserver");
+    console.log("");
+  }
+
   if (b.errors.length > 0) {
     console.log(pc.yellow(pc.bold("⚠  Partial failures")));
     for (const e of b.errors) {
@@ -198,6 +205,39 @@ function renderObservations(
     console.log(`🦋  ${pc.bold(`${others.length} other obs`)} (${uniqueNames.length} species)`);
     if (sample) console.log(`     ${pc.dim(sample)}`);
     cacheTag(cacheHits.inaturalist, "inaturalist");
+  }
+}
+
+function renderFungi(entries: FungiObservation[]): void {
+  console.log(pc.bold("Fungi"));
+  // Sort by most recent date desc, then by descending confidence.
+  const sorted = [...entries].sort((a, b) => {
+    const da = a.date ?? "";
+    const db = b.date ?? "";
+    if (da !== db) return db.localeCompare(da);
+    return (b.confidence ?? 0) - (a.confidence ?? 0);
+  });
+  const top = sorted.slice(0, 4);
+  for (const f of top) {
+    const date = f.date ? pc.dim(f.date) : "";
+    const conf =
+      typeof f.confidence === "number"
+        ? pc.dim(`conf=${f.confidence.toFixed(2)}`)
+        : "";
+    const dist =
+      typeof f.distanceKm === "number"
+        ? pc.dim(`${f.distanceKm.toFixed(1)} km`)
+        : f.locationName
+          ? pc.dim(f.locationName.split(",")[0] ?? "")
+          : "";
+    const img = f.hasImages ? "📷  " : "";
+    const meta = [date, conf, dist].filter(Boolean).join("  ·  ");
+    console.log(
+      `  🍄  ${img}${pc.bold(f.consensusName)}${meta ? `  ${pc.dim("·")}  ${meta}` : ""}`,
+    );
+  }
+  if (entries.length > top.length) {
+    console.log(pc.dim(`  …and ${entries.length - top.length} more`));
   }
 }
 

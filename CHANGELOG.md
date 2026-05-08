@@ -3,6 +3,128 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.12.0] - 2026-05-07
+
+### Added — Sticky 16: Mushroom Observer (the world's first mycology MCP)
+
+Pondlog grows fungi. `@pondlog/source-mushroomobserver`, `pondlog mushroom`
+CLI, and `@pondlog/mcp-mushroomobserver` ship in one pass — the first
+dedicated mycology MCP on any registry, fronted by Mushroom Observer's
+500,000+ fungal observations with vote-weighted ID confidence. The
+aggregate `pondlog today` and `mcp-pondlog get_nature_briefing` gain a
+🍄 fungi section as their seventh source.
+
+#### Why it matters
+
+Every other source pondlog covers (iNat, eBird, NPN, USGS) is a
+generalist platform. Mushroom Observer is mycology-first: its taxonomy,
+voting model, and geography are designed around fungi. The MCP space
+had zero dedicated mycology servers before this commit.
+
+#### Research-driven plan adjustments
+
+The sticky's spec was refined against the live API before any code:
+
+- **Locations endpoint has no name filter.** MO's `/locations`
+  parameters are bbox + ID only — no `pattern=` or `name=`. The
+  proposed `searchLocations(query)` was unbuildable as written.
+  Replaced with `searchRegions(query)` which scans observations with
+  the suffix and harvests unique location-name strings.
+- **Spatial queries DO work via observations bbox.** Contrary to the
+  sticky's claim that MO uses named locations only, the
+  `/observations` endpoint accepts `north/south/east/west` lat/lng.
+  Pondlog stays consistent with eBird/iNat/NPN/USGS by using
+  coords+radius (converted to bbox internally) as the primary spatial
+  interface, with `region:` suffix as a secondary string filter.
+- **Default response is XML.** MO defaults to XML on every endpoint.
+  The client appends `.json` to every path automatically.
+- **Detail levels.** `detail=low` is flat IDs (~1KB/record);
+  `detail=high` nests location/consensus/owner/images (~3-4KB/record).
+  The client defaults to `low` for list calls and `high` only for
+  single-record `getObservation`.
+
+#### `@pondlog/source-mushroomobserver` (new package)
+
+- 7 functions: `searchObservations`, `getObservation`, `searchNames`,
+  `searchRegions`, `getRecentNearLocation`, `getSpeciesCountByLocation`,
+  `getLocationsInBbox`. All return `Result<T>`, never throw.
+- Required-narrowing guard on `searchObservations`: at least one of
+  coords+radius / region / name / date must be supplied. Unbounded
+  queries can return tens of MB.
+- Rate limiter: 20 req/min (1 every 3s) with burst of 3, matching MO's
+  posted limit. `withRetry` on 429 with 3s backoff.
+- HTML-stripped notes via cheap regex + entity decoder (no parser dep).
+- `bboxAround(coords, radiusKm)` helper local to the package
+  (mirroring `source-usgs`); rounds to 6 decimal places.
+- Local fixtures + 8 unit tests + 8 live smoke tests at Port Angeles
+  (`searchObservations`, `searchNames`, `searchRegions`,
+  `getObservation`, `getRecentNearLocation`,
+  `getSpeciesCountByLocation` all verified against the real API).
+
+#### `pondlog mushroom` (CLI subcommand group)
+
+- `pondlog mushroom recent [--lat --lng | --region] [--radius] [--days]
+  [--limit] [--has-images] [--min-confidence] [--json]` — the headline
+  command, falls back to saved location or `mushroomObserverRegion`
+  config setting when no flags are passed.
+- `pondlog mushroom search <name> [--rank Genus|Species|...] [--json]` —
+  fungal taxonomy substring search.
+- `pondlog mushroom observation <id> [--json]` — full record detail
+  with location centroid, observer, image URL, and HTML-stripped notes.
+- `pondlog mushroom regions <query> [--pages N] [--json]` — discover
+  MO location-name suffixes by harvesting observations for the suffix.
+- `pondlog config set-mushroom-region <name>` — saves the region
+  suffix to `~/.pondlog/config.json` for use by both `mushroom` and
+  the aggregate.
+- New `format-mushroom.ts` (column-aligned picocolors output, --json
+  on every subcommand).
+
+#### `@pondlog/mcp-mushroomobserver` (new package, 5 tools)
+
+- `get_recent_fungi` — the headline tool. Coords+radius OR region.
+  Pages through MO internally to fill the requested limit.
+- `search_observations` — full filter set: bbox, region, taxon name,
+  date range, has_images, confidence threshold.
+- `get_observation` — single record, high-detail.
+- `search_fungal_names` — `text_name_has` substring search with rank
+  filter (Class | Domain | Family | Form | Genus | Species | … — MO's
+  full set is exposed).
+- `search_regions` — discovers location-name suffixes; documents in
+  the description that MO's `/locations` has no name filter.
+- All tools `readOnlyHint: true, openWorldHint: true`. Descriptions
+  emphasize mycology expertise and 500,000+ observations. Cross-
+  references siblings per `mcp-server` SKILL §5.
+- `server.json` for MCP Registry, README with Claude Desktop + Cursor
+  configs.
+- JSON-RPC handshake live-verified: 5 tools listed, golden-path
+  `get_recent_fungi` returns 5 obs near Port Angeles, bad-input
+  rejected, `search_fungal_names("Cantharellus", rank=Species)`
+  returns 182 names.
+
+#### Aggregate wiring
+
+- New `FungiObservation` type in `@pondlog/core`; `NatureBriefing`
+  gains optional `fungi?: FungiObservation[]`. `SourceId` adds
+  `"mushroomobserver"`.
+- `packages/cli/src/aggregate.ts` and `packages/mcp-pondlog/src/
+  briefing.ts` both fan out to MO via `Promise.allSettled`. Failure
+  pushes onto `errors[]` without crashing.
+- `pondlog today` renders a 🍄 Fungi block (top 4 by date+confidence,
+  picocolors output, `(cached)` tag honored).
+- CLI cache TTL inherits the default 1h.
+- `mcp-pondlog` v0.2.0: `get_nature_briefing` description updated
+  ("seven data sources"), gains `mushroom_observer_region` optional
+  input (also reads `MUSHROOM_OBSERVER_REGION` env var).
+
+#### Versions
+
+- `@pondlog/core`: 0.2.0 → 0.3.0 (new `FungiObservation`,
+  `NatureBriefing.fungi`, `SourceId` extension — additive).
+- `pondlog` (CLI): 0.2.0 → 0.3.0.
+- `@pondlog/mcp-pondlog`: 0.1.0 → 0.2.0.
+- New: `@pondlog/source-mushroomobserver` 0.1.0,
+  `@pondlog/mcp-mushroomobserver` 0.1.0.
+
 ## [0.11.0] - 2026-05-07
 
 ### Added — Sticky 15: `@pondlog/mcp-pondlog` aggregate MCP server

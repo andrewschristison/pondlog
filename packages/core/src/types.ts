@@ -24,7 +24,14 @@ export type IconicTaxon =
   | "Actinopterygii"
   | "Unknown";
 
-export type SourceId = "inaturalist" | "ebird" | "npn" | "usgs" | "noaa" | "suncalc";
+export type SourceId =
+  | "inaturalist"
+  | "ebird"
+  | "npn"
+  | "usgs"
+  | "noaa"
+  | "suncalc"
+  | "mushroomobserver";
 
 export interface Observation {
   id: string;
@@ -267,6 +274,22 @@ export interface StreamflowReading {
   observedAt?: string;
 }
 
+export interface FungiObservation {
+  /** Mushroom Observer observation id. */
+  id: number;
+  /** Vote-weighted consensus name (genus or species, e.g. "Cantharellus formosus"). */
+  consensusName: string;
+  /** Vote-weighted ID confidence in [-3..3]. May be absent for very new records. */
+  confidence?: number;
+  date?: string;
+  locationName?: string;
+  /** Distance from the briefing's coords in km. Absent when source query was
+   *  region-based (no centroid to measure against). */
+  distanceKm?: number;
+  hasImages: boolean;
+  url: string;
+}
+
 export interface NatureBriefing {
   coordinates: Coordinates;
   generatedAt: string;
@@ -285,5 +308,6 @@ export interface NatureBriefing {
   speciesCounts: SpeciesCount[];
   streamflow?: StreamflowReading;
   phenology?: PhenologyEntry[];
+  fungi?: FungiObservation[];
   errors: { source: string; message: string }[];
 }

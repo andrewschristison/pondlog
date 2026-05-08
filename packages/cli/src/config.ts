@@ -28,6 +28,10 @@ const PondlogConfigSchema = z.object({
   usgsSite: z.string().regex(USGS_SITE_RE).optional(),
   /** eBird region code used for region-scoped queries (e.g. "US-WA-009"). */
   ebirdRegion: z.string().regex(EBIRD_REGION_RE).optional(),
+  /** Mushroom Observer region suffix string (e.g. "Clallam Co., Washington, USA").
+   *  Used by `pondlog mushroom` and the aggregate as a fallback when coords
+   *  alone produce too few records. */
+  mushroomObserverRegion: z.string().min(2).max(200).optional(),
 });
 
 export type PondlogConfig = z.infer<typeof PondlogConfigSchema>;
@@ -71,6 +75,20 @@ export function setEbirdRegion(
     });
   }
   return ok({ ...(cfg ?? { version: 1 as const }), ebirdRegion: upper });
+}
+
+export function setMushroomObserverRegion(
+  cfg: PondlogConfig | null,
+  region: string,
+): Result<PondlogConfig> {
+  const trimmed = region.trim();
+  if (trimmed.length < 2 || trimmed.length > 200) {
+    return err({
+      source: "cli/config",
+      message: `invalid mushroom-observer region — must be 2–200 chars (e.g. "Clallam Co., Washington, USA")`,
+    });
+  }
+  return ok({ ...(cfg ?? { version: 1 as const }), mushroomObserverRegion: trimmed });
 }
 
 export const CONFIG_DIR_ENV = "PONDLOG_CONFIG_DIR";

@@ -4,6 +4,7 @@ import {
   loadConfig,
   saveConfig,
   setEbirdRegion,
+  setMushroomObserverRegion,
   setNoaaStation,
   setSavedLocation,
   setUsgsSite,
@@ -94,6 +95,24 @@ export function buildConfigCommand(): Command {
     });
 
   cmd
+    .command("set-mushroom-region")
+    .description(
+      'Save default Mushroom Observer region suffix (e.g. "Clallam Co., Washington, USA")',
+    )
+    .argument("<region>", "MO location-name suffix string")
+    .action(async (region: string) => {
+      const existing = await loadConfig();
+      if (!existing.ok) return fail(existing.error.message);
+      const next = setMushroomObserverRegion(existing.data, region);
+      if (!next.ok) return fail(next.error.message);
+      const written = await saveConfig(next.data);
+      if (!written.ok) return fail(written.error.message);
+      console.log(
+        `Saved mushroom-observer region "${next.data.mushroomObserverRegion}" -> ${getConfigPath()}`,
+      );
+    });
+
+  cmd
     .command("show")
     .description("Print the current config")
     .option("--json", "Print raw JSON")
@@ -118,6 +137,9 @@ export function buildConfigCommand(): Command {
       console.log(`NOAA station: ${cfg.data.noaaStation ?? "(none)"}`);
       console.log(`USGS site: ${cfg.data.usgsSite ?? "(none)"}`);
       console.log(`eBird region: ${cfg.data.ebirdRegion ?? "(none)"}`);
+      console.log(
+        `Mushroom Observer region: ${cfg.data.mushroomObserverRegion ?? "(none)"}`,
+      );
     });
 
   return cmd;

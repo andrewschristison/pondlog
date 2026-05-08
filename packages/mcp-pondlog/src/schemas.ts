@@ -69,3 +69,11 @@ export const yearsBackField = z
   .describe(
     "Years of NPN phenometric history to summarize, counting backwards from current year. Default 2 (this year + last). Maximum 20.",
   );
+
+export const mushroomObserverRegionField = z
+  .string()
+  .min(2)
+  .max(200)
+  .describe(
+    'Mushroom Observer region suffix string (e.g. "Clallam Co., Washington, USA"). Optional. When provided, the MO section uses suffix-match region filtering instead of bbox — useful when MO coverage at the bbox is sparse or when the caller wants county/state-wide fungi.',
+  );
