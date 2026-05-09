@@ -42,6 +42,7 @@ interface NowOpts {
   category?: string;
   limit?: string;
   json?: boolean;
+  includeIndoor?: boolean;
 }
 
 interface PlantOpts {
@@ -128,6 +129,10 @@ export function buildGardenCommand(): Command {
       "Filter by category: vegetable, herb, fruit, flower, cover-crop, root, legume",
     )
     .option("-l, --limit <n>", "Cap on suggestions (1..500, default 50)")
+    .option(
+      "--include-indoor",
+      "Include indoor-only crops (microgreens, sprouts). Off by default because their year-round windows otherwise dominate the earliest-harvest sort.",
+    )
     .option("--json", "Print raw JSON")
     .addHelpText(
       "after",
@@ -138,6 +143,7 @@ export function buildGardenCommand(): Command {
         "  $ pondlog garden now --lat 48.118 --lng -123.4307",
         "  $ pondlog garden now --zone 5b --date 2026-04-01",
         "  $ pondlog garden now --category herb",
+        "  $ pondlog garden now --include-indoor   # add microgreens/sprouts",
         "",
         "Output groups by action: start_indoors → direct_sow → transplant → plant_now.",
         "expectedHarvestEarliest is calculated from the crop's daysToHarvest.min;",
@@ -166,6 +172,7 @@ export function buildGardenCommand(): Command {
         ...(opts.date ? { date: opts.date } : {}),
         ...(category ? { category } : {}),
         limit,
+        ...(opts.includeIndoor ? { includeIndoor: true } : {}),
       });
       if (!planRes.ok) return fail(planRes.error.message);
       if (opts.json) return printJson(planRes.data);

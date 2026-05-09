@@ -3,6 +3,37 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.14.2] - 2026-05-08
+
+### Added — Sticky 18.2: surface `includeIndoor` through CLI + MCP
+
+Wire the new `includeIndoor` filter from `@pondlog/core@0.5.1` through to
+both human and agent surfaces, and republish the downstream MCP servers
+so installed users pick up the 500-entry calendar at next install.
+
+- `pondlog garden now` gains `--include-indoor` (boolean flag, off by
+  default). Help text and examples updated. The new default behavior
+  still kicks in transparently for existing users; the flag is the
+  opt-in path for someone deliberately planning microgreen production.
+- `@pondlog/mcp-garden` `get_planting_plan` tool gains `include_indoor`
+  optional input field (boolean). Tool description unchanged in spirit;
+  the new field has its own description noting the year-round-window
+  caveat for agents.
+- `@pondlog/mcp-pondlog` republished as a no-code-change patch — its
+  bundled `@pondlog/core` resolves to 0.5.1 at install, so the 500-entry
+  calendar and the default-no-microgreens behavior reach users running
+  `mcp-pondlog get_nature_briefing`.
+
+#### Versions
+
+- `@pondlog/core` stays at **0.5.1** (no further changes).
+- `pondlog` CLI: 0.5.0 → **0.5.1** (`--include-indoor` flag).
+- `@pondlog/mcp-garden`: 0.1.1 → **0.1.2** (`include_indoor` input).
+- `@pondlog/mcp-pondlog`: 0.3.1 → **0.3.2** (republish to pick up
+  core 0.5.1; no code change).
+
+`server.json` files for both MCP servers updated with matching versions.
+
 ## [0.14.1] - 2026-05-08
 
 ### Added — Sticky 18.1: `growingContext` field + `includeIndoor` filter

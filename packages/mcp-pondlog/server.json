@@ -8,7 +8,7 @@
     "subfolder": "packages/mcp-pondlog"
   },
   "version_detail": {
-    "version": "0.3.0",
+    "version": "0.3.2",
     "release_date": "2026-05-08",
     "is_latest": true
   },
@@ -16,7 +16,7 @@
     {
       "registry_name": "npm",
       "name": "@pondlog/mcp-pondlog",
-      "version": "0.3.0",
+      "version": "0.3.2",
       "runtime_hint": "node",
       "transport": { "type": "stdio" },
       "environment_variables": [

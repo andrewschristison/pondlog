@@ -87,3 +87,9 @@ export const padDaysField = z
   .describe(
     "Window padding in days. A crop is included if today is within [windowStart - padDays, windowEnd + padDays]. Default 0 (strict). Use 7-14 to see crops 'just outside' the recommended window.",
   );
+
+export const includeIndoorField = z
+  .boolean()
+  .describe(
+    "Include indoor-only crops (microgreens, sprouts) in the plan. Default false because their year-round windows otherwise dominate the earliest-harvest sort. Set true if the user is asking about indoor production specifically.",
+  );

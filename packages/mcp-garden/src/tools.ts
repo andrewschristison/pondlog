@@ -26,6 +26,7 @@ import {
   categoryField,
   dateField,
   latField,
+  includeIndoorField,
   limitField,
   lngField,
   padDaysField,
@@ -115,6 +116,7 @@ function registerGetPlantingPlan(server: McpServer): void {
         category: categoryField.optional(),
         limit: limitField.optional(),
         pad_days: padDaysField.optional(),
+        include_indoor: includeIndoorField.optional(),
       },
       annotations: READ_ONLY,
     },
@@ -129,6 +131,7 @@ function registerGetPlantingPlan(server: McpServer): void {
           : {}),
         ...(args.limit !== undefined ? { limit: args.limit } : {}),
         ...(args.pad_days !== undefined ? { padDays: args.pad_days } : {}),
+        ...(args.include_indoor === true ? { includeIndoor: true } : {}),
       });
       if (!planRes.ok) return failure(planRes.error);
       const briefing: GardenBriefing = {
