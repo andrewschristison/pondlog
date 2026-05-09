@@ -1,4 +1,4 @@
-// Crop calendar — hand-curated planting windows for ~150 food crops, herbs,
+// Crop calendar — hand-curated planting windows for ~500 food crops, herbs,
 // companion flowers, and cover crops. Source: USDA Cooperative Extension
 // publications (consolidated). Each entry has multiple frost-anchored
 // windows (start_indoors, direct_sow, transplant, plant_now) so a single

@@ -5,7 +5,7 @@ Garden-planning MCP server for Claude Desktop, Cursor, and any
 
 Five tools backed by:
 
-1. **A 150-crop calendar** baked into the package (USDA Cooperative
+1. **A 500-crop calendar** baked into the package (USDA Cooperative
    Extension sourced — vegetables, herbs, fruits, companion flowers, cover
    crops, with frost-anchored planting windows). Works fully offline.
 2. **The PRISM 2023 USDA Plant Hardiness Zone Map** (40,283 ZIP centroids).
@@ -73,7 +73,7 @@ npx @modelcontextprotocol/inspector npx -y @pondlog/mcp-garden
 | Tool | What it does |
 |------|--------------|
 | `get_hardiness_zone` | USDA zone + frost dates from lat/lng or ZIP. |
-| `get_planting_plan` | What to plant in zone X on date Y, from the 150-crop calendar. |
+| `get_planting_plan` | What to plant in zone X on date Y, from the 500-crop calendar. |
 | `get_crop_details` | Calendar entry + Trefle botanical detail for a single crop. |
 | `search_plants` | Search calendar + Trefle by name. Calendar matches first. |
 | `get_crops_for_zone` | All crops whose zone range includes the given zone. |

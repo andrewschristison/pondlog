@@ -67,7 +67,7 @@ const VALID_CATEGORIES: CropCategory[] = [
 
 export function buildGardenCommand(): Command {
   const cmd = new Command("garden").description(
-    "Garden planning — USDA hardiness zone, frost dates, planting plan, and plant lookup. Backed by the bundled 150-crop calendar (always available) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
+    "Garden planning — USDA hardiness zone, frost dates, planting plan, and plant lookup. Backed by the bundled 500-crop calendar (always available) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
   );
 
   cmd
@@ -111,7 +111,7 @@ export function buildGardenCommand(): Command {
   cmd
     .command("now")
     .description(
-      "What to plant this week, given a location's zone + frost dates. Cross-references the 150-crop calendar with today's date and the typical frost dates for the zone, returning crops whose start/sow/transplant window is open right now.",
+      "What to plant this week, given a location's zone + frost dates. Cross-references the 500-crop calendar with today's date and the typical frost dates for the zone, returning crops whose start/sow/transplant window is open right now.",
     )
     .option("--lat <lat>", "Latitude (-90..90)")
     .option("--lng <lng>", "Longitude (-180..180)")
@@ -245,7 +245,7 @@ export function buildGardenCommand(): Command {
   cmd
     .command("search <query>")
     .description(
-      "Search for plants by name. Combines the 150-crop calendar with Trefle's 1M+ plant database when TREFLE_API_TOKEN is set.",
+      "Search for plants by name. Combines the 500-crop calendar with Trefle's 1M+ plant database when TREFLE_API_TOKEN is set.",
     )
     .option(
       "--zone <zone>",

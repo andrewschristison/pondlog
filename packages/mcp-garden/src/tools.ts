@@ -100,7 +100,7 @@ function registerGetPlantingPlan(server: McpServer): void {
     {
       title: "What to Plant Now (USDA Zone + Frost-Anchored Calendar)",
       description:
-        "Returns a list of crops to plant in the supplied date window, drawn from the bundled 150-crop calendar (USDA Cooperative Extension publications). " +
+        "Returns a list of crops to plant in the supplied date window, drawn from the bundled 500-crop calendar (USDA Cooperative Extension publications). " +
         "Provide a USDA zone string ('5b', '8b') OR a coordinate pair / zip — coordinates resolve to a zone via the same lookup as `get_hardiness_zone`. " +
         "Each suggestion has: action (start_indoors / direct_sow / transplant / plant_now), windowStart..windowEnd (ISO dates anchored to the zone's typical frost dates), daysToHarvest range, and expectedHarvestEarliest. " +
         "If expectedHarvestEarliest lands past the typical first fall frost the crop is unlikely to finish — surface that to the user. " +
@@ -200,7 +200,7 @@ function registerSearchPlants(server: McpServer): void {
     {
       title: "Search the Crop Calendar and Trefle",
       description:
-        "Combined search: the bundled 150-crop calendar (precise, gardener-curated) + Trefle.io's 1M+ plant database (broad, beta data quality). " +
+        "Combined search: the bundled 500-crop calendar (precise, gardener-curated) + Trefle.io's 1M+ plant database (broad, beta data quality). " +
         "Calendar matches come first and have full planting-window data; Trefle matches are taxonomic only. " +
         "For a focused 'find me the calendar entry for X' use `get_crop_details` instead. " +
         "Trefle results require TREFLE_API_TOKEN; without it only calendar matches are returned. " +

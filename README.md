@@ -41,7 +41,7 @@ By [Andrew Christison](https://github.com/andrewschristison).
 | NPN (phenology) | ✅ | ✅ | ✅ |
 | USGS (water) | ✅ | ✅ | ✅ |
 | Mushroom Observer (mycology) | ✅ | ✅ | ✅ |
-| Garden (USDA zones + 150-crop calendar + Trefle) | ✅ | ✅ | ✅ |
+| Garden (USDA zones + 500-crop calendar + Trefle) | ✅ | ✅ | ✅ |
 | Night sky (`astronomy-engine`) | ✅ | ✅ | ✅ (via `mcp-pondlog`) |
 | Aggregate (`pondlog today` / `mcp-pondlog`) | — | ✅ | ✅ |
 

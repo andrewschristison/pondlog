@@ -3,6 +3,141 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.14.0] - 2026-05-08
+
+### Added — Sticky 18: Crop calendar 150 → 500
+
+The hand-curated calendar in `@pondlog/core` triples in size from 150 to
+500 entries. Same schema (`crop-calendar.schema.json`), same frost-anchored
+window model, same Zod validation gate at module load. No code changes —
+the JSON fixture grows, and every consumer (`pondlog garden now`, the
+`get_planting_plan` MCP tool, the `🌱 garden` section of `pondlog today`
+and `mcp-pondlog get_nature_briefing`) picks up the new entries
+automatically.
+
+#### What's new in the calendar
+
+- **+25 vegetable cultivar groups** — cherry/paste/beefsteak/grape tomato,
+  jalapeño/poblano/serrano/habanero/ghost/banana/shishito/anaheim/cayenne
+  pepper, delicata/kabocha/spaghetti/hubbard/patty-pan/banana/turban squash,
+  pickling/lemon/Armenian/asian cucumber.
+- **+12 brassicas and asian greens** — romanesco, broccolini, broccoli
+  raab, gai lan, choy sum, yu choy, komatsuna, shanghai bok choy, kalette,
+  savoy/red/pointed cabbage, purple kohlrabi, purple Brussels sprouts.
+- **+4 lettuce types** — romaine, butterhead, iceberg, batavian.
+- **+12 specialty greens** — orach, purslane, lamb's quarters, miner's
+  lettuce, agretti, shungiku, molokhia, mustard spinach, callaloo,
+  vegetable amaranth, Italian dandelion, sea beet.
+- **+15 microgreens & sprouts** — sunflower, pea-shoot, radish, broccoli,
+  wheatgrass, kale, basil, arugula, mustard, beet, cilantro, fenugreek
+  microgreens; alfalfa, mung bean, clover, lentil sprouts.
+- **+10 perennial vegetables** — good king henry, sea kale, walking onion,
+  Daubenton's perennial kale, Turkish rocket, perennial leek, ramp,
+  oysterleaf, groundnut (Apios), nine-star broccoli.
+- **+18 grains and pseudocereals** — winter & spring wheat, hulless barley,
+  rye, spelt, einkorn, emmer, triticale, pearl & proso millet, grain
+  sorghum, teff, flint/dent corn, popcorn, upland rice, grain amaranth.
+- **+15 nut trees** — English & black walnut, hazelnut, chestnut, almond,
+  pecan, shagbark hickory, pistachio, macadamia, pinyon pine, heartnut,
+  butternut, monkey puzzle, ginkgo.
+- **+25 tropical / subtropical crops** — sweet potato cultivars
+  (Beauregard, Japanese, Okinawan), Clemson Spineless & Burgundy okra,
+  roselle, luffa, bitter melon, yardlong/asparagus bean, winged bean,
+  moringa, papaya, guava, pineapple guava (feijoa), passionfruit, pineapple,
+  cold-hardy banana, edible ginger, turmeric, taro, cassava, jicama,
+  chayote.
+- **+30 fruit additions** — Asian & European pear, apple, crabapple, peach,
+  nectarine, apricot, European & Japanese plum, sweet/sour/bush cherry,
+  cold-hardy fig, jostaberry, lingonberry, aronia, serviceberry, medlar,
+  cornelian cherry, huckleberry, salal, olallieberry, loganberry, tayberry,
+  marionberry, boysenberry, wineberry, white currant, Brown Turkey fig,
+  yuzu, kumquat, calamondin, loquat, large pomegranate (Wonderful), jujube,
+  che fruit.
+- **+25 culinary herbs** — lemongrass (2 cultivars), green & red shiso,
+  epazote, angelica, Rama/Krishna/holy basil (tulsi), Thai/lemon/cinnamon
+  basil, Mexican tarragon, anise, caraway, cumin, coriander seed, fennel
+  seed, dill seed, fenugreek, nigella, ajowan, creeping rosemary, Arp
+  rosemary, creeping & lemon thyme, Greek & Italian oregano, purple &
+  pineapple sage, chocolate & apple mint, catnip, catmint, kaffir lime,
+  Vietnamese coriander, curry leaf, rue, hyssop, Cuban oregano, Mexican
+  marigold (huacatay), salad burnet, garlic chive, leafy celery, shampoo
+  ginger.
+- **+18 medicinal herbs** — valerian, St John's wort, ashwagandha,
+  marshmallow, skullcap, passionflower (maypop), milk thistle, feverfew,
+  mullein, broadleaf plantain, medicinal yarrow, elderflower, medicinal
+  calendula & lemon balm, Echinacea purpurea (root) & angustifolia, gobo
+  burdock (medicinal & culinary), nettle, raspberry leaf, wild bergamot,
+  tansy, wormwood.
+- **+18 flowers (edible + companion + cut)** — Johnny jump up, pansy,
+  culinary lavender, edible hibiscus, rugosa rose, squash blossom, daylily,
+  dianthus, bachelor's button, rose hip, edible chrysanthemum, tithonia,
+  gomphrena, ageratum, signet marigold, scabiosa, tropical sage, orange
+  hummingbird mint, tall verbena, black-eyed Susan, plains coreopsis,
+  three milkweed species (common, swamp, butterfly), annual phlox,
+  snapdragon, stock, sweet pea, larkspur, love-in-a-mist, hollyhock,
+  foxglove, delphinium, lupine.
+- **+15 cover crops** — field pea (cover & food), red clover, oilseed/
+  tillage radish, sunn hemp, sorghum-sudangrass, cover cowpea (Iron Clay),
+  yellow mustard, Japanese millet, subterranean clover, common vetch,
+  lacy phacelia, lentil, berseem clover, yellow & white sweet clover,
+  rapeseed, purple vetch, barley.
+- **+15 dry beans + pulses** — black, pinto, kidney, navy, cranberry
+  (borlotti), great northern, tepary, soybean, mung, adzuki, hyacinth,
+  pigeon pea, pole lima, broad bean, scarlet runner, kabuli chickpea,
+  green/red/beluga/French green lentil, yellow & green field pea.
+- **+12 root vegetables** — yacon, oca, mashua, scorzonera, Chinese yam,
+  true African yam, arracacha, purple salsify, purple/yellow/white carrot,
+  celeriac, rooting parsley, skirret.
+- **+15 onion/garlic/beet cultivar groups** — cipollini, red Tropea,
+  Walla Walla onions; rocambole, music, purple stripe garlic; golden,
+  Chioggia, cylindra beets; Beauregard/Japanese/Okinawan sweet potato;
+  watermelon, French breakfast, Easter egg, Korean radishes.
+
+#### Quality rules followed (per `feedback_curation_quality.md`)
+
+- All entries pass `crop-calendar.schema.json` — the Zod parse at module
+  load is the gate. Module init throws on the first validation error.
+- `daysToHarvest` ranges sourced from extension service publications
+  (Cornell, Penn State, OSU, WSU, UC ANR, UF/IFAS, UGA, Texas A&M, NMSU,
+  Iowa State, Colorado State, NDSU, Montana State, UH CTAHR, Clemson,
+  USDA NRCS). The schema caps `daysToHarvest.max` at 3650 days; a handful
+  of long-establishment trees (black walnut, shagbark hickory, pinyon
+  pine, monkey puzzle, ginkgo) note "15-30 years to bearing" in their
+  `notes` and cap the value at the schema max.
+- `minSoilTempF` is `null` for transplants, perennials, and dormant tree
+  stock where the field doesn't apply.
+- `zoneRange` reflects realistic cold-limits — banana 6-11 (Musa basjoo),
+  papaya 9-11, pineapple 10-11, almond 7-10, etc.
+- Every new entry includes a `source` field citing the extension service.
+- Notes flag toxicity (foxglove, sweet pea seed, lupine seed, raw cassava,
+  raw lima/kidney beans, true African yam) and regulatory restrictions
+  (Ribes white-pine-rust, milk thistle in CA, wineberry invasiveness in
+  eastern US, Chinese yam invasiveness in southeast US, St John's wort in
+  some western states).
+
+#### Microgreens caveat
+
+15 microgreen/sprout entries use frost-anchored windows of -180..180 days
+because production is indoor and year-round. They will dominate the
+`pondlog garden now` results sorted by earliest-harvest. Filter them out
+with `--category` (use a different category) or pass an outdoor-relevant
+category. A future minor release may add an `outdoor-only` flag.
+
+#### Stale text refreshed
+
+Every "150-crop" mention across the monorepo (`@pondlog/core`,
+`@pondlog/source-trefle`, `@pondlog/mcp-garden`, `@pondlog/mcp-pondlog`,
+`pondlog` CLI, root README) updated to "500-crop".
+
+#### Versions
+
+- `@pondlog/core` 0.4.0 → **0.5.0** (data growth, no API change)
+- `pondlog` CLI 0.4.1 → **0.5.0** (visible content change at
+  `pondlog garden now`; help text refreshed)
+- Other workspace packages that depend on `@pondlog/core` via
+  `workspace:^` (mcp-garden, mcp-pondlog, source-trefle) recompile
+  against 0.5.0; their next publish picks up the expanded calendar.
+
 ## [0.13.0] - 2026-05-08
 
 ### Added — Sticky 17: Garden planning (the world's first plant/garden MCP)

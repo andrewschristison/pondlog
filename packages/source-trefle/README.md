@@ -16,7 +16,7 @@ Trefle is the **taxonomy** layer of pondlog's garden surface. It supplies:
 
 It does **not** supply planting timing — Trefle's `growth.days_to_harvest`,
 `growth.sowing`, and `growth.minimum_temperature` fields are universally
-null for cultivated vegetables (verified live in May 2026). The 150-crop
+null for cultivated vegetables (verified live in May 2026). The 500-crop
 planting calendar in `@pondlog/core` covers planning logic.
 
 ## Install
