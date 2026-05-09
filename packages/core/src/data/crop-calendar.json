@@ -10,6 +10,7 @@
       "scientificName": "Solanum lycopersicum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 90
@@ -47,6 +48,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 95
@@ -84,6 +86,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 110
@@ -122,6 +125,7 @@
       "scientificName": "Solanum melongena",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -158,6 +162,7 @@
       "scientificName": "Solanum tuberosum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 120
@@ -188,6 +193,7 @@
       "scientificName": "Physalis philadelphica",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 100
@@ -222,6 +228,7 @@
       "scientificName": "Physalis pruinosa",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 65,
         "max": 90
@@ -253,6 +260,7 @@
       "scientificName": "Abelmoschus esculentus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 65
@@ -286,6 +294,7 @@
       "scientificName": "Brassica oleracea var. italica",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 85
@@ -326,6 +335,7 @@
       "scientificName": "Brassica oleracea var. botrytis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 100
@@ -363,6 +373,7 @@
       "scientificName": "Brassica oleracea var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 110
@@ -400,6 +411,7 @@
       "scientificName": "Brassica oleracea var. gemmifera",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -432,6 +444,7 @@
       "scientificName": "Brassica oleracea var. sabellica",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 75
@@ -465,6 +478,7 @@
       "scientificName": "Brassica oleracea var. viridis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 85
@@ -496,6 +510,7 @@
       "scientificName": "Brassica oleracea var. gongylodes",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 45,
         "max": 65
@@ -527,6 +542,7 @@
       "scientificName": "Brassica rapa subsp. chinensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 30,
         "max": 55
@@ -562,6 +578,7 @@
       "scientificName": "Brassica rapa subsp. pekinensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 80
@@ -588,6 +605,7 @@
       "scientificName": "Brassica juncea",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 30,
         "max": 50
@@ -619,6 +637,7 @@
       "scientificName": "Brassica rapa subsp. rapa",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 40,
         "max": 60
@@ -651,6 +670,7 @@
       "scientificName": "Brassica napus var. napobrassica",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 110
@@ -679,6 +699,7 @@
       "scientificName": "Cucumis sativus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -711,6 +732,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 45,
         "max": 60
@@ -740,6 +762,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 65
@@ -765,6 +788,7 @@
       "scientificName": "Cucurbita maxima",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 85,
         "max": 120
@@ -791,6 +815,7 @@
       "scientificName": "Cucurbita moschata",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 110
@@ -816,6 +841,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 80,
         "max": 100
@@ -841,6 +867,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -867,6 +894,7 @@
       "scientificName": "Citrullus lanatus",
       "category": "fruit",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 100
@@ -905,6 +933,7 @@
       "scientificName": "Cucumis melo var. cantalupensis",
       "category": "fruit",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -939,6 +968,7 @@
       "scientificName": "Cucumis melo var. inodorus",
       "category": "fruit",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 80,
         "max": 110
@@ -970,6 +1000,7 @@
       "scientificName": "Allium cepa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 140
@@ -1003,6 +1034,7 @@
       "scientificName": "Allium ampeloprasum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 150
@@ -1035,6 +1067,7 @@
       "scientificName": "Allium sativum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 240,
         "max": 300
@@ -1061,6 +1094,7 @@
       "scientificName": "Allium cepa var. aggregatum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 130
@@ -1094,6 +1128,7 @@
       "scientificName": "Allium fistulosum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 75
@@ -1124,6 +1159,7 @@
       "scientificName": "Allium schoenoprasum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -1156,6 +1192,7 @@
       "scientificName": "Allium ampeloprasum var. ampeloprasum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 240,
         "max": 290
@@ -1181,6 +1218,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 65
@@ -1207,6 +1245,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -1232,6 +1271,7 @@
       "scientificName": "Phaseolus lunatus",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 65,
         "max": 90
@@ -1260,6 +1300,7 @@
       "scientificName": "Phaseolus coccineus",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 65,
         "max": 85
@@ -1285,6 +1326,7 @@
       "scientificName": "Glycine max",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -1314,6 +1356,7 @@
       "scientificName": "Pisum sativum var. macrocarpon",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 75
@@ -1346,6 +1389,7 @@
       "scientificName": "Pisum sativum var. saccharatum",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 70
@@ -1377,6 +1421,7 @@
       "scientificName": "Pisum sativum",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 75
@@ -1406,6 +1451,7 @@
       "scientificName": "Vicia faba",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 80,
         "max": 100
@@ -1441,6 +1487,7 @@
       "scientificName": "Cicer arietinum",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 110
@@ -1469,6 +1516,7 @@
       "scientificName": "Lactuca sativa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 30,
         "max": 50
@@ -1501,6 +1549,7 @@
       "scientificName": "Lactuca sativa var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 55,
         "max": 80
@@ -1538,6 +1587,7 @@
       "scientificName": "Spinacia oleracea",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 35,
         "max": 50
@@ -1570,6 +1620,7 @@
       "scientificName": "Beta vulgaris var. cicla",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 65
@@ -1595,6 +1646,7 @@
       "scientificName": "Eruca vesicaria subsp. sativa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 25,
         "max": 40
@@ -1629,6 +1681,7 @@
       "scientificName": "Brassica rapa var. niposinica",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 35,
         "max": 50
@@ -1660,6 +1713,7 @@
       "scientificName": "Valerianella locusta",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -1690,6 +1744,7 @@
       "scientificName": "Cichorium endivia",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 80,
         "max": 100
@@ -1715,6 +1770,7 @@
       "scientificName": "Cichorium endivia var. latifolia",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 80,
         "max": 95
@@ -1740,6 +1796,7 @@
       "scientificName": "Cichorium intybus var. foliosum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -1765,6 +1822,7 @@
       "scientificName": "Nasturtium officinale",
       "category": "herb",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 50,
         "max": 65
@@ -1791,6 +1849,7 @@
       "scientificName": "Rumex acetosa",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -1816,6 +1875,7 @@
       "scientificName": "Basella alba",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -1841,6 +1901,7 @@
       "scientificName": "Tetragonia tetragonoides",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -1867,6 +1928,7 @@
       "scientificName": "Daucus carota subsp. sativus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -1898,6 +1960,7 @@
       "scientificName": "Beta vulgaris",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -1929,6 +1992,7 @@
       "scientificName": "Raphanus sativus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 22,
         "max": 35
@@ -1961,6 +2025,7 @@
       "scientificName": "Raphanus sativus var. longipinnatus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 75
@@ -1986,6 +2051,7 @@
       "scientificName": "Pastinaca sativa",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 130
@@ -2012,6 +2078,7 @@
       "scientificName": "Tragopogon porrifolius",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 110,
         "max": 150
@@ -2040,6 +2107,7 @@
       "scientificName": "Helianthus tuberosus",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 110,
         "max": 150
@@ -2068,6 +2136,7 @@
       "scientificName": "Ipomoea batatas",
       "category": "root",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 130
@@ -2094,6 +2163,7 @@
       "scientificName": "Armoracia rusticana",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 140,
         "max": 180
@@ -2119,6 +2189,7 @@
       "scientificName": "Apium graveolens",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 140
@@ -2150,6 +2221,7 @@
       "scientificName": "Foeniculum vulgare var. azoricum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -2181,6 +2253,7 @@
       "scientificName": "Asparagus officinalis",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1095
@@ -2207,6 +2280,7 @@
       "scientificName": "Rheum rhabarbarum",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -2232,6 +2306,7 @@
       "scientificName": "Cynara cardunculus var. scolymus",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 180
@@ -2264,6 +2339,7 @@
       "scientificName": "Cynara cardunculus",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 100,
         "max": 130
@@ -2295,6 +2371,7 @@
       "scientificName": "Zea mays var. saccharata",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 95
@@ -2321,6 +2398,7 @@
       "scientificName": "Ocimum basilicum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -2358,6 +2436,7 @@
       "scientificName": "Petroselinum crispum var. neapolitanum",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -2399,6 +2478,7 @@
       "scientificName": "Petroselinum crispum var. crispum",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -2430,6 +2510,7 @@
       "scientificName": "Coriandrum sativum",
       "category": "herb",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 40,
         "max": 55
@@ -2466,6 +2547,7 @@
       "scientificName": "Anethum graveolens",
       "category": "herb",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 40,
         "max": 60
@@ -2492,6 +2574,7 @@
       "scientificName": "Origanum vulgare",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -2523,6 +2606,7 @@
       "scientificName": "Thymus vulgaris",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -2554,6 +2638,7 @@
       "scientificName": "Salvia rosmarinus",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 90,
         "max": 180
@@ -2579,6 +2664,7 @@
       "scientificName": "Salvia officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -2610,6 +2696,7 @@
       "scientificName": "Origanum majorana",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -2641,6 +2728,7 @@
       "scientificName": "Artemisia dracunculus var. sativa",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -2666,6 +2754,7 @@
       "scientificName": "Melissa officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -2697,6 +2786,7 @@
       "scientificName": "Foeniculum vulgare",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -2722,6 +2812,7 @@
       "scientificName": "Satureja hortensis",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 75
@@ -2747,6 +2838,7 @@
       "scientificName": "Satureja montana",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -2772,6 +2864,7 @@
       "scientificName": "Lavandula angustifolia",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 365
@@ -2797,6 +2890,7 @@
       "scientificName": "Levisticum officinale",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -2822,6 +2916,7 @@
       "scientificName": "Anthriscus cerefolium",
       "category": "herb",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 35,
         "max": 50
@@ -2853,6 +2948,7 @@
       "scientificName": "Stevia rebaudiana",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -2878,6 +2974,7 @@
       "scientificName": "Aloysia citrodora",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 90,
         "max": 180
@@ -2903,6 +3000,7 @@
       "scientificName": "Laurus nobilis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -2928,6 +3026,7 @@
       "scientificName": "Mentha spicata",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -2953,6 +3052,7 @@
       "scientificName": "Mentha \u00d7 piperita",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 60,
         "max": 80
@@ -2978,6 +3078,7 @@
       "scientificName": "Fragaria \u00d7 ananassa",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 365
@@ -3010,6 +3111,7 @@
       "scientificName": "Vaccinium corymbosum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 1095
@@ -3041,6 +3143,7 @@
       "scientificName": "Rubus idaeus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -3072,6 +3175,7 @@
       "scientificName": "Rubus fruticosus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -3097,6 +3201,7 @@
       "scientificName": "Ribes uva-crispa",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -3128,6 +3233,7 @@
       "scientificName": "Ribes rubrum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -3159,6 +3265,7 @@
       "scientificName": "Ribes nigrum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 730
@@ -3190,6 +3297,7 @@
       "scientificName": "Sambucus canadensis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 1095
@@ -3215,6 +3323,7 @@
       "scientificName": "Vitis vinifera",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1460
@@ -3240,6 +3349,7 @@
       "scientificName": "Ficus carica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 365,
         "max": 1095
@@ -3265,6 +3375,7 @@
       "scientificName": "Actinidia arguta",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1095,
         "max": 1825
@@ -3290,6 +3401,7 @@
       "scientificName": "Asimina triloba",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1825,
         "max": 2920
@@ -3315,6 +3427,7 @@
       "scientificName": "Diospyros virginiana",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1825,
         "max": 2555
@@ -3340,6 +3453,7 @@
       "scientificName": "Morus alba",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1095,
         "max": 1825
@@ -3365,6 +3479,7 @@
       "scientificName": "Punica granatum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1460
@@ -3390,6 +3505,7 @@
       "scientificName": "Cydonia oblonga",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1460,
         "max": 1825
@@ -3415,6 +3531,7 @@
       "scientificName": "Hippophae rhamnoides",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 1095,
         "max": 1460
@@ -3440,6 +3557,7 @@
       "scientificName": "Lonicera caerulea",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1095
@@ -3474,6 +3592,7 @@
       "scientificName": "Elaeagnus multiflora",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1095
@@ -3499,6 +3618,7 @@
       "scientificName": "Elaeagnus umbellata",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 730,
         "max": 1095
@@ -3524,6 +3644,7 @@
       "scientificName": "Tagetes patula",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -3555,6 +3676,7 @@
       "scientificName": "Tropaeolum majus",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -3580,6 +3702,7 @@
       "scientificName": "Calendula officinalis",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 70
@@ -3614,6 +3737,7 @@
       "scientificName": "Borago officinalis",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 55,
         "max": 75
@@ -3639,6 +3763,7 @@
       "scientificName": "Helianthus annuus",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 100
@@ -3664,6 +3789,7 @@
       "scientificName": "Zinnia elegans",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 75
@@ -3689,6 +3815,7 @@
       "scientificName": "Cosmos bipinnatus",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -3714,6 +3841,7 @@
       "scientificName": "Lobularia maritima",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 45,
         "max": 65
@@ -3739,6 +3867,7 @@
       "scientificName": "Monarda didyma",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -3764,6 +3893,7 @@
       "scientificName": "Achillea millefolium",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 75,
         "max": 365
@@ -3795,6 +3925,7 @@
       "scientificName": "Phacelia tanacetifolia",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 45,
         "max": 65
@@ -3824,6 +3955,7 @@
       "scientificName": "Centaurea cyanus",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 65,
         "max": 80
@@ -3852,6 +3984,7 @@
       "scientificName": "Cleome hassleriana",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 70,
         "max": 90
@@ -3880,6 +4013,7 @@
       "scientificName": "Trifolium incarnatum",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 200
@@ -3913,6 +4047,7 @@
       "scientificName": "Trifolium repens",
       "category": "cover-crop",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 365
@@ -3944,6 +4079,7 @@
       "scientificName": "Vicia villosa",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 180,
         "max": 240
@@ -3970,6 +4106,7 @@
       "scientificName": "Secale cereale",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 180,
         "max": 240
@@ -3996,6 +4133,7 @@
       "scientificName": "Fagopyrum esculentum",
       "category": "cover-crop",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 30,
         "max": 60
@@ -4022,6 +4160,7 @@
       "scientificName": "Avena sativa",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -4054,6 +4193,7 @@
       "scientificName": "Pisum sativum subsp. arvense",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 180,
         "max": 240
@@ -4079,6 +4219,7 @@
       "scientificName": "Brassica juncea",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 30,
         "max": 60
@@ -4110,6 +4251,7 @@
       "scientificName": "Raphanus sativus var. longipinnatus",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 90
@@ -4138,6 +4280,7 @@
       "scientificName": "Lolium multiflorum",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 60,
         "max": 120
@@ -4163,6 +4306,7 @@
       "scientificName": "Brassica rapa subsp. narinosa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": {
         "min": 40,
         "max": 55
@@ -4194,6 +4338,7 @@
       "scientificName": "Chenopodium quinoa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 120
@@ -4219,6 +4364,7 @@
       "scientificName": "Amaranthus cruentus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 50,
         "max": 110
@@ -4244,6 +4390,7 @@
       "scientificName": "Arachis hypogaea",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 110,
         "max": 150
@@ -4269,6 +4416,7 @@
       "scientificName": "Symphytum officinale",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 365
@@ -4294,6 +4442,7 @@
       "scientificName": "Agastache foeniculum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 75,
         "max": 100
@@ -4325,6 +4474,7 @@
       "scientificName": "Echinacea purpurea",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": {
         "min": 90,
         "max": 365
@@ -4357,6 +4507,7 @@
       "scientificName": "Solanum lycopersicum var. cerasiforme",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 55, "max": 75 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4374,6 +4525,7 @@
       "scientificName": "Solanum lycopersicum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 90 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4391,6 +4543,7 @@
       "scientificName": "Solanum lycopersicum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4408,6 +4561,7 @@
       "scientificName": "Solanum lycopersicum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 75 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4424,6 +4578,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 85 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4441,6 +4596,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 65, "max": 85 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4458,6 +4614,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 75, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4474,6 +4631,7 @@
       "scientificName": "Capsicum chinense",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 5, "max": 11 },
@@ -4490,6 +4648,7 @@
       "scientificName": "Capsicum chinense",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 6, "max": 11 },
@@ -4507,6 +4666,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 75 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4524,6 +4684,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4540,6 +4701,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 75, "max": 85 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4557,6 +4719,7 @@
       "scientificName": "Capsicum annuum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 85 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4573,6 +4736,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4590,6 +4754,7 @@
       "scientificName": "Cucurbita maxima",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4607,6 +4772,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 100 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4623,6 +4789,7 @@
       "scientificName": "Cucurbita maxima",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4639,6 +4806,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 65 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4656,6 +4824,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 60 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4672,6 +4841,7 @@
       "scientificName": "Cucurbita maxima",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 105, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 10 },
@@ -4688,6 +4858,7 @@
       "scientificName": "Cucurbita maxima",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 110 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 10 },
@@ -4703,6 +4874,7 @@
       "scientificName": "Cucumis sativus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 60 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4720,6 +4892,7 @@
       "scientificName": "Cucumis sativus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 75 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4735,6 +4908,7 @@
       "scientificName": "Cucumis melo var. flexuosus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 75 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -4751,6 +4925,7 @@
       "scientificName": "Cucumis sativus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 55, "max": 65 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -4768,6 +4943,7 @@
       "scientificName": "Brassica oleracea var. botrytis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 75, "max": 100 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -4786,6 +4962,7 @@
       "scientificName": "Brassica oleracea x Brassica oleracea var. alboglabra",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4804,6 +4981,7 @@
       "scientificName": "Brassica rapa var. ruvo",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 40, "max": 60 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4821,6 +4999,7 @@
       "scientificName": "Brassica oleracea var. alboglabra",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4838,6 +5017,7 @@
       "scientificName": "Brassica rapa var. parachinensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 50 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4855,6 +5035,7 @@
       "scientificName": "Brassica rapa var. chinensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 35, "max": 55 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4872,6 +5053,7 @@
       "scientificName": "Brassica rapa var. perviridis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 45 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4889,6 +5071,7 @@
       "scientificName": "Brassica rapa var. chinensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 50 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4906,6 +5089,7 @@
       "scientificName": "Brassica oleracea",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -4923,6 +5107,7 @@
       "scientificName": "Brassica oleracea var. sabauda",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -4940,6 +5125,7 @@
       "scientificName": "Brassica oleracea var. capitata f. rubra",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -4958,6 +5144,7 @@
       "scientificName": "Brassica oleracea var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -4975,6 +5162,7 @@
       "scientificName": "Brassica oleracea var. gongylodes",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 65 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -4991,6 +5179,7 @@
       "scientificName": "Brassica oleracea var. gemmifera",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5007,6 +5196,7 @@
       "scientificName": "Lactuca sativa var. longifolia",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": { "min": 55, "max": 75 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 11 },
@@ -5025,6 +5215,7 @@
       "scientificName": "Lactuca sativa var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 11 },
@@ -5043,6 +5234,7 @@
       "scientificName": "Lactuca sativa var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": { "min": 65, "max": 85 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5060,6 +5252,7 @@
       "scientificName": "Lactuca sativa var. capitata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "both",
       "daysToHarvest": { "min": 50, "max": 65 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 11 },
@@ -5077,6 +5270,7 @@
       "scientificName": "Atriplex hortensis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 40, "max": 60 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5093,6 +5287,7 @@
       "scientificName": "Portulaca oleracea",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 40, "max": 60 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -5109,6 +5304,7 @@
       "scientificName": "Chenopodium album",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 50 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -5125,6 +5321,7 @@
       "scientificName": "Claytonia perfoliata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 40, "max": 60 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5142,6 +5339,7 @@
       "scientificName": "Salsola soda",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 45, "max": 60 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 6, "max": 10 },
@@ -5158,6 +5356,7 @@
       "scientificName": "Glebionis coronaria",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 50 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5175,6 +5374,7 @@
       "scientificName": "Corchorus olitorius",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 5, "max": 11 },
@@ -5192,6 +5392,7 @@
       "scientificName": "Brassica rapa var. perviridis",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 45 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5209,6 +5410,7 @@
       "scientificName": "Amaranthus viridis",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 60 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -5225,6 +5427,7 @@
       "scientificName": "Amaranthus tricolor",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 30, "max": 50 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -5241,6 +5444,7 @@
       "scientificName": "Cichorium intybus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5258,6 +5462,7 @@
       "scientificName": "Beta vulgaris subsp. maritima",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 5, "max": 9 },
@@ -5274,6 +5479,7 @@
       "scientificName": "Solanum melongena",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 4, "max": 11 },
@@ -5291,6 +5497,7 @@
       "scientificName": "Raphanus sativus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 55, "max": 70 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5307,6 +5514,7 @@
       "scientificName": "Raphanus sativus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 23, "max": 30 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5323,6 +5531,7 @@
       "scientificName": "Raphanus sativus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 25, "max": 35 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5339,6 +5548,7 @@
       "scientificName": "Raphanus sativus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5355,6 +5565,7 @@
       "scientificName": "Trichosanthes cucumerina",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 6, "max": 11 },
@@ -5372,6 +5583,7 @@
       "scientificName": "Helianthus annuus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 8, "max": 14 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5387,6 +5599,7 @@
       "scientificName": "Pisum sativum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 10, "max": 16 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5402,6 +5615,7 @@
       "scientificName": "Raphanus sativus",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 6, "max": 10 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5417,6 +5631,7 @@
       "scientificName": "Brassica oleracea var. italica",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 8, "max": 14 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5432,6 +5647,7 @@
       "scientificName": "Triticum aestivum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 8, "max": 12 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5447,6 +5663,7 @@
       "scientificName": "Brassica oleracea",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 8, "max": 14 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5462,6 +5679,7 @@
       "scientificName": "Ocimum basilicum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 14, "max": 20 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5477,6 +5695,7 @@
       "scientificName": "Eruca vesicaria",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 7, "max": 12 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5492,6 +5711,7 @@
       "scientificName": "Brassica juncea",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 7, "max": 12 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5507,6 +5727,7 @@
       "scientificName": "Beta vulgaris",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 12, "max": 20 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5522,6 +5743,7 @@
       "scientificName": "Coriandrum sativum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 18, "max": 25 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5537,6 +5759,7 @@
       "scientificName": "Trigonella foenum-graecum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 8, "max": 14 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5552,6 +5775,7 @@
       "scientificName": "Medicago sativa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 5, "max": 7 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5567,6 +5791,7 @@
       "scientificName": "Vigna radiata",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 4, "max": 7 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5582,6 +5807,7 @@
       "scientificName": "Trifolium repens",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 5, "max": 7 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5597,6 +5823,7 @@
       "scientificName": "Lens culinaris",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "indoor",
       "daysToHarvest": { "min": 3, "max": 5 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 1, "max": 13 },
@@ -5612,6 +5839,7 @@
       "scientificName": "Blitum bonus-henricus",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5628,6 +5856,7 @@
       "scientificName": "Crambe maritima",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -5643,6 +5872,7 @@
       "scientificName": "Allium x proliferum",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5660,6 +5890,7 @@
       "scientificName": "Brassica oleracea var. ramosa",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 6, "max": 10 },
@@ -5676,6 +5907,7 @@
       "scientificName": "Bunias orientalis",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5692,6 +5924,7 @@
       "scientificName": "Apios americana",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 8 },
@@ -5708,6 +5941,7 @@
       "scientificName": "Allium ampeloprasum var. babingtonii",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 5, "max": 9 },
@@ -5724,6 +5958,7 @@
       "scientificName": "Allium tricoccum",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": 35,
       "zoneRange": { "min": 3, "max": 7 },
@@ -5740,6 +5975,7 @@
       "scientificName": "Mertensia maritima",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 4, "max": 8 },
@@ -5756,6 +5992,7 @@
       "scientificName": "Ipomoea batatas",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 100 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 6, "max": 11 },
@@ -5771,6 +6008,7 @@
       "scientificName": "Ipomoea batatas",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 6, "max": 11 },
@@ -5787,6 +6025,7 @@
       "scientificName": "Ipomoea batatas",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 120, "max": 150 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 7, "max": 11 },
@@ -5803,6 +6042,7 @@
       "scientificName": "Allium cepa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 110 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5819,6 +6059,7 @@
       "scientificName": "Allium cepa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5836,6 +6077,7 @@
       "scientificName": "Allium cepa",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 110, "max": 130 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 8 },
@@ -5852,6 +6094,7 @@
       "scientificName": "Allium sativum var. ophioscorodon",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 280 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -5867,6 +6110,7 @@
       "scientificName": "Allium sativum var. ophioscorodon",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 280 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -5882,6 +6126,7 @@
       "scientificName": "Allium sativum var. ophioscorodon",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 280 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -5897,6 +6142,7 @@
       "scientificName": "Beta vulgaris",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 65 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5914,6 +6160,7 @@
       "scientificName": "Beta vulgaris",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 65 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5931,6 +6178,7 @@
       "scientificName": "Beta vulgaris",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 55, "max": 70 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5948,6 +6196,7 @@
       "scientificName": "Apium graveolens var. secalinum",
       "category": "herb",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 110 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -5965,6 +6214,7 @@
       "scientificName": "Sium sisarum",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 180, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -5982,6 +6232,7 @@
       "scientificName": "Triticum aestivum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -5998,6 +6249,7 @@
       "scientificName": "Triticum aestivum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 7 },
@@ -6013,6 +6265,7 @@
       "scientificName": "Hordeum vulgare",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -6029,6 +6282,7 @@
       "scientificName": "Secale cereale",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 280 },
       "minSoilTempF": 35,
       "zoneRange": { "min": 3, "max": 9 },
@@ -6044,6 +6298,7 @@
       "scientificName": "Triticum spelta",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6059,6 +6314,7 @@
       "scientificName": "Triticum monococcum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 4, "max": 8 },
@@ -6074,6 +6330,7 @@
       "scientificName": "Triticum dicoccum",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6090,6 +6347,7 @@
       "scientificName": "× Triticosecale",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -6105,6 +6363,7 @@
       "scientificName": "Pennisetum glaucum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -6120,6 +6379,7 @@
       "scientificName": "Panicum miliaceum",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 10 },
@@ -6136,6 +6396,7 @@
       "scientificName": "Sorghum bicolor",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -6152,6 +6413,7 @@
       "scientificName": "Eragrostis tef",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -6167,6 +6429,7 @@
       "scientificName": "Zea mays var. indurata",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 10 },
@@ -6182,6 +6445,7 @@
       "scientificName": "Zea mays var. indentata",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 110, "max": 140 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -6197,6 +6461,7 @@
       "scientificName": "Zea mays var. everta",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -6212,6 +6477,7 @@
       "scientificName": "Oryza sativa",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -6227,6 +6493,7 @@
       "scientificName": "Amaranthus hypochondriacus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -6242,6 +6509,7 @@
       "scientificName": "Juglans regia",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6259,6 +6527,7 @@
       "scientificName": "Juglans nigra",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 2920, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6275,6 +6544,7 @@
       "scientificName": "Corylus avellana",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 2190 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6292,6 +6562,7 @@
       "scientificName": "Castanea sp.",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 2920 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6308,6 +6579,7 @@
       "scientificName": "Prunus dulcis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 2190 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 10 },
@@ -6323,6 +6595,7 @@
       "scientificName": "Carya illinoinensis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 9 },
@@ -6339,6 +6612,7 @@
       "scientificName": "Carya ovata",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 2920, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 8 },
@@ -6354,6 +6628,7 @@
       "scientificName": "Pistacia vera",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 2190, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 10 },
@@ -6369,6 +6644,7 @@
       "scientificName": "Macadamia integrifolia",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 1825, "max": 2920 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6384,6 +6660,7 @@
       "scientificName": "Pinus edulis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 2920, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6400,6 +6677,7 @@
       "scientificName": "Juglans ailantifolia var. cordiformis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 3285 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6415,6 +6693,7 @@
       "scientificName": "Juglans cinerea",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 7 },
@@ -6431,6 +6710,7 @@
       "scientificName": "Araucaria araucana",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 3650, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 10 },
@@ -6447,6 +6727,7 @@
       "scientificName": "Ginkgo biloba",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 3650, "max": 3650 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6463,6 +6744,7 @@
       "scientificName": "Abelmoschus esculentus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 55, "max": 65 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 5, "max": 11 },
@@ -6479,6 +6761,7 @@
       "scientificName": "Abelmoschus esculentus",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 70 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 5, "max": 11 },
@@ -6494,6 +6777,7 @@
       "scientificName": "Hibiscus sabdariffa",
       "category": "fruit",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 100, "max": 150 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 8, "max": 11 },
@@ -6511,6 +6795,7 @@
       "scientificName": "Luffa aegyptiaca",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 6, "max": 11 },
@@ -6528,6 +6813,7 @@
       "scientificName": "Momordica charantia",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 7, "max": 11 },
@@ -6545,6 +6831,7 @@
       "scientificName": "Vigna unguiculata subsp. sesquipedalis",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -6561,6 +6848,7 @@
       "scientificName": "Psophocarpus tetragonolobus",
       "category": "legume",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 75, "max": 110 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 8, "max": 11 },
@@ -6578,6 +6866,7 @@
       "scientificName": "Moringa oleifera",
       "category": "fruit",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 180, "max": 365 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6594,6 +6883,7 @@
       "scientificName": "Carica papaya",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 270, "max": 365 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6609,6 +6899,7 @@
       "scientificName": "Psidium guajava",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6624,6 +6915,7 @@
       "scientificName": "Acca sellowiana",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 8, "max": 10 },
@@ -6640,6 +6932,7 @@
       "scientificName": "Passiflora edulis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6655,6 +6948,7 @@
       "scientificName": "Ananas comosus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 540, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 10, "max": 11 },
@@ -6670,6 +6964,7 @@
       "scientificName": "Musa basjoo",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 11 },
@@ -6685,6 +6980,7 @@
       "scientificName": "Zingiber officinale",
       "category": "root",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 240, "max": 300 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 7, "max": 11 },
@@ -6700,6 +6996,7 @@
       "scientificName": "Curcuma longa",
       "category": "root",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 270, "max": 365 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 8, "max": 11 },
@@ -6715,6 +7012,7 @@
       "scientificName": "Colocasia esculenta",
       "category": "root",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 200, "max": 300 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },
@@ -6731,6 +7029,7 @@
       "scientificName": "Manihot esculenta",
       "category": "root",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 240, "max": 540 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -6747,6 +7046,7 @@
       "scientificName": "Pachyrhizus erosus",
       "category": "root",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 150, "max": 270 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 8, "max": 11 },
@@ -6763,6 +7063,7 @@
       "scientificName": "Sicyos edulis",
       "category": "vegetable",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 120, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 7, "max": 11 },
@@ -6779,6 +7080,7 @@
       "scientificName": "Pyrus pyrifolia",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6796,6 +7098,7 @@
       "scientificName": "Pyrus communis",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6812,6 +7115,7 @@
       "scientificName": "Malus domestica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 9 },
@@ -6828,6 +7132,7 @@
       "scientificName": "Malus sp.",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 9 },
@@ -6843,6 +7148,7 @@
       "scientificName": "Prunus persica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6858,6 +7164,7 @@
       "scientificName": "Prunus persica var. nucipersica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6873,6 +7180,7 @@
       "scientificName": "Prunus armeniaca",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6888,6 +7196,7 @@
       "scientificName": "Prunus domestica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6903,6 +7212,7 @@
       "scientificName": "Prunus salicina",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -6918,6 +7228,7 @@
       "scientificName": "Prunus avium",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 8 },
@@ -6933,6 +7244,7 @@
       "scientificName": "Prunus cerasus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 9 },
@@ -6949,6 +7261,7 @@
       "scientificName": "Prunus japonica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 8 },
@@ -6965,6 +7278,7 @@
       "scientificName": "Ficus carica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 10 },
@@ -6980,6 +7294,7 @@
       "scientificName": "Ribes x nidigrolaria",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 8 },
@@ -6996,6 +7311,7 @@
       "scientificName": "Vaccinium vitis-idaea",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 2, "max": 6 },
@@ -7012,6 +7328,7 @@
       "scientificName": "Aronia melanocarpa",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 8 },
@@ -7029,6 +7346,7 @@
       "scientificName": "Amelanchier sp.",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 8 },
@@ -7045,6 +7363,7 @@
       "scientificName": "Mespilus germanica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 8 },
@@ -7060,6 +7379,7 @@
       "scientificName": "Cornus mas",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 8 },
@@ -7076,6 +7396,7 @@
       "scientificName": "Vaccinium membranaceum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 2920 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 8 },
@@ -7091,6 +7412,7 @@
       "scientificName": "Gaultheria shallon",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 9 },
@@ -7106,6 +7428,7 @@
       "scientificName": "Rubus loganobaccus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 9 },
@@ -7121,6 +7444,7 @@
       "scientificName": "Rubus x loganobaccus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7136,6 +7460,7 @@
       "scientificName": "Rubus fruticosus x R. idaeus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7151,6 +7476,7 @@
       "scientificName": "Rubus L. subgenus Rubus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 9 },
@@ -7166,6 +7492,7 @@
       "scientificName": "Rubus ursinus var. loganobaccus",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7181,6 +7508,7 @@
       "scientificName": "Rubus phoenicolasius",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 8 },
@@ -7196,6 +7524,7 @@
       "scientificName": "Ribes rubrum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 7 },
@@ -7212,6 +7541,7 @@
       "scientificName": "Ficus carica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 11 },
@@ -7227,6 +7557,7 @@
       "scientificName": "Citrus x junos",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 8, "max": 11 },
@@ -7242,6 +7573,7 @@
       "scientificName": "Citrus japonica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 8, "max": 11 },
@@ -7257,6 +7589,7 @@
       "scientificName": "Citrus x microcarpa",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7273,6 +7606,7 @@
       "scientificName": "Eriobotrya japonica",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 730, "max": 1460 },
       "minSoilTempF": null,
       "zoneRange": { "min": 8, "max": 10 },
@@ -7289,6 +7623,7 @@
       "scientificName": "Punica granatum",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 11 },
@@ -7304,6 +7639,7 @@
       "scientificName": "Ziziphus jujuba",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1095, "max": 1825 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 11 },
@@ -7320,6 +7656,7 @@
       "scientificName": "Maclura tricuspidata",
       "category": "fruit",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 1825, "max": 2920 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7336,6 +7673,7 @@
       "scientificName": "Cymbopogon citratus",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 90, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7352,6 +7690,7 @@
       "scientificName": "Perilla frutescens var. crispa",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7369,6 +7708,7 @@
       "scientificName": "Perilla frutescens var. crispa",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7386,6 +7726,7 @@
       "scientificName": "Dysphania ambrosioides",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 6, "max": 11 },
@@ -7402,6 +7743,7 @@
       "scientificName": "Angelica archangelica",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -7417,6 +7759,7 @@
       "scientificName": "Ocimum tenuiflorum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7434,6 +7777,7 @@
       "scientificName": "Ocimum basilicum var. thyrsiflora",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7450,6 +7794,7 @@
       "scientificName": "Ocimum basilicum x americanum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 55, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7466,6 +7811,7 @@
       "scientificName": "Ocimum basilicum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7482,6 +7828,7 @@
       "scientificName": "Tagetes lucida",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },
@@ -7498,6 +7845,7 @@
       "scientificName": "Pimpinella anisum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 9 },
@@ -7513,6 +7861,7 @@
       "scientificName": "Carum carvi",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -7529,6 +7878,7 @@
       "scientificName": "Cuminum cyminum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -7545,6 +7895,7 @@
       "scientificName": "Coriandrum sativum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 11 },
@@ -7560,6 +7911,7 @@
       "scientificName": "Foeniculum vulgare",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 200 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -7575,6 +7927,7 @@
       "scientificName": "Anethum graveolens",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 11 },
@@ -7590,6 +7943,7 @@
       "scientificName": "Trigonella foenum-graecum",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 100 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7606,6 +7960,7 @@
       "scientificName": "Nigella sativa",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7622,6 +7977,7 @@
       "scientificName": "Trachyspermum ammi",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 130, "max": 170 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 5, "max": 11 },
@@ -7638,6 +7994,7 @@
       "scientificName": "Satureja hortensis",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 10 },
@@ -7653,6 +8010,7 @@
       "scientificName": "Salvia rosmarinus var. prostratus",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": null,
       "zoneRange": { "min": 7, "max": 11 },
@@ -7668,6 +8026,7 @@
       "scientificName": "Salvia rosmarinus 'Arp'",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": null,
       "zoneRange": { "min": 6, "max": 10 },
@@ -7683,6 +8042,7 @@
       "scientificName": "Thymus serpyllum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -7698,6 +8058,7 @@
       "scientificName": "Thymus citriodorus",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7713,6 +8074,7 @@
       "scientificName": "Origanum vulgare var. hirtum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 10 },
@@ -7728,6 +8090,7 @@
       "scientificName": "Origanum x majoricum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 6, "max": 10 },
@@ -7743,6 +8106,7 @@
       "scientificName": "Salvia officinalis var. purpurascens",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7758,6 +8122,7 @@
       "scientificName": "Salvia elegans",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 8, "max": 11 },
@@ -7773,6 +8138,7 @@
       "scientificName": "Mentha x piperita f. citrata",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -7788,6 +8154,7 @@
       "scientificName": "Mentha suaveolens",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 11 },
@@ -7804,6 +8171,7 @@
       "scientificName": "Nepeta cataria",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -7819,6 +8187,7 @@
       "scientificName": "Nepeta x faassenii",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -7834,6 +8203,7 @@
       "scientificName": "Satureja montana subsp. illyrica",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 9 },
@@ -7849,6 +8219,7 @@
       "scientificName": "Cymbopogon flexuosus",
       "category": "herb",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 90, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7864,6 +8235,7 @@
       "scientificName": "Citrus hystrix",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7880,6 +8252,7 @@
       "scientificName": "Persicaria odorata",
       "category": "herb",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 60, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7896,6 +8269,7 @@
       "scientificName": "Murraya koenigii",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7912,6 +8286,7 @@
       "scientificName": "Ruta graveolens",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -7928,6 +8303,7 @@
       "scientificName": "Hyssopus officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -7943,6 +8319,7 @@
       "scientificName": "Coleus amboinicus",
       "category": "herb",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7959,6 +8336,7 @@
       "scientificName": "Tagetes minuta",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 130 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -7975,6 +8353,7 @@
       "scientificName": "Persicaria odorata",
       "category": "herb",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 60, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -7991,6 +8370,7 @@
       "scientificName": "Valeriana officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8007,6 +8387,7 @@
       "scientificName": "Hypericum perforatum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 8 },
@@ -8022,6 +8403,7 @@
       "scientificName": "Withania somnifera",
       "category": "herb",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 180, "max": 240 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 5, "max": 11 },
@@ -8039,6 +8421,7 @@
       "scientificName": "Althaea officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8054,6 +8437,7 @@
       "scientificName": "Scutellaria lateriflora",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 8 },
@@ -8069,6 +8453,7 @@
       "scientificName": "Passiflora incarnata",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 5, "max": 10 },
@@ -8085,6 +8470,7 @@
       "scientificName": "Silybum marianum",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 110, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 9 },
@@ -8100,6 +8486,7 @@
       "scientificName": "Tanacetum parthenium",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -8115,6 +8502,7 @@
       "scientificName": "Verbascum thapsus",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8130,6 +8518,7 @@
       "scientificName": "Plantago major",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8146,6 +8535,7 @@
       "scientificName": "Achillea millefolium",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -8161,6 +8551,7 @@
       "scientificName": "Sambucus nigra",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 4, "max": 8 },
@@ -8176,6 +8567,7 @@
       "scientificName": "Calendula officinalis",
       "category": "herb",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 80 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8191,6 +8583,7 @@
       "scientificName": "Melissa officinalis",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8206,6 +8599,7 @@
       "scientificName": "Echinacea purpurea",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8221,6 +8615,7 @@
       "scientificName": "Echinacea angustifolia",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 8 },
@@ -8236,6 +8631,7 @@
       "scientificName": "Arctium lappa",
       "category": "herb",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 120, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -8252,6 +8648,7 @@
       "scientificName": "Ocimum tenuiflorum 'Rama'",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 4, "max": 11 },
@@ -8268,6 +8665,7 @@
       "scientificName": "Ocimum tenuiflorum 'Krishna'",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 4, "max": 11 },
@@ -8284,6 +8682,7 @@
       "scientificName": "Centella asiatica",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 90, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },
@@ -8300,6 +8699,7 @@
       "scientificName": "Urtica dioica",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 180 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8316,6 +8716,7 @@
       "scientificName": "Rubus idaeus",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8331,6 +8732,7 @@
       "scientificName": "Monarda fistulosa",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8346,6 +8748,7 @@
       "scientificName": "Tanacetum vulgare",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 8 },
@@ -8361,6 +8764,7 @@
       "scientificName": "Artemisia absinthium",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 8 },
@@ -8376,6 +8780,7 @@
       "scientificName": "Viola tricolor",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8392,6 +8797,7 @@
       "scientificName": "Viola x wittrockiana",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8408,6 +8814,7 @@
       "scientificName": "Lavandula angustifolia",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 5, "max": 9 },
@@ -8423,6 +8830,7 @@
       "scientificName": "Hibiscus rosa-sinensis",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 9, "max": 11 },
@@ -8438,6 +8846,7 @@
       "scientificName": "Rosa rugosa",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 730, "max": 1095 },
       "minSoilTempF": null,
       "zoneRange": { "min": 2, "max": 8 },
@@ -8455,6 +8864,7 @@
       "scientificName": "Cucurbita pepo",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8470,6 +8880,7 @@
       "scientificName": "Hemerocallis fulva",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -8485,6 +8896,7 @@
       "scientificName": "Dianthus caryophyllus",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8502,6 +8914,7 @@
       "scientificName": "Centaurea cyanus",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 65, "max": 90 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8517,6 +8930,7 @@
       "scientificName": "Rosa canina",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": null,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8533,6 +8947,7 @@
       "scientificName": "Chrysanthemum coronarium",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 10 },
@@ -8550,6 +8965,7 @@
       "scientificName": "Tithonia rotundifolia",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -8566,6 +8982,7 @@
       "scientificName": "Gomphrena globosa",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 110 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -8583,6 +9000,7 @@
       "scientificName": "Ageratum houstonianum",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8600,6 +9018,7 @@
       "scientificName": "Tagetes tenuifolia",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8615,6 +9034,7 @@
       "scientificName": "Scabiosa atropurpurea",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -8632,6 +9052,7 @@
       "scientificName": "Salvia coccinea",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 7, "max": 11 },
@@ -8647,6 +9068,7 @@
       "scientificName": "Agastache aurantiaca",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 5, "max": 9 },
@@ -8662,6 +9084,7 @@
       "scientificName": "Verbena bonariensis",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 7, "max": 11 },
@@ -8678,6 +9101,7 @@
       "scientificName": "Rudbeckia hirta",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8694,6 +9118,7 @@
       "scientificName": "Coreopsis tinctoria",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8710,6 +9135,7 @@
       "scientificName": "Asclepias syriaca",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8725,6 +9151,7 @@
       "scientificName": "Asclepias incarnata",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8740,6 +9167,7 @@
       "scientificName": "Asclepias tuberosa",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8755,6 +9183,7 @@
       "scientificName": "Phlox drummondii",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 90 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8770,6 +9199,7 @@
       "scientificName": "Antirrhinum majus",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 10 },
@@ -8786,6 +9216,7 @@
       "scientificName": "Matthiola incana",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 10 },
@@ -8802,6 +9233,7 @@
       "scientificName": "Lathyrus odoratus",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8817,6 +9249,7 @@
       "scientificName": "Consolida ajacis",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -8832,6 +9265,7 @@
       "scientificName": "Nigella damascena",
       "category": "flower",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 110 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 11 },
@@ -8847,6 +9281,7 @@
       "scientificName": "Alcea rosea",
       "category": "flower",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8863,6 +9298,7 @@
       "scientificName": "Digitalis purpurea",
       "category": "flower",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 9 },
@@ -8878,6 +9314,7 @@
       "scientificName": "Delphinium elatum",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 7 },
@@ -8893,6 +9330,7 @@
       "scientificName": "Lupinus polyphyllus",
       "category": "flower",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 8 },
@@ -8908,6 +9346,7 @@
       "scientificName": "Pisum sativum subsp. arvense",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 100 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8925,6 +9364,7 @@
       "scientificName": "Trifolium pratense",
       "category": "cover-crop",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8941,6 +9381,7 @@
       "scientificName": "Raphanus sativus var. oleiformis",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -8957,6 +9398,7 @@
       "scientificName": "Crotalaria juncea",
       "category": "cover-crop",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 6, "max": 11 },
@@ -8972,6 +9414,7 @@
       "scientificName": "Sorghum bicolor x sudanense",
       "category": "cover-crop",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -8987,6 +9430,7 @@
       "scientificName": "Vigna unguiculata",
       "category": "cover-crop",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9003,6 +9447,7 @@
       "scientificName": "Sinapis alba",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 80 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9019,6 +9464,7 @@
       "scientificName": "Echinochloa esculenta",
       "category": "cover-crop",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 80 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 3, "max": 11 },
@@ -9034,6 +9480,7 @@
       "scientificName": "Trifolium subterraneum",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 200 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 6, "max": 10 },
@@ -9049,6 +9496,7 @@
       "scientificName": "Vicia sativa",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 200 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 10 },
@@ -9065,6 +9513,7 @@
       "scientificName": "Phacelia tanacetifolia",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 50, "max": 70 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9081,6 +9530,7 @@
       "scientificName": "Lens culinaris",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 110 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -9096,6 +9546,7 @@
       "scientificName": "Trifolium alexandrinum",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 100 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 6, "max": 11 },
@@ -9112,6 +9563,7 @@
       "scientificName": "Melilotus officinalis",
       "category": "cover-crop",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 8 },
@@ -9127,6 +9579,7 @@
       "scientificName": "Melilotus albus",
       "category": "cover-crop",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 8 },
@@ -9142,6 +9595,7 @@
       "scientificName": "Brassica napus",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 200 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9157,6 +9611,7 @@
       "scientificName": "Vicia benghalensis",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 180 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 6, "max": 10 },
@@ -9172,6 +9627,7 @@
       "scientificName": "Hordeum vulgare",
       "category": "cover-crop",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 200 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 8 },
@@ -9188,6 +9644,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9203,6 +9660,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9218,6 +9676,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9233,6 +9692,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 85, "max": 100 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9249,6 +9709,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9265,6 +9726,7 @@
       "scientificName": "Phaseolus vulgaris",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 85, "max": 100 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 3, "max": 11 },
@@ -9280,6 +9742,7 @@
       "scientificName": "Phaseolus acutifolius",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 100 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -9295,6 +9758,7 @@
       "scientificName": "Glycine max",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 130 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9310,6 +9774,7 @@
       "scientificName": "Vigna radiata",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -9325,6 +9790,7 @@
       "scientificName": "Vigna angularis",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 4, "max": 11 },
@@ -9340,6 +9806,7 @@
       "scientificName": "Lablab purpureus",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 110 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 7, "max": 11 },
@@ -9357,6 +9824,7 @@
       "scientificName": "Cajanus cajan",
       "category": "legume",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 120, "max": 200 },
       "minSoilTempF": 70,
       "zoneRange": { "min": 8, "max": 11 },
@@ -9373,6 +9841,7 @@
       "scientificName": "Phaseolus lunatus",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -9388,6 +9857,7 @@
       "scientificName": "Vicia faba",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 80, "max": 100 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9404,6 +9874,7 @@
       "scientificName": "Vigna unguiculata subsp. sesquipedalis",
       "category": "legume",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 90 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 5, "max": 11 },
@@ -9419,6 +9890,7 @@
       "scientificName": "Cicer arietinum",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 4, "max": 10 },
@@ -9434,6 +9906,7 @@
       "scientificName": "Lens culinaris 'Le Puy'",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9449,6 +9922,7 @@
       "scientificName": "Lens culinaris",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9464,6 +9938,7 @@
       "scientificName": "Lens culinaris",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9479,6 +9954,7 @@
       "scientificName": "Pisum sativum subsp. arvense",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9495,6 +9971,7 @@
       "scientificName": "Pisum sativum subsp. arvense",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 110 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9511,6 +9988,7 @@
       "scientificName": "Phaseolus coccinatus",
       "category": "legume",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 100 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9526,6 +10004,7 @@
       "scientificName": "Smallanthus sonchifolius",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 180, "max": 270 },
       "minSoilTempF": 60,
       "zoneRange": { "min": 7, "max": 11 },
@@ -9542,6 +10021,7 @@
       "scientificName": "Oxalis tuberosa",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 200, "max": 270 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 7, "max": 10 },
@@ -9558,6 +10038,7 @@
       "scientificName": "Tropaeolum tuberosum",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 200, "max": 300 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 7, "max": 10 },
@@ -9574,6 +10055,7 @@
       "scientificName": "Scorzonera hispanica",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 120, "max": 200 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9590,6 +10072,7 @@
       "scientificName": "Dioscorea polystachya",
       "category": "root",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 5, "max": 10 },
@@ -9606,6 +10089,7 @@
       "scientificName": "Arctium lappa",
       "category": "root",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 200 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 10 },
@@ -9622,6 +10106,7 @@
       "scientificName": "Dioscorea rotundata",
       "category": "root",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 240, "max": 330 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 9, "max": 11 },
@@ -9638,6 +10123,7 @@
       "scientificName": "Arracacia xanthorrhiza",
       "category": "root",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 270, "max": 365 },
       "minSoilTempF": 55,
       "zoneRange": { "min": 8, "max": 10 },
@@ -9654,6 +10140,7 @@
       "scientificName": "Tragopogon porrifolius",
       "category": "root",
       "season": "biennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 120, "max": 200 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 10 },
@@ -9669,6 +10156,7 @@
       "scientificName": "Daucus carota subsp. sativus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 11 },
@@ -9685,6 +10173,7 @@
       "scientificName": "Daucus carota subsp. sativus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 11 },
@@ -9701,6 +10190,7 @@
       "scientificName": "Daucus carota subsp. sativus",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 70, "max": 80 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 11 },
@@ -9716,6 +10206,7 @@
       "scientificName": "Apium graveolens var. rapaceum",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 130 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9733,6 +10224,7 @@
       "scientificName": "Petroselinum crispum var. tuberosum",
       "category": "root",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 90, "max": 130 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9749,6 +10241,7 @@
       "scientificName": "Phacelia tanacetifolia",
       "category": "flower",
       "season": "warm",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 60, "max": 90 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9764,6 +10257,7 @@
       "scientificName": "Sanguisorba minor",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 60, "max": 365 },
       "minSoilTempF": 45,
       "zoneRange": { "min": 4, "max": 9 },
@@ -9779,6 +10273,7 @@
       "scientificName": "Claytonia perfoliata",
       "category": "vegetable",
       "season": "cool",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 40, "max": 70 },
       "minSoilTempF": 40,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9794,6 +10289,7 @@
       "scientificName": "Allium tuberosum",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "both",
       "daysToHarvest": { "min": 90, "max": 365 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 3, "max": 9 },
@@ -9811,6 +10307,7 @@
       "scientificName": "Cymbopogon citratus",
       "category": "herb",
       "season": "warm",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 90, "max": 180 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },
@@ -9826,6 +10323,7 @@
       "scientificName": "Cynara cardunculus var. scolymus",
       "category": "vegetable",
       "season": "perennial",
+      "growingContext": "outdoor",
       "daysToHarvest": { "min": 100, "max": 200 },
       "minSoilTempF": 50,
       "zoneRange": { "min": 6, "max": 10 },
@@ -9841,6 +10339,7 @@
       "scientificName": "Stevia rebaudiana",
       "category": "herb",
       "season": "warm",
+      "growingContext": "both",
       "daysToHarvest": { "min": 80, "max": 120 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },
@@ -9856,6 +10355,7 @@
       "scientificName": "Zingiber zerumbet",
       "category": "herb",
       "season": "perennial",
+      "growingContext": "greenhouse",
       "daysToHarvest": { "min": 365, "max": 730 },
       "minSoilTempF": 65,
       "zoneRange": { "min": 8, "max": 11 },

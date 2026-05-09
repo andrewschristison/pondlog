@@ -80,6 +80,11 @@
           "enum": ["cool", "warm", "perennial", "biennial"],
           "description": "'cool' = tolerates light frost, prefers <70°F. 'warm' = needs warm soil + frost-free season. 'perennial' = lives multiple years. 'biennial' = two-year cycle (e.g. parsley, carrot if seed-saved)."
         },
+        "growingContext": {
+          "type": "string",
+          "enum": ["outdoor", "indoor", "both", "greenhouse"],
+          "description": "Where this crop is meant to grow. 'outdoor' = standard garden crop (default). 'indoor' = year-round indoor production (microgreens, sprouts). 'both' = works on a windowsill or outdoors (most culinary herbs, lettuces). 'greenhouse' = needs season-extension or frost-free protection in most US zones (truly tropical/subtropical). Schema-optional for backward compatibility; consumers default missing values to 'outdoor'. The 'indoor' setting is what `getPlantingPlan({ includeIndoor })` filters on."
+        },
         "daysToHarvest": {
           "type": "object",
           "required": ["min", "max"],

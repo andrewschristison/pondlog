@@ -3,6 +3,67 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.14.1] - 2026-05-08
+
+### Added — Sticky 18.1: `growingContext` field + `includeIndoor` filter
+
+Pre-publish polish surfaced during Sticky 18 smoke testing. The 16
+microgreen/sprout entries use indoor-only year-round windows
+(`-180..180` from frost dates) and were dominating the earliest-harvest
+sort at `pondlog garden now`. This release adds the missing piece of
+context to the schema and a default filter that pushes them out of the
+way unless asked for.
+
+#### `crop-calendar.schema.json` — schema v1, additive change
+
+- New optional `growingContext` field on every entry, enum:
+  `"outdoor" | "indoor" | "both" | "greenhouse"`.
+- `outdoor` (396 entries) — standard garden crop. Default for missing
+  values to keep the schema backward-compatible.
+- `indoor` (16 entries) — year-round indoor production: 12 microgreens +
+  4 sprouts.
+- `both` (58 entries) — windowsill OR garden: most culinary herbs
+  (basil, parsley, cilantro, chive, oregano, thyme, rosemary, sage, dill,
+  mint, lemon balm, marjoram, savory, chervil, fennel, bay laurel,
+  lemon verbena, stevia, tarragon, kaffir lime adjacent), salad-green
+  lettuces and asian greens (lettuce types, arugula, mache, watercress,
+  mizuna, tatsoi), and herb cultivars added in Sticky 18 (tulsi, shiso,
+  Thai/lemon/cinnamon basil, oregano cultivars, sage cultivars,
+  rosemary cultivars, mint cultivars, garlic chive, salad burnet,
+  Mexican tarragon, lemongrass, epazote).
+- `greenhouse` (30 entries) — needs season-extension or frost-free
+  protection in most US zones: papaya, pineapple, guava, macadamia,
+  moringa, edible & shampoo ginger, turmeric, taro, cassava, jicama,
+  chayote, calamondin, kaffir lime, curry leaf, Vietnamese coriander,
+  gotu kola, lemongrass-east cultivars, true African yam, arracacha,
+  Cuban oregano, roselle, pigeon pea, winged bean, loquat, passionfruit,
+  pineapple guava, plus auto-classified entries with `zoneRange.min ≥ 9`.
+
+Schema version stays `"1"` — existing fixtures without `growingContext`
+continue to validate. `additionalProperties: false` on the entry shape
+allows the new optional field via the schema's enum addition.
+
+#### `@pondlog/core` (`getPlantingPlan` filter)
+
+- New `includeIndoor?: boolean` parameter, default `false`. Indoor
+  entries are excluded from `plan.plantNow` unless explicitly requested,
+  so the year-round microgreen/sprout windows no longer drown out
+  outdoor sowing windows in the earliest-harvest sort.
+- New exported type `CropGrowingContext` for downstream consumers.
+
+#### Verification
+
+- All 500 entries got the `growingContext` field via a slug-aware
+  text-injection script (preserves existing JSON formatting).
+- Zod schema parse passes; `pnpm -r typecheck` clean.
+- Smoke at Port Angeles (zone 8b, 2026-05-08): default plan returns
+  outdoor warm-season crops (Buckwheat, Callaloo, Vegetable Amaranth,
+  Purslane, Zucchini, Amaranth, Bush Bean, Cucumber); same call with
+  `includeIndoor: true` brings sprouts/microgreens back as expected.
+- @pondlog/core: 0.5.0 → **0.5.1** (additive feature; sub-minor because
+  the new field is opt-in and the new behavior preserves correctness for
+  the headline use case).
+
 ## [0.14.0] - 2026-05-08
 
 ### Added — Sticky 18: Crop calendar 150 → 500

@@ -42,6 +42,14 @@ export type CropCategory = z.infer<typeof CategorySchema>;
 const SeasonSchema = z.enum(["cool", "warm", "perennial", "biennial"]);
 export type CropSeason = z.infer<typeof SeasonSchema>;
 
+const GrowingContextSchema = z.enum([
+  "outdoor",
+  "indoor",
+  "both",
+  "greenhouse",
+]);
+export type CropGrowingContext = z.infer<typeof GrowingContextSchema>;
+
 const ActionSchema = z.enum([
   "start_indoors",
   "direct_sow",
@@ -77,6 +85,7 @@ const EntrySchema = z.object({
   scientificName: z.string().min(1).max(80),
   category: CategorySchema,
   season: SeasonSchema,
+  growingContext: GrowingContextSchema.optional(),
   daysToHarvest: z.object({
     min: z.number().int().min(1).max(3650),
     max: z.number().int().min(1).max(3650),
@@ -254,6 +263,10 @@ export interface GetPlantingPlanParams {
   /** Window padding in days — a crop is included if today is within
    *  [windowStart - padDays, windowEnd + padDays]. Default 0 (strict). */
   padDays?: number;
+  /** Include indoor-only entries (microgreens, sprouts) in the plan.
+   *  Default false because their year-round windows otherwise dominate
+   *  earliest-harvest sorting. */
+  includeIndoor?: boolean;
 }
 
 export interface GetPlantingPlanResult {
@@ -294,6 +307,7 @@ export function getPlantingPlan(
   const out: PlantSuggestion[] = [];
   const zoneNum = params.zone.zoneNumber;
 
+  const includeIndoor = params.includeIndoor === true;
   for (const crop of cal.entries) {
     if (
       zoneNum < crop.zoneRange.min ||
@@ -302,6 +316,7 @@ export function getPlantingPlan(
       continue;
     }
     if (params.category && crop.category !== params.category) continue;
+    if (!includeIndoor && crop.growingContext === "indoor") continue;
 
     // Find the first window that contains today (with optional padding).
     for (const w of crop.windows) {
