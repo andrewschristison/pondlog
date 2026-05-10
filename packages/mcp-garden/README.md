@@ -73,7 +73,7 @@ npx @modelcontextprotocol/inspector npx -y @pondlog/mcp-garden
 | Tool | What it does |
 |------|--------------|
 | `get_hardiness_zone` | USDA zone + frost dates from lat/lng or ZIP. |
-| `get_planting_plan` | What to plant in zone X on date Y, from the 1000-crop calendar. |
+| `get_planting_plan` | What to plant in zone X on date Y, from the 1000-crop calendar. **Climate-aware**: pass `climate_type` (or supply lat/lng for auto-detection) to get per-climate window shifts and notes on 10 anchor crops (tomato, pepper, lettuce, kale, blueberry, cucumber, basil, broccoli, garlic, cantaloupe). |
 | `get_crop_details` | Calendar entry + Trefle botanical detail for a single crop. |
 | `search_plants` | Search calendar + Trefle by name. Calendar matches first. |
 | `get_crops_for_zone` | All crops whose zone range includes the given zone. |
@@ -82,6 +82,7 @@ npx @modelcontextprotocol/inspector npx -y @pondlog/mcp-garden
 
 - *"What zone am I in if I'm at 48.118, -123.4307?"*
 - *"What can I plant this week in zone 7b?"*
+- *"What's different about planting tomatoes in a maritime climate vs an arid one?"*
 - *"Give me a planting schedule for zone 5a, May 15."*
 - *"What perennial fruits grow in zone 4b?"*
 - *"How long does kale take to mature?"*

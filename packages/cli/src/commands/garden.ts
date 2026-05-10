@@ -1,11 +1,16 @@
 import {
   findCrop,
+  getClimateType,
   getCropsForZone,
   getFrostDates,
   getHardinessZone,
   getHardinessZoneByZip,
   getPlantingPlan,
+  isClimateType,
+  listClimateTypes,
   searchCrops,
+  type ClimateType,
+  type Coordinates,
   type CropCategory,
   type ZoneInfo,
 } from "@pondlog/core";
@@ -43,6 +48,7 @@ interface NowOpts {
   limit?: string;
   json?: boolean;
   includeIndoor?: boolean;
+  climate?: string;
 }
 
 interface PlantOpts {
@@ -68,7 +74,7 @@ const VALID_CATEGORIES: CropCategory[] = [
 
 export function buildGardenCommand(): Command {
   const cmd = new Command("garden").description(
-    "Garden planning — USDA hardiness zone, frost dates, planting plan, and plant lookup. Backed by the bundled 1000-crop calendar (always available) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
+    "Garden planning — USDA hardiness zone, frost dates, climate-aware planting plan, and plant lookup. Backed by the bundled 1000-crop calendar (always available, climate modifiers on 10 anchor crops) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
   );
 
   cmd
@@ -100,13 +106,23 @@ export function buildGardenCommand(): Command {
       const zoneRes = await resolveZoneFromOpts(opts);
       if (!zoneRes.ok) return fail(zoneRes.error.message);
       const frost = getFrostDates(zoneRes.data.zone);
+      const coords = await resolveCoordsFromOpts(opts);
+      const climate = coords ? getClimateType(coords) : undefined;
+      const climateType = climate?.ok ? climate.data.climateType : undefined;
       if (opts.json) {
         return printJson({
           zone: zoneRes.data,
           frostDates: frost.ok ? frost.data : null,
+          ...(climateType ? { climateType } : {}),
         });
       }
-      console.log(formatZoneBlock(zoneRes.data, frost.ok ? frost.data : undefined));
+      console.log(
+        formatZoneBlock(
+          zoneRes.data,
+          frost.ok ? frost.data : undefined,
+          climateType,
+        ),
+      );
     });
 
   cmd
@@ -132,6 +148,10 @@ export function buildGardenCommand(): Command {
     .option(
       "--include-indoor",
       "Include indoor-only crops (microgreens, sprouts). Off by default because their year-round windows otherwise dominate the earliest-harvest sort.",
+    )
+    .option(
+      "--climate <type>",
+      `Apply per-climate modifiers (window shifts + notes). One of: ${listClimateTypes().join(", ")}. Auto-detected from coords/saved location when omitted.`,
     )
     .option("--json", "Print raw JSON")
     .addHelpText(
@@ -167,12 +187,14 @@ export function buildGardenCommand(): Command {
       if (opts.date && !/^\d{4}-\d{2}-\d{2}$/.test(opts.date)) {
         return fail(`--date must be YYYY-MM-DD, got "${opts.date}"`);
       }
+      const climateType = await resolveClimateFromAny(opts);
       const planRes = getPlantingPlan({
         zone: zoneRes.data,
         ...(opts.date ? { date: opts.date } : {}),
         ...(category ? { category } : {}),
         limit,
         ...(opts.includeIndoor ? { includeIndoor: true } : {}),
+        ...(climateType ? { climateType } : {}),
       });
       if (!planRes.ok) return fail(planRes.error.message);
       if (opts.json) return printJson(planRes.data);
@@ -182,6 +204,7 @@ export function buildGardenCommand(): Command {
           planRes.data.frostDates,
           planRes.data.asOf,
           planRes.data.plantNow,
+          planRes.data.climateType,
         ),
       );
     });
@@ -354,6 +377,40 @@ export function buildGardenCommand(): Command {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/** Resolve coordinates from --lat/--lng or saved config. Returns undefined
+ *  when --zip was supplied (zip resolution is decoupled from climate). */
+async function resolveCoordsFromOpts(
+  opts: ZoneOpts | NowOpts,
+): Promise<Coordinates | undefined> {
+  if ("zip" in opts && opts.zip) return undefined;
+  const loc = await resolveLocation({
+    ...(opts.lat ? { lat: opts.lat } : {}),
+    ...(opts.lng ? { lng: opts.lng } : {}),
+  });
+  return loc.ok ? loc.data.coords : undefined;
+}
+
+/** Resolve a ClimateType for `garden now`: explicit --climate wins, then
+ *  coordinate auto-detection, else undefined (base values). */
+async function resolveClimateFromAny(
+  opts: NowOpts,
+): Promise<ClimateType | undefined> {
+  if (opts.climate) {
+    if (!isClimateType(opts.climate)) {
+      return fail(
+        `--climate must be one of: ${listClimateTypes().join(", ")}; got "${opts.climate}"`,
+      );
+    }
+    return opts.climate;
+  }
+  // Auto-detect from coords if available. Skip when --zone was explicitly set
+  // and no coords are available — synthetic zones don't carry a location.
+  const coords = await resolveCoordsFromOpts(opts);
+  if (!coords) return undefined;
+  const r = getClimateType(coords);
+  return r.ok ? r.data.climateType : undefined;
+}
 
 async function resolveZoneFromOpts(
   opts: ZoneOpts,

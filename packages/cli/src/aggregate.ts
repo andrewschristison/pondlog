@@ -1,4 +1,5 @@
 import {
+  getClimateType,
   getHardinessZone,
   getPlantingPlan,
   getTidePredictions,
@@ -240,21 +241,26 @@ function buildGardenForToday(
     errors.push({ source: "usda-zones", message: zoneRes.error.message });
     return undefined;
   }
+  const climateRes = getClimateType(coords);
+  const climateType = climateRes.ok ? climateRes.data.climateType : undefined;
   const planRes = getPlantingPlan({
     zone: zoneRes.data,
     date: isoDate(date),
     limit: DEFAULT_GARDEN_LIMIT,
+    ...(climateType ? { climateType } : {}),
   });
   if (!planRes.ok) {
     errors.push({ source: "crop-calendar", message: planRes.error.message });
     return undefined;
   }
-  return {
+  const briefing: GardenBriefing = {
     zone: planRes.data.zone,
     frostDates: planRes.data.frostDates,
     plantNow: planRes.data.plantNow,
     asOf: planRes.data.asOf,
   };
+  if (climateType) briefing.climateType = climateType;
+  return briefing;
 }
 
 function ingest<T>(

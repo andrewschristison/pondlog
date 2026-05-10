@@ -93,3 +93,18 @@ export const includeIndoorField = z
   .describe(
     "Include indoor-only crops (microgreens, sprouts) in the plan. Default false because their year-round windows otherwise dominate the earliest-harvest sort. Set true if the user is asking about indoor production specifically.",
   );
+
+export const climateTypeField = z
+  .enum([
+    "maritime",
+    "mediterranean",
+    "continental",
+    "humid_subtropical",
+    "arid",
+    "semi_arid",
+  ])
+  .describe(
+    "Coarse climate type used to apply per-climate modifiers to the planting plan. USDA hardiness zones only measure winter minimum temperature — climate adds the missing summer/humidity/rainfall context. " +
+      "Auto-detected from lat/lng when omitted (and when coordinates are supplied). Values: 'maritime' (cool summers, mild winters, consistent moisture — PNW coast), 'mediterranean' (warm dry summers, mild wet winters — coastal CA), 'continental' (hot summers, cold winters — Midwest/Plains), 'humid_subtropical' (hot humid summers — SE US/Gulf), 'arid' (hot dry summers — Desert SW), 'semi_arid' (moderate summers, low rain — High Plains/Intermountain West). " +
+      "When applied, matching crops get window date shifts (negative weeks = earlier) and climate-specific notes appended to the suggestion's notes.",
+  );

@@ -2,12 +2,15 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
   err,
   findCrop,
+  getClimateType,
   getCropsForZone,
   getFrostDates,
   getHardinessZone,
   getHardinessZoneByZip,
   getPlantingPlan,
   searchCrops,
+  type ClimateType,
+  type Coordinates,
   type CropCategory,
   type CropEntry,
   type GardenBriefing,
@@ -24,6 +27,7 @@ import { z } from "zod";
 import { failure, success } from "./respond.js";
 import {
   categoryField,
+  climateTypeField,
   dateField,
   latField,
   includeIndoorField,
@@ -99,12 +103,13 @@ function registerGetPlantingPlan(server: McpServer): void {
   server.registerTool(
     "get_planting_plan",
     {
-      title: "What to Plant Now (USDA Zone + Frost-Anchored Calendar)",
+      title: "What to Plant Now (USDA Zone + Frost-Anchored Calendar, Climate-Aware)",
       description:
         "Returns a list of crops to plant in the supplied date window, drawn from the bundled 1000-crop calendar (USDA Cooperative Extension publications). " +
         "Provide a USDA zone string ('5b', '8b') OR a coordinate pair / zip — coordinates resolve to a zone via the same lookup as `get_hardiness_zone`. " +
         "Each suggestion has: action (start_indoors / direct_sow / transplant / plant_now), windowStart..windowEnd (ISO dates anchored to the zone's typical frost dates), daysToHarvest range, and expectedHarvestEarliest. " +
         "If expectedHarvestEarliest lands past the typical first fall frost the crop is unlikely to finish — surface that to the user. " +
+        "Climate-aware: pass `climate_type` to apply per-climate window shifts and notes (currently authored on 10 anchor crops: tomato, pepper-sweet, lettuce-leaf, kale, blueberry, cucumber, basil, broccoli, garlic, cantaloupe). When you supply lat/lng or zip without `climate_type`, the tool auto-detects the climate from coordinates. The response echoes `climateType`. " +
         "For a strict view pass padDays:0 (default). For 'almost in window' pass padDays:7 or 14. " +
         "No API key required; works offline.",
       inputSchema: {
@@ -117,12 +122,14 @@ function registerGetPlantingPlan(server: McpServer): void {
         limit: limitField.optional(),
         pad_days: padDaysField.optional(),
         include_indoor: includeIndoorField.optional(),
+        climate_type: climateTypeField.optional(),
       },
       annotations: READ_ONLY,
     },
     async (args) => {
       const zoneRes = await resolveZoneFromArgs(args);
       if (!zoneRes.ok) return failure(zoneRes.error);
+      const climateType = resolveClimateType(args);
       const planRes = getPlantingPlan({
         zone: zoneRes.data,
         ...(args.date ? { date: args.date } : {}),
@@ -132,6 +139,7 @@ function registerGetPlantingPlan(server: McpServer): void {
         ...(args.limit !== undefined ? { limit: args.limit } : {}),
         ...(args.pad_days !== undefined ? { padDays: args.pad_days } : {}),
         ...(args.include_indoor === true ? { includeIndoor: true } : {}),
+        ...(climateType ? { climateType } : {}),
       });
       if (!planRes.ok) return failure(planRes.error);
       const briefing: GardenBriefing = {
@@ -140,9 +148,26 @@ function registerGetPlantingPlan(server: McpServer): void {
         plantNow: planRes.data.plantNow,
         asOf: planRes.data.asOf,
       };
+      if (planRes.data.climateType) {
+        briefing.climateType = planRes.data.climateType;
+      }
       return success(briefing);
     },
   );
+}
+
+function resolveClimateType(args: {
+  climate_type?: ClimateType;
+  lat?: number;
+  lng?: number;
+}): ClimateType | undefined {
+  if (args.climate_type) return args.climate_type;
+  if (args.lat !== undefined && args.lng !== undefined) {
+    const coords: Coordinates = { lat: args.lat, lng: args.lng };
+    const r = getClimateType(coords);
+    return r.ok ? r.data.climateType : undefined;
+  }
+  return undefined;
 }
 
 // ---------------------------------------------------------------------------

@@ -371,6 +371,15 @@ export interface GardenBriefing {
   plantNow: PlantSuggestion[];
   /** ISO date the plan was computed against (defaults to today). */
   asOf: string;
+  /** Coarse climate type ("maritime", "arid", etc.) used to apply per-climate
+   *  modifiers. Set when the consumer supplied or auto-resolved one. */
+  climateType?:
+    | "maritime"
+    | "mediterranean"
+    | "continental"
+    | "humid_subtropical"
+    | "arid"
+    | "semi_arid";
 }
 
 export interface NatureBriefing {

@@ -1,8 +1,10 @@
-import type {
-  CropEntry,
-  PlantSuggestion,
-  ZoneInfo,
-  FrostDates,
+import {
+  describeClimateType,
+  type ClimateType,
+  type CropEntry,
+  type FrostDates,
+  type PlantSuggestion,
+  type ZoneInfo,
 } from "@pondlog/core";
 import type { GrowingGuide, TreflePlantSummary } from "@pondlog/source-trefle";
 import pc from "picocolors";
@@ -19,14 +21,21 @@ function truncate(s: string, max: number): string {
 // Zone summary block
 // ---------------------------------------------------------------------------
 
+export function formatClimateLine(climate: ClimateType): string {
+  const label = climate.replace(/_/g, " ");
+  return `${pc.bold("Climate")}  ·  ${label}\n${pc.dim(`  ${describeClimateType(climate)}`)}`;
+}
+
 export function formatZoneBlock(
   zone: ZoneInfo,
   frost: FrostDates | undefined,
+  climate?: ClimateType,
 ): string {
   const lines: string[] = [];
   const titleColor = pc.bold(`USDA Zone ${zone.zone}`);
   const tempLine = `${zone.minTempF}°F to ${zone.maxTempF}°F (avg annual min winter temp)`;
-  lines.push(`${titleColor}  ·  ${tempLine}`);
+  const climateChip = climate ? `  ·  ${pc.cyan(climate.replace(/_/g, " "))}` : "";
+  lines.push(`${titleColor}  ·  ${tempLine}${climateChip}`);
   if (zone.resolvedFrom === "coords-nearest") {
     const distNote =
       typeof zone.distanceKm === "number"
@@ -47,6 +56,10 @@ export function formatZoneBlock(
         `  growing season ~${frost.seasonDays} days (continental US average; coastal/mountain microclimates may shift 2-3 weeks)`,
       ),
     );
+  }
+  if (climate) {
+    lines.push("");
+    lines.push(formatClimateLine(climate));
   }
   return lines.join("\n");
 }
@@ -69,14 +82,21 @@ const ACTION_ICON: Record<string, string> = {
   plant_now: "🌳",
 };
 
-export function formatPlantSuggestion(s: PlantSuggestion): string {
+export function formatPlantSuggestion(
+  s: PlantSuggestion,
+  showNotes = false,
+): string {
   const action = pc.cyan(padEnd(ACTION_LABEL[s.action] ?? s.action, 13));
   const name = pc.bold(padEnd(truncate(s.commonName, 22), 22));
   const window = pc.dim(`${s.windowStart}…${s.windowEnd}`);
   const harvest = s.expectedHarvestEarliest
     ? `harvest ${pc.dim("≥")} ${s.expectedHarvestEarliest}`
     : "";
-  return `  ${ACTION_ICON[s.action] ?? "·"} ${action} ${name}  ${window}  ${harvest}`;
+  const head = `  ${ACTION_ICON[s.action] ?? "·"} ${action} ${name}  ${window}  ${harvest}`;
+  if (showNotes && s.notes) {
+    return `${head}\n      ${pc.dim(truncate(s.notes, 140))}`;
+  }
+  return head;
 }
 
 export function formatPlantingPlan(
@@ -84,13 +104,17 @@ export function formatPlantingPlan(
   frost: FrostDates,
   asOf: string,
   plantNow: PlantSuggestion[],
+  climate?: ClimateType,
 ): string {
   const out: string[] = [];
-  out.push(formatZoneBlock(zone, frost));
+  out.push(formatZoneBlock(zone, frost, climate));
   out.push("");
+  const climateChip = climate
+    ? `  ·  ${pc.cyan(climate.replace(/_/g, " "))}`
+    : "";
   out.push(
     pc.bold(
-      `🌱 Plant now in zone ${zone.zone}  ·  ${asOf}  ·  ${plantNow.length} option${plantNow.length === 1 ? "" : "s"}`,
+      `🌱 Plant now in zone ${zone.zone}${climateChip}  ·  ${asOf}  ·  ${plantNow.length} option${plantNow.length === 1 ? "" : "s"}`,
     ),
   );
   if (plantNow.length === 0) {
@@ -117,7 +141,7 @@ export function formatPlantingPlan(
   ]) {
     const arr = groups.get(action);
     if (!arr || arr.length === 0) continue;
-    for (const s of arr) out.push(formatPlantSuggestion(s));
+    for (const s of arr) out.push(formatPlantSuggestion(s, climate !== undefined));
     out.push("");
   }
   return out.join("\n").trimEnd();

@@ -3,6 +3,81 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.16.0] - 2026-05-10
+
+### Added — Sticky 20: Climate modifiers for crop calendar
+
+USDA hardiness zones only describe winter minimum temperature — they say
+nothing about summer heat, humidity, or rainfall. Zone 8b in Port Angeles
+(cool wet maritime, 70°F highs) is a totally different growing
+environment from zone 8b in Tucson (arid, 105°F summers) or Savannah
+(humid subtropical, 50" rain). This release adds a climate-type layer
+that shifts planting windows and surfaces climate-specific advice on top
+of the existing zone/frost system.
+
+- **`getClimateType(coords)` in `@pondlog/core`** — returns one of six
+  coarse climate types (`maritime`, `mediterranean`, `continental`,
+  `humid_subtropical`, `arid`, `semi_arid`) using a refined lat/lng
+  heuristic that classifies all six anchor verify coordinates correctly:
+  Port Angeles → maritime, Tucson → arid, Savannah → humid_subtropical,
+  Des Moines → continental, San Diego → mediterranean, Denver →
+  semi_arid. The county-FIPS table is deferred — the heuristic covers
+  ~90% of US locations and adds zero data weight.
+- **Schema additions (additive, no breaking changes)** — each crop entry
+  in `crop-calendar.json` may now carry an optional `climateModifiers`
+  block keyed by climate type. Each modifier has `windowShifts` (integer
+  weeks per action: `start_indoors`, `direct_sow`, `transplant`) and a
+  `notes` string. Window dates shift by `weeks * 7`; duration is
+  preserved; notes are appended to the suggestion's notes string. JSON
+  fixture stays at `version: "1"` because old entries still parse.
+- **10 anchor crops authored end-to-end** — tomato, pepper-sweet,
+  lettuce-leaf, kale, blueberry, cucumber, basil, broccoli, garlic,
+  cantaloupe. Six climates each, conservative shifts (≤2 weeks),
+  curated against USDA Cooperative Extension regional guidance. The
+  remaining 990 entries fall through to base values; the next sticky
+  expands to ~65 crops once this skeleton has lived.
+- **`getPlantingPlan({ ..., climateType })`** — the new option applies
+  modifiers; without it, output is byte-identical to pre-0.7 (full
+  back-compat). Result gains an optional `climateType` echo so
+  consumers can render the active climate.
+- **CLI** — `pondlog garden zone` now displays the detected climate
+  ("Zone 8b · maritime") and a one-line description. `pondlog garden now`
+  auto-detects climate from coords or `--lat/--lng`, accepts a new
+  `--climate <type>` override, and renders modifier notes inline under
+  each suggestion. `pondlog today` (the aggregate) passes the detected
+  climate into the garden briefing.
+- **MCP** — `mcp-garden get_planting_plan` accepts a new optional
+  `climate_type` input and auto-detects from coords when omitted; the
+  echoed `climateType` makes climate-aware planning visible in the
+  response. `mcp-pondlog get_nature_briefing`'s garden block carries
+  `climateType` and applies modifiers.
+- **Tests** — 12 new core tests: 6 known-coord climate lookups,
+  tomato base/maritime/arid window shift verification, and a
+  back-compat snapshot. 152 total tests across the workspace, all green.
+
+#### Live verified at Port Angeles (zone 8b, maritime)
+
+- Base tomato `start_indoors` window: `2026-01-18..2026-02-15`.
+- Maritime modifier (`start_indoors: -2`): `2026-01-04..2026-02-01`
+  — exactly 14 days earlier, duration preserved.
+- Arid override (`start_indoors: +1`): `2026-01-25..2026-02-22`
+  — 7 days later, with shade-cloth notes.
+- mcp-garden JSON-RPC handshake clean: `tools/list` shows the new
+  `climate_type` input on `get_planting_plan`; live tool call with
+  `lat/lng` echoes `climateType: "maritime"` and applies the shift.
+
+#### Versions
+
+- `@pondlog/core` 0.6.0 → 0.7.0 (minor — new public helper + new
+  option on `getPlantingPlan`).
+- `pondlog` CLI 0.5.2 → 0.6.0 (minor — new `--climate` flag, climate
+  display in `garden zone` / `garden now`, climate flow in
+  `pondlog today`).
+- `@pondlog/mcp-garden` 0.1.3 → 0.2.0 (minor — new `climate_type`
+  tool input, auto-detect, `climateType` in response).
+- `@pondlog/mcp-pondlog` 0.3.3 → 0.3.4 (patch — picks up core's
+  climate awareness through the aggregate briefing).
+
 ## [0.15.0] - 2026-05-09
 
 ### Added — Sticky 19: Crop calendar 500 → 1000

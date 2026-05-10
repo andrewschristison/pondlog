@@ -9,6 +9,7 @@
 // load to catch malformed entries.
 
 import { z } from "zod";
+import type { ClimateType } from "./climate-types.js";
 import calendarRaw from "./data/crop-calendar.json" with { type: "json" };
 import { err, ok, type Result } from "./result.js";
 import type {
@@ -74,6 +75,39 @@ const WindowSchema = z
 
 export type CropWindow = z.infer<typeof WindowSchema>;
 
+const ClimateTypeSchema = z.enum([
+  "maritime",
+  "mediterranean",
+  "continental",
+  "humid_subtropical",
+  "arid",
+  "semi_arid",
+]);
+
+const ClimateModifierSchema = z.object({
+  windowShifts: z
+    .object({
+      start_indoors: z.number().int().min(-12).max(12).optional(),
+      direct_sow: z.number().int().min(-12).max(12).optional(),
+      transplant: z.number().int().min(-12).max(12).optional(),
+    })
+    .optional(),
+  notes: z.string().min(1).max(300).optional(),
+});
+
+export type ClimateModifier = z.infer<typeof ClimateModifierSchema>;
+
+const ClimateModifiersSchema = z
+  .object({
+    maritime: ClimateModifierSchema.optional(),
+    mediterranean: ClimateModifierSchema.optional(),
+    continental: ClimateModifierSchema.optional(),
+    humid_subtropical: ClimateModifierSchema.optional(),
+    arid: ClimateModifierSchema.optional(),
+    semi_arid: ClimateModifierSchema.optional(),
+  })
+  .optional();
+
 const EntrySchema = z.object({
   slug: z
     .string()
@@ -99,6 +133,7 @@ const EntrySchema = z.object({
   notes: z.string().max(400).optional(),
   aliases: z.array(z.string().min(1).max(60)).optional(),
   source: z.string().optional(),
+  climateModifiers: ClimateModifiersSchema,
 });
 
 export type CropEntry = z.infer<typeof EntrySchema>;
@@ -267,6 +302,10 @@ export interface GetPlantingPlanParams {
    *  Default false because their year-round windows otherwise dominate
    *  earliest-harvest sorting. */
   includeIndoor?: boolean;
+  /** Apply per-climate window shifts and notes. When unset, base values are
+   *  used (full back-compat with pre-v0.7 callers). Resolve from coords via
+   *  `getClimateType` from `@pondlog/core`. */
+  climateType?: ClimateType;
 }
 
 export interface GetPlantingPlanResult {
@@ -275,6 +314,8 @@ export interface GetPlantingPlanResult {
   asOf: string;
   /** Crops with an open or imminent window for the requested date. */
   plantNow: PlantSuggestion[];
+  /** Climate type the plan was computed against, if one was supplied. */
+  climateType?: ClimateType;
 }
 
 export function getPlantingPlan(
@@ -308,6 +349,7 @@ export function getPlantingPlan(
   const zoneNum = params.zone.zoneNumber;
 
   const includeIndoor = params.includeIndoor === true;
+  const climate = params.climateType;
   for (const crop of cal.entries) {
     if (
       zoneNum < crop.zoneRange.min ||
@@ -318,12 +360,22 @@ export function getPlantingPlan(
     if (params.category && crop.category !== params.category) continue;
     if (!includeIndoor && crop.growingContext === "indoor") continue;
 
+    const modifier =
+      climate && crop.climateModifiers
+        ? crop.climateModifiers[climate]
+        : undefined;
+
     // Find the first window that contains today (with optional padding).
+    // Window dates are shifted by the climate modifier when one applies to
+    // the action; duration is preserved.
     for (const w of crop.windows) {
+      const shiftDays = climateShiftDays(modifier, w.action);
+      const fromFrostDays = w.fromFrostDays + shiftDays;
+      const toFrostDays = w.toFrostDays + shiftDays;
       const anchorIso =
         w.anchor === "last_spring" ? lastSpringIso : firstFallIso;
-      const startIso = addDays(anchorIso, w.fromFrostDays - padDays);
-      const endIso = addDays(anchorIso, w.toFrostDays + padDays);
+      const startIso = addDays(anchorIso, fromFrostDays - padDays);
+      const endIso = addDays(anchorIso, toFrostDays + padDays);
       if (dateIso < startIso || dateIso > endIso) continue;
 
       // Compute earliest harvest if planted today.
@@ -335,14 +387,15 @@ export function getPlantingPlan(
         scientificName: crop.scientificName,
         category: crop.category,
         action: w.action as PlantSuggestionAction,
-        windowStart: addDays(anchorIso, w.fromFrostDays),
-        windowEnd: addDays(anchorIso, w.toFrostDays),
+        windowStart: addDays(anchorIso, fromFrostDays),
+        windowEnd: addDays(anchorIso, toFrostDays),
         daysToHarvest: { ...crop.daysToHarvest },
         expectedHarvestEarliest: expectedHarvest,
       };
       const noteParts: string[] = [];
       if (w.notes) noteParts.push(w.notes);
       if (crop.notes) noteParts.push(crop.notes);
+      if (modifier?.notes) noteParts.push(modifier.notes);
       if (noteParts.length > 0) suggestion.notes = noteParts.join(" — ");
       out.push(suggestion);
       break; // one suggestion per crop per call (the first matching window)
@@ -369,12 +422,33 @@ export function getPlantingPlan(
     return a.commonName.localeCompare(b.commonName);
   });
 
-  return ok({
+  const result: GetPlantingPlanResult = {
     zone: params.zone,
     frostDates: frost,
     asOf: dateIso,
     plantNow: out.slice(0, limit),
-  });
+  };
+  if (climate) result.climateType = climate;
+  return ok(result);
+}
+
+function climateShiftDays(
+  modifier: ClimateModifier | undefined,
+  action: PlantSuggestionAction,
+): number {
+  if (!modifier?.windowShifts) return 0;
+  // Only shift the actions we know about; "plant_now" (perennial planting)
+  // has no shift slot in ClimateModifier and stays at base.
+  if (action === "start_indoors") {
+    return (modifier.windowShifts.start_indoors ?? 0) * 7;
+  }
+  if (action === "direct_sow") {
+    return (modifier.windowShifts.direct_sow ?? 0) * 7;
+  }
+  if (action === "transplant") {
+    return (modifier.windowShifts.transplant ?? 0) * 7;
+  }
+  return 0;
 }
 
 /** List crops where the zone falls within their `zoneRange`. */

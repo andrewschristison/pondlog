@@ -130,6 +130,42 @@
         "source": {
           "type": "string",
           "description": "Per-entry citation. Overrides the file-level `source` when present."
+        },
+        "climateModifiers": {
+          "type": "object",
+          "description": "Optional per-climate-type adjustments. Each key is one of the six climate types (maritime, mediterranean, continental, humid_subtropical, arid, semi_arid); each value is a partial set of week-deltas applied to the matching base window plus a notes string. Only populate where the climate meaningfully changes the recommendation; most entries omit this field. See `climate-types.ts` in @pondlog/core.",
+          "additionalProperties": false,
+          "properties": {
+            "maritime": { "$ref": "#/$defs/ClimateModifier" },
+            "mediterranean": { "$ref": "#/$defs/ClimateModifier" },
+            "continental": { "$ref": "#/$defs/ClimateModifier" },
+            "humid_subtropical": { "$ref": "#/$defs/ClimateModifier" },
+            "arid": { "$ref": "#/$defs/ClimateModifier" },
+            "semi_arid": { "$ref": "#/$defs/ClimateModifier" }
+          }
+        }
+      }
+    },
+    "ClimateModifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Per-climate adjustments for a crop. `windowShifts` carries integer week deltas keyed by action ('start_indoors', 'direct_sow', 'transplant'); the runtime shifts the matching window's fromFrostDays/toFrostDays by weeks*7 and preserves duration. Negative = earlier than base. `notes` is a short gardener-facing string appended to the suggestion's notes when this climate is active.",
+      "properties": {
+        "windowShifts": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Week deltas per action. Omitted actions are unchanged. Example: { start_indoors: -2 } shifts the indoor-start window 14 days earlier.",
+          "properties": {
+            "start_indoors": { "type": "integer", "minimum": -12, "maximum": 12 },
+            "direct_sow": { "type": "integer", "minimum": -12, "maximum": 12 },
+            "transplant": { "type": "integer", "minimum": -12, "maximum": 12 }
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "description": "Climate-specific advice — variety selection, technique, disease pressure, irrigation. Appended to the suggestion's notes when this climate is active."
         }
       }
     },
