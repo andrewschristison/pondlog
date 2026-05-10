@@ -3,6 +3,196 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.15.0] - 2026-05-09
+
+### Added — Sticky 19: Crop calendar 500 → 1000
+
+The hand-curated calendar in `@pondlog/core` doubles again, from 500 to
+1000 entries. Same schema (v1), same frost-anchored window model, same
+Zod validation gate at module load. All new entries carry the
+`growingContext` field added in Sticky 18.1. The `getPlantingPlan`
+helper's `limit` cap rises from 500 to 1000 so callers can request the
+full set in one call.
+
+#### What's new in the calendar (500 added entries)
+
+- **Heirloom & named cultivars (~115)** — Brandywine, Cherokee Purple,
+  San Marzano, Roma, Green Zebra, Black Krim, Mortgage Lifter, Amish
+  Paste, Hillbilly, Kellogg's Breakfast, Sungold, Juliet tomato;
+  Carolina Reaper, Scotch Bonnet, Trinidad Scorpion, Fresno, Padron,
+  Gypsy, Peppadew, Aleppo, Purple Jalapeño, Mariachi, Pasilla, Mulato
+  pepper; Costata Romanesco, Tromboncino, Marina di Chioggia,
+  Queensland Blue, Jarrahdale, Galeux d'Eysines, Rouge Vif d'Etampes,
+  Long Pie, Sugar Pie, Jack-O-Lantern, Red Kuri, Sweet Dumpling, Lakota
+  squash; Kentucky Wonder, Blue Lake, Dragon Tongue, Christmas Lima,
+  Jacob's Cattle, Anasazi, Calypso, Vermont Cranberry, Painted Pony,
+  Hidatsa Shield, Tongues of Fire, Italian Romano, Royal Burgundy bean;
+  Buttercrunch, Red Sails, Little Gem, Oak Leaf, Lollo Rossa, Deer
+  Tongue, Forellenschluss, Parris Island, Marvel of Four Seasons,
+  Bronze Arrow, Rouge Grenobloise, Trout Back, Rouge d'Hiver, Freckles
+  lettuce; Golden Bantam, Silver Queen, Stowell's Evergreen, Glass Gem
+  (ornamental note), Oaxacan Green, Country Gentleman, Painted
+  Mountain, Hopi Blue, Bloody Butcher, Mandan Bride corn; Marketmore,
+  Boston Pickling, Sumter, Lemon Drop, Mexican Sour Gherkin cucumber;
+  Charentais melon; Moon and Stars, Sugar Baby watermelon; Paris
+  Market, Scarlet Nantes, Dragon, Danvers, Kuroda, Purple Haze,
+  Cosmic Purple carrot; Bull's Blood, Early Wonder, Albino beet;
+  Ailsa Craig, Red Creole, Yellow of Parma, Potato onion; King
+  Richard, Bleu de Solaize, Yellow Flag leek; Lacinato, Red Russian,
+  Siberian, Dwarf Blue Curled, Redbor, Kosmic kale; Di Cicco, Waltham
+  29, Purple Sprouting broccoli; Bright Lights, Fordhook Giant, Ruby
+  Red, Rainbow Blend chard; Yellow Pear, Gardener's Delight, Black
+  Cherry tomato; Oregon Sugar Pod, Lincoln, Green Arrow, Purple
+  Podded peas.
+- **Mushrooms (20)** — shiitake (log), 5 oyster cultivars (pearl,
+  blue, king, pink, yellow), lion's mane, wine cap stropharia (king
+  stropharia), maitake, chicken of the woods, enoki, nameko,
+  pioppino, reishi, turkey tail, Cordyceps militaris, shaggy mane,
+  almond agaricus, blewit, cultivated morel.
+- **Native edibles (~42)** — PNW: thimbleberry, salmonberry,
+  osoberry, kinnikinnick, nodding onion, camas, evergreen and red
+  huckleberry, Oregon grape, western spring beauty. NE: American
+  persimmon, staghorn sumac, spicebush, sweet fern, bunchberry,
+  chinquapin, highbush cranberry, nannyberry. SE: muscadine grape,
+  beautyberry, yaupon holly (only US-native caffeine plant), clammy
+  ground cherry, sand cherry, partridge berry, Chickasaw plum, blue
+  elderberry. SW: jojoba, prickly pear, mesquite, Agave americana,
+  chiltepin (wild C. annuum), cholla buds, banana yucca. Midwest:
+  wild plum, chokecherry, American hazelnut, prairie turnip, pin
+  cherry, wild strawberry, prickly ash.
+- **Forage & pasture (16)** — alfalfa (premier), timothy, orchard
+  grass, tall fescue, perennial ryegrass, smooth bromegrass,
+  bermudagrass, bahiagrass, switchgrass, big bluestem, little
+  bluestem, Indiangrass, eastern gamagrass, ladino clover,
+  birdsfoot trefoil, sainfoin, cicer milkvetch, Korean lespedeza,
+  forage chicory/plantain/turnip/beet, foxtail forage millet, ribwort
+  plantain.
+- **Aquatic & bog (15)** — cranberry, wild rice (manoomin), edible
+  lotus, water chestnut, wasabi, water spinach (federal noxious-weed
+  flag), cattail, wapato, pickerelweed, water celery (toxic-cousin
+  flag), salicornia, fish mint (Houttuynia), duckweed (Lemna), azolla,
+  arrow arum.
+- **Dye plants (15)** — true indigo, woad, madder, weld, osage
+  orange, safflower (dye), Japanese indigo, dahlia (dye), dyer's
+  chamomile, Sicilian sumac (Rhus coriaria), logwood, henna, annatto,
+  dyer's broom, fustic.
+- **Fiber plants (10)** — fiber flax, industrial hemp (federal-legal
+  flag with state-license note), cotton (boll-weevil regulatory
+  flag), ramie, kenaf, jute (fiber-use entry distinct from molokhia),
+  sisal, moso bamboo, nettle (fiber-use entry distinct from food),
+  milkweed (fiber-use entry distinct from pollinator).
+- **Medicinal & apothecary (40)** — astragalus, rhodiola, schisandra,
+  eleuthero, andrographis, cat's claw, devil's claw, saw palmetto,
+  black cohosh, blue cohosh, goldenseal, bloodroot, wild yam, vitex,
+  dong quai, shatavari, brahmi, jiaogulan, California poppy,
+  meadowsweet, white willow, arnica, witch hazel, yerba mate, kava,
+  **kratom (state-legality flag)**, damiana, muira puama, medicinal
+  lobelia, blessed thistle, mugwort, boneset, wild lettuce, blue
+  vervain, motherwort, yerba santa, self-heal, Solomon's seal,
+  cleavers, agrimony.
+- **Pollinator flowers (50)** — three penstemon species, two helenium,
+  three solidago, four asters, two liatris, NY ironweed, two
+  eupatorium (Joe Pye, mistflower), two milkweed additions (showy,
+  whorled), two chelone (turtleheads), two lobelia (cardinal, blue),
+  two baptisia (blue, white false indigo), Carolina lupine, two
+  ceanothus, two clarkia, desert phacelia, two gaillardia, two
+  ratibida, two silphium (cup plant, compass plant), Zizia
+  (alexander), two eryngium, three agastache (Korean mint, mosquito
+  plant, plus rugosa), three salvia (May Night, Amistad, woodland
+  sage), lemon bee balm, three echinacea cultivars (Magnus, White
+  Swan, PowWow Wild Berry).
+- **Flower additions (60)** — three cosmos cultivars (Sensation,
+  sulphureus, chocolate), four zinnia cultivars (elegans, Zahara,
+  State Fair, Benary's Giant), six sunflower cultivars (Mammoth,
+  Autumn Beauty, Teddy Bear, Velvet Queen, Italian White, Lemon
+  Queen), three marigold cultivars, four poppy types (Shirley,
+  Iceland, breadseed, oriental), love-lies-bleeding, Canterbury bells,
+  sweet William, Bells of Ireland, strawflower, statice, three
+  celosia (cockscomb, plume, wheat), four o'clock, moonflower,
+  morning glory, Cupani's sweet pea, ten bulbs (Darwin and species
+  tulip, daffodil, spring crocus, grape hyacinth, snowdrop, Spanish
+  bluebell, lily of the valley, ranunculus, Anemone coronaria), eight
+  spring perennials (hellebore, bleeding heart, columbine, Virginia
+  bluebells, tree peony, herbaceous peony, bearded iris, Siberian
+  iris), Stella daylily, hosta, astilbe, heuchera, creeping phlox,
+  garden phlox, Jacob Cline bee balm, amsonia (blue star), perennial
+  blue flax, Purple Sensation allium.
+- **Fruit trees & vines (40)** — Honeycrisp/Fuji/Gala/Granny Smith/
+  Liberty/Enterprise/Gravenstein/McIntosh apple; Bartlett/Anjou/
+  Bosc/Comice pear; Shinko Asian pear; Bing/Rainier/Montmorency/
+  Stella cherry; Italian/Santa Rosa/Damson/Greengage plum; Redhaven/
+  Elberta/Contender/Reliance peach; Concord/Niagara/Marquette/
+  Frontenac/Chambourcin/Cayuga White grape; Satsuma mandarin/Meyer
+  lemon/Key lime/Bearss lime; Blenheim apricot, Fantasia nectarine,
+  Tilton apricot; Albion and Seascape strawberry.
+- **Specialty exotics & edible landscape (30)** — saffron crocus,
+  vanilla orchid, za'atar, galangal, lemon myrtle, anise myrtle,
+  cassia and Ceylon cinnamon, cardamom, black pepper, tea, Arabica
+  coffee, allspice, cocoa, European and Arbequina olive, caper bush,
+  Mango pawpaw, Li and Lang jujube, Heritage and Canby raspberry,
+  Northern highbush, rabbiteye, lowbush blueberry, Triple Crown
+  blackberry, alpine and everbearing strawberry, Pineapple quince.
+- **Misc gap-fillers (~40)** — forage soybean, annual medic, lupini
+  bean, Broad Windsor fava, three peanut types (Virginia, Spanish,
+  Valencia), sesame, chia, omega-3 flax (oilseed), canola, oilseed
+  sunflower, oilseed safflower, condiment yellow and brown table
+  mustard, teosinte, Job's Tears, okra-emerald, Jersey Knight and
+  Purple Passion asparagus, Victoria and Canada Red rhubarb, Bohemian
+  horseradish, purple tomatillo, Aunt Molly's ground cherry,
+  Bloomsdale spinach, Georgia Southern collards, Southern Giant
+  Curled mustard greens, purple sprouting broccoli, three colored
+  cauliflower (purple, cheddar, graffiti), Belgian endive (witloof),
+  puntarelle, Vit mache, Sugar Ann snap pea, Wando shelling pea,
+  Purple Prince amaranth, Cherry Vanilla quinoa, Fairytale pumpkin
+  (Musquee de Provence), snake melon.
+
+#### Quality rules followed (per `feedback_curation_quality.md` and the project skill §4)
+
+- All 1000 entries pass `crop-calendar.schema.json` v1; Zod parse at
+  module load is the gate. 1000 unique slugs (verified).
+- `growingContext` populated on every entry: 841 outdoor, 82 both, 23
+  indoor, 54 greenhouse.
+- `daysToHarvest` ranges sourced from extension publications. Multi-
+  decade trees (jujube/persimmon/black walnut/etc.) cap at the schema
+  max of 3650 days with note explaining real bearing time.
+- `zoneRange` reflects realistic cold limits — kratom 10–11, vanilla
+  11, kava 10–11, saffron 6–9, cocoa 11.
+- Every new entry cites a real extension publication or USDA program.
+- Notes flag toxicity (foxglove already in dataset; raw lupini, raw
+  cassava, breadseed-poppy alkaloids), legality (kratom by state,
+  hemp federal-legal-state-licensed, water spinach federal noxious
+  weed, cotton boll-weevil regulation), regional restrictions (woad
+  invasive west, mugwort invasive east, garlic mustard invasive),
+  and sustainability concerns (goldenseal CITES, ramps wild-harvest
+  ethics, Cordyceps wild populations).
+
+#### `getPlantingPlan` limit cap
+
+- Raised from `[1..500]` to `[1..1000]` in `crop-calendar.ts:282`.
+  Backward-compatible — existing callers pass smaller limits and are
+  unaffected. New limit lets agents/CLI request the full open set in
+  a single call.
+
+#### Stale text refreshed
+
+Every "500-crop" mention across the monorepo (`@pondlog/core`,
+`@pondlog/source-trefle`, `@pondlog/mcp-garden`, `@pondlog/mcp-pondlog`,
+`pondlog` CLI, root README) updated to "1000-crop".
+
+#### Versions
+
+- `@pondlog/core` 0.5.1 → **0.6.0** (minor — content growth, limit cap
+  raise, no schema or API change).
+- `pondlog` CLI 0.5.1 → **0.5.2** (patch — copy refresh; default
+  behavior unchanged for users).
+- `@pondlog/mcp-garden` 0.1.2 → **0.1.3** (patch — tool description
+  refresh; bundles core 0.6.0 at install).
+- `@pondlog/mcp-pondlog` 0.3.2 → **0.3.3** (patch — copy refresh +
+  republish to bundle core 0.6.0).
+
+`server.json` files for both MCP servers updated with matching
+versions and 2026-05-09 release date.
+
 ## [0.14.2] - 2026-05-08
 
 ### Added — Sticky 18.2: surface `includeIndoor` through CLI + MCP

@@ -1,22 +1,22 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
   "name": "io.github.andrewschristison/pondlog-pondlog",
-  "description": "Aggregate nature MCP server. One tool call returns a unified briefing — birds, wildlife, plants, fungi, tides, streamflow, night sky, phenology, and a garden planting plan — stitched from public APIs (iNaturalist, eBird, NOAA, USGS, NPN, Mushroom Observer, astronomy-engine) plus the bundled USDA hardiness-zone + 500-crop calendar. Partial failures are reported in errors[] without crashing the briefing.",
+  "description": "Aggregate nature MCP server. One tool call returns a unified briefing — birds, wildlife, plants, fungi, tides, streamflow, night sky, phenology, and a garden planting plan — stitched from public APIs (iNaturalist, eBird, NOAA, USGS, NPN, Mushroom Observer, astronomy-engine) plus the bundled USDA hardiness-zone + 1000-crop calendar. Partial failures are reported in errors[] without crashing the briefing.",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github",
     "subfolder": "packages/mcp-pondlog"
   },
   "version_detail": {
-    "version": "0.3.2",
-    "release_date": "2026-05-08",
+    "version": "0.3.3",
+    "release_date": "2026-05-09",
     "is_latest": true
   },
   "packages": [
     {
       "registry_name": "npm",
       "name": "@pondlog/mcp-pondlog",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "runtime_hint": "node",
       "transport": { "type": "stdio" },
       "environment_variables": [

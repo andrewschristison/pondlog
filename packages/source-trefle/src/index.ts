@@ -3,7 +3,7 @@
 // SCOPE NOTE — Trefle is the *taxonomy* layer of pondlog's garden surface.
 // We live-probed the live API in May 2026 and found that horticulture fields
 // (days_to_harvest, sowing instructions, growth_months, hardiness) are
-// universally null for cultivated vegetables. The 500-crop planting calendar
+// universally null for cultivated vegetables. The 1000-crop planting calendar
 // in @pondlog/core covers planning logic. Trefle covers:
 //
 //   - common name → scientific name resolution

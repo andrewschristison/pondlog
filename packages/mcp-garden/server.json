@@ -1,22 +1,22 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
   "name": "io.github.andrewschristison/pondlog-garden",
-  "description": "Garden-planning MCP server: USDA hardiness zone lookup, frost-anchored 500-crop planting calendar (USDA Cooperative Extension sourced), and Trefle.io plant taxonomy. Five tools — works offline; Trefle taxonomy requires a free TREFLE_API_TOKEN.",
+  "description": "Garden-planning MCP server: USDA hardiness zone lookup, frost-anchored 1000-crop planting calendar (USDA Cooperative Extension sourced), and Trefle.io plant taxonomy. Five tools — works offline; Trefle taxonomy requires a free TREFLE_API_TOKEN.",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github",
     "subfolder": "packages/mcp-garden"
   },
   "version_detail": {
-    "version": "0.1.2",
-    "release_date": "2026-05-08",
+    "version": "0.1.3",
+    "release_date": "2026-05-09",
     "is_latest": true
   },
   "packages": [
     {
       "registry_name": "npm",
       "name": "@pondlog/mcp-garden",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "runtime_hint": "node",
       "transport": { "type": "stdio" }
     }

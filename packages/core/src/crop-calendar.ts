@@ -1,4 +1,4 @@
-// Crop calendar — hand-curated planting windows for ~500 food crops, herbs,
+// Crop calendar — hand-curated planting windows for ~1000 food crops, herbs,
 // companion flowers, and cover crops. Source: USDA Cooperative Extension
 // publications (consolidated). Each entry has multiple frost-anchored
 // windows (start_indoors, direct_sow, transplant, plant_now) so a single
@@ -292,10 +292,10 @@ export function getPlantingPlan(
   const frost = frostRes.data;
   const padDays = params.padDays ?? 0;
   const limit = params.limit ?? 50;
-  if (!Number.isInteger(limit) || limit < 1 || limit > 500) {
+  if (!Number.isInteger(limit) || limit < 1 || limit > 1000) {
     return err({
       source: "crop-calendar",
-      message: `getPlantingPlan: limit must be in [1..500], got ${limit}`,
+      message: `getPlantingPlan: limit must be in [1..1000], got ${limit}`,
     });
   }
 
