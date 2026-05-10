@@ -3,6 +3,65 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.16.1] - 2026-05-10
+
+### Added — Sticky 21: Climate modifiers expanded from 10 to 65 crops
+
+Pure data enrichment on top of the climate-modifier system shipped in
+0.16.0 (Sticky 20). The 10 anchor crops authored in Sticky 20 proved
+the system end-to-end; this release fills out 55 more so the calendar
+covers the climate-sensitive crops most home gardeners actually grow.
+
+- **Warm-season (20)** — pepper-hot, eggplant, zucchini, summer-squash,
+  winter-squash, pumpkin, watermelon, honeydew, okra, sweet-potato,
+  sweet-corn, bush-bean, pole-bean, snap-pea, tomatillo, ground-cherry,
+  edamame, luffa, bitter-melon, roselle.
+- **Cool-season (15)** — spinach, arugula, swiss-chard, bok-choy,
+  cauliflower, cabbage, brussels-sprouts, kohlrabi, radish, carrot,
+  beet, turnip, onion, leek, celery.
+- **Perennials & fruits (15)** — strawberry, raspberry, blackberry,
+  grape, fig, apple-standard, european-pear, cherry-sweet, peach,
+  plum-european, asparagus, rhubarb, artichoke, kiwi-hardy, persimmon.
+  These use `plant_now` windows, which by schema have no shift slot,
+  so they carry notes-only modifiers (variety selection, chill hours,
+  disease pressure, soil prep).
+- **Herbs (5)** — cilantro, dill, parsley-flat, rosemary, lavender.
+
+Conservative shifts (≤2 weeks) only where extension publications
+support a clear timing delta — ~30 of the 55 crops carry a windowShift
+on at least one climate; the rest are notes-only. Climate priorities
+per-axis: maritime (cool-soil/disease/short-season cultivars),
+mediterranean (drought, extended cool season), continental (frost
+protection, season extenders), humid_subtropical (disease resistance,
+fall-shifted cool crops, double-cropping), arid (shade cloth, drip,
+heat shutdown), semi_arid (wind, variable moisture, container/raised-bed
+fallbacks).
+
+#### Live verified at Port Angeles (zone 8b)
+
+Sample sweep of the new data, sticky's "pepper-hot maritime vs arid":
+
+- Base `start_indoors` window: `2026-01-04..2026-02-01`.
+- Maritime: same window dates (notes-only) — climate notes warn about
+  cool-night fruit-set failure and steer toward jalapeño/hungarian wax
+  over slow-ripening superhots.
+- Arid: same `start_indoors` dates (the modifier shifts `transplant -1`
+  to get plants in before extreme heat) — climate notes call out 30%
+  shade cloth above 100°F.
+- Humid_subtropical: `start_indoors` shifts to `2026-01-11..2026-02-08`
+  (+7 days from `start_indoors: 1`) — climate notes warn about
+  bacterial spot.
+
+Backward compat preserved: `getPlantingPlan` without `climateType`
+returns the same output as 0.7.0. All 26 core tests still green.
+
+#### Versions
+
+- `@pondlog/core` 0.7.0 → 0.7.1 (patch — pure data enrichment on the
+  optional `climateModifiers` field; no API surface change).
+- CLI / mcp-garden / mcp-pondlog: no bump — they re-resolve to ^0.7.1
+  through workspace deps and pick up the new modifiers automatically.
+
 ## [0.16.0] - 2026-05-10
 
 ### Added — Sticky 20: Climate modifiers for crop calendar
