@@ -8,3 +8,4 @@ export * from "./noaa.js";
 export * from "./usda-zones.js";
 export * from "./climate-types.js";
 export * from "./crop-calendar.js";
+export * from "./companions.js";

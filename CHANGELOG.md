@@ -3,6 +3,76 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.17.0] - 2026-05-10
+
+### Added — Sticky 22: Companion planting fixture (first graph edges)
+
+The first relationship layer of the CropGraph. Until now the calendar
+was a flat list of 1000 crops with their own planting windows; this
+release adds directed edges between them — companion (beneficial) and
+antagonist (harmful) — with cited mechanisms. "What should I plant
+next to my tomatoes?" is one of the most-asked gardening questions on
+earth and no API currently answers it.
+
+- **`packages/core/src/data/companions.json`** — 121 hand-curated
+  relationship edges (88 beneficial, 33 antagonist). 37 strong-grade
+  (empirical research support: Three Sisters N-cycle, French marigold
+  root-knot nematode suppression, allium / Rhizobium inhibition of
+  legumes, nightshade-family disease sharing, peer-reviewed
+  pollinator-attractor effects, borage-strawberry, hairy vetch + tomato
+  no-till) and 84 moderate-grade (widely-corroborated traditional
+  pairings with at least some research support). Folk-only (weak)
+  entries deliberately excluded; community PRs welcome.
+- **`packages/core/src/data/companions.schema.json`** — JSON Schema
+  with file-level inline research grounding (USDA Cooperative Extension
+  Cornell/WSU/UC ANR/UF-IFAS/OSU/Penn State/Texas A&M; USDA-ARS Three
+  Sisters and allelopathy research; Xerces Society pollinator
+  publications; Riotte's `Carrots Love Tomatoes`; Cunningham's `Great
+  Garden Companions`; SARE Cover Crops field guide). 12 mechanism
+  categories: `nitrogen_fixing`, `pest_repellent`, `trap_crop`,
+  `pollinator_attractor`, `shade_provider`, `ground_cover`,
+  `allelopathic`, `disease_vector`, `nutrient_competition`,
+  `space_efficiency`, `flavor_enhancement`, `structural_support`.
+- **`packages/core/src/companions.ts`** — Zod-validated loader with a
+  slug-existence guard: every `crop` and `companion` value is
+  cross-referenced against `crop-calendar.json` at parse time; a bad
+  PR breaks the import of `@pondlog/core` immediately rather than at
+  runtime. Six public helpers:
+  - `getCompanions(slug)` — returns `{ companions, antagonists }`,
+    surfacing both forward edges and reverse edges (with crop/companion
+    swapped) so callers don't have to know storage direction.
+  - `getRelationship(slugA, slugB)` — single-pair lookup with reverse
+    fallback. Returns `undefined` when neither direction is known.
+  - `getBestCompanions(slug, { mechanism?, minStrength?, limit? })` —
+    ranked by strength desc; filters by mechanism and minimum strength.
+  - `getAntagonists(slug)` — antagonist edges sorted strong-first.
+  - `findByMechanism(mechanism)` — all entries of a given mechanism
+    across the whole fixture; useful for "show me all nitrogen-fixing
+    relationships" tools.
+  - `checkBedCompatibility(slugs[])` — compatibility report for a
+    group of crops planned in the same bed: discovers all pairwise
+    relationships, deduplicates by canonical pair order, and surfaces
+    warnings when one crop antagonizes 2+ others (the canonical hub
+    pattern — fennel-herb antagonizes most of the garden).
+- **Bidirectional storage:** the Three Sisters complex needs six
+  directional edges because each leg has a distinct mechanism (corn →
+  bean structural_support, bean → corn nitrogen_fixing, squash → corn
+  ground_cover, etc.). Symmetric relationships are stored once;
+  helpers fall back to reverse lookup transparently.
+- **25 new core tests** covering Zod parse, slug guard, all six
+  helpers, Three Sisters discoverability, bidirectional edge handling,
+  hub-antagonist detection, and edge cases (no relationships,
+  single-crop bed, dedup).
+- **CLI / mcp-garden / mcp-pondlog:** no surface wired in this sticky
+  by design. Sticky 23 will add `pondlog garden companions <slug>`
+  and an `mcp-garden get_companion_planting` tool, plus expose the
+  bed-compatibility check.
+
+#### Versions
+
+- `@pondlog/core` 0.7.1 → 0.8.0 (minor — new public API surface:
+  6 helpers + 4 exported types + a new data file).
+
 ## [0.16.1] - 2026-05-10
 
 ### Added — Sticky 21: Climate modifiers expanded from 10 to 65 crops
