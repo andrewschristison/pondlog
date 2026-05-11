@@ -1,13 +1,16 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
+  checkBedCompatibility,
   err,
   findCrop,
   getClimateType,
+  getCompanions,
   getCropsForZone,
   getFrostDates,
   getHardinessZone,
   getHardinessZoneByZip,
   getPlantingPlan,
+  getRelationship,
   searchCrops,
   type ClimateType,
   type Coordinates,
@@ -28,6 +31,8 @@ import { failure, success } from "./respond.js";
 import {
   categoryField,
   climateTypeField,
+  cropListField,
+  cropNameField,
   dateField,
   latField,
   includeIndoorField,
@@ -48,6 +53,9 @@ export function registerAllTools(server: McpServer): void {
   registerGetCropDetails(server);
   registerSearchPlants(server);
   registerGetCropsForZone(server);
+  registerGetCompanions(server);
+  registerCheckCompanionPair(server);
+  registerPlanBedCompatibility(server);
 }
 
 // ---------------------------------------------------------------------------
@@ -357,4 +365,138 @@ async function resolveZoneFromArgs(
     source: "mcp-garden",
     message: "provide one of {zone}, {zip}, or {lat, lng}",
   });
+}
+
+// ---------------------------------------------------------------------------
+// 6. get_companions
+// ---------------------------------------------------------------------------
+
+function registerGetCompanions(server: McpServer): void {
+  server.registerTool(
+    "get_companions",
+    {
+      title: "Companion + Antagonist Plants for a Crop",
+      description:
+        "Returns companion (beneficial) and antagonist (harmful) plants for a crop, drawn from the bundled 121-edge companion fixture (USDA Extension / Xerces Society / SARE sources). " +
+        "Each relationship has a categorized mechanism (12 types — `nitrogen_fixing`, `pest_repellent`, `allelopathic`, `disease_vector`, `pollinator_attractor`, `trap_crop`, `shade_provider`, `ground_cover`, `structural_support`, `nutrient_competition`, `space_efficiency`, `flavor_enhancement`), a gardener-facing description, an evidence-strength grade (`strong` = empirical research, `moderate` = widely corroborated traditional, `weak` = folk only), and a citation. " +
+        "Strength grades are honest — most companion-planting lore is `moderate`; only Three Sisters N-cycling, French marigold nematode suppression, allium/Rhizobium inhibition of legumes, nightshade disease sharing, and a handful of pollinator-attractor relationships are `strong`. " +
+        "Accepts slug or common name. No API key required; works offline.",
+      inputSchema: {
+        crop: cropNameField,
+      },
+      annotations: READ_ONLY,
+    },
+    async ({ crop }) => {
+      const hit = findCrop(crop);
+      if (!hit) {
+        return failure({
+          source: "mcp-garden",
+          message: `no crop calendar match for "${crop}"`,
+        });
+      }
+      const data = getCompanions(hit.slug);
+      return success({
+        slug: hit.slug,
+        commonName: hit.commonName,
+        scientificName: hit.scientificName,
+        companions: data.companions,
+        antagonists: data.antagonists,
+      });
+    },
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 7. check_companion_pair
+// ---------------------------------------------------------------------------
+
+function registerCheckCompanionPair(server: McpServer): void {
+  server.registerTool(
+    "check_companion_pair",
+    {
+      title: "Check Whether Two Crops Have a Known Relationship",
+      description:
+        "Looks up whether two specific crops have a known beneficial or antagonist relationship. Returns the relationship detail (mechanism, description, strength, source) or a `found: false` result when no relationship is in the fixture. " +
+        "Relationships are directed because mechanisms are often asymmetric (corn provides structural support to bean; bean fixes nitrogen for corn — two distinct edges). The tool falls back to the reverse direction transparently, so order of arguments rarely matters. " +
+        "Accepts slugs or common names for both crops.",
+      inputSchema: {
+        crop_a: cropNameField,
+        crop_b: cropNameField,
+      },
+      annotations: READ_ONLY,
+    },
+    async ({ crop_a, crop_b }) => {
+      const a = findCrop(crop_a);
+      if (!a) {
+        return failure({
+          source: "mcp-garden",
+          message: `no crop calendar match for crop_a "${crop_a}"`,
+        });
+      }
+      const b = findCrop(crop_b);
+      if (!b) {
+        return failure({
+          source: "mcp-garden",
+          message: `no crop calendar match for crop_b "${crop_b}"`,
+        });
+      }
+      const entry = getRelationship(a.slug, b.slug);
+      if (!entry) {
+        return success({
+          found: false,
+          crop_a: a.slug,
+          crop_b: b.slug,
+          commonName_a: a.commonName,
+          commonName_b: b.commonName,
+        });
+      }
+      return success({ found: true, ...entry });
+    },
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 8. plan_bed_compatibility
+// ---------------------------------------------------------------------------
+
+function registerPlanBedCompatibility(server: McpServer): void {
+  server.registerTool(
+    "plan_bed_compatibility",
+    {
+      title: "Evaluate a Bed of Crops for Companion Compatibility",
+      description:
+        "Evaluates a group of 2-20 crops planted in the same bed. Discovers all pairwise relationships (beneficial and antagonist) among the crops in the input, deduplicates by canonical pair order, and surfaces warnings when one crop antagonizes 2+ others (the hub-antagonist pattern — fennel-herb is the canonical example). " +
+        "Returns `{ crops, beneficial[], antagonist[], warnings[] }`. Each pair is reported once; if both storage directions exist, the strongest edge is chosen. " +
+        "Accepts slugs or common names. Crops with no known relationship to any other crop in the bed are silently absent from the relationship lists.",
+      inputSchema: {
+        crops: cropListField,
+      },
+      annotations: READ_ONLY,
+    },
+    async ({ crops }) => {
+      const slugs: string[] = [];
+      const resolved: { input: string; slug: string; commonName: string }[] =
+        [];
+      for (const c of crops) {
+        const hit = findCrop(c);
+        if (!hit) {
+          return failure({
+            source: "mcp-garden",
+            message: `no crop calendar match for "${c}"`,
+          });
+        }
+        slugs.push(hit.slug);
+        resolved.push({
+          input: c,
+          slug: hit.slug,
+          commonName: hit.commonName,
+        });
+      }
+      const report = checkBedCompatibility(slugs);
+      return success({
+        resolved,
+        ...report,
+      });
+    },
+  );
 }

@@ -1,11 +1,13 @@
-import type {
-  FungiObservation,
-  GardenBriefing,
-  NatureBriefing,
-  Observation,
-  PhenologyEntry,
-  StreamflowReading,
-  TideEvent,
+import {
+  findCrop,
+  getBestCompanions,
+  type FungiObservation,
+  type GardenBriefing,
+  type NatureBriefing,
+  type Observation,
+  type PhenologyEntry,
+  type StreamflowReading,
+  type TideEvent,
 } from "@pondlog/core";
 import { Command } from "commander";
 import pc from "picocolors";
@@ -279,6 +281,10 @@ function renderGarden(g: GardenBriefing): void {
     console.log(
       `  ${actionIcon[s.action] ?? "·"}  ${pc.bold(s.commonName)} — ${action}  ${window}`,
     );
+    const partner = topStrongCompanion(s.slug);
+    if (partner) {
+      console.log(pc.dim(`     ↳ pairs well with ${partner}`));
+    }
   }
   if (g.plantNow.length > top.length) {
     console.log(
@@ -357,4 +363,14 @@ function parseOptionalDate(input: string | undefined): { ok: true; value: Date |
 function fail(message: string): never {
   process.stderr.write(`pondlog: ${message}\n`);
   process.exit(1);
+}
+
+/** Top strong-grade beneficial companion for a planted crop, used as the
+ *  one-line "pairs well with X" hint under each plantNow entry. Returns
+ *  undefined when no strong companion is in the fixture for this crop. */
+function topStrongCompanion(slug: string): string | undefined {
+  const best = getBestCompanions(slug, { minStrength: "strong", limit: 1 });
+  const top = best[0];
+  if (!top) return undefined;
+  return findCrop(top.companion)?.commonName ?? top.companion;
 }

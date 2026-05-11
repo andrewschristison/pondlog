@@ -1,4 +1,6 @@
 import {
+  findCrop,
+  getBestCompanions,
   getClimateType,
   getHardinessZone,
   getPlantingPlan,
@@ -70,9 +72,29 @@ export interface BuildBriefingParams {
  * (Claude Desktop, Cursor, etc.) handles caching at its own layer if it wants
  * it; the CLI's disk cache is intentionally not reused here.
  */
+/** One-line companion suggestion attached to a plantNow crop. Surfaced as a
+ *  sibling array on the briefing so the LLM client can correlate by slug
+ *  without changing the public PlantSuggestion / GardenBriefing types. */
+export interface CompanionNote {
+  /** Slug of the planted crop this note is for. */
+  slug: string;
+  /** Common name of the planted crop. */
+  commonName: string;
+  /** Slug of the strong-grade companion partner. */
+  partnerSlug: string;
+  /** Common name of the partner. */
+  partnerCommonName: string;
+  /** The mechanism that makes them a good pair. */
+  mechanism: string;
+}
+
+export type EnrichedNatureBriefing = NatureBriefing & {
+  companionNotes?: CompanionNote[];
+};
+
 export async function buildBriefing(
   params: BuildBriefingParams,
-): Promise<NatureBriefing> {
+): Promise<EnrichedNatureBriefing> {
   const errors: { source: string; message: string }[] = [];
   const date = params.date ?? new Date();
 
@@ -182,6 +204,7 @@ export async function buildBriefing(
   // Garden — pure local computation (zone + crop calendar). Never fails for
   // valid US/AK/HI/PR coordinates; logs an error and skips if outside coverage.
   const garden = buildGardenBriefing(params.coords, date, errors);
+  const companionNotes = garden ? buildCompanionNotes(garden) : [];
 
   return {
     coordinates: params.coords,
@@ -195,8 +218,34 @@ export async function buildBriefing(
     ...(phenology ? { phenology } : {}),
     ...(fungi ? { fungi } : {}),
     ...(garden ? { garden } : {}),
+    ...(companionNotes.length > 0 ? { companionNotes } : {}),
     errors,
   };
+}
+
+/** For each crop in the planting plan, look up the top strong-grade
+ *  beneficial companion (if any) and return a list of one-line notes the
+ *  client can render alongside the garden block. Returns an empty list when
+ *  no plantNow crop has a strong companion in the fixture. */
+function buildCompanionNotes(garden: GardenBriefing): CompanionNote[] {
+  const out: CompanionNote[] = [];
+  for (const s of garden.plantNow) {
+    const top = getBestCompanions(s.slug, {
+      minStrength: "strong",
+      limit: 1,
+    })[0];
+    if (!top) continue;
+    const partner = findCrop(top.companion);
+    if (!partner) continue;
+    out.push({
+      slug: s.slug,
+      commonName: s.commonName,
+      partnerSlug: top.companion,
+      partnerCommonName: partner.commonName,
+      mechanism: top.mechanism,
+    });
+  }
+  return out;
 }
 
 function buildGardenBriefing(

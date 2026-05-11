@@ -73,10 +73,13 @@ npx @modelcontextprotocol/inspector npx -y @pondlog/mcp-garden
 | Tool | What it does |
 |------|--------------|
 | `get_hardiness_zone` | USDA zone + frost dates from lat/lng or ZIP. |
-| `get_planting_plan` | What to plant in zone X on date Y, from the 1000-crop calendar. **Climate-aware**: pass `climate_type` (or supply lat/lng for auto-detection) to get per-climate window shifts and notes on 10 anchor crops (tomato, pepper, lettuce, kale, blueberry, cucumber, basil, broccoli, garlic, cantaloupe). |
+| `get_planting_plan` | What to plant in zone X on date Y, from the 1000-crop calendar. **Climate-aware**: pass `climate_type` (or supply lat/lng for auto-detection) to get per-climate window shifts and notes on 65 anchor crops. |
 | `get_crop_details` | Calendar entry + Trefle botanical detail for a single crop. |
 | `search_plants` | Search calendar + Trefle by name. Calendar matches first. |
 | `get_crops_for_zone` | All crops whose zone range includes the given zone. |
+| `get_companions` | **Companion + antagonist plants** for a crop — 121 hand-curated edges with mechanism (12 categories), evidence strength (strong/moderate), and citation. Accepts slug or common name. |
+| `check_companion_pair` | Two-crop lookup: is there a known beneficial or antagonist relationship between them? Reverse-direction fallback included. |
+| `plan_bed_compatibility` | Bed-level compatibility report for 2-20 crops planted together. Surfaces all pairwise relationships and flags hub-antagonist patterns. |
 
 ## Example prompts
 

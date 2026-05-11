@@ -94,6 +94,41 @@ export const includeIndoorField = z
     "Include indoor-only crops (microgreens, sprouts) in the plan. Default false because their year-round windows otherwise dominate the earliest-harvest sort. Set true if the user is asking about indoor production specifically.",
   );
 
+export const cropNameField = z
+  .string()
+  .min(1)
+  .max(120)
+  .describe(
+    "Crop identifier — calendar slug ('tomato', 'pepper-sweet', 'fennel-herb'), common name ('Tomato', 'Sweet Pepper'), scientific name ('Solanum lycopersicum'), or alias. Case-insensitive. The tool resolves any of these to the canonical slug before lookup.",
+  );
+
+export const cropListField = z
+  .array(cropNameField)
+  .min(2)
+  .max(20)
+  .describe(
+    "List of 2-20 crops to evaluate together (slugs or common names). Used by `plan_bed_compatibility` to discover all pairwise relationships within the bed.",
+  );
+
+export const companionMechanismField = z
+  .enum([
+    "nitrogen_fixing",
+    "pest_repellent",
+    "trap_crop",
+    "pollinator_attractor",
+    "shade_provider",
+    "ground_cover",
+    "allelopathic",
+    "disease_vector",
+    "nutrient_competition",
+    "space_efficiency",
+    "flavor_enhancement",
+    "structural_support",
+  ])
+  .describe(
+    "Companion-relationship mechanism. 'nitrogen_fixing' — legume supplies N to neighbor (Three Sisters bean→corn). 'pest_repellent' — one plant deters the other's pests (basil/tomato hornworm). 'trap_crop' — sacrificial host that draws pests away (nasturtium for aphids). 'pollinator_attractor' — brings bees/parasitoid wasps. 'shade_provider' — tall crop shades heat-sensitive neighbor. 'ground_cover' — low crop suppresses weeds/retains moisture (squash in Three Sisters; comfrey under apple). 'allelopathic' — chemical inhibition (fennel inhibits most crops). 'disease_vector' — shared disease pressure (nightshade family late blight). 'nutrient_competition' — both want the same soil resources. 'space_efficiency' — different root depth or growth habit fits in one bed. 'structural_support' — provides physical support (corn for climbing beans). 'flavor_enhancement' — traditional claim of improved flavor.",
+  );
+
 export const climateTypeField = z
   .enum([
     "maritime",

@@ -3,6 +3,73 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.18.0] - 2026-05-10
+
+### Added — Sticky 23: Companion planting CLI commands + MCP tools
+
+Surfaces the 121-edge companion fixture and six helpers shipped in 0.8.0
+through the CLI and MCP layers. No core changes — wiring only.
+
+#### CLI (`pondlog`)
+
+Three new subcommands under `pondlog garden`, all with `--json`:
+
+- **`pondlog garden companions <crop>`** — calls `getCompanions(slug)`,
+  renders both companion and antagonist lists with mechanism + strength
+  chips. Accepts slug or common name. Example:
+  `pondlog garden companions tomato` returns 18 companions and 6
+  antagonists at Port Angeles defaults.
+- **`pondlog garden check <crop1> <crop2>`** — calls `getRelationship`,
+  renders "✅ beneficial" / "❌ antagonist" / "no known relationship"
+  with mechanism, description, and citation. Reverse-direction fallback
+  handled by the helper.
+- **`pondlog garden plan <crops...>`** — variadic via commander, calls
+  `checkBedCompatibility`, renders summary line + pair list + warnings.
+  Surfaces hub-antagonist patterns ("fennel-herb antagonizes 2 other
+  crops in this bed").
+
+Aggregate enrichment — `pondlog today` now renders a `↳ pairs well with X`
+note under each plantNow entry where a strong-grade beneficial
+companion exists in the fixture. Format-time decoration only; no data
+layer changes.
+
+New file `packages/cli/src/format-companions.ts` for the renderers.
+
+#### MCP — `@pondlog/mcp-garden` 0.2.0 → 0.3.0
+
+Three new tools (all read-only, open-world):
+
+- **`get_companions`** — input `{ crop }` (slug or common name), output
+  `{ slug, commonName, scientificName, companions[], antagonists[] }`.
+  Tool description includes the 12-mechanism enum reference so LLM
+  clients can interpret results.
+- **`check_companion_pair`** — input `{ crop_a, crop_b }`, output
+  the relationship entry or `{ found: false }`.
+- **`plan_bed_compatibility`** — input `{ crops: string[] }` (2-20),
+  output `{ resolved, crops, beneficial[], antagonist[], warnings[] }`.
+
+Live-verified: 8 tools listed (5 prior + 3 new); all three new tools
+return correct payloads from a JSON-RPC handshake at Port Angeles.
+
+#### MCP — `@pondlog/mcp-pondlog` 0.3.4 → 0.3.5
+
+`get_nature_briefing` now includes an optional `companionNotes[]` sibling
+array on the briefing — one entry per plantNow crop that has a
+strong-grade companion in the fixture, with `{ slug, commonName,
+partnerSlug, partnerCommonName, mechanism }`. Correlated by slug so the
+LLM can render alongside the existing garden block. Public types
+(`GardenBriefing`, `PlantSuggestion`, `NatureBriefing`) unchanged —
+the enrichment is a sibling field exposed via an
+`EnrichedNatureBriefing` intersection type local to mcp-pondlog.
+
+#### Versions
+
+- `pondlog` CLI 0.6.0 → 0.7.0 (minor — three new subcommands).
+- `@pondlog/mcp-garden` 0.2.0 → 0.3.0 (minor — three new tools).
+- `@pondlog/mcp-pondlog` 0.3.4 → 0.3.5 (patch — additive sibling field
+  on `get_nature_briefing` response).
+- `@pondlog/core` unchanged at 0.8.0.
+
 ## [0.17.0] - 2026-05-10
 
 ### Added — Sticky 22: Companion planting fixture (first graph edges)

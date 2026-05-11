@@ -1,11 +1,14 @@
 import {
+  checkBedCompatibility,
   findCrop,
   getClimateType,
+  getCompanions,
   getCropsForZone,
   getFrostDates,
   getHardinessZone,
   getHardinessZoneByZip,
   getPlantingPlan,
+  getRelationship,
   isClimateType,
   listClimateTypes,
   searchCrops,
@@ -29,6 +32,11 @@ import {
   formatTrefleSummaryRow,
   formatZoneBlock,
 } from "../format-garden.js";
+import {
+  formatCheckBlock,
+  formatCompanionsBlock,
+  formatPlanBlock,
+} from "../format-companions.js";
 import { printJson } from "../format.js";
 import { resolveLocation } from "../resolve-location.js";
 
@@ -371,12 +379,118 @@ export function buildGardenCommand(): Command {
       console.log(out.join("\n"));
     });
 
+  cmd
+    .command("companions <crop>")
+    .description(
+      "List companion (beneficial) and antagonist plants for a crop. Drawn from the bundled companions fixture (121 hand-curated edges, USDA Extension / Xerces Society / SARE sources). Accepts slug or common name.",
+    )
+    .option("--json", "Print raw JSON")
+    .addHelpText(
+      "after",
+      [
+        "",
+        "Examples:",
+        "  $ pondlog garden companions tomato",
+        "  $ pondlog garden companions 'Sweet Pepper'",
+        "  $ pondlog garden companions fennel-herb --json",
+      ].join("\n"),
+    )
+    .action(async (cropArg: string, opts: { json?: boolean }) => {
+      const slug = resolveCropArg(cropArg);
+      if (!slug) return fail(noMatchMessage(cropArg));
+      const data = getCompanions(slug);
+      if (opts.json) return printJson({ slug, ...data });
+      console.log(formatCompanionsBlock(slug, data));
+    });
+
+  cmd
+    .command("check <crop1> <crop2>")
+    .description(
+      "Check whether two specific crops have a known beneficial or antagonist relationship. Accepts slugs or common names.",
+    )
+    .option("--json", "Print raw JSON")
+    .addHelpText(
+      "after",
+      [
+        "",
+        "Examples:",
+        "  $ pondlog garden check tomato basil",
+        "  $ pondlog garden check tomato fennel-herb",
+        "  $ pondlog garden check Tomato Watermelon   # no known relationship",
+      ].join("\n"),
+    )
+    .action(
+      async (
+        cropA: string,
+        cropB: string,
+        opts: { json?: boolean },
+      ) => {
+        const slugA = resolveCropArg(cropA);
+        if (!slugA) return fail(noMatchMessage(cropA));
+        const slugB = resolveCropArg(cropB);
+        if (!slugB) return fail(noMatchMessage(cropB));
+        const entry = getRelationship(slugA, slugB);
+        if (opts.json) {
+          return printJson(
+            entry
+              ? { found: true, ...entry }
+              : { found: false, crop_a: slugA, crop_b: slugB },
+          );
+        }
+        console.log(formatCheckBlock(slugA, slugB, entry));
+      },
+    );
+
+  cmd
+    .command("plan <crops...>")
+    .description(
+      "Evaluate a group of crops planted in the same bed. Reports all pairwise beneficial and antagonist relationships among the crops, and warns when one crop antagonizes multiple others (the fennel-herb hub pattern).",
+    )
+    .option("--json", "Print raw JSON")
+    .addHelpText(
+      "after",
+      [
+        "",
+        "Examples:",
+        "  $ pondlog garden plan tomato basil marigold carrot",
+        "  $ pondlog garden plan tomato fennel-herb bush-bean garlic",
+        "  $ pondlog garden plan tomato basil --json",
+      ].join("\n"),
+    )
+    .action(async (crops: string[], opts: { json?: boolean }) => {
+      if (!Array.isArray(crops) || crops.length < 2) {
+        return fail("plan requires at least 2 crops");
+      }
+      const slugs: string[] = [];
+      for (const c of crops) {
+        const s = resolveCropArg(c);
+        if (!s) return fail(noMatchMessage(c));
+        slugs.push(s);
+      }
+      const report = checkBedCompatibility(slugs);
+      if (opts.json) return printJson(report);
+      console.log(formatPlanBlock(report));
+    });
+
   return cmd;
 }
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/** Resolve a user-provided crop argument (slug, common name, scientific name,
+ *  or alias) to a canonical slug. Returns undefined on no match. */
+function resolveCropArg(arg: string): string | undefined {
+  const trimmed = arg.trim();
+  if (!trimmed) return undefined;
+  const hit = findCrop(trimmed);
+  return hit?.slug;
+}
+
+function noMatchMessage(arg: string): string {
+  return `no crop calendar match for "${arg}". Try \`pondlog garden search ${JSON.stringify(arg)}\` for fuzzy matches.`;
+}
 
 /** Resolve coordinates from --lat/--lng or saved config. Returns undefined
  *  when --zip was supplied (zip resolution is decoupled from climate). */
