@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>privacy · pondlog</title>
+  <meta name="description" content="pondlog.co privacy policy. No cookies, no analytics, no data stored." />
+  <meta name="theme-color" content="#1f2e26" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f0e8d4" media="(prefers-color-scheme: light)" />
+
+  <meta name="author" content="Andrew Christison" />
+  <meta property="og:title" content="privacy · pondlog" />
+  <meta property="og:description" content="No cookies, no analytics, no data stored." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pondlog.co/privacy" />
+  <meta property="og:site_name" content="pondlog" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://pondlog.co/privacy" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;text y='26' font-size='28'&gt;&#x1F343;&lt;/text&gt;&lt;/svg&gt;" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="pondlog home">
+      <span class="brand-mark" aria-hidden="true">🍃</span>
+      <span class="brand-word">pondlog</span>
+    </a>
+    <nav class="site-nav" aria-label="primary">
+      <a href="faq.html">faq</a>
+      <a rel="noopener" href="https://github.com/andrewschristison/pondlog">github</a>
+      <a rel="noopener" href="https://www.npmjs.com/org/pondlog">npm</a>
+      <a rel="noopener" href="https://registry.modelcontextprotocol.io">mcp registry</a>
+    </nav>
+  </header>
+
+  <main class="page-prose" id="main">
+    <p class="eyebrow">privacy</p>
+    <h1 class="page-title">What we do with your data</h1>
+
+    <div class="prose">
+      <p>
+        Short version: nothing.
+      </p>
+
+      <p>
+        pondlog.co uses your browser&rsquo;s geolocation only when you tap
+        <em>use my location</em> in the hero. We do not store it. We do
+        not send it anywhere except to <code>api.cropgraph.com</code> to
+        compute your planting zone, and only when you opt in.
+      </p>
+
+      <p>
+        We set no cookies. We collect no analytics. We do not track
+        return visits.
+      </p>
+
+      <p>
+        The garden line in the hero calls
+        <a rel="noopener" href="https://api.cropgraph.com">api.cropgraph.com</a> with
+        the latitude and longitude you provided. CropGraph keeps
+        approximate request counts for rate limiting and does not log
+        the underlying coordinates.
+      </p>
+
+      <p>
+        The site is hosted on Vercel. Vercel keeps its own infrastructure
+        logs as documented at
+        <a rel="noopener" href="https://vercel.com/legal/privacy-policy">vercel.com/legal/privacy-policy</a>.
+        We do not access those logs.
+      </p>
+
+      <p>
+        The site is fully open source.
+        Read the source at
+        <a rel="noopener" href="https://github.com/andrewschristison/pondlog/tree/main/site">github.com/andrewschristison/pondlog/tree/main/site</a>.
+      </p>
+
+      <p class="prose-meta">
+        Last updated 12 May 2026.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-credit-line">
+      Built on the Olympic Peninsula by Andrew Christison.
+    </p>
+    <nav class="footer-nav" aria-label="footer">
+      <a href="/">home</a>
+      <a href="faq.html">faq</a>
+      <a rel="noopener" href="https://github.com/andrewschristison/pondlog">github</a>
+      <a rel="noopener" href="https://www.npmjs.com/org/pondlog">npm</a>
+      <a rel="noopener" href="https://registry.modelcontextprotocol.io">mcp registry</a>
+    </nav>
+    <p class="footer-credit">
+      MIT licensed
+    </p>
+  </footer>
+</body>
+</html>

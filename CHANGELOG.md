@@ -3,6 +3,74 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.19.0] - 2026-05-12
+
+### pondlog.co landing page (Sticky 26)
+
+New static landing page at `site/`, deploy-ready for Vercel. Eight-line hero
+terminal that types itself out for the visitor's chosen location (4 preset
+chips: Port Angeles, Portland, Austin, Brooklyn, plus geolocation), with
+the garden line calling `api.cropgraph.com/api/planting` live and the
+seven nature lines rendered from baked location data. Section titles are
+literal CLI invocations (`$ pondlog mcp --list`, `$ pondlog --stats`,
+`$ pondlog --architecture`) so the page teaches by demonstration rather
+than by description.
+
+Design stack: Fraunces (variable serif, display + body) + JetBrains Mono
+(code), OKLCH Olympic Peninsula palette (forest, river, mushroom, amber)
+with full `prefers-color-scheme` dark mode, paper-grain SVG noise overlay,
+zero framework, zero build step. Responsive desktop + mobile verified via
+Playwright in both schemes; zero console errors, copy button + MCP-card
+expand + chip switching + cropgraph live fetch all tested green.
+
+Files: `site/index.html`, `site/styles.css`, `site/script.js`,
+`site/vercel.json`. Deploy with `vercel --prod` from `site/`.
+
+### pondlog.co landing page — copy + structure pass
+
+Tightened the v1 landing per pilot feedback before deploy.
+
+- **Use-my-location flow.** Replaced the "install pondlog to query live"
+  status messaging on non-garden lines with realistic placeholder data
+  from the nearest baked preset, each line tagged `· example` so it's
+  honest about being illustrative. Selection uses haversine so a Tampa
+  user pulls Austin data instead of Brooklyn. Garden line stays live
+  via `api.cropgraph.com` for the user's actual coordinates.
+- **MCP card framing.** Dropped "first & only" badges and "six of seven
+  have zero competitors" copy. New registry note leads with seven
+  individual "the first X MCP" statements (Jay Abraham preeminence —
+  state the achievement, not the comparison).
+- **Footer.** Replaced the shell-prompt cursor with "Built on the
+  Olympic Peninsula by Andrew Christison." Added FAQ and privacy links
+  to footer nav; FAQ link added to header nav.
+- **New subpages.** `site/faq.html` (9 questions covering install, MCPs,
+  data sources, contribution, the pondlog/CropGraph split), and
+  `site/privacy.html` (short: no cookies, no analytics, no data stored).
+- **New static files.** `site/llms.txt`, `site/robots.txt`,
+  `site/sitemap.xml` (covers `/`, `/faq`, `/privacy`).
+- **Meta.** Added canonical link, `og:site_name`, and switched twitter
+  card to `summary` (no large image yet).
+
+Verified with Playwright across 12 viewport/scheme combinations and a
+simulated geolocation for 6 cities. Zero console or page errors.
+
+### pondlog.co landing page — SEO pass
+
+Post-deploy SEO hardening across all three pages.
+
+- **JSON-LD** `SoftwareApplication` schema in `index.html` (name,
+  description, author, license, codeRepository, free offer).
+- **`rel="noopener"`** on all 30 external `<a>` tags across index, faq,
+  and privacy. (No `<img>` tags anywhere, so no alt-text work needed.)
+- **`<meta name="author">`** + **favicon `type="image/svg+xml"`** on all
+  three pages.
+- **New file** `site/humans.txt` (TEAM + SITE blocks).
+- Font preconnects to `fonts.googleapis.com` + `fonts.gstatic.com` were
+  already in place from initial build.
+
+Verified in Chromium: JSON-LD parses, no regressions in the hero
+typewriter or live cropgraph fetch, zero console errors.
+
 ## [0.18.3] - 2026-05-12
 
 ### Em-dash sweep across CLI and source clients

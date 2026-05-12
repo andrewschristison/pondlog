@@ -1,0 +1,24 @@
+# pondlog
+
+> Place-aware nature data for developers.
+
+## What is pondlog
+
+Open-source nature data aggregation: 8 data sources, 7 MCP servers, CLI, and npm packages. 1,000-crop planting calendar with climate-aware scheduling and companion planting graph.
+
+## Links
+
+- GitHub: https://github.com/andrewschristison/pondlog
+- npm: https://www.npmjs.com/org/pondlog
+- CropGraph API: https://api.cropgraph.com
+- MCP Registry: https://registry.modelcontextprotocol.io
+
+## MCP Servers
+
+npx @pondlog/mcp-inaturalist
+npx @pondlog/mcp-ebird
+npx @pondlog/mcp-npn
+npx @pondlog/mcp-usgs
+npx @pondlog/mcp-mushroomobserver
+npx @pondlog/mcp-garden
+npx @pondlog/mcp-pondlog
