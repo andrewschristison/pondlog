@@ -1,22 +1,25 @@
 {
   "name": "@pondlog/source-npn",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "USA National Phenology Network (NPN) Portal API client: typed, Zod-validated, polite-rate-limited. Returns Result<T> instead of throwing.",
   "keywords": [
     "pondlog",
-    "npn",
     "phenology",
-    "usa-npn",
+    "bloom",
+    "seasons",
+    "national-phenology-network",
     "nature",
     "api-client",
-    "zod"
+    "zod",
+    "npn",
+    "usa-npn"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-npn#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-npn",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/source-npn"
   },
   "bugs": {

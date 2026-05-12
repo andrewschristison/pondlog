@@ -1,26 +1,27 @@
 {
   "name": "@pondlog/source-nightsky",
-  "version": "0.1.1",
-  "description": "Place-aware night-sky briefing: sun/moon/planets/twilight/meteor-showers/constellations from astronomy-engine plus curated fixtures. Pure local computation — no API, no rate limit, no key.",
+  "version": "0.1.2",
+  "description": "Place-aware night-sky briefing: sun, moon, planets, twilight, meteor showers, and constellations from astronomy-engine plus curated fixtures. Pure local computation (no API, no rate limit, no key).",
   "keywords": [
     "pondlog",
     "astronomy",
     "night-sky",
-    "stargazing",
     "sun",
     "moon",
     "planets",
-    "meteor-showers",
+    "meteor-shower",
     "constellations",
-    "twilight",
-    "astronomy-engine"
+    "astronomy-engine",
+    "stargazing",
+    "meteor-showers",
+    "twilight"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-nightsky#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-nightsky",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/source-nightsky"
   },
   "bugs": {

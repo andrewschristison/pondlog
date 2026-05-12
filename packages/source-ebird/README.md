@@ -2,7 +2,7 @@
 
 [eBird API v2](https://documenter.getpostman.com/view/664302/S1ENwy59) client.
 Typed, Zod-validated, rate-limited, returns `Result<T>` instead of throwing.
-**100% endpoint coverage — all 21 documented endpoints.**
+**100% endpoint coverage. All 21 documented endpoints.**
 Part of [pondlog](https://github.com/andrewschristison/pondlog).
 
 ## Setup
@@ -113,10 +113,10 @@ eBird uses hierarchical region codes:
 
 ## Rate limits
 
-The eBird API rate limit is undocumented; this client throttles at 100
+The eBird API rate limit is undocumented. This client throttles at 100
 req/min and retries on 429 with exponential backoff (1s, 2s, 4s, max 3
 attempts).
 
 ## License
 
-MIT — Andrew Christison
+MIT. Andrew Christison.

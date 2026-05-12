@@ -4,7 +4,7 @@ Shared types, schemas, and utilities for the [pondlog](https://github.com/andrew
 monorepo. Used by every source client (`@pondlog/source-*`), the
 `pondlog` CLI, and every MCP server.
 
-This package makes no API calls — it's all types and pure utilities.
+This package makes no API calls. It's all types and pure utilities.
 
 ## Install
 
@@ -28,6 +28,10 @@ npm install @pondlog/core
   `parseLatLngString` (handles iNat's `"lat,lng"` format).
 - **`PONDLOG_USER_AGENT`**: canonical user-agent string for every HTTP
   request from a pondlog source client.
+- **Garden data**: USDA hardiness zones (PRISM 2023, 40,283 ZIP centroids),
+  the ~1000-crop frost-anchored planting calendar (climate-aware),
+  and the companion-planting graph. All offline, loaded from bundled
+  JSON with Zod validation at module load.
 
 ## Example
 

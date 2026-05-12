@@ -1,27 +1,34 @@
 {
   "name": "@pondlog/mcp-garden",
-  "version": "0.3.1",
-  "description": "Garden-planning MCP server: USDA hardiness zone lookup, frost-anchored planting calendar (~1000 curated crops, climate-aware), and Trefle.io plant taxonomy. Five tools backed by @pondlog/core (offline) plus optional Trefle (TREFLE_API_TOKEN). Pondlog's first garden-planning MCP — zero competitors at publish time.",
+  "version": "0.3.2",
+  "description": "Garden-planning MCP server with USDA hardiness zone lookup, a frost-anchored planting calendar (~1000 curated crops, climate-aware), and Trefle.io plant taxonomy. Five tools backed by @pondlog/core (offline) plus optional Trefle (TREFLE_API_TOKEN).",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
+    "ai",
+    "tools",
     "claude-desktop",
     "cursor",
     "garden",
+    "planting",
+    "crops",
+    "companion-planting",
+    "hardiness-zone",
+    "agriculture",
+    "trefle",
+    "crop-calendar",
     "gardening",
     "plants",
-    "trefle",
     "usda-hardiness",
-    "agriculture",
     "permaculture"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-garden#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-garden",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/mcp-garden"
   },
   "bugs": {
@@ -30,7 +37,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-garden": "./dist/index.js"
+    "pondlog-mcp-garden": "dist/index.js"
   },
   "files": [
     "dist",

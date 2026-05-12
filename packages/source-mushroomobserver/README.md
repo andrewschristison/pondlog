@@ -2,7 +2,7 @@
 
 Mushroom Observer API2 client for the [pondlog](https://github.com/andrewschristison/pondlog) ecosystem. Typed, Zod-validated, and rate-limited (20 req/min). Returns `Result<T>` rather than throwing.
 
-Mushroom Observer is the world's largest dedicated mycology platform, hosting 500,000+ fungal observations with vote-weighted ID confidence scores. This package is the data-fetch layer; CLI and MCP wrappers live in `@pondlog/cli` and `@pondlog/mcp-mushroomobserver`.
+Mushroom Observer is the largest dedicated mycology platform, hosting 500,000+ fungal observations with vote-weighted ID confidence scores. This package is the data-fetch layer; CLI and MCP wrappers live in `pondlog` (the CLI) and `@pondlog/mcp-mushroomobserver`.
 
 ## Install
 
@@ -20,13 +20,13 @@ pnpm add @pondlog/source-mushroomobserver
 | `searchRegions({ query, maxPages })` | Discovers MO location-name strings ending in `query` (e.g. "Washington, USA") with observation counts |
 | `getRecentNearLocation({ coords, radiusKm } \| { region }, days?, limit?, confidenceMin?)` | "What's fruiting near here in the last N days" |
 | `getSpeciesCountByLocation({ coords, radiusKm } \| { region }, daysBack?, maxPages?)` | Species diversity at a location, ranked by observation count |
-| `getLocationsInBbox(bbox)` | Direct `/locations` hit — bbox is the ONLY MO-supported filter |
+| `getLocationsInBbox(bbox)` | Direct `/locations` hit. Bbox is the ONLY MO-supported filter |
 
 ## Notes
 
 - MO defaults to XML; the client appends `.json` to every path automatically.
-- `/locations` exposes only bbox + ID filters — there is no name search. Use `searchRegions` to enumerate location-name strings instead.
-- Spatial queries on `/observations` accept `north/south/east/west` lat/lng — pondlog converts coords + radius to a bbox via `bboxAround`.
+- `/locations` exposes only bbox + ID filters. There is no name search. Use `searchRegions` to enumerate location-name strings instead.
+- Spatial queries on `/observations` accept `north/south/east/west` lat/lng. Pondlog converts coords + radius to a bbox via `bboxAround`.
 - Rate limit is 20 req/min (1 every 3 s). The client enforces this with a token bucket; bursts up to 3 are allowed.
 
 ## License

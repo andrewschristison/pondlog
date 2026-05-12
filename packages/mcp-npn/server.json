@@ -1,9 +1,21 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-npn",
-  "description": "National Phenology Network MCP — bloom, leaf, and flight timing data.",
+  "description": "National Phenology Network MCP server. Bloom, leaf-out, and flight timing data from USA-NPN observers.",
   "status": "active",
-  "repository": { "url": "https://github.com/andrewschristison/pondlog", "source": "github" },
-  "version": "0.1.3",
-  "packages": [{ "registryType": "npm", "identifier": "@pondlog/mcp-npn", "version": "0.1.3", "transport": { "type": "stdio" } }]
+  "repository": {
+    "url": "https://github.com/andrewschristison/pondlog",
+    "source": "github"
+  },
+  "version": "0.1.4",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@pondlog/mcp-npn",
+      "version": "0.1.4",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
 }

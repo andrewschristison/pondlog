@@ -1,9 +1,21 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-garden",
-  "description": "Garden planning MCP — 1000 crops, climate-aware planting, companion data.",
+  "description": "Garden planning MCP server. ~1000 curated crops, climate-aware planting calendar, USDA hardiness zones, and companion-planting data.",
   "status": "active",
-  "repository": { "url": "https://github.com/andrewschristison/pondlog", "source": "github" },
-  "version": "0.3.1",
-  "packages": [{ "registryType": "npm", "identifier": "@pondlog/mcp-garden", "version": "0.3.1", "transport": { "type": "stdio" } }]
+  "repository": {
+    "url": "https://github.com/andrewschristison/pondlog",
+    "source": "github"
+  },
+  "version": "0.3.2",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@pondlog/mcp-garden",
+      "version": "0.3.2",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
 }

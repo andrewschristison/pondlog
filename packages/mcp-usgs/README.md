@@ -54,7 +54,7 @@ npx @modelcontextprotocol/inspector npx -y @pondlog/mcp-usgs
 | Tool | What it does |
 |------|--------------|
 | `get_instantaneous_values` | Real-time discharge / gage height (default) over a relative period (PT2H, P1D, etc.) for one or more USGS sites. |
-| `get_daily_values` | Daily statistics — relative window OR explicit start/end dates. Use this for any historic query. |
+| `get_daily_values` | Daily statistics, either a relative window or explicit start/end dates. Use this for any historic query. |
 | `get_site_info` | Single-site metadata: name, coordinates, HUC, state, county, altitude. |
 | `search_sites` | Find active stream-gauge sites by lat/lng/radius_km or by US state. |
 

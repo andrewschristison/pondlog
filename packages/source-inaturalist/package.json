@@ -1,22 +1,23 @@
 {
   "name": "@pondlog/source-inaturalist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "iNaturalist API client library: typed, Zod-validated, rate-limited. Returns Result<T> instead of throwing.",
   "keywords": [
     "pondlog",
     "inaturalist",
-    "biodiversity",
     "wildlife",
+    "biodiversity",
     "nature",
+    "observations",
     "api-client",
     "zod"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-inaturalist#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-inaturalist",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/source-inaturalist"
   },
   "bugs": {

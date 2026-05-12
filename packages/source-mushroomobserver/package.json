@@ -1,22 +1,24 @@
 {
   "name": "@pondlog/source-mushroomobserver",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Mushroom Observer API2 client: typed, Zod-validated, polite-rate-limited. Returns Result<T> instead of throwing. The first dedicated mycology client library for pondlog.",
   "keywords": [
     "pondlog",
-    "mushroom-observer",
+    "mushrooms",
     "mycology",
     "fungi",
-    "nature",
+    "foraging",
+    "mushroom-observer",
     "api-client",
-    "zod"
+    "zod",
+    "nature"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-mushroomobserver#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/source-mushroomobserver",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/source-mushroomobserver"
   },
   "bugs": {

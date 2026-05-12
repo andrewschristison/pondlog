@@ -26,8 +26,8 @@ All functions return `Result<T>` from `@pondlog/core`.
 
 ## Helpers
 
-- `bboxAround(coords, radiusKm)` — square bbox tuple around a point, ready for `searchSites({ bbox })`.
-- `PARAMETER_CODES` — common USGS parameter constants (`DISCHARGE`, `GAGE_HEIGHT`, `WATER_TEMP_C`).
+- `bboxAround(coords, radiusKm)`: square bbox tuple around a point, ready for `searchSites({ bbox })`.
+- `PARAMETER_CODES`: common USGS parameter constants (`DISCHARGE`, `GAGE_HEIGHT`, `WATER_TEMP_C`).
 
 ## Parameter codes (the ones you almost always want)
 
@@ -39,7 +39,7 @@ All functions return `Result<T>` from `@pondlog/core`.
 
 ## Notes
 
-- `/iv/` (instantaneous) does **not** accept historic `startDT`/`endDT` — it
+- `/iv/` (instantaneous) does **not** accept historic `startDT`/`endDT`. It
   returns HTTP 301. Use `period` (relative-to-now) for /iv/, or `getDailyValues`
   for historic data.
 - Unknown sites return HTTP 200 with `timeSeries: []` rather than an error. The

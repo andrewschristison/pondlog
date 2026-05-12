@@ -1,21 +1,25 @@
 {
   "name": "pondlog",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Place-aware nature data aggregation CLI. \"What's happening in nature at these coordinates right now?\"",
   "keywords": [
     "pondlog",
     "cli",
     "nature",
+    "garden",
+    "planting-calendar",
     "wildlife",
+    "birds",
     "inaturalist",
+    "ebird",
     "biodiversity"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/cli",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/cli"
   },
   "bugs": {
@@ -24,7 +28,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog": "./dist/index.js"
+    "pondlog": "dist/index.js"
   },
   "files": [
     "dist",

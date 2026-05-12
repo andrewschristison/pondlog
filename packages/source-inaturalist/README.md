@@ -4,7 +4,7 @@
 Zod-validated, rate-limited, returns `Result<T>` instead of throwing.
 Part of [pondlog](https://github.com/andrewschristison/pondlog).
 
-No API key required — iNaturalist reads are open. The library handles
+No API key required. iNaturalist reads are open. The library handles
 the 100 req/min rate limit internally and backs off on 429.
 
 ## Install

@@ -14,7 +14,7 @@ Trefle is the **taxonomy** layer of pondlog's garden surface. It supplies:
 - genus / family / synonyms
 - light, soil pH, atmospheric humidity, image URLs (when populated)
 
-It does **not** supply planting timing — Trefle's `growth.days_to_harvest`,
+It does **not** supply planting timing. Trefle's `growth.days_to_harvest`,
 `growth.sowing`, and `growth.minimum_temperature` fields are universally
 null for cultivated vegetables (verified live in May 2026). The 1000-crop
 planting calendar in `@pondlog/core` covers planning logic.
@@ -61,7 +61,7 @@ if (!hasTrefleToken()) {
 ## Reliability notes
 
 Trefle is in beta. The `q=` full-text search matches noisily across author
-and bibliography fields — prefer `commonNameExact` for precision. Trefle
+and bibliography fields. Prefer `commonNameExact` for precision. Trefle
 search endpoints have returned 5xx errors on its public issue tracker
 (2025); this client retries transient 5xx with backoff.
 

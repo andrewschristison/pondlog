@@ -24,7 +24,7 @@ Then run the unified briefing:
 
 ```sh
 pondlog today                   # one place, six sources, parallel fan-out
-pondlog today --no-cache        # skip on-disk cache (default TTL 15m–1h)
+pondlog today --no-cache        # skip on-disk cache (default TTL 15m to 1h)
 pondlog today --json | jq       # machine-readable NatureBriefing
 ```
 
@@ -35,13 +35,14 @@ pondlog inat nearby                # last 7 days, 25 km
 pondlog ebird recent
 pondlog usgs flow
 pondlog nightsky
+pondlog garden now                 # what to plant this week in your zone
 ```
 
 ## Commands
 
-### `pondlog today` — the aggregate
+### `pondlog today`: the aggregate
 
-Combines iNaturalist + eBird + NPN + USGS streamflow + Night Sky + NOAA
+Combines iNaturalist, eBird, NPN, USGS streamflow, Night Sky, and NOAA
 tides into a single briefing. Sources fan out in parallel; partial
 failures (e.g. eBird key missing, USGS site down) collect into a ⚠
 warning block but never crash the briefing. Results are file-cached at
@@ -80,6 +81,10 @@ Every command supports `--json` for machine-readable output and `--help`
 with examples. When `--lat`/`--lng` are omitted, the saved config is
 used; if no config is saved, the command exits 1 with a friendly error.
 
+Other source commands follow the same shape: `pondlog ebird`,
+`pondlog npn`, `pondlog usgs`, `pondlog mushroom`, `pondlog nightsky`,
+`pondlog garden`. Run `pondlog --help` for the full list.
+
 ## Defaults
 
 - Radius: 10 km (max 500)
@@ -88,9 +93,9 @@ used; if no config is saved, the command exits 1 with a friendly error.
 ## Companion packages
 
 - [`@pondlog/source-inaturalist`](https://www.npmjs.com/package/@pondlog/source-inaturalist)
-  is the underlying client library.
+  and its siblings are the underlying client libraries.
 - [`@pondlog/mcp-inaturalist`](https://www.npmjs.com/package/@pondlog/mcp-inaturalist)
-  is an MCP server exposing the same data to AI agents (Claude Desktop,
+  and its siblings expose the same data to AI agents (Claude Desktop,
   Cursor).
 
 ## License

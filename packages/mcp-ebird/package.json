@@ -1,25 +1,28 @@
 {
   "name": "@pondlog/mcp-ebird",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "MCP server for eBird: 21 tools for bird observations, hotspots, checklists, taxonomy, and regions. Stdio transport. Requires EBIRD_API_KEY (free at https://ebird.org/api/keygen).",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
+    "ai",
+    "tools",
     "claude-desktop",
     "cursor",
     "ebird",
     "birds",
     "birding",
     "ornithology",
+    "birdwatching",
     "wildlife"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-ebird#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-ebird",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/mcp-ebird"
   },
   "bugs": {
@@ -28,7 +31,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-ebird": "./dist/index.js"
+    "pondlog-mcp-ebird": "dist/index.js"
   },
   "files": [
     "dist",

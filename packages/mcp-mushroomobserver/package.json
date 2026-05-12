@@ -1,24 +1,28 @@
 {
   "name": "@pondlog/mcp-mushroomobserver",
-  "version": "0.1.3",
-  "description": "MCP server for Mushroom Observer — the world's largest dedicated mycology platform with 500,000+ fungal observations and expert-weighted ID confidence. Five tools: nearby/recent fungi, single observation detail, fungal name search, region discovery. No API key required.",
+  "version": "0.1.4",
+  "description": "MCP server for Mushroom Observer, the largest dedicated mycology platform with 500,000+ fungal observations and expert-weighted ID confidence. Five tools: nearby/recent fungi, single observation detail, fungal name search, region discovery. No API key required.",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
+    "ai",
+    "tools",
     "claude-desktop",
     "cursor",
-    "mushroom-observer",
+    "mushrooms",
     "mycology",
     "fungi",
+    "foraging",
+    "mushroom-observer",
     "nature"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-mushroomobserver#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-mushroomobserver",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/mcp-mushroomobserver"
   },
   "bugs": {
@@ -27,7 +31,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-mushroomobserver": "./dist/index.js"
+    "pondlog-mcp-mushroomobserver": "dist/index.js"
   },
   "files": [
     "dist",

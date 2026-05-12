@@ -1,21 +1,28 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-ebird",
-  "description": "eBird MCP — 21 tools covering 100% of eBird API v2. Birds, hotspots, taxonomy.",
+  "description": "eBird MCP server. 21 tools covering 100% of eBird API v2: bird observations, hotspots, checklists, and taxonomy.",
   "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.1.3",
+  "version": "0.1.4",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@pondlog/mcp-ebird",
-      "version": "0.1.3",
-      "transport": { "type": "stdio" },
+      "version": "0.1.4",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
-        { "name": "EBIRD_API_KEY", "description": "eBird API key (free at ebird.org/api/keygen)", "is_required": true, "is_secret": true }
+        {
+          "name": "EBIRD_API_KEY",
+          "description": "eBird API key (free at ebird.org/api/keygen)",
+          "is_required": true,
+          "is_secret": true
+        }
       ]
     }
   ]

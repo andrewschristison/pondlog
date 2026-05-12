@@ -5,7 +5,7 @@ client (Claude Desktop, Cursor, Continue, custom agents) **21 tools covering
 100% of the eBird API v2**: bird observations (recent, notable, historic),
 checklists, hotspots, taxonomy, and regions.
 
-Part of [pondlog](https://github.com/andrewschristison/pondlog) — a
+Part of [pondlog](https://github.com/andrewschristison/pondlog), a
 toolkit for stitching together public nature APIs (iNaturalist, eBird,
 USGS, NPN, NOAA, SunCalc).
 
@@ -23,7 +23,7 @@ exponential backoff on 429.
 
 ## Install / run
 
-The server is published to npm and runs via `npx` — no install step.
+The server is published to npm and runs via `npx` (no install step):
 
 ```sh
 EBIRD_API_KEY=<your-key> npx -y @pondlog/mcp-ebird
@@ -78,7 +78,7 @@ EBIRD_API_KEY=<your-key> npx @modelcontextprotocol/inspector npx -y @pondlog/mcp
 
 All tools are read-only. Coordinates use WGS84 decimal degrees. Region codes
 are hierarchical: `US` (country), `US-WA` (state/subnational1), `US-WA-009`
-(county/subnational2 — Clallam County in this example).
+(county/subnational2, Clallam County in this example).
 
 ### Observations (7)
 
@@ -123,14 +123,14 @@ are hierarchical: `US` (country), `US-WA` (state/subnational1), `US-WA-009`
 | Tool | What it does |
 |------|--------------|
 | `get_region_info` | Display name and bounding box for a region code. |
-| `get_sub_regions` | Immediate child regions of a parent (countries → states → counties). |
+| `get_sub_regions` | Immediate child regions of a parent (countries to states to counties). |
 | `get_adjacent_regions` | Bordering regions (subnational2 only). |
 
 ## Region code glossary
 
-- **Country**: 2-letter ISO codes — `US`, `CA`, `MX`, `GB`, `AU`...
-- **Subnational1** (state/province): `<country>-<region>` — `US-WA`, `US-CA`, `CA-ON`...
-- **Subnational2** (county/equivalent): `<country>-<region>-<county>` — `US-WA-009` (Clallam, WA), `US-CA-037` (Los Angeles, CA)...
+- **Country**: 2-letter ISO codes: `US`, `CA`, `MX`, `GB`, `AU`...
+- **Subnational1** (state/province): `<country>-<region>`: `US-WA`, `US-CA`, `CA-ON`...
+- **Subnational2** (county/equivalent): `<country>-<region>-<county>`: `US-WA-009` (Clallam, WA), `US-CA-037` (Los Angeles, CA)...
 
 Use `get_sub_regions` to discover codes when you only know names.
 
@@ -148,4 +148,4 @@ After configuring, try:
 
 ## License
 
-MIT — see the root [LICENSE](https://github.com/andrewschristison/pondlog).
+MIT. See the root [LICENSE](https://github.com/andrewschristison/pondlog).

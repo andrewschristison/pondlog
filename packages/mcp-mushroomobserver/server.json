@@ -1,9 +1,21 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-mushroomobserver",
-  "description": "Mushroom Observer MCP — mycology observations, fungal taxonomy, and regions.",
+  "description": "Mushroom Observer MCP server. Mycology observations, fungal taxonomy, and region discovery from the largest dedicated fungi platform.",
   "status": "active",
-  "repository": { "url": "https://github.com/andrewschristison/pondlog", "source": "github" },
-  "version": "0.1.3",
-  "packages": [{ "registryType": "npm", "identifier": "@pondlog/mcp-mushroomobserver", "version": "0.1.3", "transport": { "type": "stdio" } }]
+  "repository": {
+    "url": "https://github.com/andrewschristison/pondlog",
+    "source": "github"
+  },
+  "version": "0.1.4",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@pondlog/mcp-mushroomobserver",
+      "version": "0.1.4",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
 }

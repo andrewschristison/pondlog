@@ -1,25 +1,28 @@
 {
   "name": "@pondlog/mcp-usgs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "MCP server for USGS Water Services (NWIS). Four tools: real-time streamflow, daily statistics, site metadata, and site search. No API key required.",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
+    "ai",
+    "tools",
     "claude-desktop",
     "cursor",
     "usgs",
-    "nwis",
     "streamflow",
+    "water",
     "hydrology",
-    "water"
+    "rivers",
+    "nwis"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-usgs#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-usgs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/mcp-usgs"
   },
   "bugs": {
@@ -28,7 +31,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-usgs": "./dist/index.js"
+    "pondlog-mcp-usgs": "dist/index.js"
   },
   "files": [
     "dist",

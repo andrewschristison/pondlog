@@ -3,20 +3,20 @@
 The aggregate nature MCP server. **One tool call replaces six API
 integrations.**
 
-`get_nature_briefing` returns a unified briefing for any coordinates —
-recent wildlife from iNaturalist + eBird, tide predictions from NOAA,
+`get_nature_briefing` returns a unified briefing for any coordinates:
+recent wildlife from iNaturalist and eBird, tide predictions from NOAA,
 streamflow from USGS, plant phenology from USA-NPN, and a full night-sky
 briefing (sun, moon, planets, meteor showers, constellations) from
-astronomy-engine — stitched into a single JSON response. All six sources
+astronomy-engine, stitched into a single JSON response. All six sources
 are fetched in parallel; partial failures are reported in `errors[]`
 without crashing the briefing.
 
-Part of [pondlog](https://github.com/andrewschristison/pondlog) — a
+Part of [pondlog](https://github.com/andrewschristison/pondlog), a
 toolkit for stitching together public nature APIs.
 
 ## Install / run
 
-The server is published to npm and runs via `npx` — no install step.
+The server is published to npm and runs via `npx` (no install step):
 
 ```sh
 npx -y @pondlog/mcp-pondlog
@@ -33,11 +33,11 @@ sections are skipped gracefully when their key/station is unset.
 | Env var | What it enables | Required? | How to get one |
 |---------|----------------|-----------|----------------|
 | `EBIRD_API_KEY` | eBird observations in the briefing | Optional | Free at [ebird.org/api/keygen](https://ebird.org/api/keygen) |
-| `NOAA_STATION` | Tide predictions (6–8 digit station id) | Optional | Look up at [tidesandcurrents.noaa.gov](https://tidesandcurrents.noaa.gov) |
-| `USGS_SITE` | Streamflow (8–15 digit site number) | Optional | Look up at [waterdata.usgs.gov](https://waterdata.usgs.gov) |
+| `NOAA_STATION` | Tide predictions (6 to 8 digit station id) | Optional | Look up at [tidesandcurrents.noaa.gov](https://tidesandcurrents.noaa.gov) |
+| `USGS_SITE` | Streamflow (8 to 15 digit site number) | Optional | Look up at [waterdata.usgs.gov](https://waterdata.usgs.gov) |
 
 `noaa_station`, `usgs_site`, and `ebird_api_key` can also be passed per
-call as tool inputs — that takes precedence over the env vars.
+call as tool inputs. That takes precedence over the env vars.
 
 ### Claude Desktop
 
@@ -105,10 +105,12 @@ All tools are read-only. Coordinates use WGS84 decimal degrees.
 For finer-grained queries against a single source, prefer the standalone
 servers in the same monorepo:
 
-- [`@pondlog/mcp-inaturalist`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-inaturalist) — 9 tools, no key required
-- [`@pondlog/mcp-ebird`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-ebird) — 21 tools, free key
-- [`@pondlog/mcp-npn`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-npn) — phenology
-- [`@pondlog/mcp-usgs`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-usgs) — water data
+- [`@pondlog/mcp-inaturalist`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-inaturalist): 9 tools, no key required
+- [`@pondlog/mcp-ebird`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-ebird): 21 tools, free key
+- [`@pondlog/mcp-npn`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-npn): phenology
+- [`@pondlog/mcp-usgs`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-usgs): water data
+- [`@pondlog/mcp-mushroomobserver`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-mushroomobserver): fungi
+- [`@pondlog/mcp-garden`](https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-garden): garden planning
 
 ## Example prompts
 
@@ -146,11 +148,11 @@ After configuring, try:
   setting `process.env.EBIRD_API_KEY` for the duration of that call.
   Stdio MCP processes JSON-RPC sequentially in practice, so this is
   fine, but in shared deployments prefer the env-var path.
-- No caching at the MCP layer — each `get_nature_briefing` call fetches
+- No caching at the MCP layer. Each `get_nature_briefing` call fetches
   fresh from all six sources. If you want caching, the host (Claude
   Desktop, Cursor, an agent) is the right place to add it. Cold call at
   Port Angeles takes ~2.5 s.
 
 ## License
 
-MIT — see the root [LICENSE](https://github.com/andrewschristison/pondlog).
+MIT. See the root [LICENSE](https://github.com/andrewschristison/pondlog).

@@ -3,6 +3,67 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.18.1] - 2026-05-12
+
+### Sticky 25: distribution polish
+
+Metadata, README, and presentation polish across all 16 packages ahead of
+organic traffic from the MCP registry listings. No source code, type, or
+test changes.
+
+#### Package metadata
+
+- Normalized `homepage`, `repository`, and `bugs` URLs across every
+  `package.json`. Bare GitHub URLs (no `git+` prefix or `.git` suffix);
+  `homepage` points at the GitHub subfolder for each package.
+- Merged sticky-prescribed keyword lists into every package. MCP servers
+  now carry `mcp`, `model-context-protocol`, `claude-desktop`, `cursor`
+  plus per-source identifiers (e.g. `inaturalist`, `wildlife`,
+  `biodiversity`, `nature`, `observations`).
+- Ran `npm pkg fix` workspace-wide to clear bin-script-path warnings.
+- Stripped em dashes from every `description` field (`package.json` and
+  `server.json`).
+- Removed accidentally committed `packages/mcp-inaturalist/server.json.bak`.
+
+#### README voice pass (17 files)
+
+Rewrote every README (root plus 16 package READMEs):
+
+- Zero em dashes in any user-facing doc. Replacements use commas,
+  periods, parentheses, or full sentence rewrites depending on context.
+- Restored `packages/mcp-inaturalist/README.md`. The previous version was
+  the upstream MCP Registry's README, accidentally committed in `c5e9fa2`.
+- Root README gained an ASCII architecture diagram, a sibling-project
+  link to the CropGraph HTTP API, and a contributor section pointing at
+  `crop-calendar.schema.json` and `companions.schema.json` for community
+  PRs against the bundled data.
+- Standing rule: zero em dashes in any future README, package metadata,
+  or commit message.
+
+#### Versions
+
+Patch-bumped every workspace package. Matching `server.json` versions
+bumped in lockstep for the 7 MCPs.
+
+| Package | From | To |
+|---|---|---|
+| `pondlog` | 0.7.0 | 0.7.1 |
+| `@pondlog/core` | 0.8.0 | 0.8.1 |
+| `@pondlog/source-*` (7 packages) | 0.1.1 | 0.1.2 |
+| `@pondlog/mcp-inaturalist` | 0.1.2 | 0.1.3 |
+| `@pondlog/mcp-ebird` | 0.1.3 | 0.1.4 |
+| `@pondlog/mcp-npn` | 0.1.3 | 0.1.4 |
+| `@pondlog/mcp-usgs` | 0.1.4 | 0.1.5 |
+| `@pondlog/mcp-mushroomobserver` | 0.1.3 | 0.1.4 |
+| `@pondlog/mcp-garden` | 0.3.1 | 0.3.2 |
+| `@pondlog/mcp-pondlog` | 0.3.6 | 0.3.7 |
+
+#### Verified
+
+- `pnpm -r typecheck` and `pnpm -r build` clean across all 16 packages.
+- CropGraph API at `api.cropgraph.com`: docs and root pages render; all
+  8 documented `curl` examples return HTTP 200 with valid JSON payloads.
+
 ## [0.18.0] - 2026-05-10
 
 ### Added — Sticky 23: Companion planting CLI commands + MCP tools

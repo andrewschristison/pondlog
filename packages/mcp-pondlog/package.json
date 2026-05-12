@@ -1,20 +1,26 @@
 {
   "name": "@pondlog/mcp-pondlog",
-  "version": "0.3.6",
-  "description": "Aggregate MCP server: one tool call returns a unified nature briefing — birds, wildlife, plants, tides, streamflow, night sky, and phenology stitched from six public APIs into a single response.",
+  "version": "0.3.7",
+  "description": "Aggregate MCP server. One tool call returns a unified nature briefing covering birds, wildlife, plants, tides, streamflow, night sky, and phenology, stitched from six public APIs into a single response.",
   "keywords": [
     "pondlog",
     "mcp",
     "model-context-protocol",
+    "ai",
+    "tools",
     "claude-desktop",
     "cursor",
     "nature",
-    "wildlife",
+    "aggregate",
+    "briefing",
+    "garden",
     "birds",
+    "weather",
+    "wildlife",
     "tides",
     "streamflow",
-    "astronomy",
     "phenology",
+    "astronomy",
     "inaturalist",
     "ebird",
     "noaa",
@@ -23,10 +29,10 @@
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-pondlog#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/mcp-pondlog",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/mcp-pondlog"
   },
   "bugs": {
@@ -35,7 +41,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "pondlog-mcp-pondlog": "./dist/index.js"
+    "pondlog-mcp-pondlog": "dist/index.js"
   },
   "files": [
     "dist",

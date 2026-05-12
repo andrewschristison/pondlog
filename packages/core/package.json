@@ -1,21 +1,29 @@
 {
   "name": "@pondlog/core",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Shared types, schemas, Result<T>, rate limiter, and utilities used across pondlog source clients, CLI, and MCP servers.",
   "keywords": [
     "pondlog",
     "nature",
+    "agriculture",
+    "crop-calendar",
+    "companion-planting",
+    "usda-zones",
+    "hardiness-zone",
+    "garden",
+    "planting-calendar",
     "wildlife",
     "types",
     "rate-limiter",
-    "result"
+    "result",
+    "zod"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
-  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/core#readme",
+  "homepage": "https://github.com/andrewschristison/pondlog/tree/main/packages/core",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewschristison/pondlog.git",
+    "url": "https://github.com/andrewschristison/pondlog",
     "directory": "packages/core"
   },
   "bugs": {

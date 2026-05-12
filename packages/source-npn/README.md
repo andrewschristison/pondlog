@@ -18,20 +18,20 @@ npm install @pondlog/source-npn
 | Function | Description |
 |---|---|
 | `getSpecies()` | Full NPN species catalog (~1900 records). |
-| `getStations({ stateCode? })` | All NPN stations, optionally filtered by US state postal code. Strongly recommend a state filter — unfiltered ≈ 50k stations. |
+| `getStations({ stateCode? })` | All NPN stations, optionally filtered by US state postal code. Recommend a state filter; unfiltered is ≈ 50k stations. |
 | `getStationCountByState()` | Station count per US state. |
 | `getStationsWithSpecies({ speciesIds })` | Stations that have observed any of the given species. |
 | `getStationsByLocation({ wkt })` | Stations inside a WKT polygon. Use `bboxWkt(coords, radiusKm)` to construct one from lat/lng. |
 | `getObservations({ years, ... })` | Status / intensity records. **Requires** `years[]` and ≥ 1 narrowing filter (species/station/state/etc). |
 | `getSiteLevelData({ years, ... })` | Site-level phenometric records. Same narrowing rule as `getObservations`. |
-| `getActivePhenologyNearby({ coords, radiusKm, days? })` | Composed helper. Builds a WKT bbox → fetches stations → haversine-filters to true radius → fetches observations → returns ones with `phenophaseStatus === 1` in the last `days` days. |
+| `getActivePhenologyNearby({ coords, radiusKm, days? })` | Composed helper. Builds a WKT bbox, fetches stations, haversine-filters to true radius, fetches observations, returns ones with `phenophaseStatus === 1` in the last `days` days. |
 
 All functions return `Result<T>` from `@pondlog/core`.
 
 ## Helpers
 
-- `bboxWkt(coords, radiusKm)` — WGS84 bounding-box polygon as WKT, ready for `getStationsByLocation`.
-- `haversineKm(a, b)` — great-circle distance in km.
+- `bboxWkt(coords, radiusKm)`: WGS84 bounding-box polygon as WKT, ready for `getStationsByLocation`.
+- `haversineKm(a, b)`: great-circle distance in km.
 
 ## Notes
 
