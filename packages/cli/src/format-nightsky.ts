@@ -100,7 +100,7 @@ export function formatPlanetRow(p: PlanetPosition): string {
   const dir = padEnd(p.direction, 4);
   const alt = padEnd(`${p.altitudeDeg.toFixed(0)}°`, 4);
   const mag = `mag ${p.magnitude >= 0 ? "+" : ""}${p.magnitude.toFixed(1)}`;
-  const hint = p.highlight ? pc.dim(` — ${p.highlight}`) : "";
+  const hint = p.highlight ? pc.dim(`, ${p.highlight}`) : "";
   return `  ${name}  ${pc.dim(dir)}  ${pc.dim(alt)}  ${pc.dim(mag)}${hint}`;
 }
 

@@ -104,18 +104,18 @@ function highlightFor(
       return `${name} is below the horizon (${altitude.toFixed(0)}°).`;
     }
     if (altitude < HORIZON_HAZE_DEG) {
-      return `${name} is near the horizon (${altitude.toFixed(0)}°) — likely hidden by atmospheric haze.`;
+      return `${name} is near the horizon (${altitude.toFixed(0)}°), likely hidden by atmospheric haze.`;
     }
     if (magnitude > NAKED_EYE_MAG_LIMIT) {
-      return `${name} is up but at mag ${magnitude.toFixed(1)} — telescope or binoculars only.`;
+      return `${name} is up but at mag ${magnitude.toFixed(1)}, telescope or binoculars only.`;
     }
     return null;
   }
   if (magnitude < -3) {
-    return `${name} is brilliant (mag ${magnitude.toFixed(1)}) — the brightest object after the moon.`;
+    return `${name} is brilliant (mag ${magnitude.toFixed(1)}), the brightest object after the moon.`;
   }
   if (magnitude < -1) {
-    return `${name} is bright (mag ${magnitude.toFixed(1)}) — easy naked-eye target.`;
+    return `${name} is bright (mag ${magnitude.toFixed(1)}), easy naked-eye target.`;
   }
   if (magnitude < 2) {
     return `${name} is naked-eye visible (mag ${magnitude.toFixed(1)}).`;
@@ -123,5 +123,5 @@ function highlightFor(
   if (magnitude < 5) {
     return `${name} is faint (mag ${magnitude.toFixed(1)}) but visible from a dark site.`;
   }
-  return `${name} is at the naked-eye limit (mag ${magnitude.toFixed(1)}) — binoculars recommended.`;
+  return `${name} is at the naked-eye limit (mag ${magnitude.toFixed(1)}), binoculars recommended.`;
 }

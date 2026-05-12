@@ -52,7 +52,7 @@ interface ObservationOpts {
 
 export function buildMushroomCommand(): Command {
   const cmd = new Command("mushroom").description(
-    "Mushroom Observer (mycology) commands — fungi observations and taxonomy from the world's largest mycology platform",
+    "Mushroom Observer (mycology) commands, fungi observations and taxonomy from the world's largest mycology platform",
   );
 
   cmd
@@ -114,7 +114,7 @@ export function buildMushroomCommand(): Command {
         params.radiusKm = radius;
         header = `${loc.name ? loc.name + "  ·  " : ""}${loc.coords.lat.toFixed(3)}, ${loc.coords.lng.toFixed(3)}  ·  ${radius} km`;
       } else {
-        // No flags — try saved coords, then saved region.
+        // No flags, try saved coords, then saved region.
         const cfg = await loadConfig();
         if (cfg.ok && cfg.data?.defaultLocation) {
           const loc = cfg.data.defaultLocation;
@@ -203,7 +203,7 @@ export function buildMushroomCommand(): Command {
     .action(async (idArg: string, opts: ObservationOpts) => {
       const id = Number(idArg);
       if (!Number.isInteger(id) || id <= 0) {
-        return fail(`invalid observation id "${idArg}" — expected a positive integer`);
+        return fail(`invalid observation id "${idArg}", expected a positive integer`);
       }
       const result = await getObservation(id);
       if (!result.ok) return fail(result.error.message);

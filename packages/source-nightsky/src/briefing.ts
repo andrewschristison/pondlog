@@ -106,7 +106,7 @@ function pickNightReferenceTime(observer: Observer, date: Date): Date {
     if (sunrise) {
       return new Date((sunset.date.getTime() + sunrise.date.getTime()) / 2);
     }
-    // Sunset but no following sunrise (high latitude polar twilight) — pick
+    // Sunset but no following sunrise (high latitude polar twilight), pick
     // an hour past sunset as a usable observation moment.
     return new Date(sunset.date.getTime() + 60 * 60_000);
   }

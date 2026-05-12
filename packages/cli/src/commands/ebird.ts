@@ -216,7 +216,7 @@ export function buildEbirdCommand(): Command {
       const sorted = [...result.data].sort((a, b) => b.obsDt.localeCompare(a.obsDt));
       const widths = computeEbirdObsWidths(sorted);
       const sample = sorted[0];
-      if (sample) console.log(`${sample.comName} (${sample.sciName}) — ${sorted.length} sightings`);
+      if (sample) console.log(`${sample.comName} (${sample.sciName}), ${sorted.length} sightings`);
       for (const o of sorted) console.log(formatEbirdObs(o, widths));
     });
 

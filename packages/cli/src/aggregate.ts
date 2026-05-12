@@ -64,7 +64,7 @@ export interface BuildTodayBriefingResult {
  * All six sources fan out in parallel via `Promise.allSettled`. A failed source
  * adds an entry to `errors[]` but never crashes the briefing. The night-sky
  * source is pure local computation and is treated as required (its absence
- * means we can't even populate the legacy `celestial` field — but it should
+ * means we can't even populate the legacy `celestial` field, but it should
  * be effectively infallible for valid coordinates).
  */
 export async function buildTodayBriefing(
@@ -105,7 +105,7 @@ export async function buildTodayBriefing(
       }),
   });
 
-  // Mushroom Observer — coords + radius bbox by default; falls back to the
+  // Mushroom Observer, coords + radius bbox by default; falls back to the
   // configured region suffix when no useful coords are available (we still
   // pass the bbox call below; the region setting is reserved for future use).
   const moRegion = params.config?.mushroomObserverRegion;
@@ -193,7 +193,7 @@ export async function buildTodayBriefing(
       if (reading) streamflow = readingToStreamflow(reading);
     });
   } else if (params.config?.usgsSite === undefined) {
-    // No site configured — silent skip (user can `pondlog config set-usgs-site`).
+    // No site configured, silent skip (user can `pondlog config set-usgs-site`).
   }
 
   let tides: { high: import("@pondlog/core").TideEvent[]; low: import("@pondlog/core").TideEvent[] } | undefined;
@@ -210,7 +210,7 @@ export async function buildTodayBriefing(
     errors.push({ source: "nightsky", message: nightSkyResult.error.message });
   }
 
-  // Garden — pure local computation; no caching layer needed.
+  // Garden, pure local computation; no caching layer needed.
   const garden = buildGardenForToday(params.coords, date, errors);
 
   const briefing: NatureBriefing = {

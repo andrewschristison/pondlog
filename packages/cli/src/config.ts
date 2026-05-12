@@ -44,7 +44,7 @@ export function setNoaaStation(
   if (!NOAA_STATION_RE.test(stationId)) {
     return err({
       source: "cli/config",
-      message: `invalid NOAA station "${stationId}" — expected 6–8 digits (e.g. "9444090")`,
+      message: `invalid NOAA station "${stationId}", expected 6–8 digits (e.g. "9444090")`,
     });
   }
   return ok({ ...(cfg ?? { version: 1 as const }), noaaStation: stationId });
@@ -57,7 +57,7 @@ export function setUsgsSite(
   if (!USGS_SITE_RE.test(siteNumber)) {
     return err({
       source: "cli/config",
-      message: `invalid USGS site "${siteNumber}" — expected 8–15 digits (e.g. "12045500")`,
+      message: `invalid USGS site "${siteNumber}", expected 8–15 digits (e.g. "12045500")`,
     });
   }
   return ok({ ...(cfg ?? { version: 1 as const }), usgsSite: siteNumber });
@@ -71,7 +71,7 @@ export function setEbirdRegion(
   if (!EBIRD_REGION_RE.test(upper)) {
     return err({
       source: "cli/config",
-      message: `invalid eBird region "${regionCode}" — expected pattern like "US", "US-WA", or "US-WA-009"`,
+      message: `invalid eBird region "${regionCode}", expected pattern like "US", "US-WA", or "US-WA-009"`,
     });
   }
   return ok({ ...(cfg ?? { version: 1 as const }), ebirdRegion: upper });
@@ -85,7 +85,7 @@ export function setMushroomObserverRegion(
   if (trimmed.length < 2 || trimmed.length > 200) {
     return err({
       source: "cli/config",
-      message: `invalid mushroom-observer region — must be 2–200 chars (e.g. "Clallam Co., Washington, USA")`,
+      message: `invalid mushroom-observer region, must be 2–200 chars (e.g. "Clallam Co., Washington, USA")`,
     });
   }
   return ok({ ...(cfg ?? { version: 1 as const }), mushroomObserverRegion: trimmed });

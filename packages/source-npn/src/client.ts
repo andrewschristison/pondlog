@@ -19,7 +19,7 @@ const limiter = new RateLimiter({
   refillIntervalMs: 1_000,
 });
 
-// Default fetch timeout — getObservations payloads can run into tens of MB
+// Default fetch timeout, getObservations payloads can run into tens of MB
 // even with filters. Generous timeout here is the harden-lens default.
 const DEFAULT_TIMEOUT_MS = 60_000;
 
@@ -120,7 +120,7 @@ export async function npnFetch<T>(
           }
           // NPN occasionally returns HTTP 200 with an empty body for queries
           // that have no matching records (and for at least one known
-          // upstream bug — see rnpn issue #38 re: stations/getStationsWithSpecies
+          // upstream bug, see rnpn issue #38 re: stations/getStationsWithSpecies
           // with species_id=3). Treat empty body as an empty array so the
           // schema can validate.
           const text = await res.text();

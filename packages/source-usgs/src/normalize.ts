@@ -19,7 +19,7 @@ export interface NormalizedUsgsValue {
   /** Parsed numeric value. undefined if the wire value was the noDataValue sentinel
    *  or otherwise unparseable. */
   value: number | undefined;
-  /** USGS quality codes — typically "P" (provisional) or "A" (approved). */
+  /** USGS quality codes, typically "P" (provisional) or "A" (approved). */
   qualifiers: string[];
 }
 
@@ -108,7 +108,7 @@ function pickStatistic(ts: UsgsTimeSeries): string | undefined {
 }
 
 /** Group all timeSeries entries from a USGS response by site. The wire format
- *  emits one timeSeries per (site, variable, statistic) — the same site shows
+ *  emits one timeSeries per (site, variable, statistic), the same site shows
  *  up multiple times when both 00060 and 00065 are requested. */
 export function groupBySite(
   timeSeries: UsgsTimeSeries[],

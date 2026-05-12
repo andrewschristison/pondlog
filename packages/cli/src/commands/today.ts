@@ -251,7 +251,7 @@ function renderFungi(entries: FungiObservation[]): void {
 
 function renderGarden(g: GardenBriefing): void {
   console.log(
-    pc.bold(`🌱 Garden — zone ${g.zone.zone}`) +
+    pc.bold(`🌱 Garden, zone ${g.zone.zone}`) +
       pc.dim(
         `  ·  ${g.zone.minTempF}-${g.zone.maxTempF}°F  ·  frost ~${g.frostDates.lastSpring}…~${g.frostDates.firstFall}  (${g.frostDates.seasonDays}d season)`,
       ),
@@ -279,7 +279,7 @@ function renderGarden(g: GardenBriefing): void {
     const action = pc.cyan(actionLabel[s.action] ?? s.action);
     const window = pc.dim(`window ${s.windowStart}…${s.windowEnd}`);
     console.log(
-      `  ${actionIcon[s.action] ?? "·"}  ${pc.bold(s.commonName)} — ${action}  ${window}`,
+      `  ${actionIcon[s.action] ?? "·"}  ${pc.bold(s.commonName)}, ${action}  ${window}`,
     );
     const partner = topStrongCompanion(s.slug);
     if (partner) {
@@ -288,7 +288,7 @@ function renderGarden(g: GardenBriefing): void {
   }
   if (g.plantNow.length > top.length) {
     console.log(
-      pc.dim(`  …and ${g.plantNow.length - top.length} more — \`pondlog garden now\` for full list`),
+      pc.dim(`  …and ${g.plantNow.length - top.length} more, \`pondlog garden now\` for full list`),
     );
   }
 }
@@ -302,7 +302,7 @@ function renderPhenology(entries: PhenologyEntry[]): void {
       p.daysSinceLastYes !== undefined
         ? pc.dim(`  ${p.daysSinceLastYes}d since last 'yes'`)
         : "";
-    console.log(`  🌿  ${pc.bold(p.species)} — ${p.phenophase}${distance}${days}`);
+    console.log(`  🌿  ${pc.bold(p.species)}, ${p.phenophase}${distance}${days}`);
   }
   if (entries.length > sample.length) {
     console.log(pc.dim(`  …and ${entries.length - sample.length} more`));
@@ -355,7 +355,7 @@ function parseOptionalDate(input: string | undefined): { ok: true; value: Date |
   if (input === undefined) return { ok: true, value: undefined };
   const d = new Date(input);
   if (Number.isNaN(d.getTime())) {
-    return { ok: false, error: `invalid --date "${input}" — expected ISO 8601 (e.g. 2026-05-07 or 2026-05-07T20:00:00Z)` };
+    return { ok: false, error: `invalid --date "${input}", expected ISO 8601 (e.g. 2026-05-07 or 2026-05-07T20:00:00Z)` };
   }
   return { ok: true, value: d };
 }

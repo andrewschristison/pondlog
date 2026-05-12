@@ -25,6 +25,6 @@ export function azimuthToCompass(azimuthDeg: number): CompassDirection {
   const a = ((azimuthDeg % 360) + 360) % 360;
   // 16 points → 22.5° per point. Offset by 11.25° so each label centers on its azimuth.
   const idx = Math.floor((a + 11.25) / 22.5) % 16;
-  // We just modulo'd into [0,15] so the lookup is in-bounds — assert as defined to satisfy noUncheckedIndexedAccess.
+  // We just modulo'd into [0,15] so the lookup is in-bounds, assert as defined to satisfy noUncheckedIndexedAccess.
   return POINTS[idx] as CompassDirection;
 }

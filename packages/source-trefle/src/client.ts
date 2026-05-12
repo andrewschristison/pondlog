@@ -1,9 +1,9 @@
-// Trefle.io HTTP client — token-authenticated, rate-limited, retry-on-5xx.
+// Trefle.io HTTP client, token-authenticated, rate-limited, retry-on-5xx.
 //
 // Trefle is a beta API and has documented stability issues (search endpoints
 // returned 500s during 2025 per its public issue tracker). We're more
 // retry-tolerant than other pondlog sources to compensate. Rate limit is
-// the published 120 req/min — we run a polite 100/min internally.
+// the published 120 req/min, we run a polite 100/min internally.
 
 import {
   PONDLOG_USER_AGENT,
@@ -137,7 +137,7 @@ export async function trefleFetch<T>(
             throw new RateLimitedError(429, `Trefle rate limit hit at ${path}`);
           }
           if (res.status >= 500 && res.status < 600) {
-            // Trefle's reported stability issues — retry transient 5xx.
+            // Trefle's reported stability issues, retry transient 5xx.
             const text = await safeReadText(res);
             throw new TransientHttpError(
               res.status,

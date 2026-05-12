@@ -82,7 +82,7 @@ const VALID_CATEGORIES: CropCategory[] = [
 
 export function buildGardenCommand(): Command {
   const cmd = new Command("garden").description(
-    "Garden planning — USDA hardiness zone, frost dates, climate-aware planting plan, and plant lookup. Backed by the bundled 1000-crop calendar (always available, climate modifiers on 10 anchor crops) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
+    "Garden planning. USDA hardiness zone, frost dates, climate-aware planting plan, and plant lookup. Backed by the bundled 1000-crop calendar (always available, climate modifiers on 10 anchor crops) plus Trefle.io taxonomy when TREFLE_API_TOKEN is set.",
   );
 
   cmd
@@ -106,7 +106,7 @@ export function buildGardenCommand(): Command {
         "Notes:",
         "  Zone data: PRISM Climate Group 2023 USDA Plant Hardiness Zone Map.",
         "  Coords resolve to the nearest of 40,283 ZIP centroids.",
-        "  Frost dates are continental-US averages by zone — your microclimate",
+        "  Frost dates are continental-US averages by zone, your microclimate",
         "  may shift them by 2-3 weeks (especially coastal/mountain/desert).",
       ].join("\n"),
     )
@@ -176,7 +176,7 @@ export function buildGardenCommand(): Command {
         "Output groups by action: start_indoors → direct_sow → transplant → plant_now.",
         "expectedHarvestEarliest is calculated from the crop's daysToHarvest.min;",
         "if it lands past your typical first fall frost, the crop is unlikely to",
-        "finish — pick a faster cultivar or skip.",
+        "finish, pick a faster cultivar or skip.",
       ].join("\n"),
     )
     .action(async (opts: NowOpts) => {
@@ -235,7 +235,7 @@ export function buildGardenCommand(): Command {
     )
     .action(async (nameArg: string, opts: PlantOpts) => {
       const crop = findCrop(nameArg);
-      // Trefle detail — only fetched if a token is set.
+      // Trefle detail, only fetched if a token is set.
       let guide: import("@pondlog/source-trefle").GrowingGuide | undefined;
       let trefleErr: string | undefined;
       if (hasTrefleToken()) {
@@ -519,7 +519,7 @@ async function resolveClimateFromAny(
     return opts.climate;
   }
   // Auto-detect from coords if available. Skip when --zone was explicitly set
-  // and no coords are available — synthetic zones don't carry a location.
+  // and no coords are available, synthetic zones don't carry a location.
   const coords = await resolveCoordsFromOpts(opts);
   if (!coords) return undefined;
   const r = getClimateType(coords);
@@ -593,7 +593,7 @@ function dimText(s: string): string {
   return s;
 }
 
-// Suppress unused warning for getCropsForZone — exported via core but not
+// Suppress unused warning for getCropsForZone, exported via core but not
 // directly used in this command file.
 void getCropsForZone;
 

@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/source-nightsky",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Place-aware night-sky briefing: sun, moon, planets, twilight, meteor showers, and constellations from astronomy-engine plus curated fixtures. Pure local computation (no API, no rate limit, no key).",
   "keywords": [
     "pondlog",

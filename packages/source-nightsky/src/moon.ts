@@ -13,7 +13,7 @@ import type { MoonPhase, MoonPhaseName } from "./types.js";
 const SYNODIC_MONTH_DAYS = 29.530588853;
 
 export interface GetMoonPhaseParams {
-  /** Optional — without coordinates, rise/set are omitted. */
+  /** Optional, without coordinates, rise/set are omitted. */
   coords?: Coordinates;
   date?: Date | string;
 }

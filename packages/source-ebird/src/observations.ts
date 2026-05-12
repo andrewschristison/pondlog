@@ -37,7 +37,7 @@ export interface NearbyNotableParams extends NearbyObservationsParams {
 }
 
 export interface NearbyOfSpeciesParams extends NearbyObservationsParams {
-  /** No "sort" — fixed by API. */
+  /** No "sort", fixed by API. */
 }
 
 export interface HistoricObservationsParams {

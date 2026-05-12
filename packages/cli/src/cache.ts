@@ -14,11 +14,11 @@ import { err, ok, type Result } from "@pondlog/core";
 /** Per-source TTL in seconds. Source ids match the keys callers pass to
  *  cacheGet/cacheSet. Sources not listed here fall back to DEFAULT_TTL. */
 const TTL_SECONDS: Record<string, number> = {
-  noaa: 3600, // tides — predictable, 1h
-  inaturalist: 900, // observations — 15m
-  ebird: 900, // observations — 15m
-  usgs: 900, // streamflow — 15m
-  npn: 3600, // phenology — slow-moving, 1h
+  noaa: 3600, // tides, predictable, 1h
+  inaturalist: 900, // observations, 15m
+  ebird: 900, // observations, 15m
+  usgs: 900, // streamflow, 15m
+  npn: 3600, // phenology, slow-moving, 1h
 };
 
 const DEFAULT_TTL = 900;
@@ -94,7 +94,7 @@ export async function cacheGet<T>(
   }
   if (env.version !== CACHE_VERSION) return null;
   if (typeof env.expiresAt !== "number" || env.expiresAt < Date.now()) {
-    // expired — best-effort delete
+    // expired, best-effort delete
     void unlink(path).catch(() => {});
     return null;
   }

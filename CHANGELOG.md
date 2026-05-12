@@ -3,6 +3,50 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.18.3] - 2026-05-12
+
+### Em-dash sweep across CLI and source clients
+
+Final round of the Sticky 25 em-dash purge. Removed 130 em dashes from
+`packages/cli/src/` and `packages/source-*/src/`. Same contextual rules
+as 0.18.2 (period before capital, comma before lowercase).
+
+Touched packages: `pondlog` (CLI) and 6 source clients (`source-ebird`,
+`source-mushroomobserver`, `source-nightsky`, `source-npn`,
+`source-trefle`, `source-usgs`). `source-inaturalist` was untouched
+(its src/ had none).
+
+The two bundled fixtures in `source-nightsky` (`meteor-showers.json`,
+`constellations.json`) also lost their em dashes; descriptions and notes
+served by `getTonightsBriefing` and `getVisibleConstellations` now read
+without them.
+
+#### Out of scope (deliberate)
+
+CLI table formatters still use `"—"` as a single-character UI placeholder
+for empty cells (e.g. `consensusName ?? "—"` in `format-mushroom.ts`).
+These are functional UI characters, not AI tells; replacing with `"-"`
+would collide with separator hyphens in lines like
+`soil pH: ${phMin ?? "—"} - ${phMax ?? "—"}`. A separate sticky can pick
+a deliberate empty-cell marker if wanted.
+
+Historical CHANGELOG entries (Stickies 1 to 23) also still contain em
+dashes; deliberately not retconned.
+
+#### Versions
+
+| Package | From | To |
+|---|---|---|
+| `pondlog` | 0.7.1 | 0.7.2 |
+| `@pondlog/source-ebird` | 0.1.2 | 0.1.3 |
+| `@pondlog/source-mushroomobserver` | 0.1.2 | 0.1.3 |
+| `@pondlog/source-nightsky` | 0.1.2 | 0.1.3 |
+| `@pondlog/source-npn` | 0.1.2 | 0.1.3 |
+| `@pondlog/source-trefle` | 0.1.2 | 0.1.3 |
+| `@pondlog/source-usgs` | 0.1.2 | 0.1.3 |
+
+`@pondlog/source-inaturalist` not bumped (no changes).
+
 ## [0.18.2] - 2026-05-12
 
 ### Em-dash sweep across `@pondlog/core` and MCP servers

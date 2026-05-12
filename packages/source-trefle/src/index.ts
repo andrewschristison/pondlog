@@ -1,6 +1,6 @@
 // Trefle.io client surface.
 //
-// SCOPE NOTE — Trefle is the *taxonomy* layer of pondlog's garden surface.
+// SCOPE NOTE. Trefle is the *taxonomy* layer of pondlog's garden surface.
 // We live-probed the live API in May 2026 and found that horticulture fields
 // (days_to_harvest, sowing instructions, growth_months, hardiness) are
 // universally null for cultivated vegetables. The 1000-crop planting calendar
@@ -34,17 +34,17 @@ const PAGE_DEFAULT = 1;
 const PAGE_MAX = 50;
 
 // ---------------------------------------------------------------------------
-// 1. searchPlants — substring/prefix search by common name.
+// 1. searchPlants, substring/prefix search by common name.
 //
 // Trefle's `q=` is a full-text query that matches author/bibliography fields
 // noisily. `filter[common_name]=tomato` is far more precise. We expose both
-// — `query` is the high-recall path, `commonNameExact` is the disambiguator.
+//, `query` is the high-recall path, `commonNameExact` is the disambiguator.
 // ---------------------------------------------------------------------------
 
 export interface SearchPlantsParams {
   /** Free-text query (matches noisily across multiple fields). */
   query?: string;
-  /** Exact common-name filter — best for "find me the plant called X". */
+  /** Exact common-name filter, best for "find me the plant called X". */
   commonNameExact?: string;
   /** Family name filter (e.g. "Brassicaceae"). */
   family?: string;
@@ -109,7 +109,7 @@ export async function searchPlants(
 }
 
 // ---------------------------------------------------------------------------
-// 2. getPlant — full detail for a single plant by slug or numeric id.
+// 2. getPlant, full detail for a single plant by slug or numeric id.
 //
 // Returns the rich /plants/{id} response. Many growth fields will be null
 // for cultivated vegetables (Trefle's horticulture coverage is sparse).
@@ -135,11 +135,11 @@ export async function getPlant(
 }
 
 // ---------------------------------------------------------------------------
-// 3. searchSpecies — like searchPlants but against /species endpoint.
+// 3. searchSpecies, like searchPlants but against /species endpoint.
 //
 // Trefle distinguishes "plant" (the taxonomic primary species) from "species"
 // (one of many subspecies/varieties under a plant). For most home-garden use
-// cases the /plants endpoint is correct — /species is the deeper drilldown
+// cases the /plants endpoint is correct, /species is the deeper drilldown
 // when a user wants a specific cultivar group.
 // ---------------------------------------------------------------------------
 
@@ -190,7 +190,7 @@ export async function searchSpecies(
 }
 
 // ---------------------------------------------------------------------------
-// 4. getGrowingGuide — convenience that pulls a plant's main_species and
+// 4. getGrowingGuide, convenience that pulls a plant's main_species and
 //    returns a flat, gardener-friendly summary of the available growth fields.
 //    Many fields will be undefined; the caller can render "(unknown)" for
 //    those.
@@ -213,7 +213,7 @@ export interface GrowingGuide {
   atmosphericHumidity?: number;
   phMin?: number;
   phMax?: number;
-  /** Trefle's stated growth-season minimum air temp (NOT USDA hardiness — see
+  /** Trefle's stated growth-season minimum air temp (NOT USDA hardiness, see
    *  @pondlog/core/usda-zones for hardiness mapping). */
   minimumGrowthTempF?: number;
   minimumGrowthTempC?: number;

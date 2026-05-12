@@ -182,7 +182,7 @@ export function formatCropEntry(crop: CropEntry): string {
 
 // ---------------------------------------------------------------------------
 // Trefle growing guide block (rendered after the core crop entry, when a
-// token is set). Many fields will be undefined — rendered as "—".
+// token is set). Many fields will be undefined, rendered as "—".
 // ---------------------------------------------------------------------------
 
 export function formatTrefleGuide(g: GrowingGuide): string {

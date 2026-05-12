@@ -11,7 +11,7 @@
     "radiantDecDeg": 49.5,
     "parentObject": "Asteroid 2003 EH1",
     "hemisphere": "northern",
-    "notes": "Sharp peak — only ~6 hours near maximum. Radiant in Boötes (former constellation Quadrans Muralis)."
+    "notes": "Sharp peak, only ~6 hours near maximum. Radiant in Boötes (former constellation Quadrans Muralis)."
   },
   {
     "id": "lyrids",
@@ -53,7 +53,7 @@
     "radiantDecDeg": 58.0,
     "parentObject": "Comet 109P/Swift-Tuttle",
     "hemisphere": "northern",
-    "notes": "The classic August shower — warm nights, broad maximum, many bright fireballs."
+    "notes": "The classic August shower, warm nights, broad maximum, many bright fireballs."
   },
   {
     "id": "draconids",
@@ -81,7 +81,7 @@
     "radiantDecDeg": 15.6,
     "parentObject": "Comet 1P/Halley",
     "hemisphere": "both",
-    "notes": "Halley's other shower — fast meteors, often persistent trains."
+    "notes": "Halley's other shower, fast meteors, often persistent trains."
   },
   {
     "id": "southern-taurids",
@@ -95,7 +95,7 @@
     "radiantDecDeg": 14.0,
     "parentObject": "Comet 2P/Encke",
     "hemisphere": "both",
-    "notes": "Slow, bright fireballs. Long active window — quality over quantity."
+    "notes": "Slow, bright fireballs. Long active window, quality over quantity."
   },
   {
     "id": "northern-taurids",
@@ -151,7 +151,7 @@
     "radiantDecDeg": 75.5,
     "parentObject": "Comet 8P/Tuttle",
     "hemisphere": "northern",
-    "notes": "Circumpolar radiant — visible all night from mid-northern latitudes."
+    "notes": "Circumpolar radiant, visible all night from mid-northern latitudes."
   },
   {
     "id": "delta-aquariids",

@@ -48,7 +48,7 @@ export function getDarkSkyWindow(
       : 0;
 
   // Pick a reference time for the moon snapshot. If we have a dark window,
-  // sample at its midpoint — that's when stargazers are actually out. If we
+  // sample at its midpoint, that's when stargazers are actually out. If we
   // don't, fall back to the nearest sunset (the time someone would *try* to
   // observe), or finally to the input date.
   let midTime: Date;
@@ -102,7 +102,7 @@ interface ScoreInputs {
 export function scoreDarkSky(inputs: ScoreInputs): 1 | 2 | 3 | 4 | 5 {
   const { hasAstronomicalDark, moonIlluminationFraction, moonAltitudeDeg } = inputs;
 
-  // Moon below horizon contributes nothing — only its visible light matters.
+  // Moon below horizon contributes nothing, only its visible light matters.
   const effectiveBrightness =
     moonAltitudeDeg <= 0
       ? 0

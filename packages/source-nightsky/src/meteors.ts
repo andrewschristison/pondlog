@@ -36,7 +36,7 @@ export function getActiveMeteorShowers(
 
   const moon = getMoonPhase({ date: date.data });
   // moon should always succeed (no coords required), but if it ever errors,
-  // surface that — meteor predictions without moon context are misleading.
+  // surface that, meteor predictions without moon context are misleading.
   if (!moon.ok) return moon;
 
   const moonInterference = moonInterferenceLevel(moon.data.illuminationFraction);

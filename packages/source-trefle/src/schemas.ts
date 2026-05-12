@@ -38,7 +38,7 @@ const TrefleFamily = z
   .passthrough();
 
 // Trefle uses { cm: number|null } / { mm: number|null } / { deg_c, deg_f } for
-// quantitative fields — accept either the wrapped form or a bare number.
+// quantitative fields, accept either the wrapped form or a bare number.
 const QuantityCm = z
   .union([
     z.object({ cm: z.number().nullable() }).passthrough(),

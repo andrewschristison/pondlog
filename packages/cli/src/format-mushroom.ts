@@ -60,7 +60,7 @@ export function formatMoObservationRow(
   const conf =
     typeof o.confidence === "number"
       ? pc.dim(`conf=${padStart(o.confidence.toFixed(2), 5)}`)
-      : pc.dim("conf=  —  ");
+      : pc.dim("conf= ,  ");
   const id = pc.dim(`#${o.id}`);
   const img = o.hasImages ? pc.green("📷") : "  ";
   return `  ${padEndVisual(taxon, w.taxon)}  ${date}  ${conf}  ${img}  ${padEndVisual(loc, w.loc)}  ${id}`;

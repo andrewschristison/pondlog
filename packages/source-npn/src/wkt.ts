@@ -7,7 +7,7 @@ const KM_PER_DEG_LAT = 111.0;
  * around `center`. NPN's getStationsByLocation accepts WKT geometries; lat/lng
  * search is not natively supported.
  *
- * The polygon is approximated as a flat-earth square — accurate to a few
+ * The polygon is approximated as a flat-earth square, accurate to a few
  * percent for radii under ~100km away from the poles, which is the regime
  * pondlog cares about (Port Angeles, ~48°N, 25–50km radii).
  *

@@ -47,7 +47,7 @@ interface SitesOpts {
 
 export function buildUsgsCommand(): Command {
   const usgs = new Command("usgs").description(
-    "USGS Water Services commands — real-time and historic streamflow, gage height, and site search",
+    "USGS Water Services commands, real-time and historic streamflow, gage height, and site search",
   );
 
   usgs
@@ -76,7 +76,7 @@ export function buildUsgsCommand(): Command {
         "Notes:",
         "  Returns the latest discharge (parameter 00060, ft³/s) and gage height",
         "  (00065, ft) over the requested period. USGS rejects historic dates on",
-        "  the /iv/ endpoint — use `pondlog usgs daily` for past data.",
+        "  the /iv/ endpoint, use `pondlog usgs daily` for past data.",
       ].join("\n"),
     )
     .action(async (opts: FlowOpts) => {
@@ -127,7 +127,7 @@ export function buildUsgsCommand(): Command {
         "  $ pondlog usgs daily --site 12045500 --json",
         "",
         "Returns daily mean discharge (parameter 00060). For real-time readings",
-        "use `pondlog usgs flow`. Use --start-date for historic queries — /iv/",
+        "use `pondlog usgs flow`. Use --start-date for historic queries, /iv/",
         "rejects historic dates but /dv/ accepts them.",
       ].join("\n"),
     )
@@ -213,7 +213,7 @@ export function buildUsgsCommand(): Command {
       if (opts.state) {
         const code = opts.state.trim().toUpperCase();
         if (!/^[A-Z]{2}$/.test(code)) {
-          return fail(`invalid --state "${opts.state}" — expected two letters`);
+          return fail(`invalid --state "${opts.state}", expected two letters`);
         }
         result = await searchSites({ stateCode: code });
       } else {
@@ -247,7 +247,7 @@ function takeSite(raw: string | undefined): string {
   }
   const v = raw.trim();
   if (!SITE_NUMBER_RE.test(v)) {
-    return fail(`invalid --site "${raw}" — expected 8–15 digits`);
+    return fail(`invalid --site "${raw}", expected 8–15 digits`);
   }
   return v;
 }
@@ -255,7 +255,7 @@ function takeSite(raw: string | undefined): string {
 function takePeriod(raw: string | undefined, fallback: string): string {
   if (raw === undefined) return fallback;
   if (!PERIOD_RE.test(raw)) {
-    return fail(`invalid --period "${raw}" — expected ISO-8601 duration (e.g. PT2H, P7D)`);
+    return fail(`invalid --period "${raw}", expected ISO-8601 duration (e.g. PT2H, P7D)`);
   }
   return raw;
 }

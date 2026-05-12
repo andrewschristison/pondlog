@@ -45,7 +45,7 @@ function entryLine(e: CompanionEntry, subjectIsCrop: boolean): string {
   const name = pc.bold(commonName(partner));
   const mech = pc.cyan(mechanism(e));
   const strength = STRENGTH_TAG[e.strength] ?? e.strength;
-  return `  ${name}  —  ${mech}  (${strength})`;
+  return `  ${name} ,  ${mech}  (${strength})`;
 }
 
 // ---------------------------------------------------------------------------
@@ -143,7 +143,7 @@ export function formatPlanBlock(report: BedCompatibilityReport): string {
     for (const e of report.beneficial) {
       const strength = STRENGTH_TAG[e.strength] ?? e.strength;
       out.push(
-        `  ${pc.bold(commonName(e.crop))} + ${pc.bold(commonName(e.companion))}  —  ${pc.cyan(mechanism(e))} (${strength})`,
+        `  ${pc.bold(commonName(e.crop))} + ${pc.bold(commonName(e.companion))} ,  ${pc.cyan(mechanism(e))} (${strength})`,
       );
     }
   }
@@ -154,7 +154,7 @@ export function formatPlanBlock(report: BedCompatibilityReport): string {
     for (const e of report.antagonist) {
       const strength = STRENGTH_TAG[e.strength] ?? e.strength;
       out.push(
-        `  ${pc.bold(commonName(e.crop))} ${pc.red("vs")} ${pc.bold(commonName(e.companion))}  —  ${pc.cyan(mechanism(e))} (${strength})`,
+        `  ${pc.bold(commonName(e.crop))} ${pc.red("vs")} ${pc.bold(commonName(e.companion))} ,  ${pc.cyan(mechanism(e))} (${strength})`,
       );
     }
   }

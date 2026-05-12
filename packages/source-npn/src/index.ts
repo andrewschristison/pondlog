@@ -63,7 +63,7 @@ const StationsByLocationSchema = z.union([
 const US_STATE_CODE = /^[A-Z]{2}$/;
 
 // ----------------------------------------------------------------------------
-// 1. getSpecies — full NPN species catalog (~1900 records, ~1.6 MB)
+// 1. getSpecies, full NPN species catalog (~1900 records, ~1.6 MB)
 // ----------------------------------------------------------------------------
 
 export async function getSpecies(): Promise<Result<Taxon[]>> {
@@ -73,11 +73,11 @@ export async function getSpecies(): Promise<Result<Taxon[]>> {
 }
 
 // ----------------------------------------------------------------------------
-// 2. getStations — all stations, optionally filtered by state code
+// 2. getStations, all stations, optionally filtered by state code
 // ----------------------------------------------------------------------------
 
 export interface GetStationsParams {
-  /** US two-letter state postal code (e.g. "WA"). Strongly recommended — the unfiltered list is ~50k stations. */
+  /** US two-letter state postal code (e.g. "WA"). Strongly recommended, the unfiltered list is ~50k stations. */
   stateCode?: string;
 }
 
@@ -115,7 +115,7 @@ export async function getStationCountByState(): Promise<Result<NpnStationCountBy
 }
 
 // ----------------------------------------------------------------------------
-// 4. getStationsWithSpecies — stations that observe one or more species
+// 4. getStationsWithSpecies, stations that observe one or more species
 // ----------------------------------------------------------------------------
 
 export interface GetStationsWithSpeciesParams {
@@ -142,7 +142,7 @@ export async function getStationsWithSpecies(
 }
 
 // ----------------------------------------------------------------------------
-// 5. getStationsByLocation — WKT polygon spatial filter
+// 5. getStationsByLocation. WKT polygon spatial filter
 // ----------------------------------------------------------------------------
 
 export interface GetStationsByLocationParams {
@@ -187,7 +187,7 @@ export async function getStationsByLocation(
 }
 
 // ----------------------------------------------------------------------------
-// 6. getObservations — status/intensity records (the core data)
+// 6. getObservations, status/intensity records (the core data)
 // ----------------------------------------------------------------------------
 
 export interface GetObservationsParams {
@@ -292,7 +292,7 @@ function guardObservationsParams(
 }
 
 // ----------------------------------------------------------------------------
-// 7. getSiteLevelData — site-level phenometrics
+// 7. getSiteLevelData, site-level phenometrics
 // ----------------------------------------------------------------------------
 
 export interface GetSiteLevelDataParams {
@@ -356,7 +356,7 @@ export async function getSiteLevelData(
 }
 
 // ----------------------------------------------------------------------------
-// Composed helper — getActivePhenologyNearby
+// Composed helper, getActivePhenologyNearby
 // ----------------------------------------------------------------------------
 
 export interface GetActivePhenologyNearbyParams {
@@ -378,7 +378,7 @@ export interface ActivePhenologyResult {
   yearsBack: number;
   /** Stations within the haversine radius. */
   stationsInRadius: number;
-  /** Stations actually queried — capped at `maxStations`, closest first. */
+  /** Stations actually queried, capped at `maxStations`, closest first. */
   stationsSearched: number;
   /** Site-level phenometric rows within radius, sorted by most-recent meanLastYesDate. */
   entries: ActivePhenologyEntry[];
@@ -395,7 +395,7 @@ const DEFAULT_MAX_STATIONS = 40;
  *   1. Build a WKT bounding box from coords + radius.
  *   2. Pull stations inside the polygon.
  *   3. Filter stations by haversine distance.
- *   4. Call getSiteLevelData({stationIds, years}) — the per-site phenometric
+ *   4. Call getSiteLevelData({stationIds, years}), the per-site phenometric
  *      summary, which is bandwidth-friendly (mean first/last "yes" dates per
  *      species + phenophase).
  *   5. Sort by most-recent meanLastYesDate; attach distance to each entry.

@@ -58,7 +58,7 @@ function coordsFromLocation(
 export interface NormalizedMoObservation {
   id: number;
   date: string | undefined;
-  /** Reported coordinates if exact (gps_hidden=false) — otherwise the
+  /** Reported coordinates if exact (gps_hidden=false), otherwise the
    *  centroid of the obscured location (`location.lat/lng` averages). */
   coordinates: Coordinates | undefined;
   /** True if the observation's exact coords are obscured. */

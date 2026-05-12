@@ -36,7 +36,7 @@ interface SpeciesOpts {
 
 export function buildNpnCommand(): Command {
   const npn = new Command("npn").description(
-    "USA National Phenology Network (NPN) commands — phenology of plants and animals",
+    "USA National Phenology Network (NPN) commands, phenology of plants and animals",
   );
 
   npn
@@ -69,7 +69,7 @@ export function buildNpnCommand(): Command {
         "Notes:",
         "  NPN stations record phenology (first leaf, first bloom, first call,",
         "  etc.). This shows what's been observed at stations within radius",
-        "  over the requested years. NPN coverage is patchy — Eastern US and",
+        "  over the requested years. NPN coverage is patchy. Eastern US and",
         "  Arizona are dense; the Pacific Northwest is sparser.",
       ].join("\n"),
     )
@@ -136,7 +136,7 @@ export function buildNpnCommand(): Command {
         "  $ pondlog npn species --kingdom Animalia",
         "",
         "The NPN catalog is ~1900 species. With no filter, this lists the",
-        "first 30 alphabetically — please pass at least one filter to narrow.",
+        "first 30 alphabetically, please pass at least one filter to narrow.",
       ].join("\n"),
     )
     .action(async (opts: SpeciesOpts) => {

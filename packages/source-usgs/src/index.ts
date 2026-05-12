@@ -57,7 +57,7 @@ function validateSites(sites: string[]): Result<true> {
     if (!SITE_NUMBER_RE.test(s)) {
       return err({
         source: "usgs",
-        message: `invalid USGS site number "${s}" — expected 8–15 digits (e.g. "12045500")`,
+        message: `invalid USGS site number "${s}", expected 8–15 digits (e.g. "12045500")`,
       });
     }
   }
@@ -76,7 +76,7 @@ function validateParameterCodes(codes: string[] | undefined): Result<true> {
     if (!/^[0-9]{5}$/.test(c)) {
       return err({
         source: "usgs",
-        message: `invalid parameter code "${c}" — expected 5 digits (e.g. "00060" for discharge)`,
+        message: `invalid parameter code "${c}", expected 5 digits (e.g. "00060" for discharge)`,
       });
     }
   }
@@ -100,19 +100,19 @@ function validateTimeWindow(opts: {
   if (hasPeriod && !PERIOD_RE.test(opts.period as string)) {
     return err({
       source: "usgs",
-      message: `invalid period "${opts.period}" — expected ISO-8601 duration (e.g. "P7D", "PT2H")`,
+      message: `invalid period "${opts.period}", expected ISO-8601 duration (e.g. "P7D", "PT2H")`,
     });
   }
   if (typeof opts.startDt === "string" && !ISO_DATE_RE.test(opts.startDt)) {
     return err({
       source: "usgs",
-      message: `invalid startDt "${opts.startDt}" — expected YYYY-MM-DD`,
+      message: `invalid startDt "${opts.startDt}", expected YYYY-MM-DD`,
     });
   }
   if (typeof opts.endDt === "string" && !ISO_DATE_RE.test(opts.endDt)) {
     return err({
       source: "usgs",
-      message: `invalid endDt "${opts.endDt}" — expected YYYY-MM-DD`,
+      message: `invalid endDt "${opts.endDt}", expected YYYY-MM-DD`,
     });
   }
   return ok(true);
@@ -139,7 +139,7 @@ function buildTimeSeriesParams(opts: {
 }
 
 // ----------------------------------------------------------------------------
-// 1. getInstantaneousValues — real-time readings (15-min cadence at most sites)
+// 1. getInstantaneousValues, real-time readings (15-min cadence at most sites)
 // ----------------------------------------------------------------------------
 
 export interface GetInstantaneousValuesParams {
@@ -154,7 +154,7 @@ export interface GetInstantaneousValuesParams {
 }
 
 /** Real-time gauge readings (typically 15-minute cadence). USGS rejects historic
- *  startDT/endDT on /iv/ — use period (relative-to-now) instead. For historic
+ *  startDT/endDT on /iv/, use period (relative-to-now) instead. For historic
  *  data use `getDailyValues`. */
 export async function getInstantaneousValues(
   params: GetInstantaneousValuesParams,
@@ -182,7 +182,7 @@ export async function getInstantaneousValues(
 }
 
 // ----------------------------------------------------------------------------
-// 2. getDailyValues — daily statistics (mean, min, max)
+// 2. getDailyValues, daily statistics (mean, min, max)
 // ----------------------------------------------------------------------------
 
 export interface GetDailyValuesParams {
@@ -194,7 +194,7 @@ export interface GetDailyValuesParams {
   startDt?: string;
   /** YYYY-MM-DD. Mutually exclusive with `period`. Defaults to today when startDt set. */
   endDt?: string;
-  /** Statistic codes — "00003" = mean (default), "00001" = max, "00002" = min. */
+  /** Statistic codes, "00003" = mean (default), "00001" = max, "00002" = min. */
   statisticCodes?: string[];
   timeoutMs?: number;
 }
@@ -234,7 +234,7 @@ export async function getDailyValues(
 }
 
 // ----------------------------------------------------------------------------
-// 3. getSiteInfo — metadata for a single site (RDB endpoint)
+// 3. getSiteInfo, metadata for a single site (RDB endpoint)
 // ----------------------------------------------------------------------------
 
 export interface GetSiteInfoParams {
@@ -269,7 +269,7 @@ export async function getSiteInfo(
 }
 
 // ----------------------------------------------------------------------------
-// 4. searchSites — find sites by bbox, state, or HUC
+// 4. searchSites, find sites by bbox, state, or HUC
 // ----------------------------------------------------------------------------
 
 export interface SearchSitesParams {
@@ -302,7 +302,7 @@ export async function searchSites(
   ) {
     return err({
       source: "usgs",
-      message: `invalid stateCode "${params.stateCode}" — expected US two-letter postal code (e.g. "WA")`,
+      message: `invalid stateCode "${params.stateCode}", expected US two-letter postal code (e.g. "WA")`,
     });
   }
   if (params.bbox) {

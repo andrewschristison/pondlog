@@ -36,7 +36,7 @@ export function buildNightskyCommand(): Command {
 
   ns.command("briefing", { isDefault: true })
     .description(
-      "Curated 'what to look at tonight' — sun times, moon phase, dark-sky window, visible planets, active meteor showers, top constellations.",
+      "Curated 'what to look at tonight', sun times, moon phase, dark-sky window, visible planets, active meteor showers, top constellations.",
     )
     .option("--lat <lat>", "Latitude (-90..90)")
     .option("--lng <lng>", "Longitude (-180..180)")
@@ -120,8 +120,8 @@ export function buildNightskyCommand(): Command {
 
       console.log(
         result.data.isDark
-          ? "Sun is below civil twilight — dark enough for naked-eye planets."
-          : "Sun is above civil twilight — most planets washed out.",
+          ? "Sun is below civil twilight, dark enough for naked-eye planets."
+          : "Sun is above civil twilight, most planets washed out.",
       );
       console.log("");
       const visible = result.data.planets.filter((p) => p.isVisible);
@@ -146,7 +146,7 @@ export function buildNightskyCommand(): Command {
     .action(async (opts: BaseOpts) => {
       const hasLat = opts.lat !== undefined;
       const hasLng = opts.lng !== undefined;
-      // Coords are optional for `moon` — phase is location-independent.
+      // Coords are optional for `moon`, phase is location-independent.
       let coords: { lat: number; lng: number } | undefined;
       if (hasLat || hasLng) {
         const loc = await takeLocation({ lat: opts.lat, lng: opts.lng });

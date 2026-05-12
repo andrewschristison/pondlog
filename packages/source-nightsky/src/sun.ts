@@ -13,7 +13,7 @@ const SEARCH_LIMIT_DAYS = 1;
 
 export interface GetSunTimesParams {
   coords: Coordinates;
-  /** Reference date — defaults to "now". JS Date or ISO string. */
+  /** Reference date, defaults to "now". JS Date or ISO string. */
   date?: Date | string;
 }
 
@@ -26,11 +26,11 @@ export function getSunTimes(params: GetSunTimesParams): Result<SunTimes> {
   const observer = new Observer(params.coords.lat, params.coords.lng, 0);
   const start = MakeTime(date.data);
 
-  // Sunrise / sunset — sun upper limb at sea-level horizon, normal refraction.
+  // Sunrise / sunset, sun upper limb at sea-level horizon, normal refraction.
   const sunrise = SearchRiseSet(Body.Sun, observer, +1, start, SEARCH_LIMIT_DAYS);
   const sunset = SearchRiseSet(Body.Sun, observer, -1, start, SEARCH_LIMIT_DAYS);
 
-  // Solar noon — hour angle 0 (sun crosses local meridian).
+  // Solar noon, hour angle 0 (sun crosses local meridian).
   let solarNoon: string | null = null;
   try {
     const transit = SearchHourAngle(Body.Sun, observer, 0, start, +1);

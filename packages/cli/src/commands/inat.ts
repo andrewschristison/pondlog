@@ -167,7 +167,7 @@ export function buildInatCommand(): Command {
         if (!first) console.log("");
         first = false;
         const total = list.reduce((acc, r) => acc + r.count, 0);
-        console.log(`${group} — ${list.length} species, ${total} obs`);
+        console.log(`${group}, ${list.length} species, ${total} obs`);
         for (const row of list) console.log(formatSpeciesRow(row, widths));
       }
     });
@@ -214,7 +214,7 @@ export function buildInatCommand(): Command {
           radiusKm: radius,
         }),
       );
-      console.log(`Search: ${trimmed} — ${result.data.length} matches`);
+      console.log(`Search: ${trimmed}, ${result.data.length} matches`);
       console.log("");
 
       if (result.data.length === 0) {

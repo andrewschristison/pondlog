@@ -64,7 +64,7 @@ const SUPPORTED_RANKS = [
 export type MoNameRank = (typeof SUPPORTED_RANKS)[number];
 
 // ----------------------------------------------------------------------------
-// Spatial helper — bbox tuple around coords, identical math to source-usgs.
+// Spatial helper, bbox tuple around coords, identical math to source-usgs.
 // ----------------------------------------------------------------------------
 
 export interface MoBbox {
@@ -81,7 +81,7 @@ export function bboxAround(coords: Coordinates, radiusKm: number): MoBbox {
   const latDelta = radiusKm / 111.32;
   const lngDelta =
     radiusKm / (111.32 * Math.cos((coords.lat * Math.PI) / 180));
-  // Round to 6 decimal places — same precision MO accepts.
+  // Round to 6 decimal places, same precision MO accepts.
   const round6 = (n: number): number => Math.round(n * 1e6) / 1e6;
   return {
     north: round6(coords.lat + latDelta),
@@ -116,7 +116,7 @@ export interface SearchObservationsParams {
   /** Center for a bbox query. Combine with `radiusKm`. */
   coords?: Coordinates;
   radiusKm?: number;
-  /** MO `region` filter — suffix match against location names (e.g.
+  /** MO `region` filter, suffix match against location names (e.g.
    *  "Clallam Co., Washington, USA"). */
   region?: string;
   /** Substring match against the consensus name (uses MO `name` filter). */
@@ -161,7 +161,7 @@ export async function searchObservations(
   if (params.region) search.region = params.region;
   if (params.name) search.name = params.name;
   if (params.confidenceMin !== undefined) {
-    // MO accepts a range like "1..3" — treat the parameter as an inclusive lower bound.
+    // MO accepts a range like "1..3", treat the parameter as an inclusive lower bound.
     search.confidence = `${params.confidenceMin}..3`;
   }
   if (params.dateFrom && params.dateTo) {
@@ -330,7 +330,7 @@ export async function searchNames(
 }
 
 // ----------------------------------------------------------------------------
-// 4. searchRegions — discover MO location-name suffixes (no /locations endpoint
+// 4. searchRegions, discover MO location-name suffixes (no /locations endpoint
 //    name search exists; we harvest from observations).
 // ----------------------------------------------------------------------------
 
@@ -394,7 +394,7 @@ export async function searchRegions(
 }
 
 // ----------------------------------------------------------------------------
-// 5. getRecentNearLocation — sugar for "what's fruiting near me"
+// 5. getRecentNearLocation, sugar for "what's fruiting near me"
 // ----------------------------------------------------------------------------
 
 export interface GetRecentNearLocationParams {
@@ -595,7 +595,7 @@ export async function getSpeciesCountByLocation(
 }
 
 // ----------------------------------------------------------------------------
-// 7. getLocationsInBbox — direct hit on /locations (no name search exists)
+// 7. getLocationsInBbox, direct hit on /locations (no name search exists)
 // ----------------------------------------------------------------------------
 
 export async function getLocationsInBbox(

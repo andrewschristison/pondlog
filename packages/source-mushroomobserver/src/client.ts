@@ -47,7 +47,7 @@ export interface MoFetchOptions {
   timeoutMs?: number;
 }
 
-/** Build the URL. The `.json` suffix is mandatory — without it MO defaults to
+/** Build the URL. The `.json` suffix is mandatory, without it MO defaults to
  *  XML, which our schemas don't speak. */
 function buildUrl(path: string, opts: MoFetchOptions | undefined): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
@@ -103,7 +103,7 @@ export async function moFetch<T>(
           }
           const text = await res.text();
           if (text.trim() === "") {
-            // MO never returns an empty body on success — treat as a soft error.
+            // MO never returns an empty body on success, treat as a soft error.
             throw new HttpError(502, `MO returned empty body on ${path}`);
           }
           return JSON.parse(text) as unknown;
