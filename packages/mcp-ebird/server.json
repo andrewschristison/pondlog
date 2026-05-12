@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-ebird",
-  "description": "eBird MCP server. 21 tools covering 100% of eBird API v2: bird observations, hotspots, checklists, and taxonomy.",
+  "description": "eBird MCP server. 21 tools covering eBird API v2: observations, hotspots, checklists, taxonomy.",
   "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
