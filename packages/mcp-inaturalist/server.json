@@ -1,24 +1,21 @@
 {
-  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-inaturalist",
-  "description": "Place-aware iNaturalist MCP server. Nine tools for searching observations, species counts, taxa, places, and observers anywhere in the world.",
+  "description": "iNaturalist MCP — wildlife observations, species, taxa, and places worldwide.",
+  "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
-    "source": "github",
-    "subfolder": "packages/mcp-inaturalist"
+    "source": "github"
   },
-  "version_detail": {
-    "version": "0.1.0",
-    "release_date": "2026-05-07",
-    "is_latest": true
-  },
+  "version": "0.1.2",
   "packages": [
     {
-      "registry_name": "npm",
-      "name": "@pondlog/mcp-inaturalist",
-      "version": "0.1.0",
-      "runtime_hint": "node",
-      "transport": { "type": "stdio" }
+      "registryType": "npm",
+      "identifier": "@pondlog/mcp-inaturalist",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      }
     }
   ]
 }

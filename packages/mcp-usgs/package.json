@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-usgs",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "MCP server for USGS Water Services (NWIS). Four tools: real-time streamflow, daily statistics, site metadata, and site search. No API key required.",
   "keywords": [
     "pondlog",
@@ -57,5 +57,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "mcpName": "io.github.andrewschristison/pondlog-usgs"
 }

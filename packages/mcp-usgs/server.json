@@ -1,24 +1,9 @@
 {
-  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-usgs",
-  "description": "Place-aware USGS Water Services MCP server. Four tools for the USGS NWIS — real-time streamflow / gage height, daily statistics (current or historic), site metadata, and site search by lat/lng/radius or state. No API key required.",
-  "repository": {
-    "url": "https://github.com/andrewschristison/pondlog",
-    "source": "github",
-    "subfolder": "packages/mcp-usgs"
-  },
-  "version_detail": {
-    "version": "0.1.0",
-    "release_date": "2026-05-07",
-    "is_latest": true
-  },
-  "packages": [
-    {
-      "registry_name": "npm",
-      "name": "@pondlog/mcp-usgs",
-      "version": "0.1.0",
-      "runtime_hint": "node",
-      "transport": { "type": "stdio" }
-    }
-  ]
+  "description": "USGS Water Services MCP — streamflow, gage height, and site data.",
+  "status": "active",
+  "repository": { "url": "https://github.com/andrewschristison/pondlog", "source": "github" },
+  "version": "0.1.4",
+  "packages": [{ "registryType": "npm", "identifier": "@pondlog/mcp-usgs", "version": "0.1.4", "transport": { "type": "stdio" } }]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-inaturalist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server for iNaturalist: nine tools for searching observations, species counts, taxa, places, and top observers. Stdio transport, no API key required.",
   "keywords": [
     "pondlog",
@@ -56,5 +56,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "mcpName": "io.github.andrewschristison/pondlog-inaturalist"
 }
