@@ -29,7 +29,7 @@ export function registerAllTools(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// get_instantaneous_values — real-time gauge readings
+// get_instantaneous_values, real-time gauge readings
 // ----------------------------------------------------------------------------
 
 function registerGetInstantaneousValues(server: McpServer): void {
@@ -38,7 +38,7 @@ function registerGetInstantaneousValues(server: McpServer): void {
     {
       title: "Real-Time USGS Streamflow / Gage Height",
       description:
-        "Real-time readings (typically 15-minute cadence) from a USGS gauge. Returns one or more time series — by default discharge (00060, ft³/s) and gage height (00065, ft) — over a relative period ending now. " +
+        "Real-time readings (typically 15-minute cadence) from a USGS gauge. Returns one or more time series, by default discharge (00060, ft³/s) and gage height (00065, ft), over a relative period ending now. " +
         "Use this to answer 'what is the river doing right now?'. " +
         "USGS rejects historic dates on this endpoint; for past data use `get_daily_values` with start_date/end_date instead. " +
         "For a 'what gauges exist near here?' first-step query use `search_sites`.",
@@ -77,7 +77,7 @@ function registerGetInstantaneousValues(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// get_daily_values — daily statistics, current or historic
+// get_daily_values, daily statistics, current or historic
 // ----------------------------------------------------------------------------
 
 function registerGetDailyValues(server: McpServer): void {
@@ -114,7 +114,7 @@ function registerGetDailyValues(server: McpServer): void {
           .array(z.string().regex(/^[0-9]{5}$/))
           .optional()
           .describe(
-            "USGS statistic codes — '00003' = mean (default), '00001' = max, '00002' = min, '00008' = median.",
+            "USGS statistic codes, '00003' = mean (default), '00001' = max, '00002' = min, '00008' = median.",
           ),
       },
       annotations: READ_ONLY,
@@ -133,7 +133,7 @@ function registerGetDailyValues(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// get_site_info — single-site metadata
+// get_site_info, single-site metadata
 // ----------------------------------------------------------------------------
 
 function registerGetSiteInfo(server: McpServer): void {
@@ -157,7 +157,7 @@ function registerGetSiteInfo(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// search_sites — find gauges by location or state
+// search_sites, find gauges by location or state
 // ----------------------------------------------------------------------------
 
 function registerSearchSites(server: McpServer): void {
@@ -167,7 +167,7 @@ function registerSearchSites(server: McpServer): void {
       title: "Find USGS Gauge Sites Near a Location",
       description:
         "Find active USGS stream-gauge sites by either (a) latitude/longitude/radius_km, or (b) US state postal code. " +
-        "Returns site numbers, names, coordinates, HUC, and altitude — feed the resulting site numbers into `get_instantaneous_values` or `get_daily_values`. " +
+        "Returns site numbers, names, coordinates, HUC, and altitude, feed the resulting site numbers into `get_instantaneous_values` or `get_daily_values`. " +
         "Defaults filter to surface-water streams (siteType=ST) with real-time data (hasDataTypeCd=iv); pass site_type/has_data_type to override. " +
         "Pass either lat+lng+radius_km OR state_code; the lat/lng path is preferred for place-aware queries.",
       inputSchema: {

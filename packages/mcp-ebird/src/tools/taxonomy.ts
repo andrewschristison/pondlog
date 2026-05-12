@@ -35,7 +35,7 @@ export function registerTaxonomyTools(server: McpServer): void {
           .union([speciesCodeField, z.array(speciesCodeField).min(1)])
           .optional()
           .describe(
-            "Filter to specific species codes (single or array). Returns only these entries — useful when you have known codes and want full taxonomy details.",
+            "Filter to specific species codes (single or array). Returns only these entries, useful when you have known codes and want full taxonomy details.",
           ),
         locale: sppLocaleField.optional(),
         version: z

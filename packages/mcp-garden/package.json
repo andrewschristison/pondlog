@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-garden",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Garden-planning MCP server with USDA hardiness zone lookup, a frost-anchored planting calendar (~1000 curated crops, climate-aware), and Trefle.io plant taxonomy. Five tools backed by @pondlog/core (offline) plus optional Trefle (TREFLE_API_TOKEN).",
   "keywords": [
     "pondlog",

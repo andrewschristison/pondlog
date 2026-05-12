@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-npn",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "MCP server for the USA National Phenology Network (NPN). Eight tools for phenology data: species, stations, observations, site-level phenometrics, and a place-aware 'active phenology' helper. No API key required.",
   "keywords": [
     "pondlog",

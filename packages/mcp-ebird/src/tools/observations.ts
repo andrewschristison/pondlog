@@ -87,7 +87,7 @@ export function registerObservationTools(server: McpServer): void {
     {
       title: "Recent Notable / Rare Sightings in a Region",
       description:
-        `Returns recent notable (rare or out-of-range) bird sightings in an eBird region. \"Notable\" is determined by eBird reviewers using regional rarity filters — a Mountain Bluebird in coastal Washington might be notable; a Crow is not. ${REGION_CODE_HELP} ` +
+        `Returns recent notable (rare or out-of-range) bird sightings in an eBird region. \"Notable\" is determined by eBird reviewers using regional rarity filters, a Mountain Bluebird in coastal Washington might be notable; a Crow is not. ${REGION_CODE_HELP} ` +
         "Use this when the caller asks for unusual / rare / interesting sightings. For all recent species (not just notable), use `get_recent_observations`.",
       inputSchema: {
         region_code: regionCodeField,
@@ -272,7 +272,7 @@ export function registerObservationTools(server: McpServer): void {
     {
       title: "Bird Observations on a Specific Date in a Region",
       description:
-        `Returns observations recorded in an eBird region on a specific calendar date. ${REGION_CODE_HELP} Note: state-level historic queries can return thousands of rows and be slow — prefer county scope (subnational2) for narrower results.`,
+        `Returns observations recorded in an eBird region on a specific calendar date. ${REGION_CODE_HELP} Note: state-level historic queries can return thousands of rows and be slow, prefer county scope (subnational2) for narrower results.`,
       inputSchema: {
         region_code: regionCodeField,
         year: yearField,

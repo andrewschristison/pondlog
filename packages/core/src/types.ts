@@ -294,7 +294,7 @@ export interface FungiObservation {
 }
 
 // ---------------------------------------------------------------------------
-// Garden — USDA hardiness zone, frost dates, planting plan.
+// Garden. USDA hardiness zone, frost dates, planting plan.
 //
 // Zone data: PRISM 2023 USDA Plant Hardiness Zone Map (zip-centroid lookup).
 // Crop calendar: hand-curated list in @pondlog/core/data, sourced from USDA
@@ -343,7 +343,7 @@ export type PlantSuggestionAction =
   | "direct_sow"
   /** Move existing seedlings (yours or nursery) to the bed. */
   | "transplant"
-  /** Tree/perennial — plant the dormant root or potted plant now. */
+  /** Tree/perennial, plant the dormant root or potted plant now. */
   | "plant_now";
 
 export interface PlantSuggestion {
@@ -359,7 +359,7 @@ export interface PlantSuggestion {
   daysToHarvest: { min: number; max: number };
   /** Approximate harvest start if planted on the window's first day. */
   expectedHarvestEarliest?: string;
-  /** Crop calendar notes — short, gardener-facing. */
+  /** Crop calendar notes, short, gardener-facing. */
   notes?: string;
 }
 
@@ -393,7 +393,7 @@ export interface NatureBriefing {
     moonPhase: string;
     moonIllumination: number;
   };
-  /** Full night-sky briefing — preferred consumer surface. */
+  /** Full night-sky briefing, preferred consumer surface. */
   nightSky?: NightSkyBriefing;
   tides?: { high: TideEvent[]; low: TideEvent[] };
   recentObservations: Observation[];

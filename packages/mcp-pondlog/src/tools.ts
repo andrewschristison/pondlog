@@ -47,10 +47,10 @@ function registerGetNatureBriefing(server: McpServer): void {
     {
       title: "Place-Aware Nature Briefing",
       description:
-        "Returns a complete nature briefing for a location — birds, wildlife, fungi, plants, tides, streamflow, night sky, and phenology stitched from seven data sources (iNaturalist, eBird, Mushroom Observer, NOAA, USGS, NPN, astronomy-engine) into one response. " +
+        "Returns a complete nature briefing for a location, birds, wildlife, fungi, plants, tides, streamflow, night sky, and phenology stitched from seven data sources (iNaturalist, eBird, Mushroom Observer, NOAA, USGS, NPN, astronomy-engine) into one response. " +
         "All seven sources are fetched in parallel; partial failures are reported in the `errors` array without crashing the briefing. " +
         "This is the primary tool: one call replaces seven API integrations. For drilling into a single area, prefer the focused tools `get_nearby_wildlife`, `get_water_conditions`, `get_tonight_sky`, or `get_phenology`. " +
-        "Tides require a NOAA station id; streamflow requires a USGS site number — pass them in or set NOAA_STATION / USGS_SITE env vars. eBird requires a free API key (EBIRD_API_KEY env var or `ebird_api_key` input). Mushroom Observer needs no key.",
+        "Tides require a NOAA station id; streamflow requires a USGS site number, pass them in or set NOAA_STATION / USGS_SITE env vars. eBird requires a free API key (EBIRD_API_KEY env var or `ebird_api_key` input). Mushroom Observer needs no key.",
       inputSchema: {
         lat: latField,
         lng: lngField,
@@ -151,7 +151,7 @@ function registerGetWaterConditions(server: McpServer): void {
       title: "Water Conditions (USGS Streamflow + NOAA Tides)",
       description:
         "Returns current streamflow (USGS instantaneous values: discharge cfs and gage height ft) plus tide predictions (NOAA CO-OPS, high/low for the date). " +
-        "Both keys are always present in the response — `streamflow: null` when no USGS site is configured, `tides: null` when no NOAA station is configured. Failures populate `errors[]`. " +
+        "Both keys are always present in the response, `streamflow: null` when no USGS site is configured, `tides: null` when no NOAA station is configured. Failures populate `errors[]`. " +
         "Pass `noaa_station` and `usgs_site` per call, or set NOAA_STATION and USGS_SITE env vars at server startup. Neither requires an API key.",
       inputSchema: {
         date: dateField
@@ -190,14 +190,14 @@ function registerGetWaterConditions(server: McpServer): void {
         errors.push({
           source: "usgs",
           message:
-            "no USGS site configured — pass `usgs_site` or set USGS_SITE env var",
+            "no USGS site configured, pass `usgs_site` or set USGS_SITE env var",
         });
       }
       if (!noaaStation) {
         errors.push({
           source: "noaa",
           message:
-            "no NOAA station configured — pass `noaa_station` or set NOAA_STATION env var",
+            "no NOAA station configured, pass `noaa_station` or set NOAA_STATION env var",
         });
       }
 
@@ -242,7 +242,7 @@ function registerGetTonightSky(server: McpServer): void {
       title: "Tonight's Sky (Sun, Moon, Planets, Meteors, Constellations)",
       description:
         "Returns a full night-sky briefing for a location: sun times (sunrise/sunset/civil/nautical/astronomical twilight, golden hour), moon phase + illumination + rise/set, dark-sky window with 1-5 quality score, currently-visible planets with magnitude and compass direction, active and upcoming meteor showers, and top visible constellations. " +
-        "Pure local computation via astronomy-engine — no network call, no API key, never rate-limited. Always works for valid coordinates.",
+        "Pure local computation via astronomy-engine, no network call, no API key, never rate-limited. Always works for valid coordinates.",
       inputSchema: {
         lat: latField,
         lng: lngField,
@@ -268,7 +268,7 @@ function registerGetPhenology(server: McpServer): void {
       title: "Active Phenology Nearby (USA-NPN)",
       description:
         "Returns USA-NPN site-level phenometric records near a location: which species/phenophases (e.g. 'Flowers or flower buds', 'Open flowers', 'Ripe fruits') have been recorded at NPN stations within radius, with mean first/last 'yes' dates and distance. " +
-        "Useful for 'what's blooming near me' or 'what's leafing out'. Coverage is best in the continental US. NPN's bulk-download endpoint is intentionally not exposed — this composes a station search + site-level query for a polite, bandwidth-friendly answer. No API key required.",
+        "Useful for 'what's blooming near me' or 'what's leafing out'. Coverage is best in the continental US. NPN's bulk-download endpoint is intentionally not exposed, this composes a station search + site-level query for a polite, bandwidth-friendly answer. No API key required.",
       inputSchema: {
         lat: latField,
         lng: lngField,

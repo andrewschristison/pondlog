@@ -1,11 +1,11 @@
-// Crop calendar — hand-curated planting windows for ~1000 food crops, herbs,
+// Crop calendar, hand-curated planting windows for ~1000 food crops, herbs,
 // companion flowers, and cover crops. Source: USDA Cooperative Extension
 // publications (consolidated). Each entry has multiple frost-anchored
 // windows (start_indoors, direct_sow, transplant, plant_now) so a single
 // crop covers spring + fall + perennial planting actions.
 //
 // Data lives in `data/crop-calendar.json`. Schema: `crop-calendar.schema.json`.
-// Community contributions are welcome — JSON Schema validation runs at first
+// Community contributions are welcome. JSON Schema validation runs at first
 // load to catch malformed entries.
 
 import { z } from "zod";
@@ -26,7 +26,7 @@ import {
 } from "./usda-zones.js";
 
 // ---------------------------------------------------------------------------
-// Zod schemas — parsed at module load. Throws fast on a malformed JSON file.
+// Zod schemas, parsed at module load. Throws fast on a malformed JSON file.
 // ---------------------------------------------------------------------------
 
 const CategorySchema = z.enum([
@@ -229,7 +229,7 @@ export function findCrop(slugOrName: string): CropEntry | undefined {
   const q = slugOrName.trim().toLowerCase();
   if (q.length === 0) return undefined;
   const cal = loadCalendar();
-  // Exact match — slug, common name, scientific name, alias.
+  // Exact match, slug, common name, scientific name, alias.
   for (const e of cal.entries) {
     if (e.slug === q) return e;
     if (e.commonName.toLowerCase() === q) return e;
@@ -249,7 +249,7 @@ export function findCrop(slugOrName: string): CropEntry | undefined {
   return undefined;
 }
 
-/** Search crops — like findCrop but returns all matches up to `limit`. */
+/** Search crops, like findCrop but returns all matches up to `limit`. */
 export function searchCrops(query: string, limit = 20): CropEntry[] {
   const q = query.trim().toLowerCase();
   if (q.length === 0) return [];
@@ -283,7 +283,7 @@ function parseZoneNumber(zone: string): number | null {
 }
 
 // ---------------------------------------------------------------------------
-// Planting plan — given a zone and a date, which crops have an open window
+// Planting plan, given a zone and a date, which crops have an open window
 // and what action should the gardener take?
 // ---------------------------------------------------------------------------
 
@@ -295,7 +295,7 @@ export interface GetPlantingPlanParams {
   category?: CropCategory;
   /** Cap on suggestions. Default 50. */
   limit?: number;
-  /** Window padding in days — a crop is included if today is within
+  /** Window padding in days, a crop is included if today is within
    *  [windowStart - padDays, windowEnd + padDays]. Default 0 (strict). */
   padDays?: number;
   /** Include indoor-only entries (microgreens, sprouts) in the plan.
@@ -396,7 +396,7 @@ export function getPlantingPlan(
       if (w.notes) noteParts.push(w.notes);
       if (crop.notes) noteParts.push(crop.notes);
       if (modifier?.notes) noteParts.push(modifier.notes);
-      if (noteParts.length > 0) suggestion.notes = noteParts.join(" — ");
+      if (noteParts.length > 0) suggestion.notes = noteParts.join(", ");
       out.push(suggestion);
       break; // one suggestion per crop per call (the first matching window)
     }
@@ -460,7 +460,7 @@ export function getCropsForZone(
   if (num === null) {
     return err({
       source: "crop-calendar",
-      message: `getCropsForZone: bad zone "${zone}" — expected "1a".."13b"`,
+      message: `getCropsForZone: bad zone "${zone}", expected "1a".."13b"`,
     });
   }
   return ok(listCrops({ zone, ...(category ? { category } : {}) }));

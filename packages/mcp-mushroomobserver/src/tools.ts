@@ -197,7 +197,7 @@ function registerSearchRegions(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// get_recent_fungi — sugar tool, the headline "what's fruiting nearby" call
+// get_recent_fungi, sugar tool, the headline "what's fruiting nearby" call
 // ----------------------------------------------------------------------------
 
 function registerGetRecentFungi(server: McpServer): void {

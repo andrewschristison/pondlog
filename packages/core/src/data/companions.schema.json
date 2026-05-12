@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/companions.schema.json",
   "title": "Pondlog Companion Planting Relationships",
-  "description": "The first edge layer of the CropGraph — directed relationships between crops (beneficial or antagonist) with a categorized mechanism, gardener-facing description, evidence-strength grade, and citation. Every `crop` and `companion` value is a slug from crop-calendar.json; the loader cross-references both at parse time and fails loud if a slug is missing.\n\nEvidence grounding: companion planting literature ranges from peer-reviewed agricultural research to widely repeated traditional/folk knowledge. This dataset is curated against (a) USDA Cooperative Extension publications (Cornell, WSU, UC ANR, UF/IFAS, OSU, Penn State, Texas A&M), (b) USDA-ARS research on Three Sisters and allelopathic interactions, (c) Xerces Society pollinator research, (d) the canonical traditional sources (Riotte's `Carrots Love Tomatoes`, Cunningham's `Great Garden Companions`, the Rodale Encyclopedia), and (e) structural references like Plant Anywhere's relationship matrix and the Seeds for Generations matrix.\n\nStrength grades are honest: `strong` is reserved for empirically supported relationships (Three Sisters nitrogen-fixation cycle, French marigold root-knot nematode suppression, allium / Rhizobium inhibition of legumes, nightshade-family disease sharing, peer-reviewed pollinator-attractor work). `moderate` covers widely-corroborated traditional pairings with at least some research support. `weak` (folk-only) entries are deliberately excluded from this fixture; community PRs can add them with proper citation in the future.\n\nRelationships are directed because mechanisms are often asymmetric: corn provides structural support to climbing beans (corn → bean), and beans fix nitrogen for corn (bean → corn) — two distinct edges, each with its own mechanism. Where the relationship is symmetric, one direction is stored and helpers expose a reverse-lookup fallback so callers don't need to know storage direction.",
+  "description": "The first edge layer of the CropGraph, directed relationships between crops (beneficial or antagonist) with a categorized mechanism, gardener-facing description, evidence-strength grade, and citation. Every `crop` and `companion` value is a slug from crop-calendar.json; the loader cross-references both at parse time and fails loud if a slug is missing.\n\nEvidence grounding: companion planting literature ranges from peer-reviewed agricultural research to widely repeated traditional/folk knowledge. This dataset is curated against (a) USDA Cooperative Extension publications (Cornell, WSU, UC ANR, UF/IFAS, OSU, Penn State, Texas A&M), (b) USDA-ARS research on Three Sisters and allelopathic interactions, (c) Xerces Society pollinator research, (d) the canonical traditional sources (Riotte's `Carrots Love Tomatoes`, Cunningham's `Great Garden Companions`, the Rodale Encyclopedia), and (e) structural references like Plant Anywhere's relationship matrix and the Seeds for Generations matrix.\n\nStrength grades are honest: `strong` is reserved for empirically supported relationships (Three Sisters nitrogen-fixation cycle, French marigold root-knot nematode suppression, allium / Rhizobium inhibition of legumes, nightshade-family disease sharing, peer-reviewed pollinator-attractor work). `moderate` covers widely-corroborated traditional pairings with at least some research support. `weak` (folk-only) entries are deliberately excluded from this fixture; community PRs can add them with proper citation in the future.\n\nRelationships are directed because mechanisms are often asymmetric: corn provides structural support to climbing beans (corn → bean), and beans fix nitrogen for corn (bean → corn), two distinct edges, each with its own mechanism. Where the relationship is symmetric, one direction is stored and helpers expose a reverse-lookup fallback so callers don't need to know storage direction.",
   "type": "object",
   "required": ["version", "source", "license", "entries"],
   "additionalProperties": false,
@@ -44,7 +44,7 @@
         "companion": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9-]{1,40}$",
-          "description": "Related crop slug. Must exist in crop-calendar.json. May equal `crop` only in unusual cases (self-allelopathy) — avoid where possible."
+          "description": "Related crop slug. Must exist in crop-calendar.json. May equal `crop` only in unusual cases (self-allelopathy), avoid where possible."
         },
         "type": {
           "type": "string",
@@ -73,7 +73,7 @@
           "type": "string",
           "minLength": 10,
           "maxLength": 400,
-          "description": "Gardener-facing explanation. Concrete and actionable — what the gardener should know or do, not just what the relationship is."
+          "description": "Gardener-facing explanation. Concrete and actionable, what the gardener should know or do, not just what the relationship is."
         },
         "strength": {
           "type": "string",
@@ -84,7 +84,7 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 300,
-          "description": "Citation — extension service, research publication, or traditional reference. Multiple sources separated by semicolons."
+          "description": "Citation, extension service, research publication, or traditional reference. Multiple sources separated by semicolons."
         }
       }
     }

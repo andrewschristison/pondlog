@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-ebird",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "MCP server for eBird: 21 tools for bird observations, hotspots, checklists, taxonomy, and regions. Stdio transport. Requires EBIRD_API_KEY (free at https://ebird.org/api/keygen).",
   "keywords": [
     "pondlog",

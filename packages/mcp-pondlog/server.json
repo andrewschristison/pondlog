@@ -7,12 +7,12 @@
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.3.7",
+  "version": "0.3.8",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@pondlog/mcp-pondlog",
-      "version": "0.3.7",
+      "version": "0.3.8",
       "transport": {
         "type": "stdio"
       }

@@ -48,13 +48,13 @@ export async function getTidePredictions(
   if (!STATION_ID_RE.test(params.stationId)) {
     return err({
       source: "noaa",
-      message: `invalid stationId "${params.stationId}" — expected 6–8 digits (e.g. "9444090")`,
+      message: `invalid stationId "${params.stationId}", expected 6–8 digits (e.g. "9444090")`,
     });
   }
   if (params.date !== undefined && !ISO_DATE_RE.test(params.date)) {
     return err({
       source: "noaa",
-      message: `invalid date "${params.date}" — expected YYYY-MM-DD`,
+      message: `invalid date "${params.date}", expected YYYY-MM-DD`,
     });
   }
 
@@ -173,7 +173,7 @@ function todayIso(): string {
 }
 
 /** NOAA returns "YYYY-MM-DD HH:mm" in station local time. We pass it through
- *  as "YYYY-MM-DDTHH:mm:00" without a timezone suffix — the caller knows the
+ *  as "YYYY-MM-DDTHH:mm:00" without a timezone suffix, the caller knows the
  *  station's TZ, and inventing a UTC offset would lie. */
 function noaaTimeToIso(t: string): string {
   const trimmed = t.trim();

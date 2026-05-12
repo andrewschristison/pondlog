@@ -29,7 +29,7 @@ export const siteNumberField = z
   .string()
   .regex(/^[0-9]{8,15}$/)
   .describe(
-    "USGS site number — 8 to 15 digits identifying a single gauging station. Examples: '12045500' (Elwha River at McDonald Bridge near Port Angeles, WA); '12048000' (Dungeness River near Sequim, WA). Use `search_sites` to discover site numbers for a region.",
+    "USGS site number, 8 to 15 digits identifying a single gauging station. Examples: '12045500' (Elwha River at McDonald Bridge near Port Angeles, WA); '12048000' (Dungeness River near Sequim, WA). Use `search_sites` to discover site numbers for a region.",
   );
 
 export const stateCodeField = z
@@ -43,7 +43,7 @@ export const periodField = z
   .string()
   .regex(/^P(?:T?\d+[YMDHS])+$/)
   .describe(
-    "ISO-8601 duration ending now. Examples: 'PT2H' = past 2 hours, 'P1D' = past 24 hours, 'P7D' = past week, 'P30D' = past 30 days. Use for relative-to-now queries — for historic ranges with explicit dates use start_date/end_date instead.",
+    "ISO-8601 duration ending now. Examples: 'PT2H' = past 2 hours, 'P1D' = past 24 hours, 'P7D' = past week, 'P30D' = past 30 days. Use for relative-to-now queries, for historic ranges with explicit dates use start_date/end_date instead.",
   );
 
 export const isoDateField = z

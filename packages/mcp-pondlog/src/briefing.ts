@@ -68,7 +68,7 @@ export interface BuildBriefingParams {
  * `errors[]` but never crashes the briefing. Night-sky is pure local
  * computation (effectively infallible for valid coordinates).
  *
- * No caching — each invocation fetches fresh. The MCP layer assumes the host
+ * No caching, each invocation fetches fresh. The MCP layer assumes the host
  * (Claude Desktop, Cursor, etc.) handles caching at its own layer if it wants
  * it; the CLI's disk cache is intentionally not reused here.
  */
@@ -201,7 +201,7 @@ export async function buildBriefing(
     errors.push({ source: "nightsky", message: nightSkyResult.error.message });
   }
 
-  // Garden — pure local computation (zone + crop calendar). Never fails for
+  // Garden, pure local computation (zone + crop calendar). Never fails for
   // valid US/AK/HI/PR coordinates; logs an error and skips if outside coverage.
   const garden = buildGardenBriefing(params.coords, date, errors);
   const companionNotes = garden ? buildCompanionNotes(garden) : [];
@@ -255,7 +255,7 @@ function buildGardenBriefing(
 ): GardenBriefing | undefined {
   const zoneRes = getHardinessZone(coords);
   if (!zoneRes.ok) {
-    // Outside US/AK/HI/PR coverage — silent skip with one error entry so the
+    // Outside US/AK/HI/PR coverage, silent skip with one error entry so the
     // briefing's `errors[]` is honest, but the rest of the response stands.
     errors.push({ source: "usda-zones", message: zoneRes.error.message });
     return undefined;

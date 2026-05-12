@@ -7,7 +7,7 @@
 //
 // Frost-date table: hand-curated continental-US averages keyed by zone.
 // USDA hardiness zones are based on average annual MINIMUM winter
-// temperature, not on frost dates — but for general gardening guidance the
+// temperature, not on frost dates, but for general gardening guidance the
 // correlation is strong enough that the table below is the standard
 // reference grid printed in extension publications. Conservative bounds:
 // coastal/microclimate variation can shift dates 2-3 weeks either way.
@@ -17,7 +17,7 @@ import { err, ok, type Result } from "./result.js";
 import type { Coordinates, FrostDates, ZoneInfo } from "./types.js";
 
 // ---------------------------------------------------------------------------
-// Bundled data — typed view over the compact array-of-arrays format.
+// Bundled data, typed view over the compact array-of-arrays format.
 // ---------------------------------------------------------------------------
 
 interface ZoneRecordsFile {
@@ -87,7 +87,7 @@ function haversineKm(
 }
 
 // ---------------------------------------------------------------------------
-// Zone parsing — split "8a" / "8b" → number + subzone + temperature band.
+// Zone parsing, split "8a" / "8b" → number + subzone + temperature band.
 // 26 zones × 5°F bands; zone 1a = -60..-55°F, zone 13b = 65..70°F.
 // ---------------------------------------------------------------------------
 
@@ -134,7 +134,7 @@ export function getHardinessZoneByZip(zip: string): Result<ZoneInfo> {
   if (idx === undefined) {
     return err({
       source: "usda-zones",
-      message: `getHardinessZoneByZip: ZIP ${padded} is not in the PRISM 2023 dataset (some ZIPs are excluded — try the lat/lng lookup instead)`,
+      message: `getHardinessZoneByZip: ZIP ${padded} is not in the PRISM 2023 dataset (some ZIPs are excluded, try the lat/lng lookup instead)`,
       statusCode: 404,
     });
   }
@@ -213,7 +213,7 @@ export function getHardinessZone(coords: Coordinates): Result<ZoneInfo> {
   if (bestIdx === -1) {
     return err({
       source: "usda-zones",
-      message: `getHardinessZone: no ZIP centroid within ~666 km of ${coords.lat},${coords.lng} — out of PRISM 2023 coverage (US, AK, HI, PR)`,
+      message: `getHardinessZone: no ZIP centroid within ~666 km of ${coords.lat},${coords.lng}, out of PRISM 2023 coverage (US, AK, HI, PR)`,
       statusCode: 404,
     });
   }
@@ -245,10 +245,10 @@ export function getHardinessZone(coords: Coordinates): Result<ZoneInfo> {
 }
 
 // ---------------------------------------------------------------------------
-// Frost-date table — typical continental-US averages by zone.
+// Frost-date table, typical continental-US averages by zone.
 //
 // Sources: USDA Cooperative Extension publications (consolidated). These are
-// reference dates for general gardening guidance — coastal/mountain/desert
+// reference dates for general gardening guidance, coastal/mountain/desert
 // microclimates can shift by 2-3 weeks. Use as a planning aid, not a
 // guarantee. Zones 11+ are effectively frost-free year-round.
 // ---------------------------------------------------------------------------
@@ -313,7 +313,7 @@ export function getFrostDates(zone: string): Result<FrostDates> {
   if (!row) {
     return err({
       source: "usda-zones",
-      message: `getFrostDates: unknown zone "${zone}" — expected "1a".."13b"`,
+      message: `getFrostDates: unknown zone "${zone}", expected "1a".."13b"`,
     });
   }
   return ok({
@@ -325,7 +325,7 @@ export function getFrostDates(zone: string): Result<FrostDates> {
 }
 
 // ---------------------------------------------------------------------------
-// Date helpers shared across the garden module — kept here so the crop
+// Date helpers shared across the garden module, kept here so the crop
 // calendar can reuse them without importing from a higher-level package.
 // ---------------------------------------------------------------------------
 

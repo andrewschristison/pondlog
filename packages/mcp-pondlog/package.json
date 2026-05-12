@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-pondlog",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Aggregate MCP server. One tool call returns a unified nature briefing covering birds, wildlife, plants, tides, streamflow, night sky, and phenology, stitched from six public APIs into a single response.",
   "keywords": [
     "pondlog",

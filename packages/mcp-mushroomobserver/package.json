@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/mcp-mushroomobserver",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "MCP server for Mushroom Observer, the largest dedicated mycology platform with 500,000+ fungal observations and expert-weighted ID confidence. Five tools: nearby/recent fungi, single observation detail, fungal name search, region discovery. No API key required.",
   "keywords": [
     "pondlog",

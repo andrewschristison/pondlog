@@ -20,7 +20,7 @@ export const dateField = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/)
   .describe(
-    "ISO date YYYY-MM-DD. Defaults to today (UTC). Used to anchor the briefing — affects tides, sun/moon times, and the night-sky reference time.",
+    "ISO date YYYY-MM-DD. Defaults to today (UTC). Used to anchor the briefing, affects tides, sun/moon times, and the night-sky reference time.",
   );
 
 export const radiusField = z
@@ -44,14 +44,14 @@ export const noaaStationField = z
   .string()
   .regex(/^[0-9]{6,8}$/)
   .describe(
-    "NOAA CO-OPS tide station id, 6–8 digits. Example: '9444090' (Port Angeles, WA). Find a nearby station at https://tidesandcurrents.noaa.gov/. Optional — when omitted (and NOAA_STATION env var unset) tides are skipped.",
+    "NOAA CO-OPS tide station id, 6–8 digits. Example: '9444090' (Port Angeles, WA). Find a nearby station at https://tidesandcurrents.noaa.gov/. Optional, when omitted (and NOAA_STATION env var unset) tides are skipped.",
   );
 
 export const usgsSiteField = z
   .string()
   .regex(/^[0-9]{8,15}$/)
   .describe(
-    "USGS streamgauge site number, 8–15 digits. Example: '12045500' (Elwha River near Port Angeles, WA). Find one at https://waterdata.usgs.gov/. Optional — when omitted (and USGS_SITE env var unset) streamflow is skipped.",
+    "USGS streamgauge site number, 8–15 digits. Example: '12045500' (Elwha River near Port Angeles, WA). Find one at https://waterdata.usgs.gov/. Optional, when omitted (and USGS_SITE env var unset) streamflow is skipped.",
   );
 
 export const ebirdApiKeyField = z
@@ -75,5 +75,5 @@ export const mushroomObserverRegionField = z
   .min(2)
   .max(200)
   .describe(
-    'Mushroom Observer region suffix string (e.g. "Clallam Co., Washington, USA"). Optional. When provided, the MO section uses suffix-match region filtering instead of bbox — useful when MO coverage at the bbox is sparse or when the caller wants county/state-wide fungi.',
+    'Mushroom Observer region suffix string (e.g. "Clallam Co., Washington, USA"). Optional. When provided, the MO section uses suffix-match region filtering instead of bbox, useful when MO coverage at the bbox is sparse or when the caller wants county/state-wide fungi.',
   );

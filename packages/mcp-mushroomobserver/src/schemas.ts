@@ -30,7 +30,7 @@ export const daysField = z
   .min(1)
   .max(365)
   .describe(
-    "Time window in days, counted backwards from today. Default 30. Fungi fruit seasonally — values around 30–90 days surface 'currently fruiting' species; longer windows (180–365) build a year-round portrait.",
+    "Time window in days, counted backwards from today. Default 30. Fungi fruit seasonally, values around 30–90 days surface 'currently fruiting' species; longer windows (180–365) build a year-round portrait.",
   );
 
 export const limitField = z
@@ -55,7 +55,7 @@ export const regionField = z
   .min(2)
   .max(200)
   .describe(
-    "Mushroom Observer region suffix string. MO models geography as comma-separated location names ending in country (e.g. 'Clallam Co., Washington, USA', 'Marin Co., California, USA', 'Sussex, England, UK'). The filter is a SUFFIX match — provide the most-specific tail you want; broader suffixes match more locations. Use `search_regions` first to discover well-formed suffixes.",
+    "Mushroom Observer region suffix string. MO models geography as comma-separated location names ending in country (e.g. 'Clallam Co., Washington, USA', 'Marin Co., California, USA', 'Sussex, England, UK'). The filter is a SUFFIX match, provide the most-specific tail you want; broader suffixes match more locations. Use `search_regions` first to discover well-formed suffixes.",
   );
 
 export const observationIdField = z

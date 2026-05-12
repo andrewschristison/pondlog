@@ -48,7 +48,7 @@ export const stateCodeField = z
   .string()
   .regex(/^[A-Z]{2}$/)
   .describe(
-    "US two-letter state postal code (e.g. 'WA', 'CA', 'NY'). Required for narrowing station and observation queries — NPN's unfiltered station list is ~50,000 records.",
+    "US two-letter state postal code (e.g. 'WA', 'CA', 'NY'). Required for narrowing station and observation queries. NPN's unfiltered station list is ~50,000 records.",
   );
 
 // Year for getObservations / getSiteLevelData filters. NPN phenology records start in 2009.

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // ---------------------------------------------------------------------------
-// Shared Zod fragments — the .describe() strings are the LLM-facing glossary
+// Shared Zod fragments, the .describe() strings are the LLM-facing glossary
 // for the garden domain. Keep them precise and example-rich.
 // ---------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ export const zipField = z
   .string()
   .regex(/^\d{5}$/)
   .describe(
-    "5-digit US ZIP code. Example: '10001' for Manhattan. Returns the exact PRISM-recorded zone for that ZIP. Some ZIPs are missing from the dataset — use lat/lng for non-listed ZIPs.",
+    "5-digit US ZIP code. Example: '10001' for Manhattan. Returns the exact PRISM-recorded zone for that ZIP. Some ZIPs are missing from the dataset, use lat/lng for non-listed ZIPs.",
   );
 
 export const zoneField = z
@@ -39,7 +39,7 @@ export const dateField = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/)
   .describe(
-    "ISO date YYYY-MM-DD to plan against. Defaults to today (UTC). Use a future date to preview a planting plan — e.g., '2026-06-15' to see what's plantable in mid-June.",
+    "ISO date YYYY-MM-DD to plan against. Defaults to today (UTC). Use a future date to preview a planting plan, e.g., '2026-06-15' to see what's plantable in mid-June.",
   );
 
 export const categoryField = z
@@ -53,7 +53,7 @@ export const categoryField = z
     "legume",
   ])
   .describe(
-    "Crop category: 'vegetable' (annual food crops), 'herb' (culinary/medicinal), 'fruit' (perennial fruit-bearing trees and berries), 'flower' (companion or pollinator-attracting flowers), 'cover-crop' (soil-builders like clover, rye, vetch), 'root' (root vegetables — subset of vegetable), 'legume' (peas, beans, soil nitrogen fixers).",
+    "Crop category: 'vegetable' (annual food crops), 'herb' (culinary/medicinal), 'fruit' (perennial fruit-bearing trees and berries), 'flower' (companion or pollinator-attracting flowers), 'cover-crop' (soil-builders like clover, rye, vetch), 'root' (root vegetables, subset of vegetable), 'legume' (peas, beans, soil nitrogen fixers).",
   );
 
 export const limitField = z
@@ -68,7 +68,7 @@ export const queryField = z
   .min(1)
   .max(120)
   .describe(
-    "Search query — common name, scientific name, or substring. Examples: 'tomato', 'Lactuca', 'bean', 'broccoli'.",
+    "Search query, common name, scientific name, or substring. Examples: 'tomato', 'Lactuca', 'bean', 'broccoli'.",
   );
 
 export const slugOrNameField = z
@@ -99,7 +99,7 @@ export const cropNameField = z
   .min(1)
   .max(120)
   .describe(
-    "Crop identifier — calendar slug ('tomato', 'pepper-sweet', 'fennel-herb'), common name ('Tomato', 'Sweet Pepper'), scientific name ('Solanum lycopersicum'), or alias. Case-insensitive. The tool resolves any of these to the canonical slug before lookup.",
+    "Crop identifier, calendar slug ('tomato', 'pepper-sweet', 'fennel-herb'), common name ('Tomato', 'Sweet Pepper'), scientific name ('Solanum lycopersicum'), or alias. Case-insensitive. The tool resolves any of these to the canonical slug before lookup.",
   );
 
 export const cropListField = z
@@ -126,7 +126,7 @@ export const companionMechanismField = z
     "structural_support",
   ])
   .describe(
-    "Companion-relationship mechanism. 'nitrogen_fixing' — legume supplies N to neighbor (Three Sisters bean→corn). 'pest_repellent' — one plant deters the other's pests (basil/tomato hornworm). 'trap_crop' — sacrificial host that draws pests away (nasturtium for aphids). 'pollinator_attractor' — brings bees/parasitoid wasps. 'shade_provider' — tall crop shades heat-sensitive neighbor. 'ground_cover' — low crop suppresses weeds/retains moisture (squash in Three Sisters; comfrey under apple). 'allelopathic' — chemical inhibition (fennel inhibits most crops). 'disease_vector' — shared disease pressure (nightshade family late blight). 'nutrient_competition' — both want the same soil resources. 'space_efficiency' — different root depth or growth habit fits in one bed. 'structural_support' — provides physical support (corn for climbing beans). 'flavor_enhancement' — traditional claim of improved flavor.",
+    "Companion-relationship mechanism. 'nitrogen_fixing', legume supplies N to neighbor (Three Sisters bean→corn). 'pest_repellent', one plant deters the other's pests (basil/tomato hornworm). 'trap_crop', sacrificial host that draws pests away (nasturtium for aphids). 'pollinator_attractor', brings bees/parasitoid wasps. 'shade_provider', tall crop shades heat-sensitive neighbor. 'ground_cover', low crop suppresses weeds/retains moisture (squash in Three Sisters; comfrey under apple). 'allelopathic', chemical inhibition (fennel inhibits most crops). 'disease_vector', shared disease pressure (nightshade family late blight). 'nutrient_competition', both want the same soil resources. 'space_efficiency', different root depth or growth habit fits in one bed. 'structural_support', provides physical support (corn for climbing beans). 'flavor_enhancement', traditional claim of improved flavor.",
   );
 
 export const climateTypeField = z
@@ -139,7 +139,7 @@ export const climateTypeField = z
     "semi_arid",
   ])
   .describe(
-    "Coarse climate type used to apply per-climate modifiers to the planting plan. USDA hardiness zones only measure winter minimum temperature — climate adds the missing summer/humidity/rainfall context. " +
-      "Auto-detected from lat/lng when omitted (and when coordinates are supplied). Values: 'maritime' (cool summers, mild winters, consistent moisture — PNW coast), 'mediterranean' (warm dry summers, mild wet winters — coastal CA), 'continental' (hot summers, cold winters — Midwest/Plains), 'humid_subtropical' (hot humid summers — SE US/Gulf), 'arid' (hot dry summers — Desert SW), 'semi_arid' (moderate summers, low rain — High Plains/Intermountain West). " +
+    "Coarse climate type used to apply per-climate modifiers to the planting plan. USDA hardiness zones only measure winter minimum temperature, climate adds the missing summer/humidity/rainfall context. " +
+      "Auto-detected from lat/lng when omitted (and when coordinates are supplied). Values: 'maritime' (cool summers, mild winters, consistent moisture, PNW coast), 'mediterranean' (warm dry summers, mild wet winters, coastal CA), 'continental' (hot summers, cold winters, Midwest/Plains), 'humid_subtropical' (hot humid summers, SE US/Gulf), 'arid' (hot dry summers, Desert SW), 'semi_arid' (moderate summers, low rain, High Plains/Intermountain West). " +
       "When applied, matching crops get window date shifts (negative weeks = earlier) and climate-specific notes appended to the suggestion's notes.",
   );

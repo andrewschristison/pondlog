@@ -1,6 +1,6 @@
 {
   "name": "@pondlog/core",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Shared types, schemas, Result<T>, rate limiter, and utilities used across pondlog source clients, CLI, and MCP servers.",
   "keywords": [
     "pondlog",

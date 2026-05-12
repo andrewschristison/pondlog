@@ -1,7 +1,7 @@
 // Climate type resolution from coordinates.
 //
 // USDA hardiness zones only measure average annual minimum winter temperature
-// — they say nothing about summer heat, humidity, or rainfall. Zone 8b in
+//, they say nothing about summer heat, humidity, or rainfall. Zone 8b in
 // Port Angeles, WA (cool wet maritime summers, ~70°F highs, 25" rain) is a
 // completely different growing environment than zone 8b in Tucson, AZ (arid,
 // 105°F summers, 12" rain) or zone 8b in Savannah, GA (hot humid, 50" rain).
@@ -11,10 +11,10 @@
 //
 // This module returns one of six coarse climate types from a coordinate. It
 // intentionally uses a simple lat/lng heuristic rather than a county FIPS
-// table — the heuristic covers ~90% of US locations correctly, the table
+// table, the heuristic covers ~90% of US locations correctly, the table
 // would add ~3000 rows of data, and edge cases (coastal vs inland in the
 // same band) can be refined later. Outside the rough US/Canada bounding box
-// the result is a best-effort "continental" — consumers should treat low
+// the result is a best-effort "continental", consumers should treat low
 // confidence as a signal to skip climate modifiers.
 //
 // The six types are loosely Köppen-Geiger collapsed for gardening purposes:
@@ -99,7 +99,7 @@ export function getClimateType(coords: Coordinates): Result<ClimateInfo> {
   });
 }
 
-// Refined heuristic — passes the six anchor coords specified in Sticky 20:
+// Refined heuristic, passes the six anchor coords specified in Sticky 20:
 //   Port Angeles 48.118, -123.43  → maritime
 //   Tucson       32.22,  -110.97  → arid
 //   Savannah     32.08,   -81.09  → humid_subtropical

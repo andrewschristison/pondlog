@@ -71,7 +71,7 @@ function registerGetHardinessZone(server: McpServer): void {
         "Returns the USDA hardiness zone (1a..13b) and typical first/last frost dates for a US location. " +
         "Provide either lat+lng (resolves to nearest ZIP centroid in the bundled 40,283-ZIP PRISM 2023 dataset) or a 5-digit zip (exact match when present). " +
         "The zone object includes the 5°F temperature band (min/max winter °F), and frostDates includes lastSpring (MM-DD), firstFall (MM-DD), and seasonDays. " +
-        "Coastal, mountain, and desert microclimates can shift frost dates 2-3 weeks from the table — surface this caveat to gardeners. " +
+        "Coastal, mountain, and desert microclimates can shift frost dates 2-3 weeks from the table, surface this caveat to gardeners. " +
         "No API key required; works fully offline.",
       inputSchema: {
         lat: latField.optional(),
@@ -114,9 +114,9 @@ function registerGetPlantingPlan(server: McpServer): void {
       title: "What to Plant Now (USDA Zone + Frost-Anchored Calendar, Climate-Aware)",
       description:
         "Returns a list of crops to plant in the supplied date window, drawn from the bundled 1000-crop calendar (USDA Cooperative Extension publications). " +
-        "Provide a USDA zone string ('5b', '8b') OR a coordinate pair / zip — coordinates resolve to a zone via the same lookup as `get_hardiness_zone`. " +
+        "Provide a USDA zone string ('5b', '8b') OR a coordinate pair / zip, coordinates resolve to a zone via the same lookup as `get_hardiness_zone`. " +
         "Each suggestion has: action (start_indoors / direct_sow / transplant / plant_now), windowStart..windowEnd (ISO dates anchored to the zone's typical frost dates), daysToHarvest range, and expectedHarvestEarliest. " +
-        "If expectedHarvestEarliest lands past the typical first fall frost the crop is unlikely to finish — surface that to the user. " +
+        "If expectedHarvestEarliest lands past the typical first fall frost the crop is unlikely to finish, surface that to the user. " +
         "Climate-aware: pass `climate_type` to apply per-climate window shifts and notes (currently authored on 10 anchor crops: tomato, pepper-sweet, lettuce-leaf, kale, blueberry, cucumber, basil, broccoli, garlic, cantaloupe). When you supply lat/lng or zip without `climate_type`, the tool auto-detects the climate from coordinates. The response echoes `climateType`. " +
         "For a strict view pass padDays:0 (default). For 'almost in window' pass padDays:7 or 14. " +
         "No API key required; works offline.",
@@ -191,7 +191,7 @@ function registerGetCropDetails(server: McpServer): void {
         "Returns a unified crop profile combining the bundled crop calendar entry (planting windows, days to harvest, zone range, sowing/transplant guidance) with Trefle.io botanical detail (family, genus, light requirement, soil pH, image) when TREFLE_API_TOKEN is set. " +
         "Look up by slug, common name, or scientific name. Match is case-insensitive. " +
         "If the calendar has no entry for the query, the tool still attempts a Trefle lookup. If neither has a match, returns an error. " +
-        "Trefle's horticulture coverage is sparse (many growth fields are null) — the calendar is the authoritative source for planting timing.",
+        "Trefle's horticulture coverage is sparse (many growth fields are null), the calendar is the authoritative source for planting timing.",
       inputSchema: {
         slug_or_name: slugOrNameField,
       },
@@ -240,7 +240,7 @@ function registerSearchPlants(server: McpServer): void {
         "Calendar matches come first and have full planting-window data; Trefle matches are taxonomic only. " +
         "For a focused 'find me the calendar entry for X' use `get_crop_details` instead. " +
         "Trefle results require TREFLE_API_TOKEN; without it only calendar matches are returned. " +
-        "Trefle's free-text search (q=) is noisy — it matches across author, bibliography, and sources fields. " +
+        "Trefle's free-text search (q=) is noisy, it matches across author, bibliography, and sources fields. " +
         "Filter by zone or category to narrow calendar matches.",
       inputSchema: {
         query: queryField,
@@ -300,7 +300,7 @@ function registerGetCropsForZone(server: McpServer): void {
       title: "Crops Suited to a USDA Zone",
       description:
         "Returns all crop calendar entries whose zone range includes the supplied USDA zone, optionally filtered by category. " +
-        "Pure metadata — does NOT consider the current date. For 'what to plant now' use `get_planting_plan` instead. " +
+        "Pure metadata, does NOT consider the current date. For 'what to plant now' use `get_planting_plan` instead. " +
         "Useful for browsing what's possible in a zone, planning beds, or generating seed lists.",
       inputSchema: {
         zone: zoneField,
@@ -378,8 +378,8 @@ function registerGetCompanions(server: McpServer): void {
       title: "Companion + Antagonist Plants for a Crop",
       description:
         "Returns companion (beneficial) and antagonist (harmful) plants for a crop, drawn from the bundled 121-edge companion fixture (USDA Extension / Xerces Society / SARE sources). " +
-        "Each relationship has a categorized mechanism (12 types — `nitrogen_fixing`, `pest_repellent`, `allelopathic`, `disease_vector`, `pollinator_attractor`, `trap_crop`, `shade_provider`, `ground_cover`, `structural_support`, `nutrient_competition`, `space_efficiency`, `flavor_enhancement`), a gardener-facing description, an evidence-strength grade (`strong` = empirical research, `moderate` = widely corroborated traditional, `weak` = folk only), and a citation. " +
-        "Strength grades are honest — most companion-planting lore is `moderate`; only Three Sisters N-cycling, French marigold nematode suppression, allium/Rhizobium inhibition of legumes, nightshade disease sharing, and a handful of pollinator-attractor relationships are `strong`. " +
+        "Each relationship has a categorized mechanism (12 types, `nitrogen_fixing`, `pest_repellent`, `allelopathic`, `disease_vector`, `pollinator_attractor`, `trap_crop`, `shade_provider`, `ground_cover`, `structural_support`, `nutrient_competition`, `space_efficiency`, `flavor_enhancement`), a gardener-facing description, an evidence-strength grade (`strong` = empirical research, `moderate` = widely corroborated traditional, `weak` = folk only), and a citation. " +
+        "Strength grades are honest, most companion-planting lore is `moderate`; only Three Sisters N-cycling, French marigold nematode suppression, allium/Rhizobium inhibition of legumes, nightshade disease sharing, and a handful of pollinator-attractor relationships are `strong`. " +
         "Accepts slug or common name. No API key required; works offline.",
       inputSchema: {
         crop: cropNameField,
@@ -417,7 +417,7 @@ function registerCheckCompanionPair(server: McpServer): void {
       title: "Check Whether Two Crops Have a Known Relationship",
       description:
         "Looks up whether two specific crops have a known beneficial or antagonist relationship. Returns the relationship detail (mechanism, description, strength, source) or a `found: false` result when no relationship is in the fixture. " +
-        "Relationships are directed because mechanisms are often asymmetric (corn provides structural support to bean; bean fixes nitrogen for corn — two distinct edges). The tool falls back to the reverse direction transparently, so order of arguments rarely matters. " +
+        "Relationships are directed because mechanisms are often asymmetric (corn provides structural support to bean; bean fixes nitrogen for corn, two distinct edges). The tool falls back to the reverse direction transparently, so order of arguments rarely matters. " +
         "Accepts slugs or common names for both crops.",
       inputSchema: {
         crop_a: cropNameField,
@@ -465,7 +465,7 @@ function registerPlanBedCompatibility(server: McpServer): void {
     {
       title: "Evaluate a Bed of Crops for Companion Compatibility",
       description:
-        "Evaluates a group of 2-20 crops planted in the same bed. Discovers all pairwise relationships (beneficial and antagonist) among the crops in the input, deduplicates by canonical pair order, and surfaces warnings when one crop antagonizes 2+ others (the hub-antagonist pattern — fennel-herb is the canonical example). " +
+        "Evaluates a group of 2-20 crops planted in the same bed. Discovers all pairwise relationships (beneficial and antagonist) among the crops in the input, deduplicates by canonical pair order, and surfaces warnings when one crop antagonizes 2+ others (the hub-antagonist pattern, fennel-herb is the canonical example). " +
         "Returns `{ crops, beneficial[], antagonist[], warnings[] }`. Each pair is reported once; if both storage directions exist, the strongest edge is chosen. " +
         "Accepts slugs or common names. Crops with no known relationship to any other crop in the bed are silently absent from the relationship lists.",
       inputSchema: {

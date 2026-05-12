@@ -165,7 +165,7 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 300,
-          "description": "Climate-specific advice — variety selection, technique, disease pressure, irrigation. Appended to the suggestion's notes when this climate is active."
+          "description": "Climate-specific advice, variety selection, technique, disease pressure, irrigation. Appended to the suggestion's notes when this climate is active."
         }
       }
     },

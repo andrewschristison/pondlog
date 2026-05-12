@@ -38,7 +38,7 @@ export function registerAllTools(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// search_species — list-and-filter NPN's full species catalog
+// search_species, list-and-filter NPN's full species catalog
 // ----------------------------------------------------------------------------
 
 function registerSearchSpecies(server: McpServer): void {
@@ -114,7 +114,7 @@ function registerGetStationsInState(server: McpServer): void {
       title: "List NPN Stations in a US State",
       description:
         "List all USA-NPN observation stations in a given US state. Returns each station's NPN station_id, name, coordinates, and (when applicable) network ID. " +
-        "Pass `state_code` to narrow — NPN's unfiltered list is ~50,000 stations. Use station_ids returned here to filter `get_observations` or `get_site_level_data`.",
+        "Pass `state_code` to narrow. NPN's unfiltered list is ~50,000 stations. Use station_ids returned here to filter `get_observations` or `get_site_level_data`.",
       inputSchema: {
         state_code: stateCodeField,
       },
@@ -137,7 +137,7 @@ function registerGetStationCountByState(server: McpServer): void {
     {
       title: "USA-NPN Station Count by State",
       description:
-        "Returns the number of USA-NPN stations per US state (a quick map of NPN's geographic coverage). Useful for deciding which state to query for phenology data — eastern US states (NY, MA, ME) and Arizona have the densest coverage; Pacific Northwest is sparser.",
+        "Returns the number of USA-NPN stations per US state (a quick map of NPN's geographic coverage). Useful for deciding which state to query for phenology data, eastern US states (NY, MA, ME) and Arizona have the densest coverage; Pacific Northwest is sparser.",
       inputSchema: {},
       annotations: READ_ONLY,
     },
@@ -188,7 +188,7 @@ function registerGetStationsByLocation(server: McpServer): void {
       title: "Find NPN Stations Inside a WKT Polygon",
       description:
         "Returns NPN stations inside a Well-Known Text polygon. NPN's spatial filter is WKT-based, not lat/lng/radius. " +
-        "WKT format example: 'POLYGON((-123.7 47.9, -123.0 47.9, -123.0 48.3, -123.7 48.3, -123.7 47.9))' — coordinate pairs are 'lng lat', the polygon must close (first point repeated as last). " +
+        "WKT format example: 'POLYGON((-123.7 47.9, -123.0 47.9, -123.0 48.3, -123.7 48.3, -123.7 47.9))', coordinate pairs are 'lng lat', the polygon must close (first point repeated as last). " +
         "For most use cases prefer `get_active_phenology_nearby` which builds the WKT from coords + radius internally.",
       inputSchema: {
         wkt: z
@@ -217,7 +217,7 @@ function registerGetObservations(server: McpServer): void {
     {
       title: "Get USA-NPN Phenology Status/Intensity Records",
       description:
-        "Status / intensity observation records — individual observer reports of whether a phenophase was 'yes' (1), 'no' (0), or 'uncertain' (-1) on a given date. This is the rawest NPN data type. " +
+        "Status / intensity observation records, individual observer reports of whether a phenophase was 'yes' (1), 'no' (0), or 'uncertain' (-1) on a given date. This is the rawest NPN data type. " +
         "REQUIRES a year filter and at least one narrowing filter (species/station/state/genus/family/order/class). Unfiltered queries can return tens of MB. " +
         "For 'is this in phenology now?' aggregated answers prefer `get_site_level_data`. For a place-aware 'what's recently active' shortcut prefer `get_active_phenology_nearby`.",
       inputSchema: {
@@ -274,7 +274,7 @@ function registerGetSiteLevelData(server: McpServer): void {
       title: "Get USA-NPN Site-Level Phenometric Summaries",
       description:
         "Per-site phenometric aggregates: for each (site, species, phenophase, year), returns the mean first/last 'yes' date (when phenophase began and ended on average across observed individuals). " +
-        "This is the right granularity for 'when do magnolias typically bloom in WA?' — much smaller than `get_observations`. " +
+        "This is the right granularity for 'when do magnolias typically bloom in WA?', much smaller than `get_observations`. " +
         "REQUIRES a year filter and at least one of species_ids/station_ids/states. Site-level dates are returned as both julian-day (mean*Julian) and ISO date (mean*Date). " +
         "Sample size fields (firstYesSampleSize, lastYesSampleSize) tell you how many individuals contributed to the mean.",
       inputSchema: {
@@ -282,7 +282,7 @@ function registerGetSiteLevelData(server: McpServer): void {
           .array(yearField)
           .min(1)
           .describe(
-            "Calendar years to include. NPN phenometric records typically lag by a year — 2024 is the most recent year with broad coverage as of 2026. Required.",
+            "Calendar years to include. NPN phenometric records typically lag by a year, 2024 is the most recent year with broad coverage as of 2026. Required.",
           ),
         species_ids: z
           .array(speciesIdField)
@@ -292,7 +292,7 @@ function registerGetSiteLevelData(server: McpServer): void {
           .array(stationIdField)
           .optional()
           .describe(
-            "Narrow to specific NPN stations. Note: parameter name is `station_id` (singular) on the wire — the tool handles that translation.",
+            "Narrow to specific NPN stations. Note: parameter name is `station_id` (singular) on the wire, the tool handles that translation.",
           ),
         states: z
           .array(stateCodeField)
@@ -319,7 +319,7 @@ function registerGetSiteLevelData(server: McpServer): void {
 }
 
 // ----------------------------------------------------------------------------
-// get_active_phenology_nearby — composed helper
+// get_active_phenology_nearby, composed helper
 // ----------------------------------------------------------------------------
 
 function registerGetActivePhenologyNearby(server: McpServer): void {
@@ -331,7 +331,7 @@ function registerGetActivePhenologyNearby(server: McpServer): void {
         "Place-aware shortcut: 'what phenology has been recorded near these coordinates?' " +
         "Composes a WKT bounding box from coords+radius, finds NPN stations inside, haversine-filters to true radius, and returns the closest stations' site-level phenometric records over the requested years (sorted by most-recent meanLastYesDate). " +
         "Each entry includes `distanceKm` from the query point. " +
-        "Note: NPN station coverage is patchy — Eastern US and Arizona are dense; the Pacific Northwest is sparser. Use `get_station_count_by_state` to gauge regional coverage. " +
+        "Note: NPN station coverage is patchy. Eastern US and Arizona are dense; the Pacific Northwest is sparser. Use `get_station_count_by_state` to gauge regional coverage. " +
         "For raw observation records, use `get_observations`. For state-wide phenometric summaries, use `get_site_level_data`.",
       inputSchema: {
         lat: latField,

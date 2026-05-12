@@ -3,6 +3,45 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.18.2] - 2026-05-12
+
+### Em-dash sweep across `@pondlog/core` and MCP servers
+
+Follow-up to the Sticky 25 distribution polish. Removed 122 em dashes from
+source files in `packages/core/src/` and `packages/mcp-*/src/` (Zod
+`.describe()` strings, schema field descriptions, comments, and the
+runtime `noteParts.join()` separator in `crop-calendar.ts`).
+
+Replacements are commas (when the next clause starts with a lowercase
+word) or periods (when it starts with a capital). A handful of
+parenthetical clarifications got manual comma cleanups to avoid awkward
+mid-parenthetical periods.
+
+User-visible change: `getPlantingPlan` and the CropGraph API's
+`notes` field now join window-note fragments with `", "` instead of
+`" — "`. Agent-facing `.describe()` strings on every touched MCP tool
+no longer contain em dashes.
+
+Out of scope: `packages/cli/src/`, `packages/source-*/src/`, and older
+CHANGELOG entries still contain em dashes; a follow-up sticky can sweep
+those if wanted.
+
+#### Versions
+
+| Package | From | To |
+|---|---|---|
+| `@pondlog/core` | 0.8.1 | 0.8.2 |
+| `@pondlog/mcp-ebird` | 0.1.4 | 0.1.5 |
+| `@pondlog/mcp-garden` | 0.3.2 | 0.3.3 |
+| `@pondlog/mcp-mushroomobserver` | 0.1.4 | 0.1.5 |
+| `@pondlog/mcp-npn` | 0.1.4 | 0.1.5 |
+| `@pondlog/mcp-pondlog` | 0.3.7 | 0.3.8 |
+| `@pondlog/mcp-usgs` | 0.1.5 | 0.1.6 |
+
+`@pondlog/mcp-inaturalist` was not touched (no em dashes in its src/);
+no bump. Source clients (`@pondlog/source-*`) and the CLI also untouched
+this round.
+
 ## [0.18.1] - 2026-05-12
 
 ### Sticky 25: distribution polish
