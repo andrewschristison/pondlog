@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>pondlog · eight nature data sources, one install</title>
-  <meta name="description" content="Open-source nature data aggregation. Eight APIs, one CLI, seven MCP servers. Run it from your terminal or wire it into your agent." />
+  <meta name="description" content="Open-source nature data aggregation. Eight APIs, one CLI, six MCP servers. Run it from your terminal or wire it into your agent." />
   <meta name="theme-color" content="#1f2e26" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f0e8d4" media="(prefers-color-scheme: light)" />
 
   <meta name="author" content="Andrew Christison" />
   <meta property="og:title" content="pondlog · what's happening outside?" />
-  <meta property="og:description" content="Eight nature APIs in one install. Seven MCP servers, registered. Run it from your terminal or wire it into your agent." />
+  <meta property="og:description" content="Eight nature APIs in one install. Six MCP servers, registered. Run it from your terminal or wire it into your agent." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pondlog.co" />
   <meta property="og:site_name" content="pondlog" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="pondlog · what's happening outside?" />
-  <meta name="twitter:description" content="Eight nature APIs in one install. Seven MCP servers, registered." />
+  <meta name="twitter:description" content="Eight nature APIs in one install. Six MCP servers, registered." />
   <link rel="canonical" href="https://pondlog.co/" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;text y='26' font-size='28'&gt;&#x1F343;&lt;/text&gt;&lt;/svg&gt;" />
@@ -26,7 +26,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "pondlog",
-    "description": "Place-aware nature data for developers. 8 data sources, 7 MCP servers, 1000-crop garden planner, CLI.",
+    "description": "Place-aware nature data for developers. 8 data sources, 6 MCP servers, CLI.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "url": "https://pondlog.co",
@@ -180,25 +180,26 @@
           <button class="mcp-toggle" type="button" aria-expanded="false">tools <span class="caret" aria-hidden="true">▾</span></button>
         </article>
 
-        <article class="mcp-card reveal" data-tools="get_zone • plant_now • search_crop • get_crop • get_companions • check_companion_pair • plan_bed_compatibility • get_climate_modifiers">
-          <header>
-            <h3 class="mcp-name">garden</h3>
-            <span class="mcp-badge badge-first">first</span>
-          </header>
-          <code class="mcp-install">npx @pondlog/mcp-garden</code>
-          <p class="mcp-meta"><span class="meta-count">8 tools</span> · 1,000 crops · 121 companions · v0.3.1</p>
-          <button class="mcp-toggle" type="button" aria-expanded="false">tools <span class="caret" aria-hidden="true">▾</span></button>
-        </article>
       </div>
 
       <p class="registry-note reveal">
-        All seven registered on the
+        All six registered on the
         <a rel="noopener" href="https://registry.modelcontextprotocol.io">official MCP Registry</a>.
         The first iNaturalist MCP. The first phenology MCP.
         The first mycology MCP. The first streamflow MCP.
-        The first garden planning MCP. The first unified nature briefing.
+        The first unified nature briefing.
         The definitive eBird MCP with 100% API coverage.
       </p>
+
+      <aside class="cropgraph-callout reveal">
+        <h3 class="cropgraph-title">Looking for garden planning?</h3>
+        <p>
+          The 1,000-crop calendar, companion graph, and climate-aware planting
+          tools moved to <a rel="noopener" href="https://cropgraph.com">CropGraph</a>,
+          a separate product with its own MCP, CLI, and API.
+        </p>
+        <code class="mcp-install">npx @cropgraph/mcp</code>
+      </aside>
     </section>
 
     <!-- ─────────────────────────── CLI SHOWCASE ─── -->
@@ -375,7 +376,7 @@ date:     2026-05-12
         <span class="prompt">$</span> pondlog <span class="flag">--architecture</span>
       </h2>
       <p class="section-intro reveal">
-        Source clients feed a typed core. The CLI and seven MCP servers are thin wrappers on top.
+        Source clients feed a typed core. The CLI and six MCP servers are thin wrappers on top.
       </p>
 
       <div class="terminal terminal-arch reveal">
@@ -389,16 +390,18 @@ date:     2026-05-12
 ─────────────────────    ───────────────────    ─────────────────────
 
     iNaturalist  ───┐                            ┌── @pondlog/cli
-    eBird        ───┤                            │      30+ commands
-    NPN          ───┤                            │      pondlog today
-    USGS         ───┼──► @pondlog/core  ────────┤
-    NOAA tides   ───┤    • zod types             │   @pondlog/mcp-*
-    Mushroom Obs ───┤    • rate-limiter          │      7 servers
-    astronomy    ───┤    • result&lt;T&gt;             │      all registered
-    Trefle       ───┘    • 1,000 crops           │
-                         • 121 companions        └── your app
-                         • 6 climate types           your agent
+    eBird        ───┤                            │      pondlog today
+    NPN          ───┤                            │
+    USGS         ───┼──► @pondlog/core  ────────┤   @pondlog/mcp-*
+    NOAA tides   ───┤    • zod types             │      6 servers
+    Mushroom Obs ───┤    • rate-limiter          │      all registered
+    astronomy    ───┤    • result&lt;T&gt;             │
+    Trefle       ───┘    • shared types          └── your app
+                                                     your agent
                                                      your kiosk
+
+                     garden data lives at
+                     @cropgraph/core (cropgraph.com)
 </pre>
       </div>
     </section>
@@ -416,15 +419,12 @@ date:     2026-05-12
           <span class="terminal-dot dot-3" aria-hidden="true"></span>
           <span class="terminal-title">today</span>
         </div>
-<pre class="terminal-body stats-body">crops:                <span class="stat-val">1,000</span>
-companion-pairs:      <span class="stat-val">121</span>   <span class="muted">(88 beneficial · 33 antagonist)</span>
-climate-modifiers:    <span class="stat-val">65 crops × 6 climate types</span>
-data-sources:         <span class="stat-val">8</span>
-mcp-servers:          <span class="stat-val">7</span>     <span class="muted">(6 first-of-their-kind on the registry)</span>
-cli-commands:         <span class="stat-val">30+</span>
-npm-packages:         <span class="stat-val">16</span>
+<pre class="terminal-body stats-body">data-sources:         <span class="stat-val">8</span>
+mcp-servers:          <span class="stat-val">6</span>     <span class="muted">(5 first-of-their-kind on the registry)</span>
+cli-commands:         <span class="stat-val">25+</span>
+npm-packages:         <span class="stat-val">13</span>
 tests-passing:        <span class="stat-val">150+</span>
-competitors:          <span class="stat-val">0</span>     <span class="muted">(for 6 of 7 MCPs)</span>
+competitors:          <span class="stat-val">0</span>     <span class="muted">(for 5 of 6 MCPs)</span>
 days-to-build:        <span class="stat-val">3</span></pre>
       </div>
     </section>
@@ -435,7 +435,7 @@ days-to-build:        <span class="stat-val">3</span></pre>
         <span class="prompt">$</span> cat docs/CONTRIBUTING.md
       </h2>
       <p class="section-intro reveal">
-        The crop calendar and companion graph are open. JSON Schema is published. Add a crop, add a pair, open a PR.
+        Eight sources, six MCPs, one CLI. Source clients, MCP tools, and CLI commands all live in <code>github.com/andrewschristison/pondlog</code>. Open an issue or a PR.
       </p>
 
       <div class="terminal terminal-contrib reveal">
@@ -443,34 +443,25 @@ days-to-build:        <span class="stat-val">3</span></pre>
           <span class="terminal-dot dot-1" aria-hidden="true"></span>
           <span class="terminal-dot dot-2" aria-hidden="true"></span>
           <span class="terminal-dot dot-3" aria-hidden="true"></span>
-          <span class="terminal-title">packages/core/src/data/</span>
+          <span class="terminal-title">packages/</span>
         </div>
 <pre class="terminal-body contrib-body"><span class="muted">$</span> git clone https://github.com/andrewschristison/pondlog
-<span class="muted">$</span> cat packages/core/src/data/crop-calendar.schema.json
+<span class="muted">$</span> pnpm install
+<span class="muted">$</span> pnpm -r test
 
-<span class="muted">// example crop entry (required fields shown)</span>
-{
-  "slug":           "bush-bean",
-  "commonName":     "Bush Bean",
-  "scientificName": "Phaseolus vulgaris",
-  "category":       "legume",
-  "season":         "warm",
-  "daysToHarvest":  55,
-  "zoneRange":      [3, 11],
-  "minSoilTemp":    60,
-  "windows": [
-    { "anchor": "lastSpring", "weeksOffset": 1, "action": "direct_sow" }
-  ],
-  "source":         "https://extension.umn.edu/vegetables/growing-beans"
-}
+<span class="muted">// add a new source: clone an existing source-* package as a template</span>
+<span class="muted">$</span> cp -r packages/source-inaturalist packages/source-yoursource
 
-<span class="muted">// validate locally before opening a PR</span>
-<span class="muted">$</span> pnpm test --filter @pondlog/core</pre>
+<span class="muted">// add a new MCP tool: edit the relevant mcp-* package's tools.ts</span>
+<span class="muted">$</span> $EDITOR packages/mcp-inaturalist/src/tools.ts
+
+<span class="muted">// crop calendar / companion graph contributions go to cropgraph</span>
+<span class="muted">$</span> open https://github.com/Cropgraph/cropgraph</pre>
       </div>
 
       <p class="contrib-links reveal">
-        <a class="link-arrow" rel="noopener" href="https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/crop-calendar.schema.json">crop schema →</a>
-        <a class="link-arrow" rel="noopener" href="https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/companions.schema.json">companions schema →</a>
+        <a class="link-arrow" rel="noopener" href="https://github.com/andrewschristison/pondlog">pondlog on github →</a>
+        <a class="link-arrow" rel="noopener" href="https://github.com/Cropgraph/cropgraph">cropgraph on github →</a>
         <a class="link-arrow" rel="noopener" href="https://github.com/andrewschristison/pondlog/issues">open an issue →</a>
       </p>
     </section>

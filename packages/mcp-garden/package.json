@@ -1,27 +1,9 @@
 {
   "name": "@pondlog/mcp-garden",
-  "version": "0.3.3",
-  "description": "Garden-planning MCP server with USDA hardiness zone lookup, a frost-anchored planting calendar (~1000 curated crops, climate-aware), and Trefle.io plant taxonomy. Five tools backed by @pondlog/core (offline) plus optional Trefle (TREFLE_API_TOKEN).",
+  "version": "0.3.4",
+  "description": "DEPRECATED: use @cropgraph/mcp instead. Garden planning moved to CropGraph. Install: npx @cropgraph/mcp. Docs: https://cropgraph.com.",
   "keywords": [
-    "pondlog",
-    "mcp",
-    "model-context-protocol",
-    "ai",
-    "tools",
-    "claude-desktop",
-    "cursor",
-    "garden",
-    "planting",
-    "crops",
-    "companion-planting",
-    "hardiness-zone",
-    "agriculture",
-    "trefle",
-    "crop-calendar",
-    "gardening",
-    "plants",
-    "usda-hardiness",
-    "permaculture"
+    "deprecated"
   ],
   "author": "Andrew Christison",
   "license": "MIT",
@@ -52,12 +34,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.4",
-    "@pondlog/core": "workspace:^",
-    "@pondlog/source-trefle": "workspace:^",
-    "zod": "^3.23.8"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^22.10.0",
     "tsup": "^8.5.0",

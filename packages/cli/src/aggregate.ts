@@ -2,11 +2,13 @@ import {
   getClimateType,
   getHardinessZone,
   getPlantingPlan,
+  type GardenBriefing,
+} from "@cropgraph/core";
+import {
   getTidePredictions,
   splitHighLow,
   type Coordinates,
   type FungiObservation,
-  type GardenBriefing,
   type NatureBriefing,
   type NightSkyBriefing,
   type Observation,
@@ -52,8 +54,13 @@ export interface BuildTodayBriefingParams {
   noCache?: boolean;
 }
 
+/** `today`'s wire shape: the nature briefing plus the locally computed
+ *  garden block (powered by @cropgraph/core). Defined here because
+ *  @pondlog/core no longer carries garden types. */
+export type TodayBriefing = NatureBriefing & { garden?: GardenBriefing };
+
 export interface BuildTodayBriefingResult {
-  briefing: NatureBriefing;
+  briefing: TodayBriefing;
   /** Per-source diagnostic flags so the renderer can show "(cached)" hints. */
   cacheHits: Record<string, boolean>;
 }
@@ -213,7 +220,7 @@ export async function buildTodayBriefing(
   // Garden, pure local computation; no caching layer needed.
   const garden = buildGardenForToday(params.coords, date, errors);
 
-  const briefing: NatureBriefing = {
+  const briefing: TodayBriefing = {
     coordinates: params.coords,
     generatedAt: new Date().toISOString(),
     celestial: deriveLegacyCelestial(nightSky),

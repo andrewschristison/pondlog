@@ -28,10 +28,16 @@ npm install @pondlog/core
   `parseLatLngString` (handles iNat's `"lat,lng"` format).
 - **`PONDLOG_USER_AGENT`**: canonical user-agent string for every HTTP
   request from a pondlog source client.
-- **Garden data**: USDA hardiness zones (PRISM 2023, 40,283 ZIP centroids),
-  the ~1000-crop frost-anchored planting calendar (climate-aware),
-  and the companion-planting graph. All offline, loaded from bundled
-  JSON with Zod validation at module load.
+## Garden planning data has moved
+
+Garden planning data (crop calendar, companion planting, USDA hardiness
+zones, climate types) has moved to
+[`@cropgraph/core`](https://www.npmjs.com/package/@cropgraph/core). Install
+that package for planting calendars and companion data.
+
+```sh
+npm install @cropgraph/core
+```
 
 ## Example
 

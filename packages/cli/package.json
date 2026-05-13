@@ -1,6 +1,6 @@
 {
   "name": "pondlog",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Place-aware nature data aggregation CLI. \"What's happening in nature at these coordinates right now?\"",
   "keywords": [
     "pondlog",
@@ -40,13 +40,13 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@cropgraph/core": "^1.0.0",
     "@pondlog/core": "workspace:^",
     "@pondlog/source-ebird": "workspace:^",
     "@pondlog/source-inaturalist": "workspace:^",
     "@pondlog/source-mushroomobserver": "workspace:^",
     "@pondlog/source-nightsky": "workspace:^",
     "@pondlog/source-npn": "workspace:^",
-    "@pondlog/source-trefle": "workspace:^",
     "@pondlog/source-usgs": "workspace:^",
     "commander": "^12.1.0",
     "picocolors": "^1.1.1",

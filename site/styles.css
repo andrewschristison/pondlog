@@ -566,6 +566,33 @@ body::before {
   text-underline-offset: 3px;
 }
 
+.cropgraph-callout {
+  margin-top: var(--s-6);
+  padding: var(--s-4) var(--s-5);
+  border-left: 3px solid var(--river);
+  background: oklch(from var(--river) l c h / 0.06);
+  max-width: 65ch;
+  border-radius: 0 4px 4px 0;
+}
+.cropgraph-title {
+  margin: 0 0 var(--s-2);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.cropgraph-callout p {
+  margin: 0 0 var(--s-3);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+.cropgraph-callout a {
+  color: var(--river);
+  text-decoration-color: oklch(from var(--river) l c h / 0.4);
+  text-underline-offset: 3px;
+}
+.cropgraph-callout .mcp-install {
+  display: inline-block;
+}
+
 /* ── showcase / receipt ──────────────────────────────────── */
 .terminal-receipt .terminal-body { padding: var(--s-8); }
 

@@ -1,7 +1,7 @@
 {
   "name": "@pondlog/mcp-pondlog",
-  "version": "0.3.8",
-  "description": "Aggregate MCP server. One tool call returns a unified nature briefing covering birds, wildlife, plants, tides, streamflow, night sky, and phenology, stitched from six public APIs into a single response.",
+  "version": "0.4.0",
+  "description": "Aggregate MCP server. One tool call returns a unified nature briefing covering birds, wildlife, plants, tides, streamflow, night sky, phenology, and (via @cropgraph/core) the day's planting plan.",
   "keywords": [
     "pondlog",
     "mcp",
@@ -13,7 +13,6 @@
     "nature",
     "aggregate",
     "briefing",
-    "garden",
     "birds",
     "weather",
     "wildlife",
@@ -57,6 +56,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@cropgraph/core": "^1.0.0",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "@pondlog/core": "workspace:^",
     "@pondlog/source-ebird": "workspace:^",
@@ -64,7 +64,6 @@
     "@pondlog/source-mushroomobserver": "workspace:^",
     "@pondlog/source-nightsky": "workspace:^",
     "@pondlog/source-npn": "workspace:^",
-    "@pondlog/source-trefle": "workspace:^",
     "@pondlog/source-usgs": "workspace:^",
     "zod": "^3.23.8"
   },

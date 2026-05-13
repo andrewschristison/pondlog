@@ -3,6 +3,60 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.20.0] - 2026-05-12
+
+### CropGraph separation, Sticky D.5b
+
+Garden planning data and tools spun out to a separate product, CropGraph
+(`@cropgraph/core@1.0.0`, `@cropgraph/mcp@1.0.3`, `cropgraph@1.0.0`,
+`https://cropgraph.com`). Pondlog narrows to its nature-data identity.
+
+- **`@pondlog/core` → 1.0.0 (major).** Removed crop calendar, companion
+  graph, USDA hardiness zones, climate types, and the `garden?` field on
+  `NatureBriefing`. Core now ships only shared types, `Result<T>`, the
+  rate limiter, the retry helper, the user-agent constant, and the
+  NOAA-tides client. Bundle dropped from 2.6 MB to under 8 KB. Tests
+  removed alongside the modules (`climate-types`, `companions`,
+  `crop-calendar-modifiers`).
+- **`@pondlog/mcp-pondlog` → 0.4.0 (minor).** Aggregate MCP now imports
+  garden helpers (`getHardinessZone`, `getClimateType`, `getPlantingPlan`,
+  `getBestCompanions`, `findCrop`, `GardenBriefing`) from
+  `@cropgraph/core` instead of `@pondlog/core`. The wire shape for
+  `get_nature_briefing` is unchanged: the `garden` block still ships in
+  the response so existing kiosk and agent consumers keep working.
+- **`@pondlog/mcp-garden` → 0.3.4 (deprecation).** Source replaced with a
+  one-line stub that prints a migration notice (`@pondlog/mcp-garden has
+  moved... npx @cropgraph/mcp`) and exits 0. README and server.json
+  description rewritten as a deprecation pointer. Andrew runs
+  `npm deprecate @pondlog/mcp-garden "Replaced by @cropgraph/mcp..."`
+  post-publish.
+- **`pondlog` CLI → 0.8.0 (minor).** The `garden` subcommand tree
+  (`zone`, `now`, `plant`, `search`, `companions`, `check`, `plan`)
+  is replaced with a single redirect stub that prints the migration
+  notice and exits 0 on any invocation. `pondlog today` keeps its
+  garden block, now powered by `@cropgraph/core`. Dropped
+  `@pondlog/source-trefle` from the CLI's dependencies (`source-trefle`
+  itself remains in the workspace and on npm). Deleted
+  `format-garden.ts` and `format-companions.ts`; their only callers
+  were the garden subcommands.
+- **Site.** `pondlog.co` updated for the new product surface:
+  six MCP servers (was seven), `garden` card removed from the grid, new
+  "Looking for garden planning?" callout pointing at CropGraph,
+  architecture diagram drops the bundled-data bullets, stats block
+  drops the crop/companion/climate rows. FAQ adds "What happened to the
+  garden MCP?" and rewrites the "pondlog vs. CropGraph" answer for the
+  new separation. `llms.txt` lists six MCPs and a CropGraph pointer.
+
+Files: every package under `packages/core`, `packages/mcp-pondlog`,
+`packages/mcp-garden`, `packages/cli`; site under `site/`. No source
+clients (`source-*`) or single-source MCP servers were touched.
+
+### Publish order
+
+`@pondlog/core@1.0.0` → `@pondlog/mcp-pondlog@0.4.0` →
+`@pondlog/mcp-garden@0.3.4` → `pondlog@0.8.0`. After publish:
+`npm deprecate @pondlog/mcp-garden "Replaced by @cropgraph/mcp. Install: npx @cropgraph/mcp"`.
+
 ## [0.19.0] - 2026-05-12
 
 ### pondlog.co landing page (Sticky 26)

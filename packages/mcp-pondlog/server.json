@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog",
-  "description": "Aggregate nature MCP. 8 sources: iNat, eBird, NOAA, USGS, NPN, Mushroom Observer, sky, garden.",
+  "description": "Aggregate nature MCP. 7 nature sources (iNat, eBird, NOAA, USGS, NPN, Mushroom Observer, sky) plus the day's planting plan via @cropgraph/core.",
   "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.3.8",
+  "version": "0.4.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@pondlog/mcp-pondlog",
-      "version": "0.3.8",
+      "version": "0.4.0",
       "transport": {
         "type": "stdio"
       }

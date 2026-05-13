@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { registerAllTools } from "./tools.js";
 
 export const SERVER_NAME = "pondlog-mcp-pondlog";
-export const SERVER_VERSION = "0.3.0";
+export const SERVER_VERSION = "0.4.0";
 
 export function buildServer(): McpServer {
   const server = new McpServer(

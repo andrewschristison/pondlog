@@ -4,11 +4,13 @@ import {
   getClimateType,
   getHardinessZone,
   getPlantingPlan,
+  type GardenBriefing,
+} from "@cropgraph/core";
+import {
   getTidePredictions,
   splitHighLow,
   type Coordinates,
   type FungiObservation,
-  type GardenBriefing,
   type NatureBriefing,
   type NightSkyBriefing,
   type Observation,
@@ -89,6 +91,7 @@ export interface CompanionNote {
 }
 
 export type EnrichedNatureBriefing = NatureBriefing & {
+  garden?: GardenBriefing;
   companionNotes?: CompanionNote[];
 };
 

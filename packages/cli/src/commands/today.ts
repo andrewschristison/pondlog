@@ -1,9 +1,10 @@
 import {
   findCrop,
   getBestCompanions,
-  type FungiObservation,
   type GardenBriefing,
-  type NatureBriefing,
+} from "@cropgraph/core";
+import {
+  type FungiObservation,
   type Observation,
   type PhenologyEntry,
   type StreamflowReading,
@@ -11,7 +12,7 @@ import {
 } from "@pondlog/core";
 import { Command } from "commander";
 import pc from "picocolors";
-import { buildTodayBriefing } from "../aggregate.js";
+import { buildTodayBriefing, type TodayBriefing } from "../aggregate.js";
 import { loadConfig } from "../config.js";
 import { printJson } from "../format.js";
 import { resolveLocation, type ResolvedLocation } from "../resolve-location.js";
@@ -33,7 +34,7 @@ export function buildTodayCommand(): Command {
     .option("--lat <lat>", "Latitude (-90..90)")
     .option("--lng <lng>", "Longitude (-180..180)")
     .option("--date <iso>", "Reference date/time (ISO 8601). Defaults to now.")
-    .option("--json", "Print the full NatureBriefing as JSON")
+    .option("--json", "Print the full briefing as JSON")
     .option("--no-cache", "Bypass on-disk cache and re-fetch every source")
     .addHelpText(
       "after",
@@ -82,7 +83,7 @@ export function buildTodayCommand(): Command {
 }
 
 function renderBriefing(
-  b: NatureBriefing,
+  b: TodayBriefing,
   loc: ResolvedLocation,
   cacheHits: Record<string, boolean>,
 ): void {

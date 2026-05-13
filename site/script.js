@@ -102,8 +102,8 @@
       // cropgraph returns { zone: { zone: "8b", ... }, climateType, plantNow: [...] }
       const zone = (data.zone && (data.zone.zone || data.zone.code))
         || (typeof data.zone === 'string' ? data.zone : null)
-        || data.zoneCode || data.hardiness || '—';
-      const climate = data.climateType || data.climate || '—';
+        || data.zoneCode || data.hardiness || '-';
+      const climate = data.climateType || data.climate || '-';
       const list = (data.plantNow || data.recommendations || []).slice(0, 4);
       const plant = list
         .map((c) => (typeof c === 'string' ? c : (c.commonName || c.slug || c.name)))
@@ -118,7 +118,7 @@
 
   function gardenSummary(g) {
     const head = `zone ${g.zone} · ${g.climate}`;
-    const plants = g.plantNow ? g.plantNow.slice(0, 4).join(', ') : '—';
+    const plants = g.plantNow ? g.plantNow.slice(0, 4).join(', ') : '-';
     return `${head} · plant now: ${plants}`;
   }
 

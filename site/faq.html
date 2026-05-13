@@ -52,11 +52,12 @@
           <p>
             pondlog is an open-source nature data layer for developers.
             It wraps eight free public APIs (iNaturalist, eBird, USA-NPN,
-            USGS, NOAA, Mushroom Observer, astronomy-engine, Trefle) plus
-            a 1,000-crop planting calendar with companion planting and
-            climate-aware scheduling. You get one CLI, seven MCP servers,
-            and a typed core library that ships them all to your terminal,
-            your agent, or your app.
+            USGS, NOAA, Mushroom Observer, astronomy-engine, Trefle) and
+            ships them as one CLI, six MCP servers, and a typed core
+            library you can wire into your terminal, your agent, or your
+            app. Garden planning (1,000-crop calendar, companion graph,
+            USDA zones, climate types) lives in a separate product:
+            <a rel="noopener" href="https://cropgraph.com">CropGraph</a>.
           </p>
         </div>
       </article>
@@ -94,9 +95,9 @@ $ pondlog today</pre>
   }
 }</pre>
           <p>
-            Swap <code>@pondlog/mcp-pondlog</code> for any of the seven
+            Swap <code>@pondlog/mcp-pondlog</code> for any of the six
             servers. The unified one (<code>mcp-pondlog</code>) exposes
-            all sources through five aggregate tools; the source-specific
+            all sources through aggregate tools; the source-specific
             servers expose each source&rsquo;s individual functions.
           </p>
         </div>
@@ -107,14 +108,14 @@ $ pondlog today</pre>
         <div class="faq-a">
           <p>Eight sources today:</p>
           <ul class="faq-list">
-            <li><strong>iNaturalist</strong> — wildlife observations, all taxa, 100/min</li>
-            <li><strong>eBird</strong> — bird sightings, hotspots, taxonomy, free key required</li>
-            <li><strong>USA-NPN</strong> — phenology timing for bloom, leaf-out, flight</li>
-            <li><strong>USGS Water Services</strong> — streamflow and gage height</li>
-            <li><strong>NOAA CO-OPS</strong> — tide predictions, no auth</li>
-            <li><strong>Mushroom Observer</strong> — mycology observations</li>
-            <li><strong>astronomy-engine</strong> — moon, sun, planets, computed locally</li>
-            <li><strong>Trefle</strong> — plant taxonomy with free token</li>
+            <li><strong>iNaturalist</strong>, wildlife observations, all taxa, 100/min</li>
+            <li><strong>eBird</strong>, bird sightings, hotspots, taxonomy, free key required</li>
+            <li><strong>USA-NPN</strong>, phenology timing for bloom, leaf-out, flight</li>
+            <li><strong>USGS Water Services</strong>, streamflow and gage height</li>
+            <li><strong>NOAA CO-OPS</strong>, tide predictions, no auth</li>
+            <li><strong>Mushroom Observer</strong>, mycology observations</li>
+            <li><strong>astronomy-engine</strong>, moon, sun, planets, computed locally</li>
+            <li><strong>Trefle</strong>, plant taxonomy with free token</li>
           </ul>
           <p>
             Six of the eight require no auth at all. The two that do
@@ -127,10 +128,9 @@ $ pondlog today</pre>
         <h2 class="faq-q">Is pondlog free?</h2>
         <div class="faq-a">
           <p>
-            Yes. All sixteen npm packages, all seven MCP servers, the CLI,
-            the crop calendar, the companion graph, and the climate
-            modifiers are MIT licensed. There is no paid tier and no plan
-            to add one.
+            Yes. All published pondlog packages and all six MCP servers
+            are MIT licensed. CropGraph (the garden planning product) is
+            also MIT. There is no paid tier and no plan to add one.
           </p>
           <p>
             The upstream data providers each have their own terms.
@@ -141,25 +141,43 @@ $ pondlog today</pre>
       </article>
 
       <article class="faq-item">
-        <h2 class="faq-q">How do I contribute a crop or companion relationship?</h2>
+        <h2 class="faq-q">How do I contribute a new source or MCP tool?</h2>
         <div class="faq-a">
           <p>
-            Both the crop calendar and the companion planting graph live
-            as JSON fixtures with published JSON Schemas. Open a pull
-            request and the test suite validates the shape for you.
+            Source clients, MCP tools, and CLI commands all live in the
+            pondlog monorepo. Clone an existing <code>source-*</code>
+            package as a template for a new one, or edit an
+            <code>mcp-*</code> package&rsquo;s <code>tools.ts</code> to
+            add a tool.
           </p>
 <pre class="faq-code">$ git clone https://github.com/andrewschristison/pondlog
 $ cd pondlog
 $ pnpm install
-$ vim packages/core/src/data/crop-calendar.json
-$ pnpm test --filter @pondlog/core</pre>
+$ pnpm -r test</pre>
           <p>
-            The schemas are at
-            <a rel="noopener" href="https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/crop-calendar.schema.json">crop-calendar.schema.json</a>
-            and
-            <a rel="noopener" href="https://github.com/andrewschristison/pondlog/blob/main/packages/core/src/data/companions.schema.json">companions.schema.json</a>.
-            Cite a USDA Cooperative Extension page or equivalent in the
-            <code>source</code> field of any new entry.
+            Crop calendar and companion graph contributions go to
+            <a rel="noopener" href="https://github.com/Cropgraph/cropgraph">CropGraph</a>
+            instead. That is where the JSON fixtures and their JSON
+            Schemas live.
+          </p>
+        </div>
+      </article>
+
+      <article class="faq-item">
+        <h2 class="faq-q">What happened to the garden MCP?</h2>
+        <div class="faq-a">
+          <p>
+            Garden planning is now its own product.
+            <a rel="noopener" href="https://cropgraph.com">CropGraph</a>
+            has the garden planning MCP, CLI, and API: 1,000 crops, 121
+            companion relationships, USDA hardiness zones, and the
+            six-type climate classifier. Same data, same authors, all
+            offline, MIT.
+          </p>
+          <p>
+            If you previously ran <code>npx @pondlog/mcp-garden</code>,
+            switch to <code>npx @cropgraph/mcp</code>. The eight tools
+            kept their names and shapes.
           </p>
         </div>
       </article>
@@ -168,20 +186,24 @@ $ pnpm test --filter @pondlog/core</pre>
         <h2 class="faq-q">What is the difference between pondlog and CropGraph?</h2>
         <div class="faq-a">
           <p>
-            pondlog is the open-source toolkit: 8 source clients, 7 MCP
-            servers, a CLI, and a typed core. You install it and run it.
+            pondlog is the open-source nature data toolkit: 8 source
+            clients, 6 MCP servers, a CLI, and a typed core. You install
+            it and run it.
           </p>
           <p>
-            <a rel="noopener" href="https://api.cropgraph.com">CropGraph</a> is a hosted
-            agricultural intelligence API at
-            <code>api.cropgraph.com</code> that exposes the crop calendar
-            and companion graph over HTTP. It is the same data, served
-            instead of installed. The hero of this page calls CropGraph
-            live for your planting zone.
+            <a rel="noopener" href="https://cropgraph.com">CropGraph</a>
+            is the agricultural intelligence product: the 1,000-crop
+            calendar, companion graph, USDA zones, and climate types,
+            shipped as
+            <a rel="noopener" href="https://www.npmjs.com/package/@cropgraph/core">@cropgraph/core</a>,
+            <a rel="noopener" href="https://www.npmjs.com/package/@cropgraph/mcp">@cropgraph/mcp</a>,
+            and a CLI. The hero of this page calls
+            <code>api.cropgraph.com</code> live for your planting zone.
           </p>
           <p>
-            Use pondlog if you want to run things yourself. Use CropGraph
-            if you want an HTTP endpoint.
+            Use pondlog for wildlife, birds, tides, streamflow, phenology,
+            mycology, and night sky. Use CropGraph for garden planning.
+            They share an author and an ethos; they ship independently.
           </p>
         </div>
       </article>
@@ -197,11 +219,11 @@ $ pnpm test --filter @pondlog/core</pre>
             water, NOAA for tides, astronomy-engine for the sky.
           </p>
           <p>
-            The 1,000-crop calendar, 121 companion relationships, and
-            6 climate type modifiers are curated by hand from USDA
-            Cooperative Extension publications, with the citation
-            preserved in each entry. The USDA hardiness zone lookup uses
-            the bundled PRISM 2023 GeoJSON.
+            Garden data (crop calendar, companions, USDA zones, climate
+            types) lives in
+            <a rel="noopener" href="https://cropgraph.com">CropGraph</a>,
+            curated by hand from USDA Cooperative Extension publications
+            with citations preserved per entry.
           </p>
         </div>
       </article>

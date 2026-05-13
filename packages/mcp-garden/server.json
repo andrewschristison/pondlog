@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-garden",
-  "description": "Garden planning MCP. ~1000 crops, climate-aware planting calendar, USDA zones, companion data.",
-  "status": "active",
+  "description": "DEPRECATED: replaced by io.github.Cropgraph/cropgraph. Install: npx @cropgraph/mcp. Docs: https://cropgraph.com.",
+  "status": "deprecated",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.3.3",
+  "version": "0.3.4",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@pondlog/mcp-garden",
-      "version": "0.3.3",
+      "version": "0.3.4",
       "transport": {
         "type": "stdio"
       }
