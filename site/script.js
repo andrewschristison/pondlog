@@ -271,26 +271,33 @@
     }
   }
 
+  // Formatters return null only when the proxy itself failed (timeout,
+  // network error, non-JSON response). When the proxy succeeded but the
+  // upstream genuinely has no data for these coords + this season, we
+  // return an honest empty-state string and the line still labels (live).
   function fmtEbird(data) {
-    if (!data || !data.speciesCount) return null;
+    if (!data) return null;
+    if (!data.speciesCount) return 'no recent sightings nearby';
     const hotspot = data.topHotspot ? ` near ${data.topHotspot}` : '';
     return `${data.speciesCount} bird species${hotspot} this week`;
   }
   function fmtMushroom(data) {
-    if (!data || !data.recentCount) return null;
-    const obs = data.recentCount;
+    if (!data) return null;
+    if (!data.recentCount) return 'no recent observations nearby';
     if (data.topName) {
-      return `${obs} recent observations · latest ${data.topName}`;
+      return `${data.recentCount} recent observations · latest ${data.topName}`;
     }
-    return `${obs} recent observations within 50km`;
+    return `${data.recentCount} recent observations within 50km`;
   }
   function fmtNpn(data) {
-    if (!data || !data.activeEvents || !data.activeEvents.length) return null;
-    const top = data.activeEvents[0];
+    if (!data) return null;
+    const events = data.activeEvents || [];
+    if (!events.length) return 'no active events recorded';
+    const top = events[0];
     const name = (top.common_name || top.commonName || '').toLowerCase();
     const phase = (top.phenophase || top.phenophase_description || '').toLowerCase();
     if (name && phase) return `${name}: ${phase}`;
-    return `${data.activeEvents.length} active phenophases nearby`;
+    return `${events.length} active phenophases nearby`;
   }
 
   /* ── render a single line into the terminal element ── */
