@@ -3,6 +3,52 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.21.0] - 2026-05-13
+
+### Live nature data in the hero
+
+The pondlog.co hero terminal now shows real data from the visitor's
+coordinates for all eight lines, replacing the location-conditioned
+example text. Five sources call CORS-friendly APIs directly from the
+browser; three (eBird, Mushroom Observer, USA-NPN) go through a new
+Vercel serverless proxy.
+
+- **Browser-direct, no key.** iNaturalist species counts, NOAA tide
+  predictions, USGS streamflow, and CropGraph planting plans now fetch
+  live for every preset chip and for "use my location." Moon phase is
+  computed inline from a Julian-date reference new moon (Conway
+  approximation, ~1% accuracy) so the night-sky line is always live
+  with zero network.
+- **`site/api/nature-proxy.js`.** New single Vercel serverless function
+  that proxies eBird (requires `X-eBirdApiToken`), Mushroom Observer
+  (XML-by-default), and USA-NPN (CORS-unfriendly). Routes by
+  `?source=ebird|mushroom|npn`, per-IP rate limit (30/min), and
+  `Cache-Control: s-maxage` of 30 minutes for eBird and 2 hours for the
+  others (plus an in-memory cache that complements the CDN). The site
+  remains static + one function; no other backend.
+- **`EBIRD_API_KEY` env var.** Required for the eBird branch. Without
+  it, eBird gracefully falls back to the example label. Add via
+  `vercel env add EBIRD_API_KEY production`.
+- **Preset station IDs.** Each LOCATIONS preset now carries
+  `noaaStation` and `usgsSite`. Austin is inland and has no NOAA tide
+  station; the tide line falls back to the example label there.
+- **Labeling.** Every line in the hero now reads `(<source> · live)`
+  in moss green on success, or `(<source> · example)` in muted ink on
+  fallback. The garden line preserves the existing `(cropgraph · live)`
+  / `(cropgraph · example)` styling.
+- **Progressive render.** All live fetches fire in parallel before the
+  typewriter starts so live data is usually ready by the time the last
+  line types out; failed or slow (>3–5s) sources keep the baked text and
+  the example tail.
+- **Known sparsity.** Mushroom Observer often returns zero observations
+  in a 14-day window for inland and Pacific Northwest locations outside
+  fall mushroom season, and USA-NPN's nearest stations frequently have
+  no active phenophases recorded for the current year. In both cases
+  the proxy returns the empty result honestly and the browser shows the
+  baked text with the example tail rather than fabricating data.
+
+Files: `site/script.js`, `site/api/nature-proxy.js` (new).
+
 ## [0.20.0] - 2026-05-12
 
 ### CropGraph separation, Sticky D.5b

@@ -11,6 +11,8 @@
     'port-angeles': {
       label: 'Port Angeles, WA',
       lat: 48.118, lng: -123.431,
+      noaaStation: '9444090',
+      usgsSite: '12045500',
       lines: [
         ['🦅 Birds',     'src-bird',   '12 species near hotspot Ediz Hook this week', '(eBird)'],
         ['🌿 Wildlife',  'src-wild',   '47 observations within 25km',                 '(iNaturalist)'],
@@ -27,6 +29,8 @@
     'portland': {
       label: 'Portland, OR',
       lat: 45.515, lng: -122.678,
+      noaaStation: '9435380',
+      usgsSite: '14211720',
       lines: [
         ['🦅 Birds',     'src-bird',   '38 species near Smith & Bybee this week',    '(eBird)'],
         ['🌿 Wildlife',  'src-wild',   '211 observations within 25km',               '(iNaturalist)'],
@@ -43,6 +47,8 @@
     'austin': {
       label: 'Austin, TX',
       lat: 30.267, lng: -97.743,
+      noaaStation: null,
+      usgsSite: '08158000',
       lines: [
         ['🦅 Birds',     'src-bird',   '67 species near Hornsby Bend this week',     '(eBird)'],
         ['🌿 Wildlife',  'src-wild',   '312 observations within 25km',               '(iNaturalist)'],
@@ -59,6 +65,8 @@
     'brooklyn': {
       label: 'Brooklyn, NY',
       lat: 40.678, lng: -73.944,
+      noaaStation: '8518750',
+      usgsSite: '01311000',
       lines: [
         ['🦅 Birds',     'src-bird',   '28 species near Prospect Park this week',    '(eBird)'],
         ['🌿 Wildlife',  'src-wild',   '156 observations within 25km',               '(iNaturalist)'],
@@ -122,11 +130,181 @@
     return `${head} · plant now: ${plants}`;
   }
 
+  /* ── live source fetchers (CORS-friendly + proxy) ─────── */
+
+  // 3-second budget per source. The hero waits for all fetches to settle
+  // before swapping in live data; anything slower than the typewriter run
+  // would arrive after the user has already scrolled.
+  function makeAbortable(timeoutMs) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeoutMs);
+    return { signal: ctrl.signal, cancel: () => clearTimeout(t) };
+  }
+
+  // iNaturalist · species observed within 25km in the past 7 days.
+  async function fetchLiveINat(lat, lng) {
+    const a = makeAbortable(3000);
+    try {
+      const d2 = new Date();
+      const d1 = new Date(d2.getTime() - 7 * 24 * 60 * 60 * 1000);
+      const fmt = (d) => d.toISOString().slice(0, 10);
+      const url = `https://api.inaturalist.org/v1/observations/species_counts`
+        + `?lat=${lat}&lng=${lng}&radius=25`
+        + `&d1=${fmt(d1)}&d2=${fmt(d2)}&per_page=1`;
+      const r = await fetch(url, { signal: a.signal, headers: { Accept: 'application/json' } });
+      a.cancel();
+      if (!r.ok) throw new Error(`status ${r.status}`);
+      const data = await r.json();
+      const total = data.total_results || 0;
+      if (!total) return null;
+      return `${total} species observed within 25km this week`;
+    } catch {
+      a.cancel();
+      return null;
+    }
+  }
+
+  // NOAA tides · next predicted high or low at the given station.
+  async function fetchLiveTide(stationId) {
+    if (!stationId) return null;
+    const a = makeAbortable(3000);
+    try {
+      const url = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter`
+        + `?station=${stationId}&date=today&product=predictions`
+        + `&datum=MLLW&time_zone=lst_ldt&units=english`
+        + `&interval=hilo&application=pondlog&format=json`;
+      const r = await fetch(url, { signal: a.signal, headers: { Accept: 'application/json' } });
+      a.cancel();
+      if (!r.ok) throw new Error(`status ${r.status}`);
+      const data = await r.json();
+      const preds = data.predictions || [];
+      const now = Date.now();
+      const next = preds.find((p) => new Date(p.t.replace(' ', 'T')).getTime() > now);
+      if (!next) return null;
+      const time = new Date(next.t.replace(' ', 'T'));
+      const hh = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }).toLowerCase().replace(' ', '');
+      const label = next.type === 'H' ? 'high' : 'low';
+      const ft = parseFloat(next.v).toFixed(1);
+      return `next ${label} ${hh}  ${ft} ft`;
+    } catch {
+      a.cancel();
+      return null;
+    }
+  }
+
+  // USGS · most recent instantaneous discharge reading at the given site.
+  async function fetchLiveFlow(siteId) {
+    if (!siteId) return null;
+    const a = makeAbortable(3000);
+    try {
+      const url = `https://waterservices.usgs.gov/nwis/iv/`
+        + `?sites=${siteId}&parameterCd=00060&format=json`;
+      const r = await fetch(url, { signal: a.signal, headers: { Accept: 'application/json' } });
+      a.cancel();
+      if (!r.ok) throw new Error(`status ${r.status}`);
+      const data = await r.json();
+      const ts = data && data.value && data.value.timeSeries && data.value.timeSeries[0];
+      if (!ts) return null;
+      const fullName = ts.sourceInfo && ts.sourceInfo.siteName ? ts.sourceInfo.siteName : 'gage';
+      const vals = ts.values && ts.values[0] && ts.values[0].value;
+      const last = vals && vals[vals.length - 1];
+      if (!last) return null;
+      const cfs = parseFloat(last.value);
+      if (Number.isNaN(cfs)) return null;
+      // Site names are uppercase and verbose. Title-case the first comma
+      // chunk and keep it short.
+      const short = fullName.split(',')[0].trim()
+        .toLowerCase()
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+        .replace(/\bAt\b/g, 'at')
+        .replace(/\bNr\b/gi, 'near')
+        .replace(/\bRiv\b/gi, 'River');
+      const fmt = (n) => Math.round(n).toLocaleString();
+      return `${short}  ${fmt(cfs)} cfs`;
+    } catch {
+      a.cancel();
+      return null;
+    }
+  }
+
+  // Moon phase · Conway approximation from a known reference new moon.
+  // Pure math, accurate to ~1% illumination — fine for a hero line.
+  function moonPhaseText(date = new Date()) {
+    const synodic = 29.53058867;
+    const refNewMoon = Date.UTC(2000, 0, 6, 18, 14, 0); // 2000-01-06 18:14 UTC
+    const days = (date.getTime() - refNewMoon) / 86400000;
+    let phase = (days % synodic) / synodic;
+    if (phase < 0) phase += 1;
+    const illum = Math.round(50 * (1 - Math.cos(2 * Math.PI * phase)));
+    const buckets = [
+      [0.03, 'new moon'],
+      [0.22, 'waxing crescent'],
+      [0.28, 'first quarter'],
+      [0.47, 'waxing gibbous'],
+      [0.53, 'full moon'],
+      [0.72, 'waning gibbous'],
+      [0.78, 'last quarter'],
+      [0.97, 'waning crescent'],
+      [1.01, 'new moon'],
+    ];
+    const name = buckets.find((b) => phase < b[0])[1];
+    return `${name}, ${illum}% illuminated`;
+  }
+
+  // Vercel serverless proxy · eBird, Mushroom Observer, USA-NPN.
+  // These three sources can't be called directly from the browser
+  // (CORS, XML default, or API-key requirement), so site/api/nature-proxy.js
+  // makes the upstream call server-side and returns normalized JSON.
+  // Longer budget than the direct fetchers because the proxy may be on a
+  // cold edge cache (eBird and NPN can take a few seconds upstream).
+  async function fetchProxy(source, lat, lng) {
+    const a = makeAbortable(5000);
+    try {
+      const url = `/api/nature-proxy?source=${source}&lat=${lat}&lng=${lng}`;
+      const r = await fetch(url, { signal: a.signal, headers: { Accept: 'application/json' } });
+      a.cancel();
+      if (!r.ok) return null;
+      return await r.json();
+    } catch {
+      a.cancel();
+      return null;
+    }
+  }
+
+  function fmtEbird(data) {
+    if (!data || !data.speciesCount) return null;
+    const hotspot = data.topHotspot ? ` near ${data.topHotspot}` : '';
+    return `${data.speciesCount} bird species${hotspot} this week`;
+  }
+  function fmtMushroom(data) {
+    if (!data || !data.recentCount) return null;
+    const obs = data.recentCount;
+    if (data.topName) {
+      return `${obs} recent observations · latest ${data.topName}`;
+    }
+    return `${obs} recent observations within 50km`;
+  }
+  function fmtNpn(data) {
+    if (!data || !data.activeEvents || !data.activeEvents.length) return null;
+    const top = data.activeEvents[0];
+    const name = (top.common_name || top.commonName || '').toLowerCase();
+    const phase = (top.phenophase || top.phenophase_description || '').toLowerCase();
+    if (name && phase) return `${name}: ${phase}`;
+    return `${data.activeEvents.length} active phenophases nearby`;
+  }
+
   /* ── render a single line into the terminal element ── */
+  // Tails starting with "<" are emitted as raw HTML so callers can apply
+  // styles like .term-live; plain-text tails get the standard muted wrap.
   function buildLineHTML(line) {
     const [label, klass, body, tail] = line;
     const labelPad = pad(label, 14);
-    const tailPart = tail ? `  <span class="muted">${tail}</span>` : '';
+    let tailPart = '';
+    if (tail) {
+      tailPart = tail.startsWith('<')
+        ? `  ${tail}`
+        : `  <span class="muted">${tail}</span>`;
+    }
     return `<span class="${klass}">${labelPad}</span>${body}${tailPart}\n`;
   }
 
@@ -177,7 +355,63 @@
     });
   }
 
-  /* ── compose & render for a location ────────────────── */
+  /* ── compose final lines from baked + live results ────── */
+  // Each src-* line has a baked fallback in LOCATIONS; when the matching
+  // live fetch succeeds we swap in the live text + green "(... · live)"
+  // tail. Failures keep the baked text and pick up an "· example" tail.
+  function buildFinalLines(baked, live) {
+    const liveTail = (src) => `<span class="term-live">(${src} · live)</span>`;
+    return baked.map((ln) => {
+      const [label, klass, body, tail] = ln;
+      if (klass === 'src-garden') {
+        if (live.garden) {
+          return [label, klass, gardenSummary(live.garden), liveTail('cropgraph')];
+        }
+        return [label, klass, body, '<span class="muted">(cropgraph · example)</span>'];
+      }
+      if (klass === 'src-sky') {
+        return [label, klass, live.moon, liveTail('local')];
+      }
+      if (klass === 'src-wild' && live.inat)    return [label, klass, live.inat,    liveTail('iNaturalist')];
+      if (klass === 'src-tide' && live.tide)    return [label, klass, live.tide,    liveTail('NOAA')];
+      if (klass === 'src-flow' && live.flow)    return [label, klass, live.flow,    liveTail('USGS')];
+      if (klass === 'src-bird' && live.ebird)   return [label, klass, live.ebird,   liveTail('eBird')];
+      if (klass === 'src-fungi' && live.mushroom) return [label, klass, live.mushroom, liveTail('Mushroom Obs.')];
+      if (klass === 'src-pheno' && live.npn)    return [label, klass, live.npn,     liveTail('USA-NPN')];
+      const exTail = tail ? tail.replace(/^\((.*)\)$/, '($1 · example)') : '(example)';
+      return [label, klass, body, exTail];
+    });
+  }
+
+  // Fire every live fetch in parallel; moon phase is local and synchronous.
+  // Tide and flow take optional station IDs so renderCustomLocation can
+  // borrow the nearest preset's stations for the user's coords.
+  function fireAllLive(lat, lng, noaaStation, usgsSite) {
+    return Promise.allSettled([
+      fetchLiveGarden(lat, lng),       // 0
+      fetchLiveINat(lat, lng),         // 1
+      fetchLiveTide(noaaStation),      // 2
+      fetchLiveFlow(usgsSite),         // 3
+      fetchProxy('ebird', lat, lng),   // 4
+      fetchProxy('mushroom', lat, lng),// 5
+      fetchProxy('npn', lat, lng),     // 6
+    ]);
+  }
+  function collectLive(settled) {
+    const v = (i) => settled[i].status === 'fulfilled' ? settled[i].value : null;
+    return {
+      garden: v(0),
+      inat: v(1),
+      tide: v(2),
+      flow: v(3),
+      ebird: fmtEbird(v(4)),
+      mushroom: fmtMushroom(v(5)),
+      npn: fmtNpn(v(6)),
+      moon: moonPhaseText(),
+    };
+  }
+
+  /* ── compose & render for a preset location ─────────── */
   async function renderLocation(locKey, opts = {}) {
     const loc = LOCATIONS[locKey];
     if (!loc) return;
@@ -186,42 +420,35 @@
     const title = $('#terminal-title');
     title.textContent = `$ pondlog today --location "${loc.label}"`;
 
-    // Kick off the live garden fetch in parallel with the typewriter.
-    const gardenPromise = fetchLiveGarden(loc.lat, loc.lng);
+    // Fire everything before the typewriter starts so live data is usually
+    // ready by the time the last line types out.
+    const settledPromise = fireAllLive(loc.lat, loc.lng, loc.noaaStation, loc.usgsSite);
+    const moon = moonPhaseText();
 
-    // Build the line list with a placeholder for the garden line.
-    const lines = loc.lines.map((ln) => [...ln]);
-    const gardenIdx = lines.findIndex((ln) => ln[1] === 'src-garden');
-    lines[gardenIdx] = [
-      '🌱 Garden', 'src-garden',
-      `<span class="term-status">// fetching from api.cropgraph.com…</span>`,
-      '(cropgraph)',
-    ];
+    // Placeholder pass: baked text everywhere except garden (which shows
+    // a fetching status) and tonight (which is already live from local math).
+    const placeholder = loc.lines.map((ln) => {
+      const [label, klass, body, tail] = ln;
+      if (klass === 'src-garden') {
+        return [label, klass, `<span class="term-status">// fetching from api.cropgraph.com…</span>`, '(cropgraph)'];
+      }
+      if (klass === 'src-sky') {
+        return [label, klass, moon, '<span class="term-live">(local · live)</span>'];
+      }
+      return [label, klass, body, tail];
+    });
 
     if (opts.instant || prefersReducedMotion) {
-      renderInstant(term, lines);
+      renderInstant(term, placeholder);
     } else {
-      // Wait for the typewriter to fully complete before swapping.
-      await typewriter(term, lines, opts);
+      await typewriter(term, placeholder, opts);
     }
 
-    // Resolve garden data and rewrite the garden line in place.
-    const live = await gardenPromise;
-    const garden = live || { ...loc.garden, live: false };
-    const tail = live
-      ? '<span class="term-live">(live · cropgraph)</span>'
-      : '<span class="muted">(example · cropgraph)</span>';
+    const settled = await settledPromise;
+    if (!title.textContent.includes(loc.label)) return; // user moved on
 
-    // Only update if this is still the active run (chip clicks during
-    // the fetch could have moved on to another location).
-    if (term && title.textContent.includes(loc.label)) {
-      const labelPad = pad('🌱 Garden', 14);
-      const finalHTML = lines.map((ln, idx) => {
-        if (idx !== gardenIdx) return buildLineHTML(ln);
-        return `<span class="src-garden">${labelPad}</span>${gardenSummary(garden)}  ${tail}\n`;
-      }).join('');
-      term.innerHTML = finalHTML;
-    }
+    const live = collectLive(settled);
+    term.innerHTML = buildFinalLines(loc.lines, live).map(buildLineHTML).join('');
   }
 
   /* ── location chips ─────────────────────────────────── */
@@ -316,24 +543,24 @@
     const title = $('#terminal-title');
     title.textContent = `$ pondlog today --lat ${lat.toFixed(3)} --lng ${lng.toFixed(3)}`;
 
-    const gardenPromise = fetchLiveGarden(lat, lng);
-
-    // Borrow the nearest preset's nature data as realistic illustration.
-    // Each non-live line gets an "· example" tag so visitors know it's
-    // not actually queried for their coordinates. The garden line is
-    // always live for the user's real lat/lng.
+    // Use the nearest preset for baked fallback text and for NOAA/USGS
+    // station IDs. Tide and flow are point-station data, so live results
+    // come from the nearest station, not the user's exact coords. The
+    // live label is still accurate: it's the real reading from that station.
     const nearest = LOCATIONS[nearestPreset(lat, lng)];
-    const placeholder = nearest.lines.map((ln) => {
+    const settledPromise = fireAllLive(lat, lng, nearest.noaaStation, nearest.usgsSite);
+    const moon = moonPhaseText();
+
+    const baked = nearest.lines.map((ln) => [...ln]);
+    const placeholder = baked.map((ln) => {
       const [label, klass, body, tail] = ln;
       if (klass === 'src-garden') {
         return [label, klass, `<span class="term-status">// fetching from api.cropgraph.com…</span>`, '(cropgraph)'];
       }
-      // Tonight is computed locally so it's actually accurate.
       if (klass === 'src-sky') {
-        return [label, klass, body, tail];
+        return [label, klass, moon, '<span class="term-live">(local · live)</span>'];
       }
-      const exTail = tail ? tail.replace(/^\((.*)\)$/, '($1 · example)') : '(example)';
-      return [label, klass, body, exTail];
+      return [label, klass, body, tail];
     });
 
     if (prefersReducedMotion) {
@@ -342,27 +569,19 @@
       await typewriter(term, placeholder);
     }
 
-    const live = await gardenPromise;
-    const gardenIdx = placeholder.findIndex((ln) => ln[1] === 'src-garden');
-    const labelPad = pad('🌱 Garden', 14);
-
+    const settled = await settledPromise;
     if (!title.textContent.includes(lat.toFixed(3))) return; // user moved on
 
-    if (!live) {
-      // Fall back to the nearest preset's baked garden data.
-      const fallback = { ...nearest.garden };
-      term.innerHTML = placeholder.map((ln, i) => {
-        if (i !== gardenIdx) return buildLineHTML(ln);
-        return `<span class="src-garden">${labelPad}</span>${gardenSummary(fallback)}  <span class="muted">(cropgraph · example)</span>\n`;
-      }).join('');
-      return;
-    }
-
-    const tail = '<span class="term-live">(live · cropgraph)</span>';
-    term.innerHTML = placeholder.map((ln, i) => {
-      if (i !== gardenIdx) return buildLineHTML(ln);
-      return `<span class="src-garden">${labelPad}</span>${gardenSummary(live)}  ${tail}\n`;
-    }).join('');
+    const live = collectLive(settled);
+    // If the live garden fetch failed we want the example fallback to use
+    // the nearest preset's baked garden data, not just plain text.
+    const finalBaked = baked.map((ln) => {
+      if (ln[1] === 'src-garden') {
+        return [ln[0], ln[1], gardenSummary({ ...nearest.garden }), ln[3]];
+      }
+      return ln;
+    });
+    term.innerHTML = buildFinalLines(finalBaked, live).map(buildLineHTML).join('');
   }
 
   /* ── skip typewriter ─────────────────────────────────── */
