@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-garden",
-  "description": "DEPRECATED: replaced by io.github.Cropgraph/cropgraph. Install: npx @cropgraph/mcp. Docs: https://cropgraph.com.",
+  "description": "DEPRECATED. Use @cropgraph/mcp instead. npx @cropgraph/mcp",
   "status": "deprecated",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
