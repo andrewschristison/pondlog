@@ -6,7 +6,7 @@
 
 Open-source nature data aggregation: 8 data sources, 6 MCP servers, CLI, and npm packages.
 
-Garden planning (1,000-crop calendar, companion graph, USDA zones, climate types) lives in CropGraph, a separate product. See https://cropgraph.com.
+Garden planning (2,000-crop calendar, companion graph, USDA zones, climate types) lives in CropGraph, a separate product. See https://cropgraph.com.
 
 ## Links
 
