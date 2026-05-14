@@ -56,7 +56,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@cropgraph/core": "^1.0.0",
+    "@cropgraph/core": "^3.0.0",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "@pondlog/core": "workspace:^",
     "@pondlog/source-ebird": "workspace:^",

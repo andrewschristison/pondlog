@@ -46,7 +46,7 @@ planner with USDA hardiness zones and companion-planting graph.
 | NPN (phenology) | ✅ | ✅ | ✅ |
 | USGS (water) | ✅ | ✅ | ✅ |
 | Mushroom Observer (mycology) | ✅ | ✅ | ✅ |
-| Garden (USDA zones + ~1000-crop calendar + companions + Trefle) | ✅ | ✅ | ✅ |
+| Garden (USDA zones + ~5,000-crop calendar + companions + Trefle) | ✅ | ✅ | ✅ |
 | Night sky (`astronomy-engine`) | ✅ | ✅ | ✅ (via `mcp-pondlog`) |
 | Aggregate (`pondlog today` / `mcp-pondlog`) | n/a | ✅ | ✅ |
 

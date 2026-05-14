@@ -34,7 +34,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@cropgraph/core": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "tsup": "^8.5.0",

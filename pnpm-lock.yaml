@@ -24,8 +24,8 @@ importers:
   packages/cli:
     dependencies:
       '@cropgraph/core':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -72,6 +72,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       zod:
         specifier: ^3.23.8
         version: 3.25.76
@@ -91,6 +94,9 @@ importers:
 
   packages/mcp-ebird:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -118,6 +124,10 @@ importers:
         version: 2.1.9(@types/node@22.19.17)
 
   packages/mcp-garden:
+    dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
     devDependencies:
       '@types/node':
         specifier: ^22.10.0
@@ -134,6 +144,9 @@ importers:
 
   packages/mcp-inaturalist:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -162,6 +175,9 @@ importers:
 
   packages/mcp-mushroomobserver:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -190,6 +206,9 @@ importers:
 
   packages/mcp-npn:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -219,8 +238,8 @@ importers:
   packages/mcp-pondlog:
     dependencies:
       '@cropgraph/core':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -264,6 +283,9 @@ importers:
 
   packages/mcp-usgs:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
         version: 1.29.0(zod@3.25.76)
@@ -292,6 +314,9 @@ importers:
 
   packages/source-ebird:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -314,6 +339,9 @@ importers:
 
   packages/source-inaturalist:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -336,6 +364,9 @@ importers:
 
   packages/source-mushroomobserver:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -358,6 +389,9 @@ importers:
 
   packages/source-nightsky:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -380,6 +414,9 @@ importers:
 
   packages/source-npn:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -402,6 +439,9 @@ importers:
 
   packages/source-trefle:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -424,6 +464,9 @@ importers:
 
   packages/source-usgs:
     dependencies:
+      '@cropgraph/core':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@pondlog/core':
         specifier: workspace:^
         version: link:../core
@@ -446,8 +489,8 @@ importers:
 
 packages:
 
-  '@cropgraph/core@1.0.0':
-    resolution: {integrity: sha512-f9QcQxEvU8QNY/Ni1M6Je19sIc8pcfnlmH6F+Q9ynBszwFaNzXDsYXSRabbGAsWay0bdqJG766mhoNll0bo+iQ==}
+  '@cropgraph/core@3.0.0':
+    resolution: {integrity: sha512-aFC9wrI4ernrZveH0olp+kn7iLg1oc90nTtFetw8gANYW1e+RwkRqHyFov2FS4wXxA2kxqs5LMM9wpoQLKAtEA==}
     engines: {node: '>=18'}
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -1636,7 +1679,7 @@ packages:
 
 snapshots:
 
-  '@cropgraph/core@1.0.0':
+  '@cropgraph/core@3.0.0':
     dependencies:
       zod: 3.25.76
 

@@ -50,6 +50,7 @@
     "smoke": "vitest run test/smoke.test.ts"
   },
   "dependencies": {
+    "@cropgraph/core": "^3.0.0",
     "@pondlog/core": "workspace:^",
     "astronomy-engine": "^2.1.19"
   },

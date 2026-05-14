@@ -46,6 +46,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@cropgraph/core": "^3.0.0",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "@pondlog/core": "workspace:^",
     "@pondlog/source-inaturalist": "workspace:^",
