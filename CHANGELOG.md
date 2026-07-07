@@ -3,6 +3,33 @@
 All notable changes to this monorepo are recorded here. Each publishable
 package may also keep its own CHANGELOG once it ships.
 
+## [0.22.0] - 2026-07-06
+
+### `@pondlog/source-npn` 0.2.0: NPN date-window contract fix + drift guard
+
+USA-NPN made `start_date`/`end_date` REQUIRED on `getSiteLevelData` around
+2026-05-26; a bare `years[]` call now returns HTTP 400 `start_date and end_date
+are required`. Every phenology fetch had failed silently since. This release
+fixes the client and guards against the next drift.
+
+- **`getSiteLevelData` sends the required date window.** New `startDate`/
+  `endDate` params (YYYY-MM-DD). The legacy `years[]` param is retained as a
+  fallback that derives a `[min-01-01, max-12-31]` window; NPN now ignores
+  `years[]` on this endpoint (verified live), so it is no longer sent on the
+  wire. Backward compatible: existing `years`-only callers keep working.
+- **`getActivePhenologyNearby` uses a rolling window.** New `windowDays`
+  (default 365) replaces the year-count math; `yearsBack` is retained as a
+  compat alias mapping to `yearsBack * 365` days.
+- **Contract test + `test:contract` script.** A live smoke that asserts the
+  400-without-dates requirement, HTTP 200 with dates, and every wire field the
+  parser reads by name. The next USA-NPN change fails a named test instead of
+  degrading a consumer for weeks.
+- **Isolated drift.** `getObservations` was verified still healthy (200,
+  `state[]` honored) and left unchanged. On `getSiteLevelData`, NPN also
+  silently ignores `state[]` now; documented, not worked around, since the
+  composed helper filters by station.
+- **Not a version bump for other packages.** Only `source-npn` changed.
+
 ## [0.21.0] - 2026-05-13
 
 ### Live nature data in the hero

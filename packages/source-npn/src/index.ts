@@ -296,24 +296,94 @@ function guardObservationsParams(
 // ----------------------------------------------------------------------------
 
 export interface GetSiteLevelDataParams {
-  years: number[];
+  /**
+   * Date window (YYYY-MM-DD). NPN made `start_date`/`end_date` REQUIRED on
+   * getSiteLevelData around 2026-05; without them the endpoint returns
+   * HTTP 400 `{"error":"start_date and end_date are required"}`. Prefer these.
+   */
+  startDate?: string;
+  endDate?: string;
+  /**
+   * @deprecated NPN silently ignores `years[]` on getSiteLevelData since the
+   * ~2026-05 contract change. Retained as a fallback: when `startDate`/`endDate`
+   * are absent, a window of [min(years)-01-01, max(years)-12-31] is derived so
+   * pre-existing callers keep working. Prefer startDate/endDate.
+   */
+  years?: number[];
   speciesIds?: number[];
   stationIds?: number[];
+  /**
+   * NOTE: as of 2026-07 NPN silently IGNORES the `state[]` filter on this
+   * endpoint (it returns rows for all states). `speciesIds` and `stationIds`
+   * filter correctly. Left in place for when/if upstream restores it.
+   */
   states?: string[];
   phenophaseIds?: number[];
-  /** Override the default 60s fetch timeout. State-year queries can take 50–60s. */
+  /** Override the default 60s fetch timeout. Wide-window queries can take 50–60s. */
   timeoutMs?: number;
+}
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Resolve the NPN-required date window for getSiteLevelData. Prefers explicit
+ * `startDate`/`endDate`; otherwise derives a calendar-year span from the legacy
+ * (now upstream-ignored) `years[]` so older callers still work.
+ */
+function resolveSiteLevelWindow(params: GetSiteLevelDataParams): Result<{
+  startDate: string;
+  endDate: string;
+}> {
+  const { startDate, endDate, years } = params;
+  if (startDate !== undefined || endDate !== undefined) {
+    if (!startDate || !endDate) {
+      return err({
+        source: "npn",
+        message:
+          "getSiteLevelData: startDate and endDate must be provided together (YYYY-MM-DD)",
+      });
+    }
+    if (!ISO_DATE.test(startDate) || !ISO_DATE.test(endDate)) {
+      return err({
+        source: "npn",
+        message: `getSiteLevelData: startDate/endDate must be YYYY-MM-DD, got "${startDate}".."${endDate}"`,
+      });
+    }
+    if (startDate > endDate) {
+      return err({
+        source: "npn",
+        message: `getSiteLevelData: startDate ${startDate} is after endDate ${endDate}`,
+      });
+    }
+    return ok({ startDate, endDate });
+  }
+  if (Array.isArray(years) && years.length > 0) {
+    for (const y of years) {
+      if (!Number.isInteger(y) || y < 2009 || y > 9999) {
+        return err({
+          source: "npn",
+          message: `getSiteLevelData: invalid year ${y} (NPN data starts in 2009)`,
+        });
+      }
+    }
+    const min = Math.min(...years);
+    const max = Math.max(...years);
+    return ok({ startDate: `${min}-01-01`, endDate: `${max}-12-31` });
+  }
+  return err({
+    source: "npn",
+    message:
+      "getSiteLevelData: a date window is required. Pass startDate+endDate (YYYY-MM-DD), or years[] to derive one. NPN requires start_date/end_date since ~2026-05.",
+  });
 }
 
 export async function getSiteLevelData(
   params: GetSiteLevelDataParams,
 ): Promise<Result<NormalizedSiteLevelData[]>> {
-  if (!Array.isArray(params.years) || params.years.length === 0) {
-    return err({
-      source: "npn",
-      message: "getSiteLevelData: years[] must be non-empty",
-    });
-  }
+  const windowRes = resolveSiteLevelWindow(params);
+  if (!windowRes.ok) return windowRes;
+  const { startDate, endDate } = windowRes.data;
+
   const hasNarrowing =
     (params.speciesIds && params.speciesIds.length > 0) ||
     (params.stationIds && params.stationIds.length > 0) ||
@@ -328,8 +398,9 @@ export async function getSiteLevelData(
 
   // getSiteLevelData uses `station_id` (singular) for the station filter,
   // unlike getObservations which uses `station_ids` (plural). NPN inconsistency.
+  // `years[]` is no longer sent; it is ignored upstream and the date window
+  // now drives the temporal filter.
   const rawQuery = joinRawQuery([
-    expandIndexed("years", params.years),
     params.speciesIds && params.speciesIds.length > 0
       ? expandIndexed("species_id", params.speciesIds)
       : undefined,
@@ -344,7 +415,10 @@ export async function getSiteLevelData(
       : undefined,
   ]);
 
-  const fetchOpts: NpnFetchOptions = { rawQuery };
+  const fetchOpts: NpnFetchOptions = {
+    searchParams: { start_date: startDate, end_date: endDate },
+    rawQuery,
+  };
   if (params.timeoutMs !== undefined) fetchOpts.timeoutMs = params.timeoutMs;
   const result = await npnFetch(
     "/observations/getSiteLevelData.json",
@@ -362,7 +436,17 @@ export async function getSiteLevelData(
 export interface GetActivePhenologyNearbyParams {
   coords: Coordinates;
   radiusKm: number;
-  /** How many years of phenometric history to summarize. Default 2 (this year + last). */
+  /**
+   * Rolling look-back window in days, ending today. Default 365. NPN citizen-
+   * science density is sparse and lags by weeks at many sites, so narrow
+   * windows (< ~90 days) frequently return nothing; a 365-day window reliably
+   * yields data while the most-recent sort surfaces the freshest phenophase.
+   */
+  windowDays?: number;
+  /**
+   * @deprecated Use `windowDays`. Retained for compatibility: when `windowDays`
+   * is absent, `yearsBack` maps to `yearsBack * 365` days.
+   */
   yearsBack?: number;
   /** Cap on stations queried. NPN's URL limit caps us at ~50; default 40. */
   maxStations?: number;
@@ -375,6 +459,9 @@ export interface ActivePhenologyEntry extends NormalizedSiteLevelData {
 export interface ActivePhenologyResult {
   coordinates: Coordinates;
   radiusKm: number;
+  /** The rolling look-back window used, in days. */
+  windowDays: number;
+  /** @deprecated Derived as round(windowDays / 365). Retained for compatibility. */
   yearsBack: number;
   /** Stations within the haversine radius. */
   stationsInRadius: number;
@@ -384,7 +471,8 @@ export interface ActivePhenologyResult {
   entries: ActivePhenologyEntry[];
 }
 
-const DEFAULT_YEARS_BACK = 2;
+const DEFAULT_WINDOW_DAYS = 365;
+const DAY_MS = 86_400_000;
 const DEFAULT_MAX_STATIONS = 40;
 
 /**
@@ -395,9 +483,9 @@ const DEFAULT_MAX_STATIONS = 40;
  *   1. Build a WKT bounding box from coords + radius.
  *   2. Pull stations inside the polygon.
  *   3. Filter stations by haversine distance.
- *   4. Call getSiteLevelData({stationIds, years}), the per-site phenometric
- *      summary, which is bandwidth-friendly (mean first/last "yes" dates per
- *      species + phenophase).
+ *   4. Call getSiteLevelData({stationIds, startDate, endDate}), the per-site
+ *      phenometric summary, which is bandwidth-friendly (mean first/last "yes"
+ *      dates per species + phenophase).
  *   5. Sort by most-recent meanLastYesDate; attach distance to each entry.
  *
  * This is the closest "what's blooming near me" answer NPN's API supports
@@ -421,13 +509,19 @@ export async function getActivePhenologyNearby(
       message: "getActivePhenologyNearby: radiusKm must be positive",
     });
   }
-  const yearsBack = params.yearsBack ?? DEFAULT_YEARS_BACK;
-  if (!Number.isInteger(yearsBack) || yearsBack < 1 || yearsBack > 20) {
+  const windowDays =
+    params.windowDays ??
+    (params.yearsBack !== undefined
+      ? params.yearsBack * 365
+      : DEFAULT_WINDOW_DAYS);
+  if (!Number.isInteger(windowDays) || windowDays < 1 || windowDays > 20 * 365) {
     return err({
       source: "npn",
-      message: "getActivePhenologyNearby: yearsBack must be an integer in 1..20",
+      message:
+        "getActivePhenologyNearby: windowDays must be an integer in 1..7300 (yearsBack, if used, in 1..20)",
     });
   }
+  const yearsBack = Math.max(1, Math.round(windowDays / 365));
   const maxStations = params.maxStations ?? DEFAULT_MAX_STATIONS;
   if (!Number.isInteger(maxStations) || maxStations < 1 || maxStations > 50) {
     return err({
@@ -453,6 +547,7 @@ export async function getActivePhenologyNearby(
     return ok({
       coordinates: params.coords,
       radiusKm: params.radiusKm,
+      windowDays,
       yearsBack,
       stationsInRadius: 0,
       stationsSearched: 0,
@@ -463,13 +558,16 @@ export async function getActivePhenologyNearby(
   // Take the closest N to stay under NPN's URL length limit.
   const queryStations = inRadius.slice(0, maxStations);
   const stationIds = queryStations.map((r) => Number(r.station.id));
-  const currentYear = new Date().getUTCFullYear();
-  const years: number[] = [];
-  for (let i = 0; i < yearsBack; i++) years.push(currentYear - i);
+  const now = new Date();
+  const endDate = now.toISOString().slice(0, 10);
+  const startDate = new Date(now.getTime() - windowDays * DAY_MS)
+    .toISOString()
+    .slice(0, 10);
 
   const slRes = await getSiteLevelData({
     stationIds,
-    years,
+    startDate,
+    endDate,
     timeoutMs: 90_000,
   });
   if (!slRes.ok) return slRes;
@@ -495,6 +593,7 @@ export async function getActivePhenologyNearby(
   return ok({
     coordinates: params.coords,
     radiusKm: params.radiusKm,
+    windowDays,
     yearsBack,
     stationsInRadius: inRadius.length,
     stationsSearched: queryStations.length,

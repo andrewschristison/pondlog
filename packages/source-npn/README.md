@@ -23,8 +23,8 @@ npm install @pondlog/source-npn
 | `getStationsWithSpecies({ speciesIds })` | Stations that have observed any of the given species. |
 | `getStationsByLocation({ wkt })` | Stations inside a WKT polygon. Use `bboxWkt(coords, radiusKm)` to construct one from lat/lng. |
 | `getObservations({ years, ... })` | Status / intensity records. **Requires** `years[]` and ≥ 1 narrowing filter (species/station/state/etc). |
-| `getSiteLevelData({ years, ... })` | Site-level phenometric records. Same narrowing rule as `getObservations`. |
-| `getActivePhenologyNearby({ coords, radiusKm, days? })` | Composed helper. Builds a WKT bbox, fetches stations, haversine-filters to true radius, fetches observations, returns ones with `phenophaseStatus === 1` in the last `days` days. |
+| `getSiteLevelData({ startDate, endDate, ... })` | Site-level phenometric records. **Requires a date window** (`startDate`/`endDate`, YYYY-MM-DD) plus ≥ 1 narrowing filter (species/station). `years[]` still accepted as a fallback that derives a window. |
+| `getActivePhenologyNearby({ coords, radiusKm, windowDays? })` | Composed helper. Builds a WKT bbox, fetches stations, haversine-filters to true radius, then calls `getSiteLevelData` over a rolling `windowDays` window (default 365). |
 
 All functions return `Result<T>` from `@pondlog/core`.
 
@@ -44,6 +44,11 @@ All functions return `Result<T>` from `@pondlog/core`.
 - NPN's spatial model is WKT polygons, not lat/lng/radius. The
   `getActivePhenologyNearby` helper composes the round-trip so callers don't
   have to learn WKT.
+- Around 2026-05 NPN made `start_date`/`end_date` REQUIRED on
+  `getSiteLevelData` (a bare `years[]` call now returns HTTP 400
+  `start_date and end_date are required`), and it silently ignores `years[]`
+  and `state[]` on that endpoint. `test:contract` is a live smoke that fails
+  loudly if that request/response contract moves again.
 
 ## License
 
