@@ -9,12 +9,26 @@ dist/
 coverage/
 .pondlog/
 
-# Per-developer skill setup. The two symlinks pointing at a sibling repo
-# (system-design, harden) are local-only; in-repo skills under
-# .agents/skills/ are committed via the !.agents/skills/<name>/ exception.
-.agents/skills/*
-!.agents/skills/mcp-server/
-.claude/
+# Agent workspaces and local agent config. Never tracked: they carry client
+# names, internal strategy, and personal detail, and this repository is
+# public. Some entries are symlinks into a sibling repo (system-design,
+# harden) and are local-only by design.
+#
+# ORDERING MATTERS. `.agents` stays above anything that would try to
+# re-include a path inside it. Git does not descend into an excluded
+# directory, so a `!` negation under an already-ignored parent can never
+# re-include a file. Such a rule is silently inert: it reads as deliberate
+# intent while providing none. If a path here should ever be published, the
+# way to do it is to move that path out from under an ignored parent, not
+# to add a negation beneath one.
+#
+# NO TRAILING SLASH, deliberately. `.claude/` matches a directory only. If
+# the path is later replaced by a symlink pointing outside the repo, which
+# is how these notes are kept out of a public tree, git sees a file rather
+# than a directory and a trailing-slash rule stops matching it. The entry
+# then silently falls out of the ignore set and `git add -A` will stage it.
+# Slashless entries match a directory, a file, or a symlink.
+.agents
+.claude
 CLAUDE.md
-.agents/
 .vercel
