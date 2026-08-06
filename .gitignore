@@ -9,12 +9,19 @@ dist/
 coverage/
 .pondlog/
 
-# Per-developer skill setup. The two symlinks pointing at a sibling repo
-# (system-design, harden) are local-only; in-repo skills under
-# .agents/skills/ are committed via the !.agents/skills/<name>/ exception.
-.agents/skills/*
-!.agents/skills/mcp-server/
+# Agent workspaces and local agent config. Never tracked: they carry client
+# names, internal strategy, and personal detail, and this repository is
+# public. Some entries are symlinks into a sibling repo (system-design,
+# harden) and are local-only by design.
+#
+# ORDERING MATTERS. `.agents/` stays above anything that would try to
+# re-include a path inside it. Git does not descend into an excluded
+# directory, so a `!` negation under an already-ignored parent can never
+# re-include a file. Such a rule is silently inert: it reads as deliberate
+# intent while providing none. If a path here should ever be published, the
+# way to do it is to move that path out from under an ignored parent, not
+# to add a negation beneath one.
+.agents/
 .claude/
 CLAUDE.md
-.agents/
 .vercel
