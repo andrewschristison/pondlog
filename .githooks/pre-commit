@@ -1,0 +1,8 @@
+#!/bin/sh
+# Skills drift check (convenience layer; the Sticky 1 session-start line
+# is the backstop). Verifies the untracked .agents/skills tree against
+# the pinned library release, read from the library checkout.
+node "$HOME/projects/skills/scripts/verify-local-consumer.mjs" --root "$(git rev-parse --show-toplevel)" || {
+  echo "skills pin verification failed; sync or fix before committing" >&2
+  exit 1
+}
