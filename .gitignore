@@ -11,8 +11,7 @@ coverage/
 
 # Agent workspaces and local agent config. Never tracked: they carry client
 # names, internal strategy, and personal detail, and this repository is
-# public. Some entries are symlinks into a sibling repo (system-design,
-# harden) and are local-only by design.
+# public. Everything under these paths is local-only by design.
 #
 # ORDERING MATTERS. `.agents` stays above anything that would try to
 # re-include a path inside it. Git does not descend into an excluded
@@ -32,3 +31,8 @@ coverage/
 .claude
 CLAUDE.md
 .vercel
+
+# A code tree that a library sync can land at the root. It is vendored
+# locally when present and never tracked. Slashless for the same reason
+# as the entries above.
+governance
