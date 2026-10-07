@@ -1,5 +1,7 @@
 # @pondlog/mcp-mushroomobserver
 
+[![mcpindex](https://mcpindex.ai/api/v1/badge/io-github-andrewschristison-pondlog-mushroomobserver)](https://mcpindex.ai/server/io-github-andrewschristison-pondlog-mushroomobserver)
+
 The first dedicated [Mushroom Observer](https://mushroomobserver.org/) MCP server. Gives any MCP-aware AI client (Claude Desktop, Cursor, Continue, custom agents) **five tools** for fungal observations, mycology taxonomy, and region discovery from the largest dedicated mycology platform (500,000+ observations with vote-weighted ID confidence scores).
 
 **No API key required.** Mushroom Observer is a public scientific community platform.
