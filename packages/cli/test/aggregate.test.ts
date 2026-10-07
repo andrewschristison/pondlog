@@ -1,4 +1,4 @@
-import { mkdtemp } from "node:fs/promises";
+import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -12,6 +12,9 @@ vi.mock("@pondlog/source-ebird", () => ({
 }));
 vi.mock("@pondlog/source-npn", () => ({
   getActivePhenologyNearby: vi.fn(),
+}));
+vi.mock("@pondlog/source-mushroomobserver", () => ({
+  getRecentNearLocation: vi.fn(),
 }));
 vi.mock("@pondlog/source-usgs", () => ({
   getInstantaneousValues: vi.fn(),
@@ -31,6 +34,7 @@ vi.mock("@pondlog/core", async () => {
 const { getNearbyObservations } = await import("@pondlog/source-inaturalist");
 const { getNearbyRecentNormalized } = await import("@pondlog/source-ebird");
 const { getActivePhenologyNearby } = await import("@pondlog/source-npn");
+const { getRecentNearLocation } = await import("@pondlog/source-mushroomobserver");
 const { getInstantaneousValues } = await import("@pondlog/source-usgs");
 const { getTonightsBriefing } = await import("@pondlog/source-nightsky");
 const core = await import("@pondlog/core");
@@ -46,17 +50,31 @@ beforeEach(async () => {
   vi.mocked(getNearbyObservations).mockReset();
   vi.mocked(getNearbyRecentNormalized).mockReset();
   vi.mocked(getActivePhenologyNearby).mockReset();
+  vi.mocked(getRecentNearLocation).mockReset();
   vi.mocked(getInstantaneousValues).mockReset();
   vi.mocked(getTonightsBriefing).mockReset();
   vi.mocked(core.getTidePredictions).mockReset();
+  // Tripwire: any source left unmocked reaches the network through fetch.
+  // Fail fast and by name instead of hanging until the test timeout.
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async (input: unknown) => {
+      throw new Error(`unmocked network call: ${String((input as { url?: string })?.url ?? input)}`);
+    }),
+  );
 });
 
 afterEach(() => {
+  const calls = vi.mocked(globalThis.fetch).mock.calls.map((c) => String((c[0] as { url?: string })?.url ?? c[0]));
+  vi.unstubAllGlobals();
+  expect(calls, "a source in the fan-out reached the network; mock it").toEqual([]);
   if (originalEnv === undefined) delete process.env[CONFIG_DIR_ENV];
   else process.env[CONFIG_DIR_ENV] = originalEnv;
 });
 
 const PORT_ANGELES = { lat: 48.118, lng: -123.4307 };
+
+const EMPTY_MO = { ok: true as const, data: { observations: [], totalRecords: 0, windowDays: 30 } };
 
 const FAKE_NIGHT_SKY = {
   date: "2026-05-07",
@@ -126,6 +144,7 @@ describe("buildTodayBriefing partial-failure handling", () => {
         entries: [],
       },
     });
+    vi.mocked(getRecentNearLocation).mockResolvedValue(EMPTY_MO);
     vi.mocked(getTonightsBriefing).mockReturnValue({
       ok: true,
       data: FAKE_NIGHT_SKY,
@@ -160,6 +179,7 @@ describe("buildTodayBriefing partial-failure handling", () => {
         entries: [],
       },
     });
+    vi.mocked(getRecentNearLocation).mockResolvedValue(EMPTY_MO);
     vi.mocked(getTonightsBriefing).mockReturnValue({ ok: true, data: FAKE_NIGHT_SKY });
 
     const { briefing } = await buildTodayBriefing({
@@ -187,6 +207,7 @@ describe("buildTodayBriefing partial-failure handling", () => {
         entries: [],
       },
     });
+    vi.mocked(getRecentNearLocation).mockResolvedValue(EMPTY_MO);
     vi.mocked(getTonightsBriefing).mockReturnValue({ ok: true, data: FAKE_NIGHT_SKY });
     vi.mocked(core.getTidePredictions).mockResolvedValue({
       ok: true,
@@ -239,5 +260,28 @@ describe("buildTodayBriefing partial-failure handling", () => {
     expect(briefing.streamflow?.gageHeightFt).toBe(4.32);
     expect(briefing.streamflow?.siteName).toMatch(/Elwha/);
     expect(briefing.errors).toEqual([]);
+  });
+});
+
+describe("buildTodayBriefing test isolation", () => {
+  it("mocks every function the fan-out imports from a source package", async () => {
+    const src = await readFile(new URL("../src/aggregate.ts", import.meta.url), "utf8");
+    const imports = [...src.matchAll(/import\s*\{([^}]*)\}\s*from\s*"(@pondlog\/source-[^"]+)"/g)];
+    const pairs = imports.flatMap(([, names, pkg]) =>
+      names
+        .split(",")
+        .map((n) => n.trim())
+        .filter((n) => n && !n.startsWith("type "))
+        .map((n) => [pkg, n.split(/\s+as\s+/)[0].trim()] as const),
+    );
+    // Sentinel: the parse must see the known sources, so an empty or broken
+    // match can never read as "everything is mocked".
+    expect(new Set(pairs.map(([pkg]) => pkg)).size).toBeGreaterThanOrEqual(6);
+    const unmocked: string[] = [];
+    for (const [pkg, name] of pairs) {
+      const mod = (await import(pkg)) as Record<string, unknown>;
+      if (!vi.isMockFunction(mod[name])) unmocked.push(`${pkg} ${name}`);
+    }
+    expect(unmocked, "add a vi.mock for each listed source function").toEqual([]);
   });
 });
