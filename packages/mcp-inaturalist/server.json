@@ -1,13 +1,13 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-inaturalist",
+  "title": "Pondlog iNaturalist",
   "description": "iNaturalist MCP server. Wildlife observations, species counts, taxa, and places worldwide.",
-  "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.1.3",
+  "version": "0.1.4-1",
   "packages": [
     {
       "registryType": "npm",
