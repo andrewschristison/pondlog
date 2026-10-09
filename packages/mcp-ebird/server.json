@@ -1,13 +1,13 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-ebird",
+  "title": "Pondlog eBird",
   "description": "eBird MCP server. 21 tools covering eBird API v2: observations, hotspots, checklists, taxonomy.",
-  "status": "active",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.1.5",
+  "version": "0.1.6-1",
   "packages": [
     {
       "registryType": "npm",
@@ -16,12 +16,12 @@
       "transport": {
         "type": "stdio"
       },
-      "environment_variables": [
+      "environmentVariables": [
         {
           "name": "EBIRD_API_KEY",
           "description": "eBird API key (free at ebird.org/api/keygen)",
-          "is_required": true,
-          "is_secret": true
+          "isRequired": true,
+          "isSecret": true
         }
       ]
     }
