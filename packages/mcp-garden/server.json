@@ -1,13 +1,13 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.andrewschristison/pondlog-garden",
+  "title": "Pondlog Garden (Deprecated)",
   "description": "DEPRECATED. Use @cropgraph/mcp instead. npx @cropgraph/mcp",
-  "status": "deprecated",
   "repository": {
     "url": "https://github.com/andrewschristison/pondlog",
     "source": "github"
   },
-  "version": "0.3.4",
+  "version": "0.3.5-1",
   "packages": [
     {
       "registryType": "npm",
