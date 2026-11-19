@@ -20,7 +20,7 @@ export const dateField = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/)
   .describe(
-    "ISO date YYYY-MM-DD. Defaults to today (UTC). Used to anchor the briefing, affects tides, sun/moon times, and the night-sky reference time.",
+    "ISO date YYYY-MM-DD, read as that calendar day at the location (sun times for that day, night sky for the night after it). Defaults to today (UTC). Affects tides, sun/moon times, and the night-sky reference time.",
   );
 
 export const radiusField = z
