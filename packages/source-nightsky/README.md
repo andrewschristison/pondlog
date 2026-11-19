@@ -90,6 +90,15 @@ actually out), falling back to the midpoint between sunset and
 sunrise if there's no astronomical dark, or to the input itself at the
 extreme high latitudes where neither happens.
 
+A date-only string (`"2026-11-21"`) is a **calendar day at the
+coordinates** for `getSunTimes`, `getDarkSkyWindow` and
+`getTonightsBriefing`: sun times are that local day's, and "tonight" is
+the night after it. The day starts at local mean solar midnight
+(longitude / 15 hours from UTC, no timezone database). A `Date` or a
+full timestamp keeps the "next events after this instant" meaning, so
+`"2026-11-21T00:00:00Z"` in US Pacific time returns the evening of the
+20th.
+
 All times in the response are UTC ISO 8601. Consumers handle local
 display.
 
