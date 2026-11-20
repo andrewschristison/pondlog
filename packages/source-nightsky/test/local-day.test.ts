@@ -56,3 +56,14 @@ describe("date-only input means the local calendar day", () => {
     expect(r.ok && localDay(r.data.sunset, PLACES[0]!.coords.lng)).toBe("2026-11-20");
   });
 });
+
+describe("meteor showers follow the requested night", () => {
+  it("evaluates showers on the local night of a date-only input", () => {
+    // 2026-08-11 in US Pacific is the night of Aug 11-12, the Perseid peak night.
+    const r = getTonightsBriefing({ coords: { lat: 48.406, lng: -122.643 }, date: "2026-08-11" });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const perseids = r.data.activeMeteorShowers.find((s) => s.id === "perseids");
+    expect(perseids?.daysToPeak).toBe(0);
+  });
+});

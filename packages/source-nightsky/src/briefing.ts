@@ -55,7 +55,9 @@ export function getTonightsBriefing(
   const planets = getPlanetPositions({ coords: params.coords, date: referenceTime });
   if (!planets.ok) return planets;
 
-  const meteors = getActiveMeteorShowers({ date: date.data });
+  // Same night as the moon, planets and constellations, not the start of the
+  // requested UTC day.
+  const meteors = getActiveMeteorShowers({ date: referenceTime });
   if (!meteors.ok) return meteors;
 
   const constellations = getVisibleConstellations({
