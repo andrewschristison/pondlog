@@ -9,11 +9,17 @@ import {
   SearchAltitude,
   SearchRiseSet,
 } from "astronomy-engine";
-import { resolveDate, guardCoords } from "./sun.js";
+import { guardCoords, resolveDate, searchStart } from "./sun.js";
 import type { DarkSkyWindow } from "./types.js";
 
 export interface GetDarkSkyWindowParams {
   coords: Coordinates;
+  /**
+   * Defaults to "now". A date-only string ("YYYY-MM-DD") means the night
+   * that follows that calendar day at the coordinates (search starts at
+   * local solar noon). A Date or full timestamp means the next dark window
+   * after that instant.
+   */
   date?: Date | string;
 }
 
@@ -26,7 +32,7 @@ export function getDarkSkyWindow(
   if (!date.ok) return date;
 
   const observer = new Observer(params.coords.lat, params.coords.lng, 0);
-  const start = MakeTime(date.data);
+  const start = MakeTime(searchStart(params.date, params.coords, date.data, 12));
 
   // Astronomical dark window: sun ≤ -18°. Setting (-1) gives the start, rising
   // (+1) the end. At high latitudes / midsummer, either or both can be null,

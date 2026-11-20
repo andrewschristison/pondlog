@@ -13,8 +13,34 @@ const SEARCH_LIMIT_DAYS = 1;
 
 export interface GetSunTimesParams {
   coords: Coordinates;
-  /** Reference date, defaults to "now". JS Date or ISO string. */
+  /**
+   * Reference date, defaults to "now". A date-only string ("YYYY-MM-DD")
+   * means that calendar day at the coordinates: events are searched from
+   * local solar midnight. A Date or full ISO timestamp means "the next
+   * events after this instant".
+   */
   date?: Date | string;
+}
+
+const DATE_ONLY_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Where to start searching for a day's events. A date-only string is a
+ * calendar day at the coordinates, so the search starts at local mean solar
+ * midnight (UTC midnight shifted by longitude / 15 hours, no timezone
+ * database) plus `hoursAfterMidnight`. Any other input is an instant and
+ * is used as is.
+ */
+export function searchStart(
+  input: Date | string | undefined,
+  coords: Coordinates,
+  resolved: Date,
+  hoursAfterMidnight = 0,
+): Date {
+  if (typeof input !== "string" || !DATE_ONLY_RE.test(input)) return resolved;
+  const utcMidnight = Date.parse(`${input}T00:00:00Z`);
+  const offsetHours = coords.lng / 15;
+  return new Date(utcMidnight + (hoursAfterMidnight - offsetHours) * 3_600_000);
 }
 
 export function getSunTimes(params: GetSunTimesParams): Result<SunTimes> {
@@ -24,7 +50,7 @@ export function getSunTimes(params: GetSunTimesParams): Result<SunTimes> {
   if (!date.ok) return date;
 
   const observer = new Observer(params.coords.lat, params.coords.lng, 0);
-  const start = MakeTime(date.data);
+  const start = MakeTime(searchStart(params.date, params.coords, date.data));
 
   // Sunrise / sunset, sun upper limb at sea-level horizon, normal refraction.
   const sunrise = SearchRiseSet(Body.Sun, observer, +1, start, SEARCH_LIMIT_DAYS);
@@ -100,6 +126,13 @@ export function guardCoords(coords: Coordinates): Result<true> {
 
 export function resolveDate(input: Date | string | undefined): Result<Date> {
   if (input === undefined) return ok(new Date());
+  if (typeof input === "string" && DATE_ONLY_RE.test(input)) {
+    const day = new Date(`${input}T00:00:00Z`);
+    if (Number.isNaN(day.getTime()) || day.toISOString().slice(0, 10) !== input) {
+      return err({ source: "nightsky", message: `Could not parse date: ${input}` });
+    }
+    return ok(day);
+  }
   if (input instanceof Date) {
     if (Number.isNaN(input.getTime())) {
       return err({ source: "nightsky", message: "Invalid Date object" });

@@ -11,7 +11,7 @@ import { getDarkSkyWindow } from "./darksky.js";
 import { getActiveMeteorShowers } from "./meteors.js";
 import { getMoonPhase } from "./moon.js";
 import { getPlanetPositions } from "./planets.js";
-import { getSunTimes, guardCoords, resolveDate } from "./sun.js";
+import { getSunTimes, guardCoords, resolveDate, searchStart } from "./sun.js";
 import type {
   MeteorShower,
   NightSkyBriefing,
@@ -20,6 +20,12 @@ import type {
 
 export interface GetTonightsBriefingParams {
   coords: Coordinates;
+  /**
+   * Defaults to "now". Pass a date-only string ("YYYY-MM-DD") for a calendar
+   * day at the coordinates: sun times for that local day, and "tonight" as
+   * the night that follows it. A Date or full timestamp means the next
+   * events after that instant.
+   */
   date?: Date | string;
 }
 
@@ -32,21 +38,26 @@ export function getTonightsBriefing(
   if (!date.ok) return date;
 
   const observer = new Observer(params.coords.lat, params.coords.lng, 0);
-  const referenceTime = pickNightReferenceTime(observer, date.data);
+  const referenceTime = pickNightReferenceTime(
+    observer,
+    searchStart(params.date, params.coords, date.data, 12),
+  );
 
-  const sun = getSunTimes({ coords: params.coords, date: date.data });
+  const sun = getSunTimes({ coords: params.coords, date: params.date ?? date.data });
   if (!sun.ok) return sun;
 
   const moon = getMoonPhase({ coords: params.coords, date: referenceTime });
   if (!moon.ok) return moon;
 
-  const darkSky = getDarkSkyWindow({ coords: params.coords, date: date.data });
+  const darkSky = getDarkSkyWindow({ coords: params.coords, date: params.date ?? date.data });
   if (!darkSky.ok) return darkSky;
 
   const planets = getPlanetPositions({ coords: params.coords, date: referenceTime });
   if (!planets.ok) return planets;
 
-  const meteors = getActiveMeteorShowers({ date: date.data });
+  // Same night as the moon, planets and constellations, not the start of the
+  // requested UTC day.
+  const meteors = getActiveMeteorShowers({ date: referenceTime });
   if (!meteors.ok) return meteors;
 
   const constellations = getVisibleConstellations({

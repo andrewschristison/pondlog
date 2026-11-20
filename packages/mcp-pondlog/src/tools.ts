@@ -251,10 +251,11 @@ function registerGetTonightSky(server: McpServer): void {
       annotations: { readOnlyHint: true, openWorldHint: false } as const,
     },
     async (args) => {
-      const date = parseDate(args.date);
+      // Pass the YYYY-MM-DD string through: source-nightsky reads it as that
+      // calendar day at the coordinates, not as UTC midnight.
       const result = getTonightsBriefing({
         coords: { lat: args.lat, lng: args.lng },
-        ...(date ? { date } : {}),
+        ...(parseDate(args.date) && args.date ? { date: args.date } : {}),
       });
       return result.ok ? success(result.data) : failure(result.error);
     },

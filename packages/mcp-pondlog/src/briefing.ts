@@ -148,7 +148,12 @@ export async function buildBriefing(
       })
     : Promise.resolve(null);
 
-  const nightSkyResult = getTonightsBriefing({ coords: params.coords, date });
+  // A date-only string makes source-nightsky read it as the calendar day at
+  // these coordinates rather than the instant of UTC midnight.
+  const nightSkyResult = getTonightsBriefing({
+    coords: params.coords,
+    date: params.date ? isoDate(params.date) : date,
+  });
 
   const [inatRes, ebirdRes, npnRes, moRes, usgsRes, noaaRes] = await Promise.all([
     inatPromise.catch(captureSettled<Observation[]>("inaturalist")),
